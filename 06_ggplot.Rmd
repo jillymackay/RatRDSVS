@@ -3,3 +3,9 @@
 ## Why ggplot?
 Very scary! 
 
+
+
+
+
+## Videos {#gg_vids}
+If you'd rather watch a video about this - [you can here!](https://media.ed.ac.uk/media/R+ConversationsA+Demystifying+ggplot/0_sct50ue1)

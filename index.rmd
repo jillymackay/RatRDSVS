@@ -8,11 +8,8 @@ output:
   bookdown::gitbook: default
   #bookdown::pdf_book: default
 ---
-# R @ R(D)SVS
 
-
-
-```{r, echo = FALSE, fig.width = 6, fig.align = 'center'}
+```{r echo = FALSE, fig.width = 6, fig.align = 'center'}
 knitr::include_graphics('images/ratrdsvs.png')
 ```
 

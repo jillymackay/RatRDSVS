@@ -2,4 +2,4 @@
 
 ## github {#github}
 
-##repeatabe code {#repeatablecode}
+## repeatabe code {#repeatablecode}

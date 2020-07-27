@@ -27,5 +27,6 @@ output:
       all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
     info: yes
     highlight: tango
+  bookdown::pdf_book: default
 output_dir: "docs"
 ---
