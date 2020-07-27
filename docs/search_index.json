@@ -1,13 +1,14 @@
 [
-["about.html", "R @ R(D)SVS 1 About this book 1.1 R @ R(D)SVS 1.2 How to use this book", " R @ R(D)SVS Jill R D MacKay 2020-07-27 1 About this book 1.1 R @ R(D)SVS 1.2 How to use this book 1.2.1 As a student in class 1.2.2 As a student learning independently 1.2.3 As a teacher "],
-["install.html", "2 Installing R 2.1 Install R 2.2 Install R Studio 2.3 Using the Cloud", " 2 Installing R 2.1 Install R Step one is to head on over to the Comprehensive R Archive Network (or cran) 2.2 Install R Studio If you prefer to get your resources in video format, there’s an explanation of installing R and R Studio here 2.3 Using the Cloud "],
-["starthere.html", "3 Getting Started 3.1 The Big Secret", " 3 Getting Started 3.1 The Big Secret It took me about ten years of working in R to get over my fear of copying and pasting other peoples’ code. There are some great power users of R who are able to pull R code out of nowhere. The rest of us look it up, copy and paste, and modify. That is perfectly normal and acceptable behaviour. 3.1.1 Exercise Watch Tidy Tuesday video "],
-["data.html", "4 Data 4.1 Exercise 4.2 RMD?", " 4 Data 4.1 Exercise We’re going to read in data and use it 4.2 RMD? "],
-["charts.html", "5 Charts 5.1 Data Vis", " 5 Charts 5.1 Data Vis Very important - this is why we start here! "],
-["ggplot.html", "6 ggplot2 6.1 Why ggplot?", " 6 ggplot2 6.1 Why ggplot? Very scary! "],
-["dataprocessing.html", "7 Data Processing 7.1 Workflows", " 7 Data Processing 7.1 Workflows RMDs important shit "],
-["trouble.html", "8 Troubleshooting 8.1 Important skills", " 8 Troubleshooting 8.1 Important skills working independently "],
-["statsbasic.html", "9 Basic Statistics 9.1 Descriptive stats", " 9 Basic Statistics 9.1 Descriptive stats means etc "],
-["statsfreq.html", "10 Predicting more things 10.1 Linear models 10.2 ANOVA exercise", " 10 Predicting more things 10.1 Linear models 10.2 ANOVA exercise "],
-["whatnext.html", "11 What next 11.1 github", " 11 What next 11.1 github ##repeatabe code {#repeatablecode} "]
+["index.html", "R @ R(D)SVS 1 R @ R(D)SVS", " R @ R(D)SVS Jill R D MacKay 2020-07-27 1 R @ R(D)SVS "],
+["about.html", "2 About this book 2.1 R @ R(D)SVS 2.2 How to use this book", " 2 About this book 2.1 R @ R(D)SVS 2.2 How to use this book 2.2.1 As a student in class 2.2.2 As a student learning independently 2.2.3 As a teacher "],
+["install.html", "3 Installing R 3.1 Install R 3.2 Install R Studio 3.3 Using the Cloud", " 3 Installing R 3.1 Install R Step one is to head on over to the Comprehensive R Archive Network (or cran) 3.2 Install R Studio If you prefer to get your resources in video format, there’s an explanation of installing R and R Studio here 3.3 Using the Cloud "],
+["starthere.html", "4 Getting Started 4.1 The Big Secret", " 4 Getting Started 4.1 The Big Secret It took me about ten years of working in R to get over my fear of copying and pasting other peoples’ code. There are some great power users of R who are able to pull R code out of nowhere. The rest of us look it up, copy and paste, and modify. That is perfectly normal and acceptable behaviour. 4.1.1 Exercise Watch Tidy Tuesday video "],
+["data.html", "5 Data 5.1 Exercise 5.2 RMD?", " 5 Data 5.1 Exercise We’re going to read in data and use it 5.2 RMD? "],
+["charts.html", "6 Charts 6.1 Data Vis", " 6 Charts 6.1 Data Vis Very important - this is why we start here! "],
+["ggplot.html", "7 ggplot2 7.1 Why ggplot?", " 7 ggplot2 7.1 Why ggplot? Very scary! "],
+["dataprocessing.html", "8 Data Processing 8.1 Workflows", " 8 Data Processing 8.1 Workflows RMDs important shit "],
+["trouble.html", "9 Troubleshooting 9.1 Important skills", " 9 Troubleshooting 9.1 Important skills working independently "],
+["statsbasic.html", "10 Basic Statistics 10.1 Descriptive stats", " 10 Basic Statistics 10.1 Descriptive stats means etc "],
+["statsfreq.html", "11 Predicting more things 11.1 Linear models 11.2 ANOVA exercise", " 11 Predicting more things 11.1 Linear models 11.2 ANOVA exercise "],
+["whatnext.html", "12 What next 12.1 github", " 12 What next 12.1 github ##repeatabe code {#repeatablecode} "]
 ]
