@@ -1,12 +1,47 @@
 # Installing R {#install}
 
+To use R on your own PC or laptop, you will need to install two things:
+
+1. R (the programming language)
+2. R Studio (a software that makes R easier to run)
+
+You can also access R Studio [online](#install_rsc) which can be great if you have a good internet connection, or are on a computer that you don't have admin rights to. 
+
+**Important:** If you want to use R and R Studio on your own device you need to install both.
+
+If you prefer **watching instructions** you can watch [the installation videos](#install_vids) below.
+
+
 ## Install R {#install_r}
-Step one is to head on over to the Comprehensive R Archive Network (or [cran](https://cran.r-project.org/))
+R is the programming language we will use. It is freely available, meaning you **do not need to pay for R**.
+
+To install R, you will need to navigate to (or click the link to) the Comprehensive R Archive Network - [cran](https://cran.r-project.org/).
+
+While there, you want to download R for your operating system (most likely Windows or Mac). Click the link that names your operating system and look for the instructions that say **install R for the first time**.
+
+There will be a link that says something like **Download R 4.0.2 for Windows**. (The exact version number is not really important yet).
+
+After you have installed R, you can check to see if it works, or go straight to installing [R Studio](#install_rs)
+
+
 
 
 ## Install R Studio {#install_rs}
-If you prefer to get your resources in video format, there's an explanation of installing R and R Studio [here](https://media.ed.ac.uk/media/R+ConversationsA+Installing+R+and+R+Studio/1_q0mdj8mk/104843251)
+R Studio is a tool that helps make R more user friendly. It also lets you collect all your data files into 'projects' 
+
 
 
 ## Using the Cloud {#install_rsc}
+If you would like to use R Studio Cloud, you will need to create an R Studio account. This can be a whole new account, a google account, or a github account. I would recommend you get a github account (you can jump [to read why here](#github)).
+
+After you have logged in, you can access a workspace. A workspace is like an R Studio Project. 
+
+As of the 3rd August, 2020, R Studio Cloud is moving out of Beta and will be available to all. You should use the **Cloud Free Plan**. Again, we do not expect you to buy anything to use R or R Studio. 
+
+You will have a maximum of 15 projects you can use, and less storage space than using your own device. 
+
+## Install R and R Studio - Video Instruction {#install_vids}
+If you prefer to get your resources in video format, there's an explanation of [installing R and R Studio here](https://media.ed.ac.uk/media/R+ConversationsA+Installing+R+and+R+Studio/1_q0mdj8mk/104843251) and using [R Studio Cloud here](https://media.ed.ac.uk/media/R+ConversationsA+R+Studio+Online/1_ex8u0oj7/112983051).
+
+Please note, these videos are a bit older now so you should expect to see some minor differences, e.g. in version numbers. 
 
