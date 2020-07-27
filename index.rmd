@@ -6,12 +6,17 @@ documentclass: book
 description: "This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt."
 output:
   bookdown::gitbook: default
-  #bookdown::pdf_book: default
+#  bookdown::pdf_book: default
 ---
 
-```{r echo = FALSE, fig.width = 6, fig.align = 'center'}
+# R @ R(D)SVS {-}
+This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt.
+
+
+```{r echo = FALSE, out.width="50%", fig.align = 'center'}
 knitr::include_graphics('images/ratrdsvs.png')
 ```
+
 
 <!-- If you need PDF output, uncomment bookdown::pdf_book above in YAML. You will need a LaTeX installation, e.g., https://yihui.name/tinytex/ -->
 
