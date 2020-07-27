@@ -1,0 +1,5 @@
+# ggplot2 {#ggplot}
+
+## Why ggplot?
+Very scary! 
+

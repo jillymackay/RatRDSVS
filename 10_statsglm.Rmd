@@ -1,0 +1,6 @@
+# Predicting more things {#statsfreq}
+
+## Linear models
+
+
+## ANOVA exercise {#exercise9_1}

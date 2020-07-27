@@ -1,0 +1,8 @@
+# Data {#data}
+
+## Exercise {#exercise4_1}
+
+We're going to read in data and use it
+
+
+## RMD?

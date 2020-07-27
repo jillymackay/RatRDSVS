@@ -1,0 +1,12 @@
+# Getting Started {#starthere}
+
+
+## The Big Secret {#thesecret}
+It took me about ten years of working in R to get over my fear of copying and pasting other peoples' code. 
+
+There are some great power users of R who are able to pull R code out of nowhere. The rest of us look it up, copy and paste, and modify. That is perfectly normal and acceptable behaviour. 
+
+
+
+### Exercise {#exercise3_1}
+Watch Tidy Tuesday video

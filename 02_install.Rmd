@@ -1,0 +1,12 @@
+# Installing R {#install}
+
+## Install R {#install_r}
+Step one is to head on over to the Comprehensive R Archive Network (or [cran](https://cran.r-project.org/))
+
+
+## Install R Studio {#install_rs}
+If you prefer to get your resources in video format, there's an explanation of installing R and R Studio [here](https://media.ed.ac.uk/media/R+ConversationsA+Installing+R+and+R+Studio/1_q0mdj8mk/104843251)
+
+
+## Using the Cloud {#install_rsc}
+

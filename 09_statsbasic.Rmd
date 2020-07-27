@@ -1,0 +1,7 @@
+# Basic Statistics {#statsbasic}
+
+## Descriptive stats {#descstats}
+
+means 
+etc
+

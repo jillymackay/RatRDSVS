@@ -1,16 +1,15 @@
 ---
-title: "A Book"
-author: "Frida Gomam"
+title: "R @ R(D)SVS"
+author: "Jill R D MacKay"
+date: "`r Sys.Date()`"
 documentclass: book
+description: "This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt."
 output:
   bookdown::gitbook: default
   #bookdown::pdf_book: default
 ---
 
-# Hello World
-
-Hi.
-
-Bye.
 
 <!-- If you need PDF output, uncomment bookdown::pdf_book above in YAML. You will need a LaTeX installation, e.g., https://yihui.name/tinytex/ -->
+
+
