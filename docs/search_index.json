@@ -1,5 +1,5 @@
 [
-["index.html", "R @ R(D)SVS 1 R @ R(D)SVS", " R @ R(D)SVS Jill R D MacKay 2020-07-27 1 R @ R(D)SVS "],
+["index.html", "R @ R(D)SVS 1 R @ R(D)SVS", " R @ R(D)SVS Jill R D MacKay 2020-07-27 1 R @ R(D)SVS knitr::include_graphics(&#39;images/ratrdsvs.png&#39;) "],
 ["about.html", "2 About this book 2.1 R @ R(D)SVS 2.2 How to use this book", " 2 About this book 2.1 R @ R(D)SVS 2.2 How to use this book 2.2.1 As a student in class 2.2.2 As a student learning independently 2.2.3 As a teacher "],
 ["install.html", "3 Installing R 3.1 Install R 3.2 Install R Studio 3.3 Using the Cloud", " 3 Installing R 3.1 Install R Step one is to head on over to the Comprehensive R Archive Network (or cran) 3.2 Install R Studio If you prefer to get your resources in video format, there’s an explanation of installing R and R Studio here 3.3 Using the Cloud "],
 ["starthere.html", "4 Getting Started 4.1 The Big Secret", " 4 Getting Started 4.1 The Big Secret It took me about ten years of working in R to get over my fear of copying and pasting other peoples’ code. There are some great power users of R who are able to pull R code out of nowhere. The rest of us look it up, copy and paste, and modify. That is perfectly normal and acceptable behaviour. 4.1.1 Exercise Watch Tidy Tuesday video "],
