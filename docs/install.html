@@ -52,68 +52,6 @@
 
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 </head>
 
@@ -140,6 +78,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="install.html"><a href="install.html#install_r"><i class="fa fa-check"></i><b>3.1</b> Install R</a></li>
 <li class="chapter" data-level="3.2" data-path="install.html"><a href="install.html#install_rs"><i class="fa fa-check"></i><b>3.2</b> Install R Studio</a></li>
 <li class="chapter" data-level="3.3" data-path="install.html"><a href="install.html#install_rsc"><i class="fa fa-check"></i><b>3.3</b> Using the Cloud</a></li>
+<li class="chapter" data-level="3.4" data-path="install.html"><a href="install.html#install_vids"><i class="fa fa-check"></i><b>3.4</b> Install R and R Studio - Video Instruction</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="starthere.html"><a href="starthere.html"><i class="fa fa-check"></i><b>4</b> Getting Started</a><ul>
 <li class="chapter" data-level="4.1" data-path="starthere.html"><a href="starthere.html#thesecret"><i class="fa fa-check"></i><b>4.1</b> The Big Secret</a><ul>
@@ -191,16 +130,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="install" class="section level1">
 <h1><span class="header-section-number">3</span> Installing R</h1>
+<p>To use R on your own PC or laptop, you will need to install two things:</p>
+<ol style="list-style-type: decimal">
+<li>R (the programming language)</li>
+<li>R Studio (a software that makes R easier to run)</li>
+</ol>
+<p>You can also access R Studio <a href="install.html#install_rsc">online</a> which can be great if you have a good internet connection, or are on a computer that you don’t have admin rights to.</p>
+<p><strong>Important:</strong> If you want to use R and R Studio on your own device you need to install both.</p>
+<p>If you prefer <strong>watching instructions</strong> you can watch <a href="install.html#install_vids">the installation videos</a> below.</p>
 <div id="install_r" class="section level2">
 <h2><span class="header-section-number">3.1</span> Install R</h2>
-<p>Step one is to head on over to the Comprehensive R Archive Network (or <a href="https://cran.r-project.org/">cran</a>)</p>
+<p>R is the programming language we will use. It is freely available, meaning you <strong>do not need to pay for R</strong>.</p>
+<p>To install R, you will need to navigate to (or click the link to) the Comprehensive R Archive Network - <a href="https://cran.r-project.org/">cran</a>.</p>
+<p>While there, you want to download R for your operating system (most likely Windows or Mac). Click the link that names your operating system and look for the instructions that say <strong>install R for the first time</strong>.</p>
+<p>There will be a link that says something like <strong>Download R 4.0.2 for Windows</strong>. (The exact version number is not really important yet).</p>
+<p>After you have installed R, you can check to see if it works, or go straight to installing <a href="install.html#install_rs">R Studio</a></p>
 </div>
 <div id="install_rs" class="section level2">
 <h2><span class="header-section-number">3.2</span> Install R Studio</h2>
-<p>If you prefer to get your resources in video format, there’s an explanation of installing R and R Studio <a href="https://media.ed.ac.uk/media/R+ConversationsA+Installing+R+and+R+Studio/1_q0mdj8mk/104843251">here</a></p>
+<p>R Studio is a tool that helps make R more user friendly. It also lets you collect all your data files into ‘projects’. This is very useful for managing your projects and ‘workflows’ (more on <a href="dataprocessing.html#workflows">that here</a>).</p>
 </div>
 <div id="install_rsc" class="section level2">
 <h2><span class="header-section-number">3.3</span> Using the Cloud</h2>
+<p>If you would like to use R Studio Cloud, you will need to create an R Studio account. This can be a whole new account, a google account, or a github account. I would recommend you get a github account (you can jump <a href="whatnext.html#github">to read why here</a>).</p>
+<p>After you have logged in, you can access a workspace. A workspace is like an R Studio Project.</p>
+<p>As of the 3rd August, 2020, R Studio Cloud is moving out of Beta and will be available to all. You should use the <strong>Cloud Free Plan</strong>. Again, we do not expect you to buy anything to use R or R Studio.</p>
+<p>You will have a maximum of 15 projects you can use, and less storage space than using your own device.</p>
+</div>
+<div id="install_vids" class="section level2">
+<h2><span class="header-section-number">3.4</span> Install R and R Studio - Video Instruction</h2>
+<p>If you prefer to get your resources in video format, there’s an explanation of <a href="https://media.ed.ac.uk/media/R+ConversationsA+Installing+R+and+R+Studio/1_q0mdj8mk/104843251">installing R and R Studio here</a> and using <a href="https://media.ed.ac.uk/media/R+ConversationsA+R+Studio+Online/1_ex8u0oj7/112983051">R Studio Cloud here</a>.</p>
+<p>Please note, these videos are a bit older now so you should expect to see some minor differences, e.g. in version numbers.</p>
 
 </div>
 </div>

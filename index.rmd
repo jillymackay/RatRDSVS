@@ -12,7 +12,7 @@ output:
 
 
 
-```{r, fig.width = 6, fig.align = 'center', include = FALSE}
+```{r, echo = FALSE, fig.width = 6, fig.align = 'center'}
 knitr::include_graphics('images/ratrdsvs.png')
 ```
 

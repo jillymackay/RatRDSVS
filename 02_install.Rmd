@@ -27,7 +27,7 @@ After you have installed R, you can check to see if it works, or go straight to 
 
 
 ## Install R Studio {#install_rs}
-R Studio is a tool that helps make R more user friendly. It also lets you collect all your data files into 'projects' 
+R Studio is a tool that helps make R more user friendly. It also lets you collect all your data files into 'projects'. This is very useful for managing your projects and 'workflows' (more on [that here](#workflows)).
 
 
 
