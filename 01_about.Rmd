@@ -1,8 +1,8 @@
 # About this book {#about}
 
-## R @ R(D)SVS {#RatRDSVS}
-
 ## How to use this book {#howuse}
+
+You can change the colours on screen by hovering your mouse over the 'A' icon at the top left hand side of the page. 
 
 ### As a student in class {#useinclass}
 
