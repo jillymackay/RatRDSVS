@@ -1,1 +1,6 @@
-output_dir: "docs"
+---
+output:
+  bookdown::gitbook:
+    highlight: tango
+    output_dir: "docs"
+---
