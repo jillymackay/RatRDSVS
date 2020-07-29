@@ -2,9 +2,11 @@
 
 > You can skip this chapter if you can:
 >
+>  * Use the console to input simple lines of code
+>
 >  * Install and load a package
 >
->  * Load data into the environment
+>  * Know what a function is
 >
 
 To use this chapter you will need a working version of R and R Studio.
@@ -31,7 +33,7 @@ It took me about ten years of working in R to get over my fear of copying and pa
 Most people will not remember code off the top of their head. This is why we use the help function (remember `?summary`) to look at the documentation, and resources like Stack Exchange and Google to help us (more in [troubleshooting](#trouble)).
 
 
-### Exercise {#exercise3_1}
+### Exercise {#ex_tidytuesday}
 You might be very skeptical here about how much I want you to be copying code. If you're not convinced, I suggest you go watch my RStats Crush the amazing [David Robinson](https://twitter.com/drob) do one of his Tidy Tuesday screencasts. David Robinson has forgotten more R than I'll ever learn, and see - he still [copies and pastes code](https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ).
 
 
@@ -61,7 +63,7 @@ Using R Studio you will get a lot better at 'directory management', or knowing w
 ## Environment {#environment}
 In your brand new project you will have a clean environment (refer back to [Figure 2.5](#navigate_rs)). Our first exercise is going to explore what the environment really means. 
 
-### Exercise 3.1 - Environment {#ex_env}
+### Exercise - Environment {#ex_env}
 When we first installed R, you were typing mathematical equations into the console. Let's remind ourselves of this by running an equation now. In the console, type a long and complicated equation, then hit 'enter' when you're done.
 
 ```{r}
@@ -141,7 +143,7 @@ print(hello)
 
 
 
-### Exercise 3.2 - Functions {#ex_func}
+### Exercise - Functions {#ex_func}
 #### The Basic Function
 
 A function is a handy way to bundle together some lines of code. David Robinson [says that](https://twitter.com/drob/status/928447584712253440?s=20) if you run a few lines more than twice you should write a function to do it instead. 
@@ -182,7 +184,13 @@ If people write very good and useful functions, they usually want to share them.
 
 There are packages for everything, packages for drawing maps, packages for analysing data, packages for suggesting how to analyse your data, packages to give you more data, packages for tidying your data . . . this is one of the reasons we might all have different bits of code. There can be lots of ways to do something. 
 
-To install a package you need to type `install.package("package_name")`. But once a package is installed on your computer you need to load it into your library with `library(package_name)`.
+### Exercise - Install and Load a Package {#ex_packages}
+
+Packages work in two stages. The very first time you need a package you need to install it. Then, every time you start R you need to load the package into your livrary.
+
+To install a package you need to type `install.package("package_name")`. 
+
+To load it into your library you need to type `library(package_name)`.
 
 When you load a package from your library it goes into a special hidden environment where you can access all the functions that the package has written for you.
 
@@ -196,7 +204,7 @@ install.packages("tidyverse")
 
 And when it has finished downloading, you need to type:
 
-```{r}
+```{r eval = FALSE}
 
 library(tidyverse)
 
@@ -205,9 +213,17 @@ library(tidyverse)
 to load it. You'll see that nothing has appeared in your Environment, but actually you have a whole host of new functions & data you can play with. For example:
 
 
-```{r}
+```{r eval = FALSE}
 
 slice(starwars)
+```
+
+Which should give you this:
+
+```{r echo = FALSE}
+
+dplyr::slice(starwars)
+
 ```
 
 Now we have a new dataset (`starwars`) and a new thing we can do (`slice` the top of the data). We will talk much more about `tidyverse` in the [data chapter](#data).

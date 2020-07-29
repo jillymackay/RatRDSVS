@@ -1,0 +1,126 @@
+# Data {#data}
+
+> You can skip this chapter if you:
+>
+>  * Are comfortable working with dataframes and tibbles
+>
+>  * Know about and are comfortable using some of R's inbuilt data packages
+>
+>  * Are comfortable loading .csv and .xlsx files into R
+
+
+
+## Packages for this chapter
+
+In this chapter you'll want the following packages loaded in your R session. At the start, you will need to run the following code. Remember if you don't have a package you can install it with the `install.package("package_name")` command. 
+
+```{r eval = FALSE}
+
+library(tidyverse)
+library(readxl)
+
+```
+```{r echo = FALSE, message=FALSE, warning=FALSE}
+
+library(tidyverse)
+library(readxl)
+
+```
+
+
+## Built In Data {#data_builtin}
+Many packages, such as the `tidyverse` package, and the default^['Default' here means one you won't need to install or load into the library] `datasets` package come with data in them. These datasets can be really useful for testing code that you're unfamiliar with, because you know what the data should look like, and how it should perform. 
+
+Some common datasets are:
+
+* `mpg`
+  + Fuel economy data from 1999 to 2008 for 38 popular models of cars
+  
+*  `ChickWeight`
+  + Weight versus age of chicks on different diets
+
+* `starwars`
+  + Name, height, weight, age, and other characteristics of Star Wars characters
+
+* `iris`
+  + The measurements (in cm) of the sepal length and width and petal length and width of 50 flowers in 3 species of iris
+  
+There are many, many more. You can explore some of them by typing `datasets::`^[You might wonder, what's the `::` in the `datasets::` command. The `::` is very useful and tells R to look inside the `datasets` package without having to actually load it into your library which can be very quick and easy] into the console and instead of pressing 'enter', scroll the menu that pops up to help you autocomplete your command. 
+
+
+## Exercise {#ex_inbuiltdata}
+
+For our first exercise we are going to look at some of the inbuilt datasets. 
+
+What happens when you enter the following code^[If its not working - are you sure you have spelled it with a capital `View`?] into the console?
+
+```{r eval = FALSE}
+
+View(mpg)
+
+```
+
+You should see something like **Figure 3.1**
+
+```{r echo = FALSE, fig.cap="The result of the 'View(mpg)' command", fig.align = 'center'}
+
+knitr::include_graphics("images/03_data/rstud01.png")
+
+```
+
+The `View()` command is very handy for getting a quick window onto what data looks like. Unfortunately, the `View()` command only really works for **you** getting a look at your data. If you wanted to share your code, you would be better using a command which prints some of the data into the console.
+
+
+So - what functions will tell R to print data into the console?
+
+You can view the top of a dataset with `head()`
+
+```{r warning = FALSE}
+
+ head(mpg)
+
+```
+
+Note that this code has produced an output block. Unlike `View()` where I had to share a screengrab to show you what the output of the code was. This is why `head()` is a lot more reproducible than `View()` and should be your default for code sharing. See more about this in [workflows](#workflows).
+
+Unsurprisingly we can also view the bottom of a dataset with ...
+
+```{r warning = FALSE}
+
+tail(mpg)
+
+```
+
+
+Another very useful way to look at a dataset is with the `summary()` function, which takes its best guess at how to summarise each variable in the dataset. 
+
+
+```{r}
+
+summary(mpg)
+
+```
+
+The `summary()` function highlights an important aspect of R - it knows the difference between numbers and characters. In the output block we can see that `manufacturer` is given the `Class` `character`. R knows it can't create a mean and a median from this data, so it simply tells you the `Length` of that data instead. What do you think the `r length(mpg$manufacturer)` refers to here? Answer in the footnote^[The Length of these variables is the number of rows in each one, which for this case is the same because this is a nice, tidy dataset].
+
+
+## Data you create {#created_data}
+Sometimes you will want to test something on pretend data, or run something on a very small dataset. In these cases, we can create a dataset in our environment. This can be really useful for [troubleshooting](#trouble) because you can create data that shows your problem, and this is easier to share with others.
+
+For example, lets say we we were interested in this idea that R only sees `manufacturer` in `mpg` as a string of letters. How can we tell R that `manufacturer` is in fact a category? We can test on a smaller, simpler dataset. 
+
+
+## Exercise - Creating data {#ex_createdata}
+
+We are going to use a new function here called `tibble` which will make a dataframe quickly and easily. Before when we were typing things like `x <- 1`, we created a single thing in the environment. Now we want to create multiple thing (rows and columns) and that's what the `tibble` function will do. 
+
+Try the following and watch what happens in your environment (you'll need the `tidyverse` loaded - see [above](#data))
+
+```{r}
+
+dat <- tibble(x = c(1, 2, 3, 4, 5, 6),
+              y = c("A", "B", "A", "B", "A", "B"))
+
+```
+
+You can `View(dat)` to look at this (or use `head(dat)`)

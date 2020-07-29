@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Charts | R @ R(D)SVS</title>
+  <title>7 The Tidyverse | R @ R(D)SVS</title>
   <meta name="description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Charts | R @ R(D)SVS" />
+  <meta property="og:title" content="7 The Tidyverse | R @ R(D)SVS" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Charts | R @ R(D)SVS" />
+  <meta name="twitter:title" content="7 The Tidyverse | R @ R(D)SVS" />
   
   <meta name="twitter:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data.html"/>
-<link rel="next" href="ggplot.html"/>
+<link rel="prev" href="dataprocessing.html"/>
+<link rel="next" href="trouble.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -223,12 +223,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="charts" class="section level1">
-<h1><span class="header-section-number">4</span> Charts</h1>
-<div id="datavis" class="section level2">
-<h2><span class="header-section-number">4.1</span> Data Vis</h2>
-<p>Very important - this is why we start here!</p>
+<div id="tidyverse" class="section level1">
+<h1><span class="header-section-number">7</span> The Tidyverse</h1>
+<p>The tidyverse is the only way to learn.</p>
+<div id="tidy_opinions" class="section level2">
+<h2><span class="header-section-number">7.1</span> Opinionated Packages</h2>
+</div>
+<div id="how_tidy" class="section level2">
+<h2><span class="header-section-number">7.2</span> How to tidy</h2>
+</div>
+<div id="the-observation" class="section level2">
+<h2><span class="header-section-number">7.3</span> The Observation</h2>
+<p>As <a href="http://vita.had.co.nz/papers/tidy-data.html">everyone online says</a> - tidy data has <strong>one observation per row</strong>. My headaches came from dealing with the publicly available <a href="https://www.officeforstudents.org.uk/advice-and-guidance/student-information-and-data/national-student-survey-nss/">National Student Survey</a> data - the format of which <em>seems</em> tidy to the uninitiated. The data is presented with each subject at each university as a row - that’s an observation, surely?</p>
+</div>
+<div id="the-data" class="section level2">
+<h2><span class="header-section-number">7.4</span> The Data</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">data &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">group1 =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>),</a>
+<a class="sourceLine" id="cb36-2" title="2">                <span class="dt">group2 =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Z&quot;</span>, <span class="st">&quot;Z&quot;</span>),</a>
+<a class="sourceLine" id="cb36-3" title="3">                <span class="dt">q =</span> <span class="kw">c</span> (<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>,<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>),</a>
+<a class="sourceLine" id="cb36-4" title="4">                <span class="dt">disagree =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.3</span>),</a>
+<a class="sourceLine" id="cb36-5" title="5">                <span class="dt">neutral =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>),</a>
+<a class="sourceLine" id="cb36-6" title="6">                <span class="dt">agree =</span> <span class="kw">c</span>(<span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>),</a>
+<a class="sourceLine" id="cb36-7" title="7">                <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">121</span>, <span class="dv">121</span>, <span class="dv">140</span>, <span class="dv">140</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">57</span>,<span class="dv">57</span>)) </a>
+<a class="sourceLine" id="cb36-8" title="8">data</a></code></pre></div>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
+<pre><code>## # A tibble: 8 x 7
+##   group1 group2 q     disagree neutral agree     n
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 A      X      Q1         0.8    0.05  0.15   121
+## 2 A      X      Q2         0.3    0.4   0.3    121
+## 3 A      Y      Q1         0.8    0.1   0.1    140
+## 4 A      Y      Q2         0.2    0.3   0.5    140
+## 5 B      X      Q1         0.7    0.1   0.2     50
+## 6 B      X      Q2         0.5    0.4   0.1     50
+## 7 B      Z      Q1         0.6    0.2   0.2     57
+## 8 B      Z      Q2         0.3    0.3   0.4     57</code></pre>
+<p>However, for a lot of what I was trying to do, I needed to know how many students responded at each level - how many agreed with Q1, Q2, etc, in each nested group. I wanted my data taller.</p>
+<p>(I’m using this specific format not because it’s a nice format, but because it’s a format that exists in the world and that lots of people make big decisions on.)</p>
+<div id="gather" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Gather</h3>
+<p>The <code>gather</code> command from <code>tidyverse</code> is a quick way to smush this data into a tall format. The <code>gather</code> command creates two new columns, the <code>key</code> column which collects your old column names and your <code>value</code> column which collects the row values (fairly self-explanatory).</p>
+<p>The trick with <code>gather</code> is that it will smush everything it can into those two columns, so you need to tell it which columns <em>not</em> to include. This is the step that eluded me for a whole afternoon once, so I’m stating it very obviously here.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">talldata &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="st">  </span><span class="kw">gather</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents,</a>
+<a class="sourceLine" id="cb39-3" title="3">          <span class="op">-</span>group1,</a>
+<a class="sourceLine" id="cb39-4" title="4">          <span class="op">-</span>group2,</a>
+<a class="sourceLine" id="cb39-5" title="5">          <span class="op">-</span>q,</a>
+<a class="sourceLine" id="cb39-6" title="6">          <span class="op">-</span>n)</a>
+<a class="sourceLine" id="cb39-7" title="7">talldata</a></code></pre></div>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
+<pre><code>## # A tibble: 24 x 6
+##    group1 group2 q         n LikertScale PercRespondents
+##    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;
+##  1 A      X      Q1      121 disagree               0.8 
+##  2 A      X      Q2      121 disagree               0.3 
+##  3 A      Y      Q1      140 disagree               0.8 
+##  4 A      Y      Q2      140 disagree               0.2 
+##  5 B      X      Q1       50 disagree               0.7 
+##  6 B      X      Q2       50 disagree               0.5 
+##  7 B      Z      Q1       57 disagree               0.6 
+##  8 B      Z      Q2       57 disagree               0.3 
+##  9 A      X      Q1      121 neutral                0.05
+## 10 A      X      Q2      121 neutral                0.4 
+## # ... with 14 more rows</code></pre>
+<div id="nb---think-about-your-variable-names" class="section level4">
+<h4><span class="header-section-number">7.4.1.1</span> NB - Think About Your Variable Names</h4>
+<p>I once spent a whole afternoon unable to recreate an error message I was getting with <code>gather</code> - only to realise long after home time that I had sensibly called the <code>key</code> variable <em>question</em> which was a variable name that already existed in my dataset. R was re-writing the variable every time it gathered the data.</p>
+<p>The take home? <strong>Make sure your key and value names are unique!</strong></p>
+</div>
+</div>
+</div>
+<div id="spread" class="section level2">
+<h2><span class="header-section-number">7.5</span> Spread</h2>
+<p>What if, after all that, you realise that you never wanted your data gathered at all? <code>spread</code> is here to rescue you.</p>
+<p>Just as before, <code>spread</code> wants to know the <code>key</code> and the <code>value</code>, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don’t exclude any columns (in fact, try excluding the columns and see what spread says. )</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">widedata &lt;-<span class="st"> </span>talldata <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span><span class="kw">spread</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents)</a>
+<a class="sourceLine" id="cb42-3" title="3">widedata</a></code></pre></div>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
+<pre><code>## # A tibble: 8 x 7
+##   group1 group2 q         n agree disagree neutral
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+## 1 A      X      Q1      121  0.15      0.8    0.05
+## 2 A      X      Q2      121  0.3       0.3    0.4 
+## 3 A      Y      Q1      140  0.1       0.8    0.1 
+## 4 A      Y      Q2      140  0.5       0.2    0.3 
+## 5 B      X      Q1       50  0.2       0.7    0.1 
+## 6 B      X      Q2       50  0.1       0.5    0.4 
+## 7 B      Z      Q1       57  0.2       0.6    0.2 
+## 8 B      Z      Q2       57  0.4       0.3    0.3</code></pre>
+<div id="final-thoughts" class="section level3">
+<h3><span class="header-section-number">7.5.1</span> Final Thoughts</h3>
+<p>There is far more that <code>tidyverse</code> can do to reshape your data, which I might write up at some point, but these are two great commands that eluded me for a while. Hopefully this is a very quick and simple explanation for you to look up. :)</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -236,8 +342,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dataprocessing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="trouble.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

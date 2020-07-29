@@ -3,3 +3,8 @@
 ## github {#github}
 
 ## repeatabe code {#repeatablecode}
+
+
+
+## Complicated stats {#adv_stats}
+AI - this is a good video about making AI [Sabrina: I taught an AI to make pasta](https://youtu.be/Y_NvR5dIaOY?list=LLJ1tgo7aEDCRH3FJF6IJMdA)

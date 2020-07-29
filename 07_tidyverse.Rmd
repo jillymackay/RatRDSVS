@@ -1,0 +1,65 @@
+# The Tidyverse {#tidyverse}
+
+The tidyverse is the only way to learn. 
+
+## Opinionated Packages {#tidy_opinions}
+
+## How to tidy {#how_tidy}
+
+
+
+
+## The Observation
+As [everyone online says](http://vita.had.co.nz/papers/tidy-data.html) - tidy data has **one observation per row**. My headaches came from dealing with the publicly available [National Student Survey](https://www.officeforstudents.org.uk/advice-and-guidance/student-information-and-data/national-student-survey-nss/) data - the format of which *seems* tidy to the uninitiated. The data is presented with each subject at each university as a row - that's an observation, surely?
+
+
+## The Data
+```{r}
+data <- tibble (group1 = c("A", "A", "A", "A", "B", "B", "B", "B"),
+                group2 = c("X", "X", "Y", "Y", "X", "X", "Z", "Z"),
+                q = c ("Q1", "Q2","Q1", "Q2", "Q1", "Q2", "Q1", "Q2"),
+                disagree = c(0.8, 0.3, 0.8, 0.2, 0.7, 0.5, 0.6, 0.3),
+                neutral = c(0.05, 0.4, 0.1, 0.3, 0.1, 0.4, 0.2, 0.3),
+                agree = c(0.15, 0.3, 0.1, 0.5, 0.2, 0.1, 0.2, 0.4),
+                n = c(121, 121, 140, 140, 50, 50, 57,57)) 
+data
+```
+
+However, for a lot of what I was trying to do, I needed to know how many students responded at each level - how many agreed with Q1, Q2, etc, in each nested group. I wanted my data taller. 
+
+(I'm using this specific format not because it's a nice format, but because it's a format that exists in the world and that lots of people make big decisions on.)
+
+### Gather
+The `gather` command from `tidyverse` is a quick way to smush this data into a tall format. The `gather` command creates two new columns, the `key` column which collects your old column names and your `value` column which collects the row values (fairly self-explanatory).
+
+The trick with `gather` is that it will smush everything it can into those two columns, so you need to tell it which columns *not* to include. This is the step that eluded me for a whole afternoon once, so I'm stating it very obviously here.
+
+```{r}
+talldata <- data %>%
+  gather (key = LikertScale, value = PercRespondents,
+          -group1,
+          -group2,
+          -q,
+          -n)
+talldata
+```
+
+#### NB - Think About Your Variable Names
+I once spent a whole afternoon unable to recreate an error message I was getting with `gather` - only to realise long after home time that I had sensibly called the `key` variable *question* which was a variable name that already existed in my dataset. R was re-writing the variable every time it gathered the data. 
+
+The take home? **Make sure your key and value names are unique!**
+
+## Spread
+What if, after all that, you realise that you never wanted your data gathered at all? `spread` is here to rescue you. 
+
+Just as before, `spread` wants to know the `key` and the `value`, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don't exclude any columns (in fact, try excluding the columns and see what spread says. )
+
+```{r}
+widedata <- talldata %>%
+  spread (key = LikertScale, value = PercRespondents)
+widedata
+```
+
+
+### Final Thoughts
+There is far more that `tidyverse` can do to reshape your data, which I might write up at some point, but these are two great commands that eluded me for a while. Hopefully this is a very quick and simple explanation for you to look up. :)

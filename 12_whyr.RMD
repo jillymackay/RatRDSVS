@@ -1,0 +1,5 @@
+# Why use R {#whyr}
+
+Why is this chapter in the middle of the book?
+
+Partly because I wanted to get started faster. Partly because I think the light only shines when you learn about workflows. 

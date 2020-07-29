@@ -1,0 +1,77 @@
+# About this book {- #about}
+
+## How to use this book {#howuse}
+
+This book is a manual to help you get started in R. 
+
+> There is text like this which is important. At the start of every chapter it will summarise what you need to know, or let you know if you can skip the chapter.
+
+You will also see text like this which is called a **code block**
+
+```{r eval = FALSE}
+
+print("Hello, I am a code block!")
+
+```
+
+Throughout the book, code blocks will be used to give you examples of how R works. Sometimes code blocks will also have the **output block** following it. 
+
+```{r echo = FALSE}
+
+print("Hello, I am an output block!")
+
+
+```
+
+You can tell output blocks because they have two **##** symbol to show you that it is output. 
+
+
+Often we will see **code blocks** and **output blocks** together, like this:
+
+```{r}
+
+print("Hello, I am a code block with an output block!")
+
+```
+
+Sometimes you will see text like this - which is **really** important:
+
+
+<p style = "font-family: Arial, Helvetica, sans-serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+
+When you are running code blocks in R make sure to only copy and paste the code block - not the output block!
+</p>
+
+Pasting an output block into R will not do anything. 
+
+
+You will also sometimes see bits of code or words in `text like this`. This is usually the name of something in R, or a short piece of code that I didn't want to put in a full code chunk. 
+
+Sometimes there will also be links to videos. These are optional for those learners who like to watch something being demonstrated. 
+
+Finally - sometimes there will be footnotes!^[Footnotes might contain something useful - or something silly. I guess you'll need to click it to see! But remember, [you can't trust me implicitly - or anyone really](https://youtu.be/UaGTFeibOEk)]
+
+
+### As a student in class {#useinclass}
+If I have set this book as your reading, you will be told what chapters you need to read and when in class. You are very lucky because you have the person who wrote the book being responsible for your teaching - and you can ask me questions at any point, preferably in our discussion boards. 
+
+Although here's something you might like to know - I really don't mind if you read ahead. If you start working and find you **love** this subject, keep on going with it. 
+
+And something else - you are also free to google other ways of learning R. In fact we have a whole chapter about [how to find answers online](#trouble) and where [else you can go](#whatnext).
+
+
+
+### As a student learning independently {#useindependent}
+If you are using this to teach yourself R you are probably a postgrad student. I would expect you to look at the chapter headings and skip around to the sections that are useful. My big tip for you would be to use the Exercises to test yourself throughout. 
+
+
+### As a teacher {#useteach}
+Please feel free to mix/match and adapt these teaching materials in any way you see fit! Credit not necessary (but appreciated!)
+
+If you have any questions you are best talking to me on [Twitter \@jilly_mackay](https://twitter.com/jilly_mackay)
+
+
+## Tips for using an online textbook {#usetips}
+An online textbook like this one can be a lot more flexible than a paper one. You can download it and print it if you want to make notes in the margins - the book is free for you to do what you want with it.
+
+You can change the colours on screen by hovering your mouse over the 'A' icon at the top left hand side of the page. 
