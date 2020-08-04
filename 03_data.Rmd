@@ -37,6 +37,7 @@ Some common datasets are:
   + Fuel economy data from 1999 to 2008 for 38 popular models of cars
   
 *  `ChickWeight`
+
   + Weight versus age of chicks on different diets
 
 * `starwars`
@@ -123,4 +124,150 @@ dat <- tibble(x = c(1, 2, 3, 4, 5, 6),
 
 ```
 
-You can `View(dat)` to look at this (or use `head(dat)`)
+You can `View(dat)` to look at this (or use `head(dat)`). Let's try and replicate our weird `summary(mpg)` character issue. 
+
+```{r message = FALSE, warning = FALSE}
+
+summary(dat)
+
+```
+
+We **can** replicate the issue. You can see that the `y` variable has the `class: Character`. What can we do about it?
+
+We essentially want to tell R that `y` is not a character, but a factor^[A factor is also called a categorical variable, or a grouping variable. If you're not sure you know what a factor is, [wiki](https://en.wikipedia.org/wiki/Categorical_variable) is a good place to review]. 
+
+We can ask R more directly what `y` is by telling it exactly where to look. 
+
+```{r message = FALSE, warning = FALSE}
+
+is.character(dat$y)
+
+```
+
+
+The `$` symbol tells R that it needs to look inside `dat` for `y`. Try typing out `is.character(y)` or `is.character(dat::y)` and see what happens. What are those error messages telling you? ^[`is.character(y)` should give you an error message like `Error: object 'y' is not found` because `y` by itself does not exist in your environment. There's a way around this by 'attaching' data to your environment, which is a bit old fashioned and can result in problems down the line with your workflow (because you won't necessarily know if the person you're working with has also attached the data), so I recommend against it. `is.character(dat::y)` should give you an error like `Error in loadNamespace(name) : there is no package called 'dat'`. Unsurprisingly, this is telling you that the `::` sequence tells R to look inside a **package** for a thing called `y`, but that package doesn't exist. Packages and data frames are different things.]
+
+
+If the `is.character()` function asks R if the named object is a character, how do you think we ask R if the named object is a factor? Try typing out your answer in the console to see what happens.
+
+We therefore need to ask R to change the data. We can do this like so:
+
+```{r message = FALSE, warning = FALSE}
+
+as.factor(dat$y)
+
+```
+
+
+And we get a response. But what happens if we run `summary(dat)` again? 
+
+
+```{r message = FALSE, warning = FALSE}
+
+summary(dat)
+
+```
+
+Why do you think this happens? 
+
+
+
+
+<p style = "font-family: times, serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+
+You should take time to stop and answer these questions before reading on - practice and thinking about R is the best way to learn.
+</p>
+
+
+It happens because we haven't actually changed the data. With `as.factor(dat$y)`, R told us the answer, but didn't edit the object in any way. To change the `dat` dataframe, we need to use the assign (`<-`) function to make sure R saves it into the environment. 
+
+Here's the fun part. We can do this in two (or actually - many) different ways. In a lot of ways, its personal preference which one you choose . . .
+
+To demonstrate, we will make two new dataframes. 
+
+
+**Option 1**
+
+```{r message = FALSE, warning = FALSE}
+
+option1 <- tibble(x = dat$x, y = as.factor(dat$y))
+
+```
+
+**Option 2**
+
+```{r message=FALSE, warning=FALSE}
+
+option2 <- dat %>% 
+  mutate(y = as.factor(y))
+
+```
+
+
+In Option 1, using what's called 'base R', we are essentially saying something like:
+
+* Make a new thing called `option1`
+
+* That thing is a tibble
+
+* That tibble should contain x, from dat (`dat$x`)
+
+* That tibble should contain y, from dat, made into a factor (`as.factor(dat$y)`)
+
+
+Whereas in Option 2, we are saying:
+
+* Make an new thing caled `option2`
+
+* That thing should start the same as `dat`
+
+* We use the **pipe** command from `tidyverse` (` %>% `) to say 'and then'
+
+* So take `dat` **and then** change something in `dat` (the `mutate` function)
+
+* Make y a factor (`y = as.factor(y)`)
+
+
+With Option 2, we don't need to specify `dat$y` because we are using the pipe function (` %>% `) to tell R we are still working with the `dat` dataframe.
+
+Personally, I found the pipe function in `tidyverse` to be revolutionary when I learned it, and its by far my favourite way to write code. I find the code in Option 2 a lot easier to read than the code in Option 1, and we'll be using `tidyverse` in the rest of this book. However, here's another important thing:
+
+<p style = "font-family: times, serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+
+You do not have to code like I do - so long as I can run your code, we don't have to approach a problem in the same way.
+</p>
+
+This will become clearer as we work through the book. 
+
+
+To test that we have done what we wanted to do - let's run the `summary()` function again.
+
+
+```{r message = FALSE, warning= FALSE}
+
+summary(option1)
+
+summary(option2)
+
+```
+
+And now we see that R has changed `y` into a factor, both ways, and now we have a different output to the `summary()` function. 
+
+
+Thinking back to our `mpg` example - can you change the `mpg` dataset so that `manufacturer` is a factor? 
+
+
+Can you change multiple variables to factors? 
+
+
+Is `tidyverse` or base R easier to use for changing multiple factors?
+
+
+If you google, do you find other ways of changing `mpg`?
+
+Once you have tried these - you can view some of my answers [here](#ans_createdata)
+
+
+
+## Loading data from your hard drive {#data_load}
+Finally, sometimes you will have data delivered to you on a file that you will want to load in to R. These will usually be \*.csv or \*.xlsx files

@@ -1,0 +1,45 @@
+# Answers {#answers}
+
+## Creating Data Answers {#ans_createdata}
+Here are the answers to [Creating Data](#ex_createdata)
+
+### Changing mpg data
+
+Changing one variable is pretty easy to do in `tidyverse`:
+
+```{r  message = FALSE, warning = FALSE}
+
+mpg2 <- mpg %>% 
+  mutate(manufacturer = as.factor(manufacturer))
+
+```
+
+But what if we want to change all the character variables?
+
+We can still use `mutate` like this:
+
+```{r message = FALSE, warning = FALSE}
+
+mpg2 <- mpg %>% 
+  mutate(manufacturer = as.factor(manufacturer),
+         model = as.factor(model),
+         trans = as.factor(trans),
+         drv = as.factor(drv),
+         fl = as.factor(fl),
+         class = as.factor(class))
+
+```
+
+Or we can use a slightly different command to apply the `as.factor` function across selected variables, predictably called `mutate_at()`
+
+
+```{r message = FALSE, warning = FALSE}
+
+mpg2 <- mpg %>% 
+  mutate_at(.vars = vars(c(manufacturer, model, trans, drv, fl, class)),
+            .funs = as.factor)
+
+```
+
+
+`mutate_at` becomes a very useful way of shortening your code, but can also be a little bit more difficult to remember. I very often have to look it up. But that's fine - looking up code is good :)

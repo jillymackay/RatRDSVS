@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-07-29" />
+<meta name="date" content="2020-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -167,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#ex_inbuiltdata"><i class="fa fa-check"></i><b>3.3</b> Exercise</a></li>
 <li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#created_data"><i class="fa fa-check"></i><b>3.4</b> Data you create</a></li>
 <li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#ex_createdata"><i class="fa fa-check"></i><b>3.5</b> Exercise - Creating data</a></li>
+<li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#data_load"><i class="fa fa-check"></i><b>3.6</b> Loading data from your hard drive</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>4</b> Charts</a><ul>
 <li class="chapter" data-level="4.1" data-path="charts.html"><a href="charts.html#datavis"><i class="fa fa-check"></i><b>4.1</b> Data Vis</a></li>
@@ -205,7 +206,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3" data-path="whatnext.html"><a href="whatnext.html#adv_stats"><i class="fa fa-check"></i><b>11.3</b> Complicated stats</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="whyr.html"><a href="whyr.html"><i class="fa fa-check"></i><b>12</b> Why use R</a></li>
-<li class="chapter" data-level="13" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>13</b> Acknowledgements</a></li>
+<li class="chapter" data-level="13" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>13</b> Answers</a><ul>
+<li class="chapter" data-level="13.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>13.1</b> Creating Data Answers</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>13.1.1</b> Changing mpg data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>14</b> Acknowledgements</a></li>
 </ul>
 
       </nav>
@@ -248,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Fuel economy data from 1999 to 2008 for 38 popular models of cars</li>
 </ul></li>
-<li><code>ChickWeight</code></li>
+<li><p><code>ChickWeight</code></p></li>
 <li><p>Weight versus age of chicks on different diets</p></li>
 <li><code>starwars</code>
 <ul>
@@ -267,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What happens when you enter the following code<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> into the console?</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">View</span>(mpg)</a></code></pre></div>
 <p>You should see something like <strong>Figure 3.1</strong></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-30"></span>
 <img src="images/03_data/rstud01.png" alt="The result of the 'View(mpg)' command"  />
 <p class="caption">
 Figure 3.1: The result of the ‘View(mpg)’ command
@@ -327,7 +333,95 @@ Figure 3.1: The result of the ‘View(mpg)’ command
 <p>Try the following and watch what happens in your environment (you’ll need the <code>tidyverse</code> loaded - see <a href="data.html#data">above</a>)</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</a>
 <a class="sourceLine" id="cb35-2" title="2">              <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</a></code></pre></div>
-<p>You can <code>View(dat)</code> to look at this (or use <code>head(dat)</code>)</p>
+<p>You can <code>View(dat)</code> to look at this (or use <code>head(dat)</code>). Let’s try and replicate our weird <code>summary(mpg)</code> character issue.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
+<pre><code>##        x             y            
+##  Min.   :1.00   Length:6          
+##  1st Qu.:2.25   Class :character  
+##  Median :3.50   Mode  :character  
+##  Mean   :3.50                     
+##  3rd Qu.:4.75                     
+##  Max.   :6.00</code></pre>
+<p>We <strong>can</strong> replicate the issue. You can see that the <code>y</code> variable has the <code>class: Character</code>. What can we do about it?</p>
+<p>We essentially want to tell R that <code>y</code> is not a character, but a factor<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.</p>
+<p>We can ask R more directly what <code>y</code> is by telling it exactly where to look.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">is.character</span>(dat<span class="op">$</span>y)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>The <code>$</code> symbol tells R that it needs to look inside <code>dat</code> for <code>y</code>. Try typing out <code>is.character(y)</code> or <code>is.character(dat::y)</code> and see what happens. What are those error messages telling you? <a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+<p>If the <code>is.character()</code> function asks R if the named object is a character, how do you think we ask R if the named object is a factor? Try typing out your answer in the console to see what happens.</p>
+<p>We therefore need to ask R to change the data. We can do this like so:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">as.factor</span>(dat<span class="op">$</span>y)</a></code></pre></div>
+<pre><code>## [1] A B A B A B
+## Levels: A B</code></pre>
+<p>And we get a response. But what happens if we run <code>summary(dat)</code> again?</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
+<pre><code>##        x             y            
+##  Min.   :1.00   Length:6          
+##  1st Qu.:2.25   Class :character  
+##  Median :3.50   Mode  :character  
+##  Mean   :3.50                     
+##  3rd Qu.:4.75                     
+##  Max.   :6.00</code></pre>
+<p>Why do you think this happens?</p>
+<p style="font-family: times, serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+You should take time to stop and answer these questions before reading on - practice and thinking about R is the best way to learn.
+</p>
+<p>It happens because we haven’t actually changed the data. With <code>as.factor(dat$y)</code>, R told us the answer, but didn’t edit the object in any way. To change the <code>dat</code> dataframe, we need to use the assign (<code>&lt;-</code>) function to make sure R saves it into the environment.</p>
+<p>Here’s the fun part. We can do this in two (or actually - many) different ways. In a lot of ways, its personal preference which one you choose . . .</p>
+<p>To demonstrate, we will make two new dataframes.</p>
+<p><strong>Option 1</strong></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">option1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> dat<span class="op">$</span>x, <span class="dt">y =</span> <span class="kw">as.factor</span>(dat<span class="op">$</span>y))</a></code></pre></div>
+<p><strong>Option 2</strong></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">option2 &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y =</span> <span class="kw">as.factor</span>(y))</a></code></pre></div>
+<p>In Option 1, using what’s called ‘base R’, we are essentially saying something like:</p>
+<ul>
+<li><p>Make a new thing called <code>option1</code></p></li>
+<li><p>That thing is a tibble</p></li>
+<li><p>That tibble should contain x, from dat (<code>dat$x</code>)</p></li>
+<li><p>That tibble should contain y, from dat, made into a factor (<code>as.factor(dat$y)</code>)</p></li>
+</ul>
+<p>Whereas in Option 2, we are saying:</p>
+<ul>
+<li><p>Make an new thing caled <code>option2</code></p></li>
+<li><p>That thing should start the same as <code>dat</code></p></li>
+<li><p>We use the <strong>pipe</strong> command from <code>tidyverse</code> (<code>%&gt;%</code>) to say ‘and then’</p></li>
+<li><p>So take <code>dat</code> <strong>and then</strong> change something in <code>dat</code> (the <code>mutate</code> function)</p></li>
+<li><p>Make y a factor (<code>y = as.factor(y)</code>)</p></li>
+</ul>
+<p>With Option 2, we don’t need to specify <code>dat$y</code> because we are using the pipe function (<code>%&gt;%</code>) to tell R we are still working with the <code>dat</code> dataframe.</p>
+<p>Personally, I found the pipe function in <code>tidyverse</code> to be revolutionary when I learned it, and its by far my favourite way to write code. I find the code in Option 2 a lot easier to read than the code in Option 1, and we’ll be using <code>tidyverse</code> in the rest of this book. However, here’s another important thing:</p>
+<p style="font-family: times, serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+You do not have to code like I do - so long as I can run your code, we don’t have to approach a problem in the same way.
+</p>
+<p>This will become clearer as we work through the book.</p>
+<p>To test that we have done what we wanted to do - let’s run the <code>summary()</code> function again.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">summary</span>(option1)</a></code></pre></div>
+<pre><code>##        x        y    
+##  Min.   :1.00   A:3  
+##  1st Qu.:2.25   B:3  
+##  Median :3.50        
+##  Mean   :3.50        
+##  3rd Qu.:4.75        
+##  Max.   :6.00</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">summary</span>(option2)</a></code></pre></div>
+<pre><code>##        x        y    
+##  Min.   :1.00   A:3  
+##  1st Qu.:2.25   B:3  
+##  Median :3.50        
+##  Mean   :3.50        
+##  3rd Qu.:4.75        
+##  Max.   :6.00</code></pre>
+<p>And now we see that R has changed <code>y</code> into a factor, both ways, and now we have a different output to the <code>summary()</code> function.</p>
+<p>Thinking back to our <code>mpg</code> example - can you change the <code>mpg</code> dataset so that <code>manufacturer</code> is a factor?</p>
+<p>Can you change multiple variables to factors?</p>
+<p>Is <code>tidyverse</code> or base R easier to use for changing multiple factors?</p>
+<p>If you google, do you find other ways of changing <code>mpg</code>?</p>
+<p>Once you have tried these - you can view some of my answers <a href="answers.html#ans_createdata">here</a></p>
+</div>
+<div id="data_load" class="section level2">
+<h2><span class="header-section-number">3.6</span> Loading data from your hard drive</h2>
+<p>Finally, sometimes you will have data delivered to you on a file that you will want to load in to R. These will usually be *.csv or *.xlsx files</p>
 
 </div>
 </div>
@@ -338,6 +432,8 @@ Figure 3.1: The result of the ‘View(mpg)’ command
 <li id="fn4"><p>You might wonder, what’s the <code>::</code> in the <code>datasets::</code> command. The <code>::</code> is very useful and tells R to look inside the <code>datasets</code> package without having to actually load it into your library which can be very quick and easy<a href="data.html#fnref4" class="footnote-back">↩</a></p></li>
 <li id="fn5"><p>If its not working - are you sure you have spelled it with a capital <code>View</code>?<a href="data.html#fnref5" class="footnote-back">↩</a></p></li>
 <li id="fn6"><p>The Length of these variables is the number of rows in each one, which for this case is the same because this is a nice, tidy dataset<a href="data.html#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>A factor is also called a categorical variable, or a grouping variable. If you’re not sure you know what a factor is, <a href="https://en.wikipedia.org/wiki/Categorical_variable">wiki</a> is a good place to review<a href="data.html#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p><code>is.character(y)</code> should give you an error message like <code>Error: object 'y' is not found</code> because <code>y</code> by itself does not exist in your environment. There’s a way around this by ‘attaching’ data to your environment, which is a bit old fashioned and can result in problems down the line with your workflow (because you won’t necessarily know if the person you’re working with has also attached the data), so I recommend against it. <code>is.character(dat::y)</code> should give you an error like <code>Error in loadNamespace(name) : there is no package called 'dat'</code>. Unsurprisingly, this is telling you that the <code>::</code> sequence tells R to look inside a <strong>package</strong> for a thing called <code>y</code>, but that package doesn’t exist. Packages and data frames are different things.<a href="data.html#fnref8" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
