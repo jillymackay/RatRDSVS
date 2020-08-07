@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-08-04" />
+<meta name="date" content="2020-08-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,6 +168,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#created_data"><i class="fa fa-check"></i><b>3.4</b> Data you create</a></li>
 <li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#ex_createdata"><i class="fa fa-check"></i><b>3.5</b> Exercise - Creating data</a></li>
 <li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#data_load"><i class="fa fa-check"></i><b>3.6</b> Loading data from your hard drive</a></li>
+<li class="chapter" data-level="3.7" data-path="data.html"><a href="data.html#ex_data_load"><i class="fa fa-check"></i><b>3.7</b> Loading data</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="data.html"><a href="data.html#loading-from-a-csv"><i class="fa fa-check"></i><b>3.7.1</b> Loading from a CSV</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>4</b> Charts</a><ul>
 <li class="chapter" data-level="4.1" data-path="charts.html"><a href="charts.html#datavis"><i class="fa fa-check"></i><b>4.1</b> Data Vis</a></li>
@@ -352,19 +355,20 @@ You should copy and paste other peoples’ code.
 ## These dots only exist to allow future extensions and should be empty.
 ## Did you misspecify an argument?</code></pre>
 <pre><code>## # A tibble: 87 x 14
-##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films vehicles
-##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt; &lt;list&gt;  
-##  1 Luke~    172    77 blond      fair       blue            19   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [2~
-##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu~ Tatooine  Droid   &lt;chr~ &lt;chr [0~
-##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none  mascu~ Naboo     Droid   &lt;chr~ &lt;chr [0~
-##  4 Dart~    202   136 none       white      yellow          41.9 male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~
-##  5 Leia~    150    49 brown      light      brown           19   fema~ femin~ Alderaan  Human   &lt;chr~ &lt;chr [1~
-##  6 Owen~    178   120 brown, gr~ light      blue            52   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~
-##  7 Beru~    165    75 brown      light      blue            47   fema~ femin~ Tatooine  Human   &lt;chr~ &lt;chr [0~
-##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none  mascu~ Tatooine  Droid   &lt;chr~ &lt;chr [0~
-##  9 Bigg~    183    84 black      light      brown           24   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~
-## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male  mascu~ Stewjon   Human   &lt;chr~ &lt;chr [1~
-## # ... with 77 more rows, and 1 more variable: starships &lt;list&gt;</code></pre>
+##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;    
+##  1 Luke~    172    77 blond      fair       blue            19   male  mascu~ Tatooine 
+##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu~ Tatooine 
+##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none  mascu~ Naboo    
+##  4 Dart~    202   136 none       white      yellow          41.9 male  mascu~ Tatooine 
+##  5 Leia~    150    49 brown      light      brown           19   fema~ femin~ Alderaan 
+##  6 Owen~    178   120 brown, gr~ light      blue            52   male  mascu~ Tatooine 
+##  7 Beru~    165    75 brown      light      blue            47   fema~ femin~ Tatooine 
+##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none  mascu~ Tatooine 
+##  9 Bigg~    183    84 black      light      brown           24   male  mascu~ Tatooine 
+## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male  mascu~ Stewjon  
+## # ... with 77 more rows, and 4 more variables: species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Now we have a new dataset (<code>starwars</code>) and a new thing we can do (<code>slice</code> the top of the data). We will talk much more about <code>tidyverse</code> in the <a href="data.html#data">data chapter</a>.</p>
 </div>
 </div>

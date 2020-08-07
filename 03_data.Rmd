@@ -271,3 +271,12 @@ Once you have tried these - you can view some of my answers [here](#ans_createda
 
 ## Loading data from your hard drive {#data_load}
 Finally, sometimes you will have data delivered to you on a file that you will want to load in to R. These will usually be \*.csv or \*.xlsx files
+
+
+These can easily be read in with a function. The most commonly used function for \*.csv files is `read.csv`. For excel files its `read_excel` from the `readxl` package. There are also ways to load data from URLs, and word documents, and all sorts!
+
+The skill most needed to load files from your hard drive is the ability to navigate and understand folder structures (sometimes called **working directories**). If your desktop has a hundred files [then you should go and watch this video](https://youtu.be/bKjRKZxr-KY).
+
+
+## Loading data{#ex_data_load}
+### Loading from a CSV
