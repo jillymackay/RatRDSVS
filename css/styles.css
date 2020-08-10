@@ -1,5 +1,6 @@
-foo {
+.foo {
+  padding: 1em 1em 0.25em 3.5em;
+  margin-bottom: 10px;
   background-color: lightblue;
-  color: white;
-  text-align: center;
+  color: red;
 }
