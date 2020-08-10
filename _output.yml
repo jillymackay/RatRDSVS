@@ -1,5 +1,5 @@
 bookdown::gitbook:
-  css: [css/style.css]
+  css: [css/styles.css]
   config:
     toc:
     collapse: subsection
@@ -28,4 +28,4 @@ bookdown::gitbook:
   highlight: tango
 bookdown::pdf_book: default
 bookdown::html_document: 
-  css: [css/style.css]
+  css: [css/styles.css]
