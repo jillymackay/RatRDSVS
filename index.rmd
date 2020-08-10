@@ -22,7 +22,7 @@ library(knitr)
 
 
 
-```{block, type = "puzzle"}
+```{block2 type = "puzzle"}
 
 
 If ever I get the CSS working this text will look different
