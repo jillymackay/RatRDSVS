@@ -1,32 +1,12 @@
----
-output:
-  bookdown::gitbook:
-  config:
-    toc:
-      collapse: subsection
-      scroll_highlight: yes
-      before: null
-      after: null
-    toolbar:
-      position: fixed
-    edit : null
-    download: null
-    search: yes
-    fontsettings:
-      theme: white
-      family: sans
-      size: 2
-    sharing:
-      facebook: yes
-      github: yes
-      twitter: yes
-      linkedin: no
-      weibo: no
-      instapaper: no
-      vk: no
-      all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
-    info: yes
-    highlight: tango
-  bookdown::pdf_book: default
+book_filename: "ratrdsvs"
+repo: https://github.com/jillymackay/RatRDSVS
 output_dir: "docs"
----
+clean: [packages.bib, bookdown.bbl]
+delete_merged_file: true
+language:
+  label:
+    fig: "Figure: "
+    tab: "Table: "
+  ui: 
+    edit: "Edit"
+    chapter_name: "Chapter "

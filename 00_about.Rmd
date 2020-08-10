@@ -75,3 +75,13 @@ If you have any questions you are best talking to me on [Twitter \@jilly_mackay]
 An online textbook like this one can be a lot more flexible than a paper one. You can download it and print it if you want to make notes in the margins - the book is free for you to do what you want with it.
 
 You can change the colours on screen by hovering your mouse over the 'A' icon at the top left hand side of the page. 
+
+
+
+```{block, type = 'foo'}
+
+
+If ever I get the CSS working this text will look different
+
+
+```
