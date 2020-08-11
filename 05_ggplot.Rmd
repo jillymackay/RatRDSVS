@@ -21,18 +21,17 @@ I think you should start to learn ggplot2.
 ggplot2 is a really great way to learn R, and particularly the `tidyverse` approach to coding. It also makes beautiful charts. All my charts in the last chapter (even the dreaded pie chart) were made in ggplot2. 
 
 
-## Building a ggplot object {#gg_build}
+## Building a ggplot object (a scatterplot) {#gg_build}
 
-First - open an R Script or RMD file and load two packages:
+First - open an R Script or RMD file and load the `tidyverse` package:
 
 ```{r, eval = FALSE, warning = FALSE, message = FALSE}
 
-library(datasets)
 library(tidyverse)
 
 ```
 
-Let's choose the `diamonds` dataset, and take a look. 
+Let's choose the `diamonds` dataset (from `ggplot2` - you can check this by running `?diamonds`), and take a look. 
 
 ```{r, warning = FALSE, message= FALSE}
 
@@ -44,7 +43,7 @@ head(diamonds)
 
 We want to take the `diamonds` dataset and then (` %>% `) send it to `ggplot`.
 
-In `ggplot` we will use the **aesthetics** argument (`aes`) to tell it what to put on the `x` axis and the `y` axis.
+In `ggplot` we will use the **aesthetics** argument (`aes`) to tell R what to put on the `x` axis and the `y` axis.
 
 
 ```
@@ -60,14 +59,14 @@ diamonds %>%
 
 What do you think this code will do? 
 
-** Try this code first!**
+**Try this code first!**
 
 
 
 This code ends up giving us a blank chart. This seems strange until you figure out that ggplot works by **layering** elements of a chart on top of one another:
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with no geom layers"}
+```{r, message = FALSE, warning = FALSE,  fig.cap="A ggplot object with no geom layers"}
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price))
@@ -75,11 +74,11 @@ diamonds %>%
 
 ```
 
-We need to tell R to add a `geom` layer, and we do that by adding a `+` symbol. In this case, we want to add a `geom_point` layer, so:
+We need to tell R to add a `geom` layer, and we do that by adding a `+`^[You may be interested to know that the `+` symbol is a precursor to the `%>%` symbol. Both `ggplot2` and `tidyverse` were mainly written by [Hadley Wickham](https://twitter.com/hadleywickham) who has often spoken about [why ggplot won't ever use the %>%  operator](https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7)] symbol. In this case, we want to add a `geom_point` layer, so we write the following:
 
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price)) + 
@@ -87,6 +86,378 @@ diamonds %>%
 
 
 ```
+
+Look at how quickly and easily that worked. With three lines of code, you created a chart of 50,000 datapoints. 
+
+That must make you wonder what else you can do . . . 
+
+### Changing an axis in ggplot2 {#gg_axis}
+
+Let's change the x axis on this chart. At the moment, we have a 'tick' mark at every carat, but what if we want to have a 'tick' mark at every 0.5 carats?
+
+All we need is another line of code. 
+
+
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 5, 0.5))
+
+
+```
+
+The `scale_x_continuous` line reads:
+
+```{block, type = "translate"}
+
+Take the last three lines of code and then (`+`) 
+
+  * Change the scale of the x axis (`scale_x_`) which is a continuous (`scale_x_continuous`) variable. 
+  
+  * Change the numbers along the axis (`breaks =`) to a sequence (`seq`)
+  
+  * The sequence starts at `0`, goes to `5`, and the spaces between them should be `0.5`
+
+
+```
+
+
+We can go further by changing the limits within the`scale_x_` command ...
+
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 5, 0.5), limits = c(0, 6))
+
+
+```
+
+Now we've told R:
+
+```{block, type = "translate"}
+
+  * Change the scale of x
+  
+  * Set new limits on x (`limits = `)
+  
+  * The limits are a vector of two numbers together (`c()`)
+  
+  * Start at `0` and end at `6`
+
+```
+
+
+However, you'll notice that the numbers don't go all the way to the end. Have you spotted our mistake?
+
+We need to change the `seq` command earlier in the argument...
+
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6))
+
+
+```
+
+And we can change the y axis in much the same way:
+
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 5, 0.5), limits = c(0, 6)) +
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000))
+
+
+```
+
+### Changing themes {#gg_theme}
+
+Themes are a very cool way to quickly change the look of and customise your charts. Just like everything else in ggplot, we just want to add another layer of code. 
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, black & white theme" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_bw() 
+
+```
+
+There are lots of different themes in ggplot. If you run that code again you can change `theme_bw()` to any of the following:
+
+  * `theme_classic()`
+
+  * `theme_grey()`
+  
+  * `theme_light()`
+  
+  * `theme_linedraw()`
+  
+  * `theme_minimal()`
+  
+  * `theme_void()`
+  
+
+Which one do you prefer?
+
+
+
+Personally, I like this option:
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_classic() 
+
+```
+
+### Changing labels and titles {#gg_labs}
+
+Now we've changed axes, plot area, and gridlines, why don't we give this beautiful plot some labels?
+
+```{block, type = "hey"}
+
+If you were to take a wild guess at how to change labels - what would you add to the plot?
+
+Remember, taking the time to stop and try these exercises will help you learn R.
+
+And remember that R Studio will autocomplete things you type - what happens if you start to type 'labels'?
+
+```
+
+We can adjust labels with the following extra line of code. 
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_classic() +
+  labs (x = "Carat (a measure of diamond weight)")
+
+```
+
+Unsurprisingly, if we want to change the y axis label, we just need to add another argument inside the `labs()`. 
+
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_classic() +
+  labs (x = "Carat (a measure of diamond weight)",
+        y = "Price in US dollars ($)")
+
+```
+
+You can even add in titles and subtitles. 
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_classic() +
+  labs (x = "Carat (a measure of diamond weight)",
+        y = "Price in US dollars ($)",
+        title = "Price of >50,000 round-cut diamonds",
+        subtitle = "Data from ggplot2 package")
+
+```
+
+### Adding regression lines to ggplot {#gg_smooth}
+It seems as though the bigger the diamond is, the more you pay for it, so why don't we add a line of best fit to demonstrate this?
+
+This is so easy to do in R. 
+
+We add:
+
+```{block, type = "translate"}
+
+We add to the graph a smooth line geom (`stat_smooth`)
+
+We have a number of options here:
+
+  * We want the line to be calculated using a linear model (`method = "lm"`)
+  
+  * We don't want to see any standard error bars around the line (`se = FALSE`)
+
+
+```
+
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_classic() +
+  labs (x = "Carat (a measure of diamond weight)",
+        y = "Price in US dollars ($)",
+        title = "Price of >50,000 round-cut diamonds",
+        subtitle = "Data from ggplot2 package") + 
+  stat_smooth(method = "lm", se = FALSE)
+
+```
+
+
+### Adding groups to ggplot {#gg_groups}
+
+Looking at our plot, it seems clear that the diamonds seem to stagger a bit, with lots of diamonds at 1, 1.5, 2, 3, and 3.5 carats, and fewer diamonds in the middle of a carat range. There may be something else in the data that helps to explain this . . . 
+
+
+In ggplot, we can easily add a grouping variable to a scatterplot. 
+
+All we need to do, is give it a new aesthetic (`aes`) argument: `colour = cut`.
+
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price, colour = cut)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_classic() +
+  labs (x = "Carat (a measure of diamond weight)",
+        y = "Price in US dollars ($)",
+        title = "Price of >50,000 round-cut diamonds",
+        subtitle = "Data from ggplot2 package") + 
+  stat_smooth(method = "lm", se = FALSE)
+
+```
+
+This has done quite a lot to our chart - its given us several new lines for each group, and a legend. If your computer is anything like mine, it might be starting to take a few seconds to render this chart. Let's just do one more thing before we stop playing with this chart. 
+
+
+### Changing legends {#gg_legend}
+
+Using the `theme()` argument (which is subtly different from the `theme_classic()` command), we can adjust the legend.
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price, colour = cut)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_classic() +
+  labs (x = "Carat (a measure of diamond weight)",
+        y = "Price in US dollars ($)",
+        title = "Price of >50,000 round-cut diamonds",
+        subtitle = "Data from ggplot2 package") + 
+  stat_smooth(method = "lm", se = FALSE) +
+  theme(legend.position = "bottom")
+
+```
+
+But lets say we also want to change the text from 'cut' to 'Cut of Diamond'. Well, you can think of this as another axis we can change. Instead of a `scale_x_` we can change the `scale_colour_`. And this isn't a continuous scale but a discrete (categorical) one, so we change it with `scale_colour_discrete`. 
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price, colour = cut)) + 
+  geom_point() +
+  scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
+  scale_y_continuous(breaks = seq(0, 20000, 2500), limits = c(0, 20000)) +
+  theme_classic() +
+  labs (x = "Carat (a measure of diamond weight)",
+        y = "Price in US dollars ($)",
+        title = "Price of >50,000 round-cut diamonds",
+        subtitle = "Data from ggplot2 package") + 
+  stat_smooth(method = "lm", se = FALSE) +
+  theme(legend.position = "bottom") +
+  scale_color_discrete(name = "Cut of Diamond")
+
+```
+
+
+## Building a boxplot {#gg_boxplot}
+At this stage, I'm wondering how useful our scatterplot is. Perhaps it would be easier to visualise this with a boxplot. We just need to build a new object.
+
+Lets look to see if there's a relationship between how big the diamond is (carat) and its clarity (how clear it is). 
+
+
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
+
+diamonds %>% 
+  ggplot(aes(x = clarity, y = carat)) + 
+  geom_boxplot()
+
+```
+
+
+And with just a few lines of code, we can create a very different looking chart:
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
+
+diamonds %>% 
+  ggplot(aes(x = clarity, y = carat, colour = clarity)) + 
+  geom_boxplot() +
+  labs(title = "Clarity and carat of >50,000 diamonds",
+       subtitle = "Data from ggplot2",
+       x = "Clarity (clearness) of diamond",
+       y = "Carat (weight) of diamond") + 
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+## Facets {#gg_facets}
+Another very useful command is 'facet', which splits one chart into many based on a particular variable. 
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
+
+diamonds %>% 
+  ggplot(aes(x = clarity, y = carat, colour = clarity)) + 
+  geom_boxplot() +
+  labs(title = "Claritym cut and carat of >50,000 diamonds",
+       subtitle = "Data from ggplot2",
+       x = "Clarity (clearness) of diamond",
+       y = "Carat (weight) of diamond") + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  facet_wrap(facets = ~cut)
+
+```
+
+
+## Bar charts {#gg_bars}
+
+
 
 
 ## Exercise {#ex_ggplot}

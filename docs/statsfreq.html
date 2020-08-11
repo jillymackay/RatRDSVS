@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Predicting more things | R @ R(D)SVS</title>
-  <meta name="description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Predicting more things | R @ R(D)SVS" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta property="og:description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 10 Predicting more things | R @ R(D)SVS" />
   
-  <meta name="twitter:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="twitter:description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
 
 <meta name="author" content="Jill R D MacKay" />
@@ -53,65 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  { background-color: #f8f8f8; }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="css\styles.css" type="text/css" />
@@ -185,10 +161,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
-<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object</a></li>
-<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.3</b> Exercise</a></li>
-<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.4</b> Videos</a></li>
-<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.5</b> Useful resources</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object (a scatterplot)</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="ggplot.html"><a href="ggplot.html#gg_axis"><i class="fa fa-check"></i><b>5.2.1</b> Changing an axis in ggplot2</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ggplot.html"><a href="ggplot.html#gg_theme"><i class="fa fa-check"></i><b>5.2.2</b> Changing themes</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ggplot.html"><a href="ggplot.html#gg_labs"><i class="fa fa-check"></i><b>5.2.3</b> Changing labels and titles</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ggplot.html"><a href="ggplot.html#gg_smooth"><i class="fa fa-check"></i><b>5.2.4</b> Adding regression lines to ggplot</a></li>
+<li class="chapter" data-level="5.2.5" data-path="ggplot.html"><a href="ggplot.html#gg_groups"><i class="fa fa-check"></i><b>5.2.5</b> Adding groups to ggplot</a></li>
+<li class="chapter" data-level="5.2.6" data-path="ggplot.html"><a href="ggplot.html#gg_legend"><i class="fa fa-check"></i><b>5.2.6</b> Changing legends</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#gg_boxplot"><i class="fa fa-check"></i><b>5.3</b> Building a boxplot</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_facets"><i class="fa fa-check"></i><b>5.4</b> Facets</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_bars"><i class="fa fa-check"></i><b>5.5</b> Bar charts</a></li>
+<li class="chapter" data-level="5.6" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.6</b> Exercise</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.7</b> Videos</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.8</b> Useful resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>

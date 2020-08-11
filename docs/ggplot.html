@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 ggplot2 | R @ R(D)SVS</title>
-  <meta name="description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 ggplot2 | R @ R(D)SVS" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta property="og:description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 5 ggplot2 | R @ R(D)SVS" />
   
-  <meta name="twitter:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="twitter:description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
 
 <meta name="author" content="Jill R D MacKay" />
@@ -53,65 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  { background-color: #f8f8f8; }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="css\styles.css" type="text/css" />
@@ -185,10 +161,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
-<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object</a></li>
-<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.3</b> Exercise</a></li>
-<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.4</b> Videos</a></li>
-<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.5</b> Useful resources</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object (a scatterplot)</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="ggplot.html"><a href="ggplot.html#gg_axis"><i class="fa fa-check"></i><b>5.2.1</b> Changing an axis in ggplot2</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ggplot.html"><a href="ggplot.html#gg_theme"><i class="fa fa-check"></i><b>5.2.2</b> Changing themes</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ggplot.html"><a href="ggplot.html#gg_labs"><i class="fa fa-check"></i><b>5.2.3</b> Changing labels and titles</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ggplot.html"><a href="ggplot.html#gg_smooth"><i class="fa fa-check"></i><b>5.2.4</b> Adding regression lines to ggplot</a></li>
+<li class="chapter" data-level="5.2.5" data-path="ggplot.html"><a href="ggplot.html#gg_groups"><i class="fa fa-check"></i><b>5.2.5</b> Adding groups to ggplot</a></li>
+<li class="chapter" data-level="5.2.6" data-path="ggplot.html"><a href="ggplot.html#gg_legend"><i class="fa fa-check"></i><b>5.2.6</b> Changing legends</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#gg_boxplot"><i class="fa fa-check"></i><b>5.3</b> Building a boxplot</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_facets"><i class="fa fa-check"></i><b>5.4</b> Facets</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_bars"><i class="fa fa-check"></i><b>5.5</b> Bar charts</a></li>
+<li class="chapter" data-level="5.6" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.6</b> Exercise</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.7</b> Videos</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.8</b> Useful resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>
@@ -274,12 +260,11 @@ You can customise a ggplot2 object
 <p>ggplot2 is a really great way to learn R, and particularly the <code>tidyverse</code> approach to coding. It also makes beautiful charts. All my charts in the last chapter (even the dreaded pie chart) were made in ggplot2.</p>
 </div>
 <div id="gg_build" class="section level2">
-<h2><span class="header-section-number">5.2</span> Building a ggplot object</h2>
-<p>First - open an R Script or RMD file and load two packages:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">library</span>(datasets)</a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<p>Let’s choose the <code>diamonds</code> dataset, and take a look.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">head</span>(diamonds)</a></code></pre></div>
+<h2><span class="header-section-number">5.2</span> Building a ggplot object (a scatterplot)</h2>
+<p>First - open an R Script or RMD file and load the <code>tidyverse</code> package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Let's choose the <code>diamonds</code> dataset (from <code>ggplot2</code> - you can check this by running <code>?diamonds</code>), and take a look.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(diamonds)</code></pre></div>
 <pre><code>## # A tibble: 6 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -294,46 +279,313 @@ You can customise a ggplot2 object
 We want to take the <code>diamonds</code> dataset and then (<code>%&gt;%</code>) send it to <code>ggplot</code>.
 </p>
 <p>
-In <code>ggplot</code> we will use the <strong>aesthetics</strong> argument (<code>aes</code>) to tell it what to put on the <code>x</code> axis and the <code>y</code> axis.
+In <code>ggplot</code> we will use the <strong>aesthetics</strong> argument (<code>aes</code>) to tell R what to put on the <code>x</code> axis and the <code>y</code> axis.
 </p>
 </div>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">diamonds <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price))</code></pre></div>
 <p>What do you think this code will do?</p>
-<p>** Try this code first!**</p>
+<p><strong>Try this code first!</strong></p>
 <p>This code ends up giving us a blank chart. This seems strange until you figure out that ggplot works by <strong>layering</strong> elements of a chart on top of one another:</p>
-<div class="figure"><span id="fig:unnamed-chunk-69"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-69-1.png" alt="A ggplot object with no geom layers" width="672" />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-91"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-91-1.png" alt="A ggplot object with no geom layers" width="672" />
 <p class="caption">
 Figure: 5.1: A ggplot object with no geom layers
 </p>
 </div>
-<p>We need to tell R to add a <code>geom</code> layer, and we do that by adding a <code>+</code> symbol. In this case, we want to add a <code>geom_point</code> layer, so:</p>
-<div class="figure"><span id="fig:unnamed-chunk-70"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-70-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat" width="672" />
+<p>We need to tell R to add a <code>geom</code> layer, and we do that by adding a <code>+</code><a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> symbol. In this case, we want to add a <code>geom_point</code> layer, so we write the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-92"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-92-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat" width="672" />
 <p class="caption">
 Figure: 5.2: A ggplot object with a geom_point layer, the price of diamonds by their carat
 </p>
 </div>
+<p>Look at how quickly and easily that worked. With three lines of code, you created a chart of 50,000 datapoints.</p>
+<p>That must make you wonder what else you can do . . .</p>
+<div id="gg_axis" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Changing an axis in ggplot2</h3>
+<p>Let's change the x axis on this chart. At the moment, we have a 'tick' mark at every carat, but what if we want to have a 'tick' mark at every 0.5 carats?</p>
+<p>All we need is another line of code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-93"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-93-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<p class="caption">
+Figure: 5.3: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
+</p>
+</div>
+<p>The <code>scale_x_continuous</code> line reads:</p>
+<div class="translate">
+<p>
+Take the last three lines of code and then (<code>+</code>)
+</p>
+<ul>
+<li>
+<p>
+Change the scale of the x axis (<code>scale_x_</code>) which is a continuous (<code>scale_x_continuous</code>) variable.
+</p>
+</li>
+<li>
+<p>
+Change the numbers along the axis (<code>breaks =</code>) to a sequence (<code>seq</code>)
+</p>
+</li>
+<li>
+<p>
+The sequence starts at <code>0</code>, goes to <code>5</code>, and the spaces between them should be <code>0.5</code>
+</p>
+</li>
+</ul>
+</div>
+<p>We can go further by changing the limits within the<code>scale_x_</code> command ...</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-95"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-95-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<p class="caption">
+Figure: 5.4: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
+</p>
+</div>
+<p>Now we've told R:</p>
+<div class="translate">
+<ul>
+<li>
+<p>
+Change the scale of x
+</p>
+</li>
+<li>
+<p>
+Set new limits on x (<code>limits =</code>)
+</p>
+</li>
+<li>
+<p>
+The limits are a vector of two numbers together (<code>c()</code>)
+</p>
+</li>
+<li>
+<p>
+Start at <code>0</code> and end at <code>6</code>
+</p>
+</li>
+</ul>
+</div>
+<p>However, you'll notice that the numbers don't go all the way to the end. Have you spotted our mistake?</p>
+<p>We need to change the <code>seq</code> command earlier in the argument...</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">6</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-97"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-97-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<p class="caption">
+Figure: 5.5: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
+</p>
+</div>
+<p>And we can change the y axis in much the same way:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">2500</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-98"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-98-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed" width="672" />
+<p class="caption">
+Figure: 5.6: A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed
+</p>
+</div>
+</div>
+<div id="gg_theme" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Changing themes</h3>
+<p>Themes are a very cool way to quickly change the look of and customise your charts. Just like everything else in ggplot, we just want to add another layer of code.</p>
+<div class="figure"><span id="fig:unnamed-chunk-99"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-99-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, black &amp; white theme" width="672" />
+<p class="caption">
+Figure: 5.7: A ggplot object with a geom_point layer, the price of diamonds by their carat, black &amp; white theme
+</p>
+</div>
+<p>There are lots of different themes in ggplot. If you run that code again you can change <code>theme_bw()</code> to any of the following:</p>
+<ul>
+<li><p><code>theme_classic()</code></p></li>
+<li><p><code>theme_grey()</code></p></li>
+<li><p><code>theme_light()</code></p></li>
+<li><p><code>theme_linedraw()</code></p></li>
+<li><p><code>theme_minimal()</code></p></li>
+<li><p><code>theme_void()</code></p></li>
+</ul>
+<p>Which one do you prefer?</p>
+<p>Personally, I like this option:</p>
+<div class="figure"><span id="fig:unnamed-chunk-100"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-100-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme" width="672" />
+<p class="caption">
+Figure: 5.8: A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme
+</p>
+</div>
+</div>
+<div id="gg_labs" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Changing labels and titles</h3>
+<p>Now we've changed axes, plot area, and gridlines, why don't we give this beautiful plot some labels?</p>
+<div class="hey">
+<p>
+If you were to take a wild guess at how to change labels - what would you add to the plot?
+</p>
+<p>
+Remember, taking the time to stop and try these exercises will help you learn R.
+</p>
+<p>
+And remember that R Studio will autocomplete things you type - what happens if you start to type 'labels'?
+</p>
+</div>
+<p>We can adjust labels with the following extra line of code.</p>
+<div class="figure"><span id="fig:unnamed-chunk-102"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-102-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<p class="caption">
+Figure: 5.9: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
+</p>
+</div>
+<p>Unsurprisingly, if we want to change the y axis label, we just need to add another argument inside the <code>labs()</code>.</p>
+<div class="figure"><span id="fig:unnamed-chunk-103"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-103-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<p class="caption">
+Figure: 5.10: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
+</p>
+</div>
+<p>You can even add in titles and subtitles.</p>
+<div class="figure"><span id="fig:unnamed-chunk-104"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-104-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<p class="caption">
+Figure: 5.11: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
+</p>
+</div>
+</div>
+<div id="gg_smooth" class="section level3">
+<h3><span class="header-section-number">5.2.4</span> Adding regression lines to ggplot</h3>
+<p>It seems as though the bigger the diamond is, the more you pay for it, so why don't we add a line of best fit to demonstrate this?</p>
+<p>This is so easy to do in R.</p>
+<p>We add:</p>
+<div class="translate">
+<p>
+We add to the graph a smooth line geom (<code>stat_smooth</code>)
+</p>
+<p>
+We have a number of options here:
+</p>
+<ul>
+<li>
+<p>
+We want the line to be calculated using a linear model (<code>method = &quot;lm&quot;</code>)
+</p>
+</li>
+<li>
+<p>
+We don't want to see any standard error bars around the line (<code>se = FALSE</code>)
+</p>
+</li>
+</ul>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-106"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-106-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added" width="672" />
+<p class="caption">
+Figure: 5.12: A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added
+</p>
+</div>
+</div>
+<div id="gg_groups" class="section level3">
+<h3><span class="header-section-number">5.2.5</span> Adding groups to ggplot</h3>
+<p>Looking at our plot, it seems clear that the diamonds seem to stagger a bit, with lots of diamonds at 1, 1.5, 2, 3, and 3.5 carats, and fewer diamonds in the middle of a carat range. There may be something else in the data that helps to explain this . . .</p>
+<p>In ggplot, we can easily add a grouping variable to a scatterplot.</p>
+<p>All we need to do, is give it a new aesthetic (<code>aes</code>) argument: <code>colour = cut</code>.</p>
+<div class="figure"><span id="fig:unnamed-chunk-107"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-107-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<p class="caption">
+Figure: 5.13: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
+</p>
+</div>
+<p>This has done quite a lot to our chart - its given us several new lines for each group, and a legend. If your computer is anything like mine, it might be starting to take a few seconds to render this chart. Let's just do one more thing before we stop playing with this chart.</p>
+</div>
+<div id="gg_legend" class="section level3">
+<h3><span class="header-section-number">5.2.6</span> Changing legends</h3>
+<p>Using the <code>theme()</code> argument (which is subtly different from the <code>theme_classic()</code> command), we can adjust the legend.</p>
+<div class="figure"><span id="fig:unnamed-chunk-108"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-108-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<p class="caption">
+Figure: 5.14: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
+</p>
+</div>
+<p>But lets say we also want to change the text from 'cut' to 'Cut of Diamond'. Well, you can think of this as another axis we can change. Instead of a <code>scale_x_</code> we can change the <code>scale_colour_</code>. And this isn't a continuous scale but a discrete (categorical) one, so we change it with <code>scale_colour_discrete</code>.</p>
+<div class="figure"><span id="fig:unnamed-chunk-109"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-109-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<p class="caption">
+Figure: 5.15: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
+</p>
+</div>
+</div>
+</div>
+<div id="gg_boxplot" class="section level2">
+<h2><span class="header-section-number">5.3</span> Building a boxplot</h2>
+<p>At this stage, I'm wondering how useful our scatterplot is. Perhaps it would be easier to visualise this with a boxplot. We just need to build a new object.</p>
+<p>Lets look to see if there's a relationship between how big the diamond is (carat) and its clarity (how clear it is).</p>
+<div class="figure"><span id="fig:unnamed-chunk-110"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-110-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<p class="caption">
+Figure: 5.16: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
+</p>
+</div>
+<p>And with just a few lines of code, we can create a very different looking chart:</p>
+<div class="figure"><span id="fig:unnamed-chunk-111"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-111-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<p class="caption">
+Figure: 5.17: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
+</p>
+</div>
+</div>
+<div id="gg_facets" class="section level2">
+<h2><span class="header-section-number">5.4</span> Facets</h2>
+<p>Another very useful command is 'facet', which splits one chart into many based on a particular variable.</p>
+<div class="figure"><span id="fig:unnamed-chunk-112"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-112-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<p class="caption">
+Figure: 5.18: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
+</p>
+</div>
+</div>
+<div id="gg_bars" class="section level2">
+<h2><span class="header-section-number">5.5</span> Bar charts</h2>
 </div>
 <div id="ex_ggplot" class="section level2">
-<h2><span class="header-section-number">5.3</span> Exercise</h2>
+<h2><span class="header-section-number">5.6</span> Exercise</h2>
 <p>Create a bar chart of the <code>mpg</code> cars dataset</p>
 <p>Create a histogram of blah</p>
 </div>
 <div id="gg_vids" class="section level2">
-<h2><span class="header-section-number">5.4</span> Videos</h2>
-<p>If you’d rather watch a video about this - <a href="https://media.ed.ac.uk/media/R+ConversationsA+Demystifying+ggplot/0_sct50ue1">you can here!</a></p>
+<h2><span class="header-section-number">5.7</span> Videos</h2>
+<p>If you'd rather watch a video about this - <a href="https://media.ed.ac.uk/media/R+ConversationsA+Demystifying+ggplot/0_sct50ue1">you can here!</a></p>
 </div>
 <div id="gg_resources" class="section level2">
-<h2><span class="header-section-number">5.5</span> Useful resources</h2>
+<h2><span class="header-section-number">5.8</span> Useful resources</h2>
 <p>There are some very useful resources out there about ggplot2 including:</p>
 <ul>
-<li><p><a href="http://www.cookbook-r.com/Graphs/">Cookbook for R</a>, Winston Chang’s (free) online book about using ggplot</p></li>
+<li><p><a href="http://www.cookbook-r.com/Graphs/">Cookbook for R</a>, Winston Chang's (free) online book about using ggplot</p></li>
 <li><p><a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">ggplot cheatsheet</a>, a pdf with lots of neat visualisations and cheats.</p></li>
 </ul>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="10">
+<li id="fn10"><p>You may be interested to know that the <code>+</code> symbol is a precursor to the <code>%&gt;%</code> symbol. Both <code>ggplot2</code> and <code>tidyverse</code> were mainly written by <a href="https://twitter.com/hadleywickham">Hadley Wickham</a> who has often spoken about <a href="https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7">why ggplot won't ever use the %&gt;% operator</a><a href="ggplot.html#fnref10">↩</a></p></li>
+</ol>
 </div>
             </section>
 

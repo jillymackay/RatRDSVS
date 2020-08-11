@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Data | R @ R(D)SVS</title>
-  <meta name="description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Data | R @ R(D)SVS" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta property="og:description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Data | R @ R(D)SVS" />
   
-  <meta name="twitter:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="twitter:description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
 
 <meta name="author" content="Jill R D MacKay" />
@@ -53,65 +53,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  { background-color: #f8f8f8; }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="css\styles.css" type="text/css" />
@@ -185,10 +161,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
-<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object</a></li>
-<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.3</b> Exercise</a></li>
-<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.4</b> Videos</a></li>
-<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.5</b> Useful resources</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object (a scatterplot)</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="ggplot.html"><a href="ggplot.html#gg_axis"><i class="fa fa-check"></i><b>5.2.1</b> Changing an axis in ggplot2</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ggplot.html"><a href="ggplot.html#gg_theme"><i class="fa fa-check"></i><b>5.2.2</b> Changing themes</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ggplot.html"><a href="ggplot.html#gg_labs"><i class="fa fa-check"></i><b>5.2.3</b> Changing labels and titles</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ggplot.html"><a href="ggplot.html#gg_smooth"><i class="fa fa-check"></i><b>5.2.4</b> Adding regression lines to ggplot</a></li>
+<li class="chapter" data-level="5.2.5" data-path="ggplot.html"><a href="ggplot.html#gg_groups"><i class="fa fa-check"></i><b>5.2.5</b> Adding groups to ggplot</a></li>
+<li class="chapter" data-level="5.2.6" data-path="ggplot.html"><a href="ggplot.html#gg_legend"><i class="fa fa-check"></i><b>5.2.6</b> Changing legends</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#gg_boxplot"><i class="fa fa-check"></i><b>5.3</b> Building a boxplot</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_facets"><i class="fa fa-check"></i><b>5.4</b> Facets</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_bars"><i class="fa fa-check"></i><b>5.5</b> Bar charts</a></li>
+<li class="chapter" data-level="5.6" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.6</b> Exercise</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.7</b> Videos</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.8</b> Useful resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>
@@ -257,7 +243,7 @@ Are comfortable working with dataframes and tibbles
 </li>
 <li>
 <p>
-Know about and are comfortable using some of R’s inbuilt data packages
+Know about and are comfortable using some of R's inbuilt data packages
 </p>
 </li>
 <li>
@@ -269,53 +255,47 @@ Are comfortable loading .csv and .xlsx files into R
 </div>
 <div id="packages-for-this-chapter" class="section level2">
 <h2><span class="header-section-number">3.1</span> Packages for this chapter</h2>
-<p>In this chapter you’ll want the following packages loaded in your R session. At the start, you will need to run the following code. Remember if you don’t have a package you can install it with the <code>install.package("package_name")</code> command.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="kw">library</span>(readxl)</a></code></pre></div>
+<p>In this chapter you'll want the following packages loaded in your R session. At the start, you will need to run the following code. Remember if you don't have a package you can install it with the <code>install.package(&quot;package_name&quot;)</code> command.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(readxl)</code></pre></div>
 </div>
 <div id="data_builtin" class="section level2">
 <h2><span class="header-section-number">3.2</span> Built In Data</h2>
-<p>Many packages, such as the <code>tidyverse</code> package, and the default<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> <code>datasets</code> package come with data in them. These datasets can be really useful for testing code that you’re unfamiliar with, because you know what the data should look like, and how it should perform.</p>
+<p>Many packages, such as the <code>tidyverse</code> package, and the default<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> <code>datasets</code> package come with data in them. These datasets can be really useful for testing code that you're unfamiliar with, because you know what the data should look like, and how it should perform.</p>
 <p>Some common datasets are:</p>
 <ul>
-<li><code>mpg</code>
-<ul>
-<li>Fuel economy data from 1999 to 2008 for 38 popular models of cars</li>
-</ul></li>
+<li><code>mpg</code></li>
+<li><p>Fuel economy data from 1999 to 2008 for 38 popular models of cars</p></li>
 <li><p><code>ChickWeight</code></p></li>
 <li><p>Weight versus age of chicks on different diets</p></li>
-<li><code>starwars</code>
-<ul>
-<li>Name, height, weight, age, and other characteristics of Star Wars characters</li>
-</ul></li>
-<li><code>iris</code>
-<ul>
-<li>The measurements (in cm) of the sepal length and width and petal length and width of 50 flowers in 3 species of iris</li>
-</ul></li>
+<li><code>starwars</code></li>
+<li><p>Name, height, weight, age, and other characteristics of Star Wars characters</p></li>
+<li><code>iris</code></li>
+<li><p>The measurements (in cm) of the sepal length and width and petal length and width of 50 flowers in 3 species of iris</p></li>
 </ul>
-<p>There are many, many more. You can explore some of them by typing <code>datasets::</code> into the console and instead of pressing ‘enter’, scroll the menu that pops up to help you autocomplete your command.</p>
+<p>There are many, many more. You can explore some of them by typing <code>datasets::</code> into the console and instead of pressing 'enter', scroll the menu that pops up to help you autocomplete your command.</p>
 <div class="hey">
 <p>
-You might wonder, what’s the <code>::</code> in the <code>datasets::</code> command. The <code>::</code> is very useful and tells R to look inside the <code>datasets</code> package without having to actually load it into your library which can be very quick and easy
+You might wonder, what's the <code>::</code> in the <code>datasets::</code> command. The <code>::</code> is very useful and tells R to look inside the <code>datasets</code> package without having to actually load it into your library which can be very quick and easy
 </p>
 </div>
 </div>
 <div id="ex_inbuiltdata" class="section level2">
 <h2><span class="header-section-number">3.3</span> Exercise</h2>
 <p>For our first exercise we are going to look at some of the inbuilt datasets.</p>
-<p>What happens when you enter the following code<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> into the console?</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">View</span>(mpg)</a></code></pre></div>
+<p>What happens when you enter the following code<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> into the console?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(mpg)</code></pre></div>
 <p>You should see something like <strong>Figure 3.1</strong></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-39"></span>
-<img src="images/03_data/rstud01.png" alt="The result of the 'View(mpg)' command"  />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-61"></span>
+<img src="images/03_data/rstud01.png" alt="The result of the 'View(mpg)' command" width="479" />
 <p class="caption">
-Figure: 3.1: The result of the ‘View(mpg)’ command
+Figure: 3.1: The result of the 'View(mpg)' command
 </p>
 </div>
 <p>The <code>View()</code> command is very handy for getting a quick window onto what data looks like. Unfortunately, the <code>View()</code> command only really works for <strong>you</strong> getting a look at your data. If you wanted to share your code, you would be better using a command which prints some of the data into the console.</p>
 <p>So - what functions will tell R to print data into the console?</p>
 <p>You can view the top of a dataset with <code>head()</code></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"> <span class="kw">head</span>(mpg)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">head</span>(mpg)</code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class  
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -326,8 +306,8 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 ## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compact
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact</code></pre>
 <p>Note that this code has produced an output block. Unlike <code>View()</code> where I had to share a screengrab to show you what the output of the code was. This is why <code>head()</code> is a lot more reproducible than <code>View()</code> and should be your default for code sharing. See more about this in <a href="dataprocessing.html#workflows">workflows</a>.</p>
-<p>Unsurprisingly we can also view the bottom of a dataset with …</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">tail</span>(mpg)</a></code></pre></div>
+<p>Unsurprisingly we can also view the bottom of a dataset with ...</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(mpg)</code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   manufacturer model  displ  year   cyl trans      drv     cty   hwy fl    class  
 ##   &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -338,22 +318,22 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 ## 5 volkswagen   passat   2.8  1999     6 manual(m5) f        18    26 p     midsize
 ## 6 volkswagen   passat   3.6  2008     6 auto(s6)   f        17    26 p     midsize</code></pre>
 <p>Another very useful way to look at a dataset is with the <code>summary()</code> function, which takes its best guess at how to summarise each variable in the dataset.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">summary</span>(mpg)</a></code></pre></div>
-<pre><code>##  manufacturer          model               displ            year           cyl           trans               drv           
-##  Length:234         Length:234         Min.   :1.600   Min.   :1999   Min.   :4.000   Length:234         Length:234        
-##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Median :3.300   Median :2004   Median :6.000   Mode  :character   Mode  :character  
-##                                        Mean   :3.472   Mean   :2004   Mean   :5.889                                        
-##                                        3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000                                        
-##                                        Max.   :7.000   Max.   :2008   Max.   :8.000                                        
-##       cty             hwy             fl               class          
-##  Min.   : 9.00   Min.   :12.00   Length:234         Length:234        
-##  1st Qu.:14.00   1st Qu.:18.00   Class :character   Class :character  
-##  Median :17.00   Median :24.00   Mode  :character   Mode  :character  
-##  Mean   :16.86   Mean   :23.44                                        
-##  3rd Qu.:19.00   3rd Qu.:27.00                                        
-##  Max.   :35.00   Max.   :44.00</code></pre>
-<p>The <code>summary()</code> function highlights an important aspect of R - it knows the difference between numbers and characters. In the output block we can see that <code>manufacturer</code> is given the <code>Class</code> <code>character</code>. R knows it can’t create a mean and a median from this data, so it simply tells you the <code>Length</code> of that data instead. What do you think the 234 refers to here? Answer in the footnote<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(mpg)</code></pre></div>
+<pre><code>##  manufacturer          model               displ            year           cyl           trans               drv                 cty       
+##  Length:234         Length:234         Min.   :1.600   Min.   :1999   Min.   :4.000   Length:234         Length:234         Min.   : 9.00  
+##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000   Class :character   Class :character   1st Qu.:14.00  
+##  Mode  :character   Mode  :character   Median :3.300   Median :2004   Median :6.000   Mode  :character   Mode  :character   Median :17.00  
+##                                        Mean   :3.472   Mean   :2004   Mean   :5.889                                         Mean   :16.86  
+##                                        3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000                                         3rd Qu.:19.00  
+##                                        Max.   :7.000   Max.   :2008   Max.   :8.000                                         Max.   :35.00  
+##       hwy             fl               class          
+##  Min.   :12.00   Length:234         Length:234        
+##  1st Qu.:18.00   Class :character   Class :character  
+##  Median :24.00   Mode  :character   Mode  :character  
+##  Mean   :23.44                                        
+##  3rd Qu.:27.00                                        
+##  Max.   :44.00</code></pre>
+<p>The <code>summary()</code> function highlights an important aspect of R - it knows the difference between numbers and characters. In the output block we can see that <code>manufacturer</code> is given the <code>Class</code> <code>character</code>. R knows it can't create a mean and a median from this data, so it simply tells you the <code>Length</code> of that data instead. What do you think the 234 refers to here? Answer in the footnote<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
 </div>
 <div id="created_data" class="section level2">
 <h2><span class="header-section-number">3.4</span> Data you create</h2>
@@ -362,12 +342,12 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 </div>
 <div id="ex_createdata" class="section level2">
 <h2><span class="header-section-number">3.5</span> Exercise - Creating data</h2>
-<p>We are going to use a new function here called <code>tibble</code> which will make a dataframe quickly and easily. Before when we were typing things like <code>x &lt;- 1</code>, we created a single thing in the environment. Now we want to create multiple thing (rows and columns) and that’s what the <code>tibble</code> function will do.</p>
-<p>Try the following and watch what happens in your environment (you’ll need the <code>tidyverse</code> loaded - see <a href="data.html#data">above</a>)</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb35-2" title="2">              <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</a></code></pre></div>
-<p>You can <code>View(dat)</code> to look at this (or use <code>head(dat)</code>). Let’s try and replicate our weird <code>summary(mpg)</code> character issue.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
+<p>We are going to use a new function here called <code>tibble</code> which will make a dataframe quickly and easily. Before when we were typing things like <code>x &lt;- 1</code>, we created a single thing in the environment. Now we want to create multiple thing (rows and columns) and that's what the <code>tibble</code> function will do.</p>
+<p>Try the following and watch what happens in your environment (you'll need the <code>tidyverse</code> loaded - see <a href="data.html#data">above</a>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),
+              <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</code></pre></div>
+<p>You can <code>View(dat)</code> to look at this (or use <code>head(dat)</code>). Let's try and replicate our weird <code>summary(mpg)</code> character issue.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(dat)</code></pre></div>
 <pre><code>##        x             y            
 ##  Min.   :1.00   Length:6          
 ##  1st Qu.:2.25   Class :character  
@@ -376,18 +356,18 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 ##  3rd Qu.:4.75                     
 ##  Max.   :6.00</code></pre>
 <p>We <strong>can</strong> replicate the issue. You can see that the <code>y</code> variable has the <code>class: Character</code>. What can we do about it?</p>
-<p>We essentially want to tell R that <code>y</code> is not a character, but a factor<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
+<p>We essentially want to tell R that <code>y</code> is not a character, but a factor<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>.</p>
 <p>We can ask R more directly what <code>y</code> is by telling it exactly where to look.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">is.character</span>(dat<span class="op">$</span>y)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.character</span>(dat<span class="op">$</span>y)</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>The <code>$</code> symbol tells R that it needs to look inside <code>dat</code> for <code>y</code>. Try typing out <code>is.character(y)</code> or <code>is.character(dat::y)</code> and see what happens. What are those error messages telling you? <a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+<p>The <code>$</code> symbol tells R that it needs to look inside <code>dat</code> for <code>y</code>. Try typing out <code>is.character(y)</code> or <code>is.character(dat::y)</code> and see what happens. What are those error messages telling you? <a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a></p>
 <p>If the <code>is.character()</code> function asks R if the named object is a character, how do you think we ask R if the named object is a factor? Try typing out your answer in the console to see what happens.</p>
 <p>We therefore need to ask R to change the data. We can do this like so:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">as.factor</span>(dat<span class="op">$</span>y)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.factor</span>(dat<span class="op">$</span>y)</code></pre></div>
 <pre><code>## [1] A B A B A B
 ## Levels: A B</code></pre>
 <p>And we get a response. But what happens if we run <code>summary(dat)</code> again?</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(dat)</code></pre></div>
 <pre><code>##        x             y            
 ##  Min.   :1.00   Length:6          
 ##  1st Qu.:2.25   Class :character  
@@ -401,17 +381,17 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 You should take time to stop and answer these questions before reading on - practice and thinking about R is the best way to learn.
 </p>
 </div>
-<p>It happens because we haven’t actually changed the data. With <code>as.factor(dat$y)</code>, R told us the answer, but didn’t edit the object in any way. To change the <code>dat</code> dataframe, we need to use the assign (<code>&lt;-</code>) function to make sure R saves it into the environment.</p>
-<p>Here’s the fun part. We can do this in two (or actually - many) different ways. In a lot of ways, its personal preference which one you choose . . .</p>
+<p>It happens because we haven't actually changed the data. With <code>as.factor(dat$y)</code>, R told us the answer, but didn't edit the object in any way. To change the <code>dat</code> dataframe, we need to use the assign (<code>&lt;-</code>) function to make sure R saves it into the environment.</p>
+<p>Here's the fun part. We can do this in two (or actually - many) different ways. In a lot of ways, its personal preference which one you choose . . .</p>
 <p>To demonstrate, we will make two new dataframes.</p>
 <p><strong>Option 1</strong></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">option1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> dat<span class="op">$</span>x, <span class="dt">y =</span> <span class="kw">as.factor</span>(dat<span class="op">$</span>y))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">option1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> dat<span class="op">$</span>x, <span class="dt">y =</span> <span class="kw">as.factor</span>(dat<span class="op">$</span>y))</code></pre></div>
 <p><strong>Option 2</strong></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">option2 &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y =</span> <span class="kw">as.factor</span>(y))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">option2 &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y =</span> <span class="kw">as.factor</span>(y))</code></pre></div>
 <div class="translate">
 <p>
-In Option 1, using what’s called ‘base R’, we are essentially saying something like:
+In Option 1, using what's called 'base R', we are essentially saying something like:
 </p>
 <ul>
 <li>
@@ -451,7 +431,7 @@ That thing should start the same as <code>dat</code>
 </li>
 <li>
 <p>
-We use the <strong>pipe</strong> command from <code>tidyverse</code> (<code>%&gt;%</code>) to say ‘and then’
+We use the <strong>pipe</strong> command from <code>tidyverse</code> (<code>%&gt;%</code>) to say 'and then'
 </p>
 </li>
 <li>
@@ -466,16 +446,16 @@ Make y a factor (<code>y = as.factor(y)</code>)
 </li>
 </ul>
 </div>
-<p>With Option 2, we don’t need to specify <code>dat$y</code> because we are using the pipe function (<code>%&gt;%</code>) to tell R we are still working with the <code>dat</code> dataframe.</p>
-<p>Personally, I found the pipe function in <code>tidyverse</code> to be revolutionary when I learned it, and its by far my favourite way to write code. I find the code in Option 2 a lot easier to read than the code in Option 1, and we’ll be using <code>tidyverse</code> in the rest of this book. However, here’s another important thing:</p>
+<p>With Option 2, we don't need to specify <code>dat$y</code> because we are using the pipe function (<code>%&gt;%</code>) to tell R we are still working with the <code>dat</code> dataframe.</p>
+<p>Personally, I found the pipe function in <code>tidyverse</code> to be revolutionary when I learned it, and its by far my favourite way to write code. I find the code in Option 2 a lot easier to read than the code in Option 1, and we'll be using <code>tidyverse</code> in the rest of this book. However, here's another important thing:</p>
 <div class="hey">
 <p>
-You do not have to code like I do - so long as I can run your code, we don’t have to approach a problem in the same way.
+You do not have to code like I do - so long as I can run your code, we don't have to approach a problem in the same way.
 </p>
 </div>
 <p>This will become clearer as we work through the book.</p>
-<p>To test that we have done what we wanted to do - let’s run the <code>summary()</code> function again.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">summary</span>(option1)</a></code></pre></div>
+<p>To test that we have done what we wanted to do - let's run the <code>summary()</code> function again.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(option1)</code></pre></div>
 <pre><code>##        x        y    
 ##  Min.   :1.00   A:3  
 ##  1st Qu.:2.25   B:3  
@@ -483,7 +463,7 @@ You do not have to code like I do - so long as I can run your code, we don’t h
 ##  Mean   :3.50        
 ##  3rd Qu.:4.75        
 ##  Max.   :6.00</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">summary</span>(option2)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(option2)</code></pre></div>
 <pre><code>##        x        y    
 ##  Min.   :1.00   A:3  
 ##  1st Qu.:2.25   B:3  
@@ -517,11 +497,11 @@ You do not have to code like I do - so long as I can run your code, we don’t h
 <div class="footnotes">
 <hr />
 <ol start="3">
-<li id="fn3"><p>‘Default’ here means one you won’t need to install or load into the library<a href="data.html#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>If its not working - are you sure you have spelled it with a capital <code>View</code>?<a href="data.html#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>The Length of these variables is the number of rows in each one, which for this case is the same because this is a nice, tidy dataset<a href="data.html#fnref5" class="footnote-back">↩</a></p></li>
-<li id="fn6"><p>A factor is also called a categorical variable, or a grouping variable. If you’re not sure you know what a factor is, <a href="https://en.wikipedia.org/wiki/Categorical_variable">wiki</a> is a good place to review<a href="data.html#fnref6" class="footnote-back">↩</a></p></li>
-<li id="fn7"><p><code>is.character(y)</code> should give you an error message like <code>Error: object 'y' is not found</code> because <code>y</code> by itself does not exist in your environment. There’s a way around this by ‘attaching’ data to your environment, which is a bit old fashioned and can result in problems down the line with your workflow (because you won’t necessarily know if the person you’re working with has also attached the data), so I recommend against it. <code>is.character(dat::y)</code> should give you an error like <code>Error in loadNamespace(name) : there is no package called 'dat'</code>. Unsurprisingly, this is telling you that the <code>::</code> sequence tells R to look inside a <strong>package</strong> for a thing called <code>y</code>, but that package doesn’t exist. Packages and data frames are different things.<a href="data.html#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>'Default' here means one you won't need to install or load into the library<a href="data.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>If its not working - are you sure you have spelled it with a capital <code>View</code>?<a href="data.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>The Length of these variables is the number of rows in each one, which for this case is the same because this is a nice, tidy dataset<a href="data.html#fnref5">↩</a></p></li>
+<li id="fn6"><p>A factor is also called a categorical variable, or a grouping variable. If you're not sure you know what a factor is, <a href="https://en.wikipedia.org/wiki/Categorical_variable">wiki</a> is a good place to review<a href="data.html#fnref6">↩</a></p></li>
+<li id="fn7"><p><code>is.character(y)</code> should give you an error message like <code>Error: object 'y' is not found</code> because <code>y</code> by itself does not exist in your environment. There's a way around this by 'attaching' data to your environment, which is a bit old fashioned and can result in problems down the line with your workflow (because you won't necessarily know if the person you're working with has also attached the data), so I recommend against it. <code>is.character(dat::y)</code> should give you an error like <code>Error in loadNamespace(name) : there is no package called 'dat'</code>. Unsurprisingly, this is telling you that the <code>::</code> sequence tells R to look inside a <strong>package</strong> for a thing called <code>y</code>, but that package doesn't exist. Packages and data frames are different things.<a href="data.html#fnref7">↩</a></p></li>
 </ol>
 </div>
             </section>
