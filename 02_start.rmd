@@ -259,7 +259,9 @@ You will often get warnings in R when you type these code blocks. To keep the bo
 
 ## R Markdown vs R Scripts {#scripts_rmd}
 
-In R Studio you can use R Script files and R Markdown files to save your work. 
+In R Studio you can use R Script files and R Markdown files to save your work. Both of these files can be created, edited, saved, and opened in your R Project file. You can send R Script and R Markdown files to other people, so they can edit and share your code too. 
+
+If you are reading this book as part of coursework I've set you, you will likely have an assignment where you neeed to download and edit an R Markdown file, then send it back to me. 
 
 ### R Scripts
 R script files are great for testing out small chunks of code on their own. 
@@ -298,13 +300,21 @@ print("and edit those lines of code")
 R Markdown allows you to combine code with actual text. This book was written in R Markdown
 
 
-In R Markdown you can have a text chunk like this:
-/```{r} 
+In R Markdown you can have a text chunk like this one.
+
+And follow that with code, bracketed with three ticks like this:
+\```{r}
+
 print("followed by code like this")
-```
+
+\```
+
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 print("followed by code like this")
 ```
+
+
+[There is a great R Markdown cheatsheet from R Studio here](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf). I had this printed out and hung above my desk for years. 
 
 ### A video on R Markdown {#video_rmd}
 If you would like to watch me using R Markdown, you're in luck! Theres [a video here](https://media.ed.ac.uk/media/R+ConversationsA+Intro+to+R+Markdown/1_td0q33v8/112983051).
