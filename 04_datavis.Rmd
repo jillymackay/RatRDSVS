@@ -20,5 +20,112 @@ Data visualisation is one of the most important skills a scientst can learn, and
 In this chapter, we're not going to look at any R code. Instead we're going to think about what data visualisation means. 
 
 
+### When charts go bad {#vis_bad}
 
+Lets take a look at **Figure 4.1**. 
+
+```{r echo = FALSE, fig.width = 4, fig.cap="US State of Georgia, COVID-19 Deaths,\nSource: https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/", fig.align = 'center'}
+
+knitr::include_graphics("images/04_datavis/georgia_covid.jpg")
+
+```
+
+There is an [excellents article](https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/) from the Financial Times about this chart. I think this chart is a great example of why data visualisation is important. 
+
+We use charts to communicate large amounts of data quickly and easily.
+
+Often, in life, we are trying to communicate something important. We are often trying to persuade someone to do something, like give us more research money, or to make a change that we want to see. 
+
+What message do you think **Figure 4.1** is trying to communicate? 
+
+If you look at the x axis (the one that goes across the graph), what order are the dates in?
+
+
+### Chart anatomy {#vis_anatomy}
+#### The two-axes rule
+Most charts will have two axes:
+
+  * The **x axis** which goes **across the chart**
+  
+  * The **y axis** which goes **up the chart** (upp-**y**/down-**y** was how I used to remember it).
+  
+
+As in data science we are often interested in **does x affect y**, we usually put the **explanatory** variable on the x axis. We try to always have the thing that drives variation going across the chart, whereas the thing that responds to variation goes up and down the chart. (The response-**y** variable.)
+
+You should always thing about your axes - and they should be clear to the reader from the beginning. No messing with the order (see again **Figure 4.1**).
+
+Unless you have a very good reason, I would always have two axes. That means if you're trying to put in a second Y axis, you are breaking the two-axes rule, and should re-evaluate your chart. If you're trying to make a pie-chart, you are breaking the two-axes rule, and should re-evaluate your chart. 
+
+Follow the two-axes rule, and your life will be a lot easier. 
+
+#### Why I hate pie charts
+Pie charts are the worst visualisation in the world. 
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.cap="The worst kind of chart describing proportion of people with type of pet (fictional data)"}
+
+pie_df <- data.frame(group = c("Cats", "Dogs", "Fish", "Birds", "Reptiles", "Rabbits"),
+                     values = c(25,28, 20, 15 ,2,10))
+
+pie_df %>% 
+  ggplot(aes(x = "", y= values, fill = group)) +
+  geom_bar(width = 1, stat = "identity") +
+  coord_polar("y", start = 0)
+
+```
+
+Let's take **Figure 4.2** as an example. What proportion of people have a dog versus a cat. I'll wait for you to start puzzling through that question. 
+
+If we put labels on the chart stating the value, why would we not just put data in a 
+
+
+
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "A much better chart describing proportion of people with type of pet (fictional data)"}
+
+
+pie_df %>% 
+  ggplot(aes(x = group, y= values, fill = group)) +
+  geom_bar(width = 1, stat = "identity", position = position_dodge2()) +
+  labs(y = "N of People With Pet")
+
+```
+
+
+#### Figure headings
+
+
+#### Legends
+
+
+#### Colours
+The use of colours in charts is a curious thing. Colour can be very useful in a chart, but also very distracting. There's another [brilliant FT article on the use of colour to indicate gender in charts](https://www.ft.com/content/c4b7d8be-2eb0-11e8-9b4b-bc4b9f08f381) and all the ensuing complications. 
+
+
+##### Advanced R users
+If you have gotten really into R, or you really like pretty colours, I highly recommend checking out [Emil Hvitfeldt's well maintained repository](https://github.com/EmilHvitfeldt/r-color-palettes) listing all the R colour palette packages out there. Personally I really like `nord`^[I like `nord` so much its the colour scheme for this book] and `LaCroixColoR` and `NineteenEightyR`. Much of my life is spent tweaking colours on charts.
+
+
+
+### Bar charts {#vis_bar}
+
+
+
+### Histograms {#vis_hist}
+
+
+### Scatterplots {#vis_scatter}
+
+
+### Boxpots {#vis_box}
+
+
+
+
+
+### Infographics {#vis_infographic}
+
+In our increasingly connected world, we are seeing more and more infographics. As they're less standardised, there can be more room for interpretation. For example;
+
+
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">As an Indian woman, I can confirm that too much of my time is spent hiding behind a rock praying the terrifying gang of international giant ladies and their Latvian general don&#39;t find me <a href="https://t.co/sy9NHW9oTK">pic.twitter.com/sy9NHW9oTK</a></p>&mdash; Sabah Ibrahim (@reina_sabah) <a href="https://twitter.com/reina_sabah/status/1291509085855260672?ref_src=twsrc%5Etfw">August 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 

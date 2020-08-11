@@ -173,7 +173,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>4</b> Charts</a><ul>
-<li class="chapter" data-level="4.1" data-path="charts.html"><a href="charts.html#datavis"><i class="fa fa-check"></i><b>4.1</b> Data Vis</a></li>
+<li class="chapter" data-level="4.1" data-path="charts.html"><a href="charts.html#datavis"><i class="fa fa-check"></i><b>4.1</b> Data Vis</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="charts.html"><a href="charts.html#vis_bad"><i class="fa fa-check"></i><b>4.1.1</b> When charts go bad</a></li>
+<li class="chapter" data-level="4.1.2" data-path="charts.html"><a href="charts.html#vis_anatomy"><i class="fa fa-check"></i><b>4.1.2</b> Chart anatomy</a></li>
+<li class="chapter" data-level="4.1.3" data-path="charts.html"><a href="charts.html#vis_bar"><i class="fa fa-check"></i><b>4.1.3</b> Bar charts</a></li>
+<li class="chapter" data-level="4.1.4" data-path="charts.html"><a href="charts.html#vis_hist"><i class="fa fa-check"></i><b>4.1.4</b> Histograms</a></li>
+<li class="chapter" data-level="4.1.5" data-path="charts.html"><a href="charts.html#vis_scatter"><i class="fa fa-check"></i><b>4.1.5</b> Scatterplots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="charts.html"><a href="charts.html#vis_box"><i class="fa fa-check"></i><b>4.1.6</b> Boxpots</a></li>
+<li class="chapter" data-level="4.1.7" data-path="charts.html"><a href="charts.html#vis_infographic"><i class="fa fa-check"></i><b>4.1.7</b> Infographics</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
@@ -260,8 +268,101 @@ You know what bad charts look like
 <h2><span class="header-section-number">4.1</span> Data Vis</h2>
 <p>Data visualisation is one of the most important skills a scientst can learn, and being able to identify good and bad data visualisation will make you the life and soul of every party, and incredibly popular at all times.</p>
 <p>In this chapter, we’re not going to look at any R code. Instead we’re going to think about what data visualisation means.</p>
+<div id="vis_bad" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> When charts go bad</h3>
+<p>Lets take a look at <strong>Figure 4.1</strong>.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-55"></span>
+<img src="images/04_datavis/georgia_covid.jpg" alt="US State of Georgia, COVID-19 Deaths,
+Source: https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/"  />
+<p class="caption">
+Figure: 4.1: US State of Georgia, COVID-19 Deaths,
+Source: <a href="https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/" class="uri">https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/</a>
+</p>
+</div>
+<p>There is an <a href="https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/">excellents article</a> from the Financial Times about this chart. I think this chart is a great example of why data visualisation is important.</p>
+<p>We use charts to communicate large amounts of data quickly and easily.</p>
+<p>Often, in life, we are trying to communicate something important. We are often trying to persuade someone to do something, like give us more research money, or to make a change that we want to see.</p>
+<p>What message do you think <strong>Figure 4.1</strong> is trying to communicate?</p>
+<p>If you look at the x axis (the one that goes across the graph), what order are the dates in?</p>
+</div>
+<div id="vis_anatomy" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Chart anatomy</h3>
+<div id="the-two-axes-rule" class="section level4">
+<h4><span class="header-section-number">4.1.2.1</span> The two-axes rule</h4>
+<p>Most charts will have two axes:</p>
+<ul>
+<li><p>The <strong>x axis</strong> which goes <strong>across the chart</strong></p></li>
+<li><p>The <strong>y axis</strong> which goes <strong>up the chart</strong> (upp-<strong>y</strong>/down-<strong>y</strong> was how I used to remember it).</p></li>
+</ul>
+<p>As in data science we are often interested in <strong>does x affect y</strong>, we usually put the <strong>explanatory</strong> variable on the x axis. We try to always have the thing that drives variation going across the chart, whereas the thing that responds to variation goes up and down the chart. (The response-<strong>y</strong> variable.)</p>
+<p>You should always thing about your axes - and they should be clear to the reader from the beginning. No messing with the order (see again <strong>Figure 4.1</strong>).</p>
+<p>Unless you have a very good reason, I would always have two axes. That means if you’re trying to put in a second Y axis, you are breaking the two-axes rule, and should re-evaluate your chart. If you’re trying to make a pie-chart, you are breaking the two-axes rule, and should re-evaluate your chart.</p>
+<p>Follow the two-axes rule, and your life will be a lot easier.</p>
+</div>
+<div id="why-i-hate-pie-charts" class="section level4">
+<h4><span class="header-section-number">4.1.2.2</span> Why I hate pie charts</h4>
+<p>Pie charts are the worst visualisation in the world.</p>
+<div class="figure"><span id="fig:unnamed-chunk-56"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-56-1.png" alt="The worst kind of chart describing proportion of people with type of pet (fictional data)" width="672" />
+<p class="caption">
+Figure: 4.2: The worst kind of chart describing proportion of people with type of pet (fictional data)
+</p>
+</div>
+<p>Let’s take <strong>Figure 4.2</strong> as an example. What proportion of people have a dog versus a cat. I’ll wait for you to start puzzling through that question.</p>
+<p>If we put labels on the chart stating the value, why would we not just put data in a</p>
+<div class="figure"><span id="fig:unnamed-chunk-57"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-57-1.png" alt="A much better chart describing proportion of people with type of pet (fictional data)" width="672" />
+<p class="caption">
+Figure: 4.3: A much better chart describing proportion of people with type of pet (fictional data)
+</p>
+</div>
+</div>
+<div id="figure-headings" class="section level4">
+<h4><span class="header-section-number">4.1.2.3</span> Figure headings</h4>
+</div>
+<div id="legends" class="section level4">
+<h4><span class="header-section-number">4.1.2.4</span> Legends</h4>
+</div>
+<div id="colours" class="section level4">
+<h4><span class="header-section-number">4.1.2.5</span> Colours</h4>
+<p>The use of colours in charts is a curious thing. Colour can be very useful in a chart, but also very distracting. There’s another <a href="https://www.ft.com/content/c4b7d8be-2eb0-11e8-9b4b-bc4b9f08f381">brilliant FT article on the use of colour to indicate gender in charts</a> and all the ensuing complications.</p>
+<div id="advanced-r-users" class="section level5">
+<h5><span class="header-section-number">4.1.2.5.1</span> Advanced R users</h5>
+<p>If you have gotten really into R, or you really like pretty colours, I highly recommend checking out <a href="https://github.com/EmilHvitfeldt/r-color-palettes">Emil Hvitfeldt’s well maintained repository</a> listing all the R colour palette packages out there. Personally I really like <code>nord</code><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> and <code>LaCroixColoR</code> and <code>NineteenEightyR</code>. Much of my life is spent tweaking colours on charts.</p>
+</div>
+</div>
+</div>
+<div id="vis_bar" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Bar charts</h3>
+</div>
+<div id="vis_hist" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> Histograms</h3>
+</div>
+<div id="vis_scatter" class="section level3">
+<h3><span class="header-section-number">4.1.5</span> Scatterplots</h3>
+</div>
+<div id="vis_box" class="section level3">
+<h3><span class="header-section-number">4.1.6</span> Boxpots</h3>
+</div>
+<div id="vis_infographic" class="section level3">
+<h3><span class="header-section-number">4.1.7</span> Infographics</h3>
+<p>In our increasingly connected world, we are seeing more and more infographics. As they’re less standardised, there can be more room for interpretation. For example;</p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+As an Indian woman, I can confirm that too much of my time is spent hiding behind a rock praying the terrifying gang of international giant ladies and their Latvian general don't find me <a href="https://t.co/sy9NHW9oTK">pic.twitter.com/sy9NHW9oTK</a>
+</p>
+— Sabah Ibrahim (<span class="citation">@reina_sabah</span>) <a href="https://twitter.com/reina_sabah/status/1291509085855260672?ref_src=twsrc%5Etfw">August 6, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>I like <code>nord</code> so much its the colour scheme for this book<a href="charts.html#fnref8" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
             </section>
 
