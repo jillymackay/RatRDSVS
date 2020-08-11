@@ -1,13 +1,15 @@
 # Data {#data}
 
-> You can skip this chapter if you:
->
->  * Are comfortable working with dataframes and tibbles
->
->  * Know about and are comfortable using some of R's inbuilt data packages
->
->  * Are comfortable loading .csv and .xlsx files into R
+```{block, type = "los"}
+You can skip this chapter if you:
 
+  * Are comfortable working with dataframes and tibbles
+
+  * Know about and are comfortable using some of R's inbuilt data packages
+
+  * Are comfortable loading .csv and .xlsx files into R
+
+```
 
 
 ## Packages for this chapter
@@ -46,7 +48,11 @@ Some common datasets are:
 * `iris`
   + The measurements (in cm) of the sepal length and width and petal length and width of 50 flowers in 3 species of iris
   
-There are many, many more. You can explore some of them by typing `datasets::`^[You might wonder, what's the `::` in the `datasets::` command. The `::` is very useful and tells R to look inside the `datasets` package without having to actually load it into your library which can be very quick and easy] into the console and instead of pressing 'enter', scroll the menu that pops up to help you autocomplete your command. 
+There are many, many more. You can explore some of them by typing `datasets::` into the console and instead of pressing 'enter', scroll the menu that pops up to help you autocomplete your command. 
+
+```{block, type = "hey"}
+You might wonder, what's the `::` in the `datasets::` command. The `::` is very useful and tells R to look inside the `datasets` package without having to actually load it into your library which can be very quick and easy
+```
 
 
 ## Exercise {#ex_inbuiltdata}
@@ -173,10 +179,11 @@ Why do you think this happens?
 
 
 
-<p style = "font-family: times, serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+```{block, type = "hey"}
 
 You should take time to stop and answer these questions before reading on - practice and thinking about R is the best way to learn.
-</p>
+
+```
 
 
 It happens because we haven't actually changed the data. With `as.factor(dat$y)`, R told us the answer, but didn't edit the object in any way. To change the `dat` dataframe, we need to use the assign (`<-`) function to make sure R saves it into the environment. 
@@ -204,15 +211,16 @@ option2 <- dat %>%
 ```
 
 
+```{block, type = "translate"}
 In Option 1, using what's called 'base R', we are essentially saying something like:
 
 * Make a new thing called `option1`
 
 * That thing is a tibble
 
-* That tibble should contain x, from dat (`dat$x`)
+* That tibble should contain x, from dat (`dat\$x`)
 
-* That tibble should contain y, from dat, made into a factor (`as.factor(dat$y)`)
+* That tibble should contain y, from dat, made into a factor (`as.factor(dat\$y)`)
 
 
 Whereas in Option 2, we are saying:
@@ -227,15 +235,18 @@ Whereas in Option 2, we are saying:
 
 * Make y a factor (`y = as.factor(y)`)
 
+```
+
 
 With Option 2, we don't need to specify `dat$y` because we are using the pipe function (` %>% `) to tell R we are still working with the `dat` dataframe.
 
 Personally, I found the pipe function in `tidyverse` to be revolutionary when I learned it, and its by far my favourite way to write code. I find the code in Option 2 a lot easier to read than the code in Option 1, and we'll be using `tidyverse` in the rest of this book. However, here's another important thing:
 
-<p style = "font-family: times, serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+```{block, type = "hey"}
 
 You do not have to code like I do - so long as I can run your code, we don't have to approach a problem in the same way.
-</p>
+
+```
 
 This will become clearer as we work through the book. 
 
@@ -257,13 +268,14 @@ And now we see that R has changed `y` into a factor, both ways, and now we have 
 Thinking back to our `mpg` example - can you change the `mpg` dataset so that `manufacturer` is a factor? 
 
 
-Can you change multiple variables to factors? 
+  * Can you change multiple variables to factors? 
 
 
-Is `tidyverse` or base R easier to use for changing multiple factors?
+  * Is `tidyverse` or base R easier to use for changing multiple factors?
 
 
-If you google, do you find other ways of changing `mpg`?
+  * If you google, do you find other ways of changing `mpg`?
+  
 
 Once you have tried these - you can view some of my answers [here](#ans_createdata)
 

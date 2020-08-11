@@ -1,7 +1,8 @@
 /* -----------div tips------------- */
 /* stolen from https://desiree.rbind.io/post/2019/making-tip-boxes-with-bookdown-and-rmarkdown/ */
 
-  div.hey {
+  
+  div.los {
     padding: 1em;
     margin: 1em 0;
     padding-left: 100px;
@@ -9,8 +10,38 @@
     background-repeat: no-repeat;
     background-position: 15px center;
     min-height: 120px;
-    color: #1f5386;
-    background-color: #bed3ec;
-    border: solid 5px #dfedff;
+    color: #6078A8;
+    background-color: #C0D8D8;
+    border: solid 3px #7890A8; 
+    background-image: url("../images/books_icon.png");
   }
-
+  
+  div.translate {
+    padding: 1em;
+    margin: 1em 0;
+    padding-left: 100px;
+    background-size: 70px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    min-height: 120px;
+    color: #6078A8;
+    background-color: #F0D8C0;
+    border: dotted 3px #A8C0C0; 
+    font-family: "Lucida Console", Courier, monospace;
+    background-image: url("../images/lightbulb_icon.png");
+  }
+  
+  
+  div.hey {
+    padding: 3em;
+    margin: 1em 0;
+    padding-left: 100px;
+    background-size: 70px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    min-height: 120px;
+    color: #486090;
+      background-color: #90A8C0;
+      border: dotted 2px #A8C0C0;
+    background-image: url("../images/ratrdsvs.png");
+  }

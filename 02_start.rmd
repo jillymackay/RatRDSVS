@@ -1,13 +1,17 @@
 # Getting Started {#start}
 
-> You can skip this chapter if you can:
->
->  * Use the console to input simple lines of code
->
->  * Install and load a package
->
->  * Know what a function is
->
+
+```{block, type = "los"}
+
+You can skip this chapter if you can:
+
+  * Use the console to input simple lines of code
+
+  * Install and load a package
+
+  * Recognise a function 
+
+```
 
 To use this chapter you will need a working version of R and R Studio.
 
@@ -20,10 +24,11 @@ If that is confusing, you might need to jump back to [installing R Studio](#inst
 Okay. This is the Big Secret. The thing you will not believe. The most important thing you'll learn about R. 
 
 
-<p style = "font-family: times, serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+```{block, type = "hey"}
 
 You should copy and paste other peoples' code. 
-</p>
+
+```
 
 
 Yes, I'm serious. You should copy and paste and edit code you find online^[If you're reading this as part of your coursework you might be panicking about plagiarism here, after all, we spend a lot of time telling you plagiarism is the worst thing you could ever do and that we'll use software to detect it. Code is a bit different. We are always trying to find the most efficient way of doing something, and so ideally you would all write code that was identical. Sadly, humans naturally differ in the way the think about problems. My job would be a lot easier if everybody thought the same. If I have set you this book as reading, I can swear to you I will never put your code through a plagiarism checker. That would be very stupid.]. In this book you should always be copying bits of code and pasting it into your console. That is why I publish the code alongside it. 
@@ -38,7 +43,7 @@ You might be very skeptical here about how much I want you to be copying code. I
 
 
 ## Projects {#projects}
-I would like to being by creating a new project in R Studio.
+I would like to begin by creating a new project in R Studio.
 
 * Open R Studio
 
@@ -159,6 +164,22 @@ mynameis <- function (name) {
 mynameis ("Jill")
 ```
 
+**What is this code saying?**
+
+```{block, type = "translate"}
+
+Create a new thing called `mynameis`
+
+Give (`<-`) `mynameis` the `function` purpose. Everything inside the curly brackets `{}` is the function. 
+
+The `function` should make a new thing called `name`.
+
+The `function` should `print` the result of pasting a string (`paste0`) of things, the words `Hello, `, whatever you said `name` should be, and `, how are you today?`. 
+
+
+```
+
+
 
 You may have noticed that, just like when we were assigning `x` a value, we now have something in our environment called `mynameis`.
 
@@ -171,7 +192,7 @@ print (paste0("Hello, ", "Jill", ", how are you today?"))
 
 ```
 
-But we would need to change the name every time we wanted welcome a new user. We are lazy, so we use the function to reduce the amount of things we need to change to get a different outcome. 
+But we would need to change the name every time we wanted welcome a new user. **We are lazy, so we use the function to reduce the amount of things we need to change to get a different outcome.** 
 
 Functions make our code more standardised. If we all define the `mynameis` function at the start of our documentation, we don't need to worry about accidentally deleting an important character in the code. This is especially important as we like to copy-paste code when we need to. 
 

@@ -4,7 +4,10 @@
 
 This book is a manual to help you get started in R. 
 
-> There is text like this which is important. At the start of every chapter it will summarise what you need to know, or let you know if you can skip the chapter.
+```{block, type = "los"}
+There is text like this which is important. At the start of every chapter it will summarise what you need to know, or let you know if you can skip the chapter.
+
+```
 
 You will also see text like this which is called a **code block**
 
@@ -37,15 +40,25 @@ print("Hello, I am a code block with an output block!")
 Sometimes you will see text like this - which is **really** important:
 
 
-<p style = "font-family: Arial, Helvetica, sans-serif; font-size:200%; font-style:bold; color:SlateBlue ;text-align:center">
+```{block, type = "hey"}
 
 When you are running code blocks in R make sure to only copy and paste the code block - not the output block!
-</p>
+
+```
 
 Pasting an output block into R will not do anything. 
 
 
-You will also sometimes see bits of code or words in `text like this`. This is usually the name of something in R, or a short piece of code that I didn't want to put in a full code chunk. 
+
+You will also sometimes see bits of code or words in `text like this`. This is usually the name of something in R, or a short piece of code that I didn't want to put in a full code chunk.
+
+```{block, type = "translate"}
+
+You will also see text like this, which will explain in plain English what the r code is doing. 
+
+E.g. the code `2 + 2` tells R to perform the following calculation: 2 + 2
+
+```
 
 Sometimes there will also be links to videos. These are optional for those learners who like to watch something being demonstrated. 
 

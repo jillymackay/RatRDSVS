@@ -1,9 +1,23 @@
 # Charts {#charts}
 
+```{block, type = "los"}
+
+You can skip this chapter if . . . 
+
+  * You are confident you know the difference between a bar chart, histogram, scatterplot and line chart. 
+  
+  * You are confident you can read and interpret charts.
+  
+  * You know what bad charts look like
+
+```
+
+
 ## Data Vis {#datavis}
 
-Very important - this is why we start here!
+Data visualisation is one of the most important skills a scientst can learn, and being able to identify good and bad data visualisation will make you the life and soul of every party, and incredibly popular at all times.
 
+In this chapter, we're not going to look at any R code. Instead we're going to think about what data visualisation means. 
 
 
 

@@ -1,6 +1,9 @@
 # Installing R {#install}
 
-> You can skip this chapter if you already have access to R and R Studio, and feel confident navigating between the console and environment panes.
+```{block, type = "los"}
+You can skip this chapter if you already have access to R and R Studio, and feel confident navigating between the console and environment panes.
+
+```
 
 
 To use R on your own PC or laptop, you will need to install two things:
