@@ -83,17 +83,21 @@ If we put labels on the chart stating the value, why would we not just put data 
 
 
 pie_df %>% 
-  ggplot(aes(x = group, y= values, fill = group)) +
+  ggplot(aes(x = reorder(group,-values), y= values, fill = group)) +
   geom_bar(width = 1, stat = "identity", position = position_dodge2()) +
-  labs(y = "N of People With Pet")
+  labs(y = "N of People With Pet",
+       x = "Type of pet") +
+  scale_y_continuous(limits = c(0, 30)) +
+  theme(legend.position = "none")
 
 ```
 
 
 #### Figure headings
-
+Figure headings should be a clear description of what is in the chart. 
 
 #### Legends
+Like figure headings, legends should be informative and clear. They will always describe a categorical variable, and sometimes their job will be done by the x axis. 
 
 
 #### Colours
@@ -106,20 +110,108 @@ If you have gotten really into R, or you really like pretty colours, I highly re
 
 
 ### Bar charts {#vis_bar}
+Bar charts are good for describing a continuous (numerical) variable by a categorical (grouping) variable. The continuous variable is often the average of a group. For example:
+
+
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by gender"}
+
+
+starwars %>% 
+  ggplot(aes(x = gender, y = height)) +
+  geom_bar(stat = "summary") +
+  labs(x = "Gender presentation",
+       y = "Height (cm)")
+
+```
+
+They can also be flipped around, particularly if the axis text is hard to read in one particular direction:
+
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by species"}
+
+
+starwars %>% 
+  ggplot(aes(x = reorder(species, -height), y = height)) +
+  geom_bar(stat = "summary") +
+  labs(x = "Species",
+       y = "Height (cm)") +
+  coord_flip()
+
+```
 
 
 
 ### Histograms {#vis_hist}
+A histogram shows the relative frequency of a continuous variable. For example we can see the most common height of Star Wars characters, with 20 characters, is around 180cm:
 
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Histogram of height (cm) of Star Wars characters"}
+
+
+starwars %>% 
+  ggplot(aes(x = height)) +
+  geom_histogram(binwidth = 10) +
+  labs(x = "Height (cm)",
+       y = "Count of characters")
+
+```
 
 ### Scatterplots {#vis_scatter}
+Scatterplots are good for showing the relationship between two continuous variables. 
+
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by weight (kg)"}
 
 
-### Boxpots {#vis_box}
+starwars %>% 
+  ggplot(aes(x = height, y = mass)) +
+  geom_point() +
+  labs(y = "Weight (kg)",
+       x = "Height (cm)")
+
+```
+
+But we can use other aspects, such as shape or colour, to add in a categorical variable:
 
 
 
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by weight (kg) and species"}
 
+
+starwars %>% 
+  ggplot(aes(x = height, y = mass, colour = species)) +
+  geom_point() +
+  labs(y = "Weight (kg)",
+       x = "Height (cm)")
+
+```
+
+
+### Boxplots {#vis_box}
+
+Boxplots are another way to examine a continuous variable by a categorical variable, but they give us a lot more information than a bar plot does. 
+
+A boxplot shows you:
+
+  * The **median** value (the thick bar in the middle)
+  
+  * The **first quartile** (the lowest part of the bar)
+  
+  * The **third quartile** (the highest part of the bar)
+  
+  * A **lower hinge** (the bottom thin line) which roughly equates to 95% of the data will not be below this value. 
+  
+  * An **upper hinge** (the top thin line) which roughy equates to 95% of the data will not be above this value. 
+  
+  * Any **outliers** (the dots) which are observations which lie outside of 95% of the data^[The hinges are actually calculated based on the `boxplot.stats` [function](https://www.rdocumentation.org/packages/grDevices/versions/3.6.2/topics/boxplot.stats) which is a little more complicated than 95% of the data - but if you ever need to worry about this you have gone beyond what this book can teach you.]
+
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by gender"}
+
+
+starwars %>% 
+  ggplot(aes(x = gender, y = height)) +
+  geom_boxplot() +
+  labs(x = "Gender presentation",
+       y = "Height (cm)")
+
+```
 
 ### Infographics {#vis_infographic}
 

@@ -179,13 +179,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.3" data-path="charts.html"><a href="charts.html#vis_bar"><i class="fa fa-check"></i><b>4.1.3</b> Bar charts</a></li>
 <li class="chapter" data-level="4.1.4" data-path="charts.html"><a href="charts.html#vis_hist"><i class="fa fa-check"></i><b>4.1.4</b> Histograms</a></li>
 <li class="chapter" data-level="4.1.5" data-path="charts.html"><a href="charts.html#vis_scatter"><i class="fa fa-check"></i><b>4.1.5</b> Scatterplots</a></li>
-<li class="chapter" data-level="4.1.6" data-path="charts.html"><a href="charts.html#vis_box"><i class="fa fa-check"></i><b>4.1.6</b> Boxpots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="charts.html"><a href="charts.html#vis_box"><i class="fa fa-check"></i><b>4.1.6</b> Boxplots</a></li>
 <li class="chapter" data-level="4.1.7" data-path="charts.html"><a href="charts.html#vis_infographic"><i class="fa fa-check"></i><b>4.1.7</b> Infographics</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
-<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.2</b> Videos</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object</a></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.3</b> Exercise</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.4</b> Videos</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.5</b> Useful resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>
@@ -242,13 +245,93 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="ggplot" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> ggplot2</h1>
+<div class="los">
+<p>
+You can skip this chapter if:
+</p>
+<ul>
+<li>
+<p>
+You are confident using the <code>ggplot2</code> package
+</p>
+</li>
+<li>
+<p>
+You can use the <code>geom_bar</code>, <code>geom_point</code> and <code>geom_histogram</code> arguments
+</p>
+</li>
+<li>
+<p>
+You can customise a ggplot2 object
+</p>
+</li>
+</ul>
+</div>
 <div id="why-ggplot" class="section level2">
 <h2><span class="header-section-number">5.1</span> Why ggplot?</h2>
-<p>Very scary!</p>
+<p>There is a fierce debate in the land of R. Some people think basic R shoud be taught first. Others think that you should learn how to do more complicated things first.</p>
+<p>I think you should start to learn ggplot2.</p>
+<p>ggplot2 is a really great way to learn R, and particularly the <code>tidyverse</code> approach to coding. It also makes beautiful charts. All my charts in the last chapter (even the dreaded pie chart) were made in ggplot2.</p>
+</div>
+<div id="gg_build" class="section level2">
+<h2><span class="header-section-number">5.2</span> Building a ggplot object</h2>
+<p>First - open an R Script or RMD file and load two packages:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">library</span>(datasets)</a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>Let’s choose the <code>diamonds</code> dataset, and take a look.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">head</span>(diamonds)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+## 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+## 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+## 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+## 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+## 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</code></pre>
+<div class="translate">
+<p>
+We want to take the <code>diamonds</code> dataset and then (<code>%&gt;%</code>) send it to <code>ggplot</code>.
+</p>
+<p>
+In <code>ggplot</code> we will use the <strong>aesthetics</strong> argument (<code>aes</code>) to tell it what to put on the <code>x</code> axis and the <code>y</code> axis.
+</p>
+</div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">diamonds <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price))</a></code></pre></div>
+<p>What do you think this code will do?</p>
+<p>** Try this code first!**</p>
+<p>This code ends up giving us a blank chart. This seems strange until you figure out that ggplot works by <strong>layering</strong> elements of a chart on top of one another:</p>
+<div class="figure"><span id="fig:unnamed-chunk-69"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-69-1.png" alt="A ggplot object with no geom layers" width="672" />
+<p class="caption">
+Figure: 5.1: A ggplot object with no geom layers
+</p>
+</div>
+<p>We need to tell R to add a <code>geom</code> layer, and we do that by adding a <code>+</code> symbol. In this case, we want to add a <code>geom_point</code> layer, so:</p>
+<div class="figure"><span id="fig:unnamed-chunk-70"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-70-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat" width="672" />
+<p class="caption">
+Figure: 5.2: A ggplot object with a geom_point layer, the price of diamonds by their carat
+</p>
+</div>
+</div>
+<div id="ex_ggplot" class="section level2">
+<h2><span class="header-section-number">5.3</span> Exercise</h2>
+<p>Create a bar chart of the <code>mpg</code> cars dataset</p>
+<p>Create a histogram of blah</p>
 </div>
 <div id="gg_vids" class="section level2">
-<h2><span class="header-section-number">5.2</span> Videos</h2>
+<h2><span class="header-section-number">5.4</span> Videos</h2>
 <p>If you’d rather watch a video about this - <a href="https://media.ed.ac.uk/media/R+ConversationsA+Demystifying+ggplot/0_sct50ue1">you can here!</a></p>
+</div>
+<div id="gg_resources" class="section level2">
+<h2><span class="header-section-number">5.5</span> Useful resources</h2>
+<p>There are some very useful resources out there about ggplot2 including:</p>
+<ul>
+<li><p><a href="http://www.cookbook-r.com/Graphs/">Cookbook for R</a>, Winston Chang’s (free) online book about using ggplot</p></li>
+<li><p><a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">ggplot cheatsheet</a>, a pdf with lots of neat visualisations and cheats.</p></li>
+</ul>
 
 </div>
 </div>

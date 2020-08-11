@@ -179,13 +179,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.3" data-path="charts.html"><a href="charts.html#vis_bar"><i class="fa fa-check"></i><b>4.1.3</b> Bar charts</a></li>
 <li class="chapter" data-level="4.1.4" data-path="charts.html"><a href="charts.html#vis_hist"><i class="fa fa-check"></i><b>4.1.4</b> Histograms</a></li>
 <li class="chapter" data-level="4.1.5" data-path="charts.html"><a href="charts.html#vis_scatter"><i class="fa fa-check"></i><b>4.1.5</b> Scatterplots</a></li>
-<li class="chapter" data-level="4.1.6" data-path="charts.html"><a href="charts.html#vis_box"><i class="fa fa-check"></i><b>4.1.6</b> Boxpots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="charts.html"><a href="charts.html#vis_box"><i class="fa fa-check"></i><b>4.1.6</b> Boxplots</a></li>
 <li class="chapter" data-level="4.1.7" data-path="charts.html"><a href="charts.html#vis_infographic"><i class="fa fa-check"></i><b>4.1.7</b> Infographics</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
-<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.2</b> Videos</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object</a></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.3</b> Exercise</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.4</b> Videos</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.5</b> Useful resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>
@@ -319,9 +322,11 @@ Figure: 4.3: A much better chart describing proportion of people with type of pe
 </div>
 <div id="figure-headings" class="section level4">
 <h4><span class="header-section-number">4.1.2.3</span> Figure headings</h4>
+<p>Figure headings should be a clear description of what is in the chart.</p>
 </div>
 <div id="legends" class="section level4">
 <h4><span class="header-section-number">4.1.2.4</span> Legends</h4>
+<p>Like figure headings, legends should be informative and clear. They will always describe a categorical variable, and sometimes their job will be done by the x axis.</p>
 </div>
 <div id="colours" class="section level4">
 <h4><span class="header-section-number">4.1.2.5</span> Colours</h4>
@@ -334,15 +339,66 @@ Figure: 4.3: A much better chart describing proportion of people with type of pe
 </div>
 <div id="vis_bar" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Bar charts</h3>
+<p>Bar charts are good for describing a continuous (numerical) variable by a categorical (grouping) variable. The continuous variable is often the average of a group. For example:</p>
+<div class="figure"><span id="fig:unnamed-chunk-58"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-58-1.png" alt="Averge height (cm) of Star Wars characters by gender" width="672" />
+<p class="caption">
+Figure: 4.4: Averge height (cm) of Star Wars characters by gender
+</p>
+</div>
+<p>They can also be flipped around, particularly if the axis text is hard to read in one particular direction:</p>
+<div class="figure"><span id="fig:unnamed-chunk-59"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-59-1.png" alt="Averge height (cm) of Star Wars characters by species" width="672" />
+<p class="caption">
+Figure: 4.5: Averge height (cm) of Star Wars characters by species
+</p>
+</div>
 </div>
 <div id="vis_hist" class="section level3">
 <h3><span class="header-section-number">4.1.4</span> Histograms</h3>
+<p>A histogram shows the relative frequency of a continuous variable. For example we can see the most common height of Star Wars characters, with 20 characters, is around 180cm:</p>
+<div class="figure"><span id="fig:unnamed-chunk-60"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-60-1.png" alt="Histogram of height (cm) of Star Wars characters" width="672" />
+<p class="caption">
+Figure: 4.6: Histogram of height (cm) of Star Wars characters
+</p>
+</div>
 </div>
 <div id="vis_scatter" class="section level3">
 <h3><span class="header-section-number">4.1.5</span> Scatterplots</h3>
+<p>Scatterplots are good for showing the relationship between two continuous variables.</p>
+<div class="figure"><span id="fig:unnamed-chunk-61"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-61-1.png" alt="Averge height (cm) of Star Wars characters by weight (kg)" width="672" />
+<p class="caption">
+Figure: 4.7: Averge height (cm) of Star Wars characters by weight (kg)
+</p>
+</div>
+<p>But we can use other aspects, such as shape or colour, to add in a categorical variable:</p>
+<div class="figure"><span id="fig:unnamed-chunk-62"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-62-1.png" alt="Averge height (cm) of Star Wars characters by weight (kg) and species" width="672" />
+<p class="caption">
+Figure: 4.8: Averge height (cm) of Star Wars characters by weight (kg) and species
+</p>
+</div>
 </div>
 <div id="vis_box" class="section level3">
-<h3><span class="header-section-number">4.1.6</span> Boxpots</h3>
+<h3><span class="header-section-number">4.1.6</span> Boxplots</h3>
+<p>Boxplots are another way to examine a continuous variable by a categorical variable, but they give us a lot more information than a bar plot does.</p>
+<p>A boxplot shows you:</p>
+<ul>
+<li><p>The <strong>median</strong> value (the thick bar in the middle)</p></li>
+<li><p>The <strong>first quartile</strong> (the lowest part of the bar)</p></li>
+<li><p>The <strong>third quartile</strong> (the highest part of the bar)</p></li>
+<li><p>A <strong>lower hinge</strong> (the bottom thin line) which roughly equates to 95% of the data will not be below this value.</p></li>
+<li><p>An <strong>upper hinge</strong> (the top thin line) which roughy equates to 95% of the data will not be above this value.</p></li>
+<li><p>Any <strong>outliers</strong> (the dots) which are observations which lie outside of 95% of the data<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p></li>
+</ul>
+<div class="figure"><span id="fig:unnamed-chunk-63"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-63-1.png" alt="Averge height (cm) of Star Wars characters by gender" width="672" />
+<p class="caption">
+Figure: 4.9: Averge height (cm) of Star Wars characters by gender
+</p>
+</div>
 </div>
 <div id="vis_infographic" class="section level3">
 <h3><span class="header-section-number">4.1.7</span> Infographics</h3>
@@ -362,6 +418,7 @@ As an Indian woman, I can confirm that too much of my time is spent hiding behin
 <hr />
 <ol start="8">
 <li id="fn8"><p>I like <code>nord</code> so much its the colour scheme for this book<a href="charts.html#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn9"><p>The hinges are actually calculated based on the <code>boxplot.stats</code> <a href="https://www.rdocumentation.org/packages/grDevices/versions/3.6.2/topics/boxplot.stats">function</a> which is a little more complicated than 95% of the data - but if you ever need to worry about this you have gone beyond what this book can teach you.<a href="charts.html#fnref9" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

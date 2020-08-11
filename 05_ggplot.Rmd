@@ -1,11 +1,111 @@
 # ggplot2 {#ggplot}
 
-## Why ggplot?
-Very scary! 
+```{block, type = "los"}
+
+You can skip this chapter if:
+
+  * You are confident using the `ggplot2` package
+  
+  * You can use the `geom_bar`, `geom_point` and `geom_histogram` arguments
+  
+  * You can customise a ggplot2 object
+
+
+```
+
+## Why ggplot? 
+There is a fierce debate in the land of R. Some people think basic R shoud be taught first. Others think that you should learn how to do more complicated things first. 
+
+I think you should start to learn ggplot2.
+
+ggplot2 is a really great way to learn R, and particularly the `tidyverse` approach to coding. It also makes beautiful charts. All my charts in the last chapter (even the dreaded pie chart) were made in ggplot2. 
+
+
+## Building a ggplot object {#gg_build}
+
+First - open an R Script or RMD file and load two packages:
+
+```{r, eval = FALSE, warning = FALSE, message = FALSE}
+
+library(datasets)
+library(tidyverse)
+
+```
+
+Let's choose the `diamonds` dataset, and take a look. 
+
+```{r, warning = FALSE, message= FALSE}
+
+head(diamonds)
+
+```
+
+```{block, type = "translate"}
+
+We want to take the `diamonds` dataset and then (` %>% `) send it to `ggplot`.
+
+In `ggplot` we will use the **aesthetics** argument (`aes`) to tell it what to put on the `x` axis and the `y` axis.
+
+
+```
+
+
+```{r, message = FALSE, warning = FALSE, eval = FALSE}
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price))
+
+
+```
+
+What do you think this code will do? 
+
+** Try this code first!**
 
 
 
+This code ends up giving us a blank chart. This seems strange until you figure out that ggplot works by **layering** elements of a chart on top of one another:
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with no geom layers"}
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price))
+
+
+```
+
+We need to tell R to add a `geom` layer, and we do that by adding a `+` symbol. In this case, we want to add a `geom_point` layer, so:
+
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat" }
+
+diamonds %>% 
+  ggplot(aes(x = carat, y = price)) + 
+  geom_point()
+
+
+```
+
+
+## Exercise {#ex_ggplot}
+
+Create a bar chart of the `mpg` cars dataset
+
+
+Create a histogram of blah
 
 
 ## Videos {#gg_vids}
 If you'd rather watch a video about this - [you can here!](https://media.ed.ac.uk/media/R+ConversationsA+Demystifying+ggplot/0_sct50ue1)
+
+
+## Useful resources {#gg_resources}
+
+There are some very useful resources out there about ggplot2 including:
+
+  * [Cookbook for R](http://www.cookbook-r.com/Graphs/), Winston Chang's (free) online book about using ggplot
+  
+  * [ggplot cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf), a pdf with lots of neat visualisations and cheats.
+  

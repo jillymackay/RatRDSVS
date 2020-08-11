@@ -179,13 +179,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.3" data-path="charts.html"><a href="charts.html#vis_bar"><i class="fa fa-check"></i><b>4.1.3</b> Bar charts</a></li>
 <li class="chapter" data-level="4.1.4" data-path="charts.html"><a href="charts.html#vis_hist"><i class="fa fa-check"></i><b>4.1.4</b> Histograms</a></li>
 <li class="chapter" data-level="4.1.5" data-path="charts.html"><a href="charts.html#vis_scatter"><i class="fa fa-check"></i><b>4.1.5</b> Scatterplots</a></li>
-<li class="chapter" data-level="4.1.6" data-path="charts.html"><a href="charts.html#vis_box"><i class="fa fa-check"></i><b>4.1.6</b> Boxpots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="charts.html"><a href="charts.html#vis_box"><i class="fa fa-check"></i><b>4.1.6</b> Boxplots</a></li>
 <li class="chapter" data-level="4.1.7" data-path="charts.html"><a href="charts.html#vis_infographic"><i class="fa fa-check"></i><b>4.1.7</b> Infographics</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
 <li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
-<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.2</b> Videos</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object</a></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.3</b> Exercise</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.4</b> Videos</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.5</b> Useful resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>
@@ -255,14 +258,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="the-data" class="section level2">
 <h2><span class="header-section-number">7.4</span> The Data</h2>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">data &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">group1 =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>),</a>
-<a class="sourceLine" id="cb50-2" title="2">                <span class="dt">group2 =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Z&quot;</span>, <span class="st">&quot;Z&quot;</span>),</a>
-<a class="sourceLine" id="cb50-3" title="3">                <span class="dt">q =</span> <span class="kw">c</span> (<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>,<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>),</a>
-<a class="sourceLine" id="cb50-4" title="4">                <span class="dt">disagree =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.3</span>),</a>
-<a class="sourceLine" id="cb50-5" title="5">                <span class="dt">neutral =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>),</a>
-<a class="sourceLine" id="cb50-6" title="6">                <span class="dt">agree =</span> <span class="kw">c</span>(<span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>),</a>
-<a class="sourceLine" id="cb50-7" title="7">                <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">121</span>, <span class="dv">121</span>, <span class="dv">140</span>, <span class="dv">140</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">57</span>,<span class="dv">57</span>)) </a>
-<a class="sourceLine" id="cb50-8" title="8">data</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">data &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">group1 =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>),</a>
+<a class="sourceLine" id="cb54-2" title="2">                <span class="dt">group2 =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Z&quot;</span>, <span class="st">&quot;Z&quot;</span>),</a>
+<a class="sourceLine" id="cb54-3" title="3">                <span class="dt">q =</span> <span class="kw">c</span> (<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>,<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>),</a>
+<a class="sourceLine" id="cb54-4" title="4">                <span class="dt">disagree =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.3</span>),</a>
+<a class="sourceLine" id="cb54-5" title="5">                <span class="dt">neutral =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>),</a>
+<a class="sourceLine" id="cb54-6" title="6">                <span class="dt">agree =</span> <span class="kw">c</span>(<span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>),</a>
+<a class="sourceLine" id="cb54-7" title="7">                <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">121</span>, <span class="dv">121</span>, <span class="dv">140</span>, <span class="dv">140</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">57</span>,<span class="dv">57</span>)) </a>
+<a class="sourceLine" id="cb54-8" title="8">data</a></code></pre></div>
 <pre><code>## Warning: `...` is not empty.
 ## 
 ## We detected these problematic arguments:
@@ -287,13 +290,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.4.1</span> Gather</h3>
 <p>The <code>gather</code> command from <code>tidyverse</code> is a quick way to smush this data into a tall format. The <code>gather</code> command creates two new columns, the <code>key</code> column which collects your old column names and your <code>value</code> column which collects the row values (fairly self-explanatory).</p>
 <p>The trick with <code>gather</code> is that it will smush everything it can into those two columns, so you need to tell it which columns <em>not</em> to include. This is the step that eluded me for a whole afternoon once, so I’m stating it very obviously here.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">talldata &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">gather</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents,</a>
-<a class="sourceLine" id="cb53-3" title="3">          <span class="op">-</span>group1,</a>
-<a class="sourceLine" id="cb53-4" title="4">          <span class="op">-</span>group2,</a>
-<a class="sourceLine" id="cb53-5" title="5">          <span class="op">-</span>q,</a>
-<a class="sourceLine" id="cb53-6" title="6">          <span class="op">-</span>n)</a>
-<a class="sourceLine" id="cb53-7" title="7">talldata</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1">talldata &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb57-2" title="2"><span class="st">  </span><span class="kw">gather</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents,</a>
+<a class="sourceLine" id="cb57-3" title="3">          <span class="op">-</span>group1,</a>
+<a class="sourceLine" id="cb57-4" title="4">          <span class="op">-</span>group2,</a>
+<a class="sourceLine" id="cb57-5" title="5">          <span class="op">-</span>q,</a>
+<a class="sourceLine" id="cb57-6" title="6">          <span class="op">-</span>n)</a>
+<a class="sourceLine" id="cb57-7" title="7">talldata</a></code></pre></div>
 <pre><code>## Warning: `...` is not empty.
 ## 
 ## We detected these problematic arguments:
@@ -326,9 +329,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.5</span> Spread</h2>
 <p>What if, after all that, you realise that you never wanted your data gathered at all? <code>spread</code> is here to rescue you.</p>
 <p>Just as before, <code>spread</code> wants to know the <code>key</code> and the <code>value</code>, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don’t exclude any columns (in fact, try excluding the columns and see what spread says. )</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">widedata &lt;-<span class="st"> </span>talldata <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb56-2" title="2"><span class="st">  </span><span class="kw">spread</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents)</a>
-<a class="sourceLine" id="cb56-3" title="3">widedata</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">widedata &lt;-<span class="st"> </span>talldata <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb60-2" title="2"><span class="st">  </span><span class="kw">spread</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents)</a>
+<a class="sourceLine" id="cb60-3" title="3">widedata</a></code></pre></div>
 <pre><code>## Warning: `...` is not empty.
 ## 
 ## We detected these problematic arguments:
