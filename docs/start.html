@@ -133,7 +133,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4.1" data-path="start.html"><a href="start.html#ex_packages"><i class="fa fa-check"></i><b>2.4.1</b> Exercise - Install and Load a Package</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="start.html"><a href="start.html#scripts_rmd"><i class="fa fa-check"></i><b>2.5</b> R Markdown vs R Scripts</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="start.html"><a href="start.html#video_rmd"><i class="fa fa-check"></i><b>2.5.1</b> A video on R Markdown</a></li>
+<li class="chapter" data-level="2.5.1" data-path="start.html"><a href="start.html#r-scripts"><i class="fa fa-check"></i><b>2.5.1</b> R Scripts</a></li>
+<li class="chapter" data-level="2.5.2" data-path="start.html"><a href="start.html#r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> R Markdown</a></li>
+<li class="chapter" data-level="2.5.3" data-path="start.html"><a href="start.html#video_rmd"><i class="fa fa-check"></i><b>2.5.3</b> A video on R Markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="start.html"><a href="start.html#video_env"><i class="fa fa-check"></i><b>2.6</b> Video Introductions</a></li>
 </ul></li>
@@ -210,6 +212,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>13.1</b> Creating Data Answers</a><ul>
 <li class="chapter" data-level="13.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>13.1.1</b> Changing mpg data</a></li>
 </ul></li>
+<li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ggplot-answers-gg_answers"><i class="fa fa-check"></i><b>13.2</b> ggplot answers {##gg_answers}</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.2.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
+<li class="chapter" data-level="13.2.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.2.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>14</b> Acknowledgements</a></li>
 </ul>
@@ -266,7 +272,7 @@ You should copy and paste other peoples' code.
 </div>
 <p>Yes, I'm serious. You should copy and paste and edit code you find online<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. In this book you should always be copying bits of code and pasting it into your console. That is why I publish the code alongside it.</p>
 <p>It took me about ten years of working in R to get over my fear of copying and pasting other peoples' code. Now I even have a <a href="https://github.com/jillymackay/commoncode">repository</a> of all the code I use over and over so I can copy and paste my own code.</p>
-<p>Most people will not remember code off the top of their head. This is why we use the help function (remember <code>?summary</code>) to look at the documentation, and resources like Stack Exchange and Google to help us (more in <a href="trouble.html#trouble">troubleshooting</a>).</p>
+<p>Most people will not remember code off the top of their head. This is why we use the help function (try typing <code>?summary</code> to see what it says) to look at the documentation, and resources like Stack Exchange and Google to help us (more in <a href="trouble.html#trouble">troubleshooting</a>).</p>
 <div id="ex_tidytuesday" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Exercise</h3>
 <p>You might be very skeptical here about how much I want you to be copying code. If you're not convinced, I suggest you go watch my RStats Crush the amazing <a href="https://twitter.com/drob">David Robinson</a> do one of his Tidy Tuesday screencasts. David Robinson has forgotten more R than I'll ever learn, and see - he still <a href="https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ">copies and pastes code</a>.</p>
@@ -390,12 +396,49 @@ The <code>function</code> should <code>print</code> the result of pasting a stri
 ## 10 Obi-Wan Kenobi        182    77 auburn, white fair        blue-gray       57   male   Stewjon   Human   &lt;chr [6]&gt; &lt;chr [1]&gt; &lt;chr [5]&gt;
 ## # ... with 77 more rows</code></pre>
 <p>Now we have a new dataset (<code>starwars</code>) and a new thing we can do (<code>slice</code> the top of the data). We will talk much more about <code>tidyverse</code> in the <a href="data.html#data">data chapter</a>.</p>
+<div class="hey">
+<p>
+You will often get warnings in R when you type these code blocks. To keep the book tidy, I have suppressed (hidden) the warnings in this book. Don't worry about them - they're usually just trying to keep packages compatibile with older versions of R
+</p>
+</div>
 </div>
 </div>
 <div id="scripts_rmd" class="section level2">
 <h2><span class="header-section-number">2.5</span> R Markdown vs R Scripts</h2>
+<p>In R Studio you can use R Script files and R Markdown files to save your work. Both of these files can be created, edited, saved, and opened in your R Project file. You can send R Script and R Markdown files to other people, so they can edit and share your code too.</p>
+<p>If you are reading this book as part of coursework I've set you, you will likely have an assignment where you neeed to download and edit an R Markdown file, then send it back to me.</p>
+<div id="r-scripts" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> R Scripts</h3>
+<p>R script files are great for testing out small chunks of code on their own.</p>
+<p>Go to <code>File &gt; New File &gt; R Script</code> or press <code>Ctrl + Shift + N</code> to open one.</p>
+<p>Everything you type in an R script file is executable code.</p>
+<p>Unlike working in the <strong>console</strong>, you can type multiple lines of code in an R script, and run each one by hitting <code>ctrl + enter</code>.</p>
+<p>You <strong>can't type</strong> plain text in an R Script file. Text has to be annotated by the comment symbol (<code>#</code>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># In an R script file - you can write comments</span>
+<span class="co"># Which always begin with a hashtag</span>
+
+<span class="co"># Comments can be useful to say things like what date you wrote the script on,</span>
+<span class="co"># or what you were trying to do. </span>
+
+<span class="kw">print</span>(<span class="st">&quot;You can also use script files to write multiple lines of code&quot;</span>)
+
+<span class="kw">print</span>(<span class="st">&quot;and edit those lines of code&quot;</span>)
+
+
+<span class="co"># before you run them by pressing ctrl + enter at the same time  when your cursor is on that line. </span></code></pre></div>
+</div>
+<div id="r-markdown" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> R Markdown</h3>
+<p>R Markdown allows you to combine code with actual text. This book was written in R Markdown</p>
+<p>In R Markdown you can have a text chunk like this one.</p>
+<p>And follow that with code, bracketed with three ticks like this: ```{r}</p>
+<p>print(&quot;followed by code like this&quot;)</p>
+<p>```</p>
+<pre><code>## [1] &quot;followed by code like this&quot;</code></pre>
+<p><a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">There is a great R Markdown cheatsheet from R Studio here</a>. I had this printed out and hung above my desk for years.</p>
+</div>
 <div id="video_rmd" class="section level3">
-<h3><span class="header-section-number">2.5.1</span> A video on R Markdown</h3>
+<h3><span class="header-section-number">2.5.3</span> A video on R Markdown</h3>
 <p>If you would like to watch me using R Markdown, you're in luck! Theres <a href="https://media.ed.ac.uk/media/R+ConversationsA+Intro+to+R+Markdown/1_td0q33v8/112983051">a video here</a>.</p>
 </div>
 </div>

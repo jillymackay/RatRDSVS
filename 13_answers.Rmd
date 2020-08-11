@@ -43,3 +43,52 @@ mpg2 <- mpg %>%
 
 
 `mutate_at` becomes a very useful way of shortening your code, but can also be a little bit more difficult to remember. I very often have to look it up. But that's fine - looking up code is good :)
+
+
+## ggplot answers {##gg_answers}
+
+### Boxplot of highway miles per gallon versus class (mpg dataset) 
+
+Here is one possible solution:
+
+
+```{r, message = FALSE, warning = FALSE}
+
+
+mpg %>% 
+  ggplot(aes(x = class, y = hwy)) +
+  geom_boxplot()
+
+```
+
+A prettier solution might be:
+
+
+
+```{r, message = FALSE, warning = FALSE}
+
+
+mpg %>% 
+  ggplot(aes(x = reorder(class, -hwy), y = hwy)) +
+  geom_boxplot() +
+  labs (x = "Car class",
+        y = "Highway miles per gallon") +
+  theme_classic()
+
+```
+
+
+
+### Histogram of city miles per gallon faceted by transmission type (mpg dataset)
+
+A possible solution:
+
+```{r, message = FALSE, warning = FALSE}
+
+
+mpg %>% 
+  ggplot(aes(x = cty)) +
+  geom_histogram() +
+  facet_wrap(facets = ~ trans)
+
+```

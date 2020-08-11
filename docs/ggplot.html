@@ -133,7 +133,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4.1" data-path="start.html"><a href="start.html#ex_packages"><i class="fa fa-check"></i><b>2.4.1</b> Exercise - Install and Load a Package</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="start.html"><a href="start.html#scripts_rmd"><i class="fa fa-check"></i><b>2.5</b> R Markdown vs R Scripts</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="start.html"><a href="start.html#video_rmd"><i class="fa fa-check"></i><b>2.5.1</b> A video on R Markdown</a></li>
+<li class="chapter" data-level="2.5.1" data-path="start.html"><a href="start.html#r-scripts"><i class="fa fa-check"></i><b>2.5.1</b> R Scripts</a></li>
+<li class="chapter" data-level="2.5.2" data-path="start.html"><a href="start.html#r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> R Markdown</a></li>
+<li class="chapter" data-level="2.5.3" data-path="start.html"><a href="start.html#video_rmd"><i class="fa fa-check"></i><b>2.5.3</b> A video on R Markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="start.html"><a href="start.html#video_env"><i class="fa fa-check"></i><b>2.6</b> Video Introductions</a></li>
 </ul></li>
@@ -209,6 +211,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>13</b> Answers</a><ul>
 <li class="chapter" data-level="13.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>13.1</b> Creating Data Answers</a><ul>
 <li class="chapter" data-level="13.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>13.1.1</b> Changing mpg data</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ggplot-answers-gg_answers"><i class="fa fa-check"></i><b>13.2</b> ggplot answers {##gg_answers}</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.2.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
+<li class="chapter" data-level="13.2.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.2.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>14</b> Acknowledgements</a></li>
@@ -289,8 +295,8 @@ In <code>ggplot</code> we will use the <strong>aesthetics</strong> argument (<co
 <p>This code ends up giving us a blank chart. This seems strange until you figure out that ggplot works by <strong>layering</strong> elements of a chart on top of one another:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-91"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-91-1.png" alt="A ggplot object with no geom layers" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-72"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-72-1.png" alt="A ggplot object with no geom layers" width="672" />
 <p class="caption">
 Figure: 5.1: A ggplot object with no geom layers
 </p>
@@ -299,8 +305,8 @@ Figure: 5.1: A ggplot object with no geom layers
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-92"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-92-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-73"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-73-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat" width="672" />
 <p class="caption">
 Figure: 5.2: A ggplot object with a geom_point layer, the price of diamonds by their carat
 </p>
@@ -315,8 +321,8 @@ Figure: 5.2: A ggplot object with a geom_point layer, the price of diamonds by t
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-93"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-93-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-74"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-74-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
 <p class="caption">
 Figure: 5.3: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
 </p>
@@ -349,8 +355,8 @@ The sequence starts at <code>0</code>, goes to <code>5</code>, and the spaces be
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-95"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-95-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-76"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-76-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
 <p class="caption">
 Figure: 5.4: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
 </p>
@@ -386,8 +392,8 @@ Start at <code>0</code> and end at <code>6</code>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">6</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-97"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-97-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-78"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-78-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
 <p class="caption">
 Figure: 5.5: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
 </p>
@@ -398,8 +404,8 @@ Figure: 5.5: A ggplot object with a geom_point layer, the price of diamonds by t
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">2500</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-98"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-98-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-79"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-79-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed" width="672" />
 <p class="caption">
 Figure: 5.6: A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed
 </p>
@@ -408,8 +414,8 @@ Figure: 5.6: A ggplot object with a geom_point layer, the price of diamonds by t
 <div id="gg_theme" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Changing themes</h3>
 <p>Themes are a very cool way to quickly change the look of and customise your charts. Just like everything else in ggplot, we just want to add another layer of code.</p>
-<div class="figure"><span id="fig:unnamed-chunk-99"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-99-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, black &amp; white theme" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-80"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-80-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, black &amp; white theme" width="672" />
 <p class="caption">
 Figure: 5.7: A ggplot object with a geom_point layer, the price of diamonds by their carat, black &amp; white theme
 </p>
@@ -425,8 +431,8 @@ Figure: 5.7: A ggplot object with a geom_point layer, the price of diamonds by t
 </ul>
 <p>Which one do you prefer?</p>
 <p>Personally, I like this option:</p>
-<div class="figure"><span id="fig:unnamed-chunk-100"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-100-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-81"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-81-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme" width="672" />
 <p class="caption">
 Figure: 5.8: A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme
 </p>
@@ -447,22 +453,22 @@ And remember that R Studio will autocomplete things you type - what happens if y
 </p>
 </div>
 <p>We can adjust labels with the following extra line of code.</p>
-<div class="figure"><span id="fig:unnamed-chunk-102"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-102-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-83"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-83-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
 <p class="caption">
 Figure: 5.9: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
 </p>
 </div>
 <p>Unsurprisingly, if we want to change the y axis label, we just need to add another argument inside the <code>labs()</code>.</p>
-<div class="figure"><span id="fig:unnamed-chunk-103"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-103-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-84"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-84-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
 <p class="caption">
 Figure: 5.10: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
 </p>
 </div>
 <p>You can even add in titles and subtitles.</p>
-<div class="figure"><span id="fig:unnamed-chunk-104"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-104-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-85"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-85-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
 <p class="caption">
 Figure: 5.11: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
 </p>
@@ -493,8 +499,8 @@ We don't want to see any standard error bars around the line (<code>se = FALSE</
 </li>
 </ul>
 </div>
-<div class="figure"><span id="fig:unnamed-chunk-106"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-106-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-87"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-87-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added" width="672" />
 <p class="caption">
 Figure: 5.12: A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added
 </p>
@@ -505,8 +511,8 @@ Figure: 5.12: A ggplot object with a geom_point layer, the price of diamonds by 
 <p>Looking at our plot, it seems clear that the diamonds seem to stagger a bit, with lots of diamonds at 1, 1.5, 2, 3, and 3.5 carats, and fewer diamonds in the middle of a carat range. There may be something else in the data that helps to explain this . . .</p>
 <p>In ggplot, we can easily add a grouping variable to a scatterplot.</p>
 <p>All we need to do, is give it a new aesthetic (<code>aes</code>) argument: <code>colour = cut</code>.</p>
-<div class="figure"><span id="fig:unnamed-chunk-107"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-107-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-88"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-88-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
 <p class="caption">
 Figure: 5.13: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
 </p>
@@ -516,15 +522,15 @@ Figure: 5.13: A ggplot object with a geom_point layer, the price of diamonds by 
 <div id="gg_legend" class="section level3">
 <h3><span class="header-section-number">5.2.6</span> Changing legends</h3>
 <p>Using the <code>theme()</code> argument (which is subtly different from the <code>theme_classic()</code> command), we can adjust the legend.</p>
-<div class="figure"><span id="fig:unnamed-chunk-108"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-108-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-89"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-89-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
 <p class="caption">
 Figure: 5.14: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
 </p>
 </div>
 <p>But lets say we also want to change the text from 'cut' to 'Cut of Diamond'. Well, you can think of this as another axis we can change. Instead of a <code>scale_x_</code> we can change the <code>scale_colour_</code>. And this isn't a continuous scale but a discrete (categorical) one, so we change it with <code>scale_colour_discrete</code>.</p>
-<div class="figure"><span id="fig:unnamed-chunk-109"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-109-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-90"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-90-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
 <p class="caption">
 Figure: 5.15: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
 </p>
@@ -535,15 +541,15 @@ Figure: 5.15: A ggplot object with a geom_point layer, the price of diamonds by 
 <h2><span class="header-section-number">5.3</span> Building a boxplot</h2>
 <p>At this stage, I'm wondering how useful our scatterplot is. Perhaps it would be easier to visualise this with a boxplot. We just need to build a new object.</p>
 <p>Lets look to see if there's a relationship between how big the diamond is (carat) and its clarity (how clear it is).</p>
-<div class="figure"><span id="fig:unnamed-chunk-110"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-110-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-91"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-91-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
 <p class="caption">
 Figure: 5.16: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
 </p>
 </div>
 <p>And with just a few lines of code, we can create a very different looking chart:</p>
-<div class="figure"><span id="fig:unnamed-chunk-111"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-111-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-92"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-92-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
 <p class="caption">
 Figure: 5.17: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
 </p>
@@ -552,8 +558,8 @@ Figure: 5.17: A ggplot object with a geom_boxplot, the carat of diamonds by thei
 <div id="gg_facets" class="section level2">
 <h2><span class="header-section-number">5.4</span> Facets</h2>
 <p>Another very useful command is 'facet', which splits one chart into many based on a particular variable.</p>
-<div class="figure"><span id="fig:unnamed-chunk-112"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-112-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-93"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-93-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
 <p class="caption">
 Figure: 5.18: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
 </p>
@@ -561,11 +567,24 @@ Figure: 5.18: A ggplot object with a geom_boxplot, the carat of diamonds by thei
 </div>
 <div id="gg_bars" class="section level2">
 <h2><span class="header-section-number">5.5</span> Bar charts</h2>
+<p>To create a bar chart, we simply need the <code>geom_bar</code> argument.</p>
+<div class="figure"><span id="fig:unnamed-chunk-94"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-94-1.png" alt="A ggplot object with a geom_bar, the carat of diamonds by their clarity" width="672" />
+<p class="caption">
+Figure: 5.19: A ggplot object with a geom_bar, the carat of diamonds by their clarity
+</p>
+</div>
+<p>There are a few notes here.</p>
+<ul>
+<li><p>Within <code>geom_bar</code> we have set the argument <code>geom_bar(stat = &quot;summary&quot;)</code>. This tells R to calculate the mean carat for each group (Clarity within cut)</p></li>
+<li><p><code>geom_bar</code> wants <code>fill = clarity</code> instead of <code>colour = clarity</code>, as it treats <code>colour</code> as the line around the bar.</p></li>
+</ul>
 </div>
 <div id="ex_ggplot" class="section level2">
 <h2><span class="header-section-number">5.6</span> Exercise</h2>
-<p>Create a bar chart of the <code>mpg</code> cars dataset</p>
-<p>Create a histogram of blah</p>
+<p>Please feel free to google and explore these questions - as well as putting your own customisation touches.</p>
+<p>Create a boxplot of the <code>mpg</code> cars dataset, plotting highway miles (<code>hwy</code>) against the car type (<code>class</code>) <a href="#gg_answers">Answer here</a></p>
+<p>Create a histogram of the number of miles per gallon in the city (<code>cty</code>) faceted by type of transmission (<code>trans</code>) <a href="#gg_answers">Answer here</a></p>
 </div>
 <div id="gg_vids" class="section level2">
 <h2><span class="header-section-number">5.7</span> Videos</h2>

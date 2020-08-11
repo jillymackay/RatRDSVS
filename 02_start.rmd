@@ -35,7 +35,7 @@ Yes, I'm serious. You should copy and paste and edit code you find online^[If yo
 
 It took me about ten years of working in R to get over my fear of copying and pasting other peoples' code. Now I even have a [repository](https://github.com/jillymackay/commoncode) of all the code I use over and over so I can copy and paste my own code.
 
-Most people will not remember code off the top of their head. This is why we use the help function (remember `?summary`) to look at the documentation, and resources like Stack Exchange and Google to help us (more in [troubleshooting](#trouble)).
+Most people will not remember code off the top of their head. This is why we use the help function (try typing `?summary` to see what it says) to look at the documentation, and resources like Stack Exchange and Google to help us (more in [troubleshooting](#trouble)).
 
 
 ### Exercise {#ex_tidytuesday}
@@ -241,7 +241,7 @@ slice(starwars)
 
 Which should give you this:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning=FALSE, message = FALSE}
 
 dplyr::slice(starwars)
 
@@ -250,7 +250,61 @@ dplyr::slice(starwars)
 Now we have a new dataset (`starwars`) and a new thing we can do (`slice` the top of the data). We will talk much more about `tidyverse` in the [data chapter](#data).
 
 
+```{block, type = "hey"}
+
+You will often get warnings in R when you type these code blocks. To keep the book tidy, I have suppressed (hidden) the warnings in this book. Don't worry about them - they're usually just trying to keep packages compatibile with older versions of R  
+
+
+```
+
 ## R Markdown vs R Scripts {#scripts_rmd}
+
+In R Studio you can use R Script files and R Markdown files to save your work. 
+
+### R Scripts
+R script files are great for testing out small chunks of code on their own. 
+
+Go to `File > New File > R Script` or press `Ctrl + Shift + N` to open one. 
+
+Everything you type in an R script file is executable code. 
+
+Unlike working in the **console**, you can type multiple lines of code in an R script, and run each one by hitting `ctrl + enter`.
+
+You **can't type** plain text in an R Script file. Text has to be annotated by the comment symbol (`#`)
+
+
+```{r, eval = FALSE, warning = FALSE, message = FALSE}
+
+# In an R script file - you can write comments
+# Which always begin with a hashtag
+
+# Comments can be useful to say things like what date you wrote the script on,
+# or what you were trying to do. 
+
+print("You can also use script files to write multiple lines of code")
+
+print("and edit those lines of code")
+
+
+# before you run them by pressing ctrl + enter at the same time  when your cursor is on that line. 
+
+
+```
+
+
+
+
+### R Markdown
+R Markdown allows you to combine code with actual text. This book was written in R Markdown
+
+
+In R Markdown you can have a text chunk like this:
+/```{r} 
+print("followed by code like this")
+```
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+print("followed by code like this")
+```
 
 ### A video on R Markdown {#video_rmd}
 If you would like to watch me using R Markdown, you're in luck! Theres [a video here](https://media.ed.ac.uk/media/R+ConversationsA+Intro+to+R+Markdown/1_td0q33v8/112983051).

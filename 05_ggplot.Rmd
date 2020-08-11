@@ -456,16 +456,44 @@ diamonds %>%
 
 
 ## Bar charts {#gg_bars}
+To create a bar chart, we simply need the `geom_bar` argument. 
 
 
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_bar, the carat of diamonds by their clarity" }
 
+diamonds %>% 
+  ggplot(aes(x = clarity, y = carat, fill = clarity)) + 
+  geom_bar(stat = "summary") +
+  labs(title = "Claritym cut and carat of >50,000 diamonds",
+       subtitle = "Data from ggplot2",
+       x = "Clarity (clearness) of diamond",
+       y = "Carat (weight) of diamond") + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  facet_wrap(facets = ~cut)
+
+```
+
+
+There are a few notes here. 
+
+  * Within `geom_bar` we have set the argument `geom_bar(stat = "summary")`. This tells R to calculate the mean carat for each group (Clarity within cut)
+  
+  * `geom_bar` wants `fill = clarity` instead of `colour = clarity`, as it treats `colour` as the line around the bar. 
+  
+  
 
 ## Exercise {#ex_ggplot}
 
-Create a bar chart of the `mpg` cars dataset
+Please feel free to google and explore these questions - as well as putting your own customisation touches. 
+
+Create a boxplot of the `mpg` cars dataset, plotting highway miles (`hwy`) against the car type (`class`)
+[Answer here](#gg_answers)
 
 
-Create a histogram of blah
+Create a histogram of the number of miles per gallon in the city (`cty`) faceted by type of transmission (`trans`)
+[Answer here](#gg_answers)
+
 
 
 ## Videos {#gg_vids}
