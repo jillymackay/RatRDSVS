@@ -182,7 +182,7 @@ diamonds %>%
 
 Themes are a very cool way to quickly change the look of and customise your charts. Just like everything else in ggplot, we just want to add another layer of code. 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, black & white theme" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, black & white theme" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price)) + 
@@ -214,7 +214,7 @@ Which one do you prefer?
 
 Personally, I like this option:
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price)) + 
@@ -241,7 +241,7 @@ And remember that R Studio will autocomplete things you type - what happens if y
 
 We can adjust labels with the following extra line of code. 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
+```{r, message = FALSE, warning = FALSE,  fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price)) + 
@@ -257,7 +257,7 @@ Unsurprisingly, if we want to change the y axis label, we just need to add anoth
 
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price)) + 
@@ -273,7 +273,7 @@ diamonds %>%
 You can even add in titles and subtitles. 
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
+```{r, message = FALSE, warning = FALSE,  fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price)) + 
@@ -310,7 +310,7 @@ We have a number of options here:
 
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price)) + 
@@ -338,7 +338,7 @@ All we need to do, is give it a new aesthetic (`aes`) argument: `colour = cut`.
 
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price, colour = cut)) + 
@@ -362,7 +362,7 @@ This has done quite a lot to our chart - its given us several new lines for each
 Using the `theme()` argument (which is subtly different from the `theme_classic()` command), we can adjust the legend.
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price, colour = cut)) + 
@@ -382,7 +382,7 @@ diamonds %>%
 But lets say we also want to change the text from 'cut' to 'Cut of Diamond'. Well, you can think of this as another axis we can change. Instead of a `scale_x_` we can change the `scale_colour_`. And this isn't a continuous scale but a discrete (categorical) one, so we change it with `scale_colour_discrete`. 
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" }
 
 diamonds %>% 
   ggplot(aes(x = carat, y = price, colour = cut)) + 
@@ -409,7 +409,7 @@ Lets look to see if there's a relationship between how big the diamond is (carat
 
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
+```{r, message = FALSE, warning = FALSE,  fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
 
 diamonds %>% 
   ggplot(aes(x = clarity, y = carat)) + 
@@ -421,7 +421,7 @@ diamonds %>%
 And with just a few lines of code, we can create a very different looking chart:
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
 
 diamonds %>% 
   ggplot(aes(x = clarity, y = carat, colour = clarity)) + 
@@ -439,7 +439,7 @@ diamonds %>%
 Another very useful command is 'facet', which splits one chart into many based on a particular variable. 
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" }
 
 diamonds %>% 
   ggplot(aes(x = clarity, y = carat, colour = clarity)) + 
@@ -456,10 +456,10 @@ diamonds %>%
 
 
 ## Bar charts {#gg_bars}
-To create a bar chart, we simply need the `geom_bar` argument. 
+To create a bar chart, we simply need to change the `geom_boxplot()` to a `geom_bar` argument with a `stat="summary"` specification.  
 
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap="A ggplot object with a geom_bar, the carat of diamonds by their clarity" }
+```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_bar, the carat of diamonds by their clarity" }
 
 diamonds %>% 
   ggplot(aes(x = clarity, y = carat, fill = clarity)) + 

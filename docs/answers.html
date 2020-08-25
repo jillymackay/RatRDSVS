@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 13 Answers | R @ R(D)SVS</title>
-  <meta name="description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 13 Answers | R @ R(D)SVS" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta property="og:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 13 Answers | R @ R(D)SVS" />
   
-  <meta name="twitter:description" content="This book will help you get started in R. It's designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="twitter:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
 
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-08-11" />
+<meta name="date" content="2020-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,41 +53,65 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="css\styles.css" type="text/css" />
@@ -149,6 +173,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.7" data-path="data.html"><a href="data.html#ex_data_load"><i class="fa fa-check"></i><b>3.7</b> Loading data</a><ul>
 <li class="chapter" data-level="3.7.1" data-path="data.html"><a href="data.html#loading-from-a-csv"><i class="fa fa-check"></i><b>3.7.1</b> Loading from a CSV</a></li>
 </ul></li>
+<li class="chapter" data-level="3.8" data-path="data.html"><a href="data.html#ex_loadcsv"><i class="fa fa-check"></i><b>3.8</b> Exercise</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="data.html"><a href="data.html#loading-from-an-excel-file"><i class="fa fa-check"></i><b>3.8.1</b> Loading from an Excel file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="data.html"><a href="data.html#ex_loadexcel"><i class="fa fa-check"></i><b>3.9</b> Exercise</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>4</b> Charts</a><ul>
 <li class="chapter" data-level="4.1" data-path="charts.html"><a href="charts.html#datavis"><i class="fa fa-check"></i><b>4.1</b> Data Vis</a><ul>
@@ -180,6 +208,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>
+<li class="chapter" data-level="6.2" data-path="dataprocessing.html"><a href="dataprocessing.html#editrmd"><i class="fa fa-check"></i><b>6.2</b> Editing R Markdown Docs</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>7</b> The Tidyverse</a><ul>
 <li class="chapter" data-level="7.1" data-path="tidyverse.html"><a href="tidyverse.html#tidy_opinions"><i class="fa fa-check"></i><b>7.1</b> Opinionated Packages</a></li>
@@ -212,9 +241,11 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>13.1</b> Creating Data Answers</a><ul>
 <li class="chapter" data-level="13.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>13.1.1</b> Changing mpg data</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ggplot-answers-gg_answers"><i class="fa fa-check"></i><b>13.2</b> ggplot answers {##gg_answers}</a><ul>
-<li class="chapter" data-level="13.2.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.2.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.2.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.2.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
+<li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
+<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#gg_answers"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>14</b> Acknowledgements</a></li>
@@ -243,50 +274,68 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <div id="changing-mpg-data" class="section level3">
 <h3><span class="header-section-number">13.1.1</span> Changing mpg data</h3>
 <p>Changing one variable is pretty easy to do in <code>tidyverse</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manufacturer =</span> <span class="kw">as.factor</span>(manufacturer))</code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manufacturer =</span> <span class="kw">as.factor</span>(manufacturer))</a></code></pre></div>
 <p>But what if we want to change all the character variables?</p>
 <p>We can still use <code>mutate</code> like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manufacturer =</span> <span class="kw">as.factor</span>(manufacturer),
-         <span class="dt">model =</span> <span class="kw">as.factor</span>(model),
-         <span class="dt">trans =</span> <span class="kw">as.factor</span>(trans),
-         <span class="dt">drv =</span> <span class="kw">as.factor</span>(drv),
-         <span class="dt">fl =</span> <span class="kw">as.factor</span>(fl),
-         <span class="dt">class =</span> <span class="kw">as.factor</span>(class))</code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manufacturer =</span> <span class="kw">as.factor</span>(manufacturer),</a>
+<a class="sourceLine" id="cb86-3" title="3">         <span class="dt">model =</span> <span class="kw">as.factor</span>(model),</a>
+<a class="sourceLine" id="cb86-4" title="4">         <span class="dt">trans =</span> <span class="kw">as.factor</span>(trans),</a>
+<a class="sourceLine" id="cb86-5" title="5">         <span class="dt">drv =</span> <span class="kw">as.factor</span>(drv),</a>
+<a class="sourceLine" id="cb86-6" title="6">         <span class="dt">fl =</span> <span class="kw">as.factor</span>(fl),</a>
+<a class="sourceLine" id="cb86-7" title="7">         <span class="dt">class =</span> <span class="kw">as.factor</span>(class))</a></code></pre></div>
 <p>Or we can use a slightly different command to apply the <code>as.factor</code> function across selected variables, predictably called <code>mutate_at()</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(<span class="kw">c</span>(manufacturer, model, trans, drv, fl, class)),
-            <span class="dt">.funs =</span> as.factor)</code></pre></div>
-<p><code>mutate_at</code> becomes a very useful way of shortening your code, but can also be a little bit more difficult to remember. I very often have to look it up. But that's fine - looking up code is good :)</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb87-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(<span class="kw">c</span>(manufacturer, model, trans, drv, fl, class)),</a>
+<a class="sourceLine" id="cb87-3" title="3">            <span class="dt">.funs =</span> as.factor)</a></code></pre></div>
+<p><code>mutate_at</code> becomes a very useful way of shortening your code, but can also be a little bit more difficult to remember. I very often have to look it up. But that’s fine - looking up code is good :)</p>
 </div>
 </div>
-<div id="ggplot-answers-gg_answers" class="section level2">
-<h2><span class="header-section-number">13.2</span> ggplot answers {##gg_answers}</h2>
+<div id="ans_loadcsv" class="section level2">
+<h2><span class="header-section-number">13.2</span> Loading csv data answers</h2>
+<p>Here’s the answer to <a href="data.html#ex_loadcsv">how to change the name of a dataset from a csv file</a></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/data/ch2_planets.csv&quot;</span>)</a></code></pre></div>
+<p>Here is a chunk of text to hide the next answer from you in case you’re doing these answers sequentially.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-109"></span>
+<img src="images/03_data/excel_open.gif" alt="Using the Import Dataset wizard to load a xlsx file"  />
+<p class="caption">
+Figure: 13.1: Using the Import Dataset wizard to load a xlsx file
+</p>
+</div>
+</div>
+<div id="ans_loadexcel" class="section level2">
+<h2><span class="header-section-number">13.3</span> Loading excel data answers</h2>
+<p>In this section I asked you to <a href="data.html#ex_loadexcel">load data from a different folder and have a short cut to stop us having to load <code>readxl</code> each time</a></p>
+<p>If the below code doesn’t make sense to you - reach out to me!</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">dat &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/ch2_planets.xlsx&quot;</span>)</a></code></pre></div>
+</div>
+<div id="gg_answers" class="section level2">
+<h2><span class="header-section-number">13.4</span> ggplot answers</h2>
 <div id="boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset" class="section level3">
-<h3><span class="header-section-number">13.2.1</span> Boxplot of highway miles per gallon versus class (mpg dataset)</h3>
+<h3><span class="header-section-number">13.4.1</span> Boxplot of highway miles per gallon versus class (mpg dataset)</h3>
 <p>Here is one possible solution:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb90-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <p>A prettier solution might be:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, <span class="op">-</span>hwy), <span class="dt">y =</span> hwy)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span> (<span class="dt">x =</span> <span class="st">&quot;Car class&quot;</span>,
-        <span class="dt">y =</span> <span class="st">&quot;Highway miles per gallon&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, <span class="op">-</span>hwy), <span class="dt">y =</span> hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-4" title="4"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">x =</span> <span class="st">&quot;Car class&quot;</span>,</a>
+<a class="sourceLine" id="cb91-5" title="5">        <span class="dt">y =</span> <span class="st">&quot;Highway miles per gallon&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb91-6" title="6"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 </div>
 <div id="histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset" class="section level3">
-<h3><span class="header-section-number">13.2.2</span> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</h3>
+<h3><span class="header-section-number">13.4.2</span> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</h3>
 <p>A possible solution:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpg <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cty)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="op">~</span><span class="st"> </span>trans)</code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb92-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cty)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb92-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb92-4" title="4"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="op">~</span><span class="st"> </span>trans)</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 
 </div>
 </div>

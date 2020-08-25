@@ -1,6 +1,28 @@
 # Data Processing {#dataprocessing}
 
-## Workflows {#workflows}
-RMDs
-important shit
 
+```{block, type = "los"}
+You can skip this chapter if you:
+
+  * Can download, open, edit and save an R Markdown file
+
+  * Can describe the advantages of repreatable workflows
+
+  * Can execute code in an R Markdown file
+
+```
+
+
+
+## Workflows {#workflows}
+Throughout this book, I have been talking about the importance of repeatable workflows. 
+
+In this chapter, you will work through a R Markdown document, run code, and adapt code within the document. 
+
+
+
+
+
+## Editing R Markdown Docs  {#editrmd}
+
+Open your R Markdown file in R Studio by navigating to `File > Open File` and navigating to the folder you have saved the .rmd file to. Remember it will be easier if you save this in the folder your R Project file is in. 

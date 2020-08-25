@@ -290,5 +290,112 @@ These can easily be read in with a function. The most commonly used function for
 The skill most needed to load files from your hard drive is the ability to navigate and understand folder structures (sometimes called **working directories**). If your desktop has a hundred files [then you should go and watch this video](https://youtu.be/bKjRKZxr-KY).
 
 
+```{block, type = "hey"}
+We will use two different files for the rest of this chapter.
+
+You should download the two files and save them into the folder you are using for your R Project. We will explore directories a bit in the next section, but its better to start good practice now. 
+
+The two files are:
+
+  * ch2_planets.xlsx
+  
+  * ch2_planets.csv
+  
+  
+You will find them on your Learn course under this week's materials. 
+
+If you are learning independently, you will also find them in the [data folder](https://github.com/jillymackay/RatRDSVS/tree/master/data) on my github page. 
+```
+
+
+
 ## Loading data{#ex_data_load}
 ### Loading from a CSV
+
+There are two main ways to load a .csv file. 
+
+The easy way is to navigate to the **environment** tab and click on **Import Dataset**
+
+Scroll down to **From Text (base)** and click through the import wizard, navigating to where you saved your file. 
+
+Here is a short demonstration:
+```{r echo = FALSE, fig.cap="Using the Import Dataset wizard to load a csv file", fig.align = 'center'}
+
+knitr::include_graphics("images/03_data/csv_open.gif")
+
+```
+
+Note that the the import wizard runs code in the **console** which says something like:
+
+```{r eval = FALSE, warning = FALSE, message = FALSE}
+
+ch2_planets <- read.csv("~/data/ch2_planets.csv")
+
+```
+
+If you copy this code you can run it yourself. You know by now that anything to the left of the assign command (`<-`) is the name of the thing you're creating.
+
+## Exercise {#ex_loadcsv}
+
+Change this code so you're creating a dataset called `dat` not `ch2_planets`. [Answer here](#ans_loadcsv)
+
+
+
+
+### Loading from an Excel file
+
+Similar to above, you can upload an .xlsx file in two different ways, using the wizard, or by typing in the code. 
+
+To use the wizard, you again navigate to the **environment** tab and click on **Import Dataset**
+
+Scroll down to **From Excel** and click through the import wizard, navigating to where you saved your file. Depending on what your excel file looks like 
+
+Here is a short demonstration:
+```{r echo = FALSE, fig.cap="Using the Import Dataset wizard to load a xlsx file", fig.align = 'center'}
+
+knitr::include_graphics("images/03_data/excel_open.gif")
+
+```
+
+
+This time, note that the **console** first loads a package (`library(readxl)`) before it loads the data. 
+
+
+
+```{r eval = FALSE, warning = FALSE, message = FALSE}
+
+library(readxl)
+ch2_planets <- read_excel("ch2_planets.xlsx")
+
+
+```
+
+Again you can copy this code and run the code itself in an R Script file, in a R Markdown file, or in the console, to load the data without going through the wizard.
+
+
+```{block, type = "hey"}
+
+Why would you want to use code instead of the wizard?
+
+We will come to talk about [repeatable workflows](#workflows) in a later chapter, but basically - if you send me an  R Script file with the code for loading in the data, I can run that file without having to edit it. 
+
+You can send me your script and your data file together, and I can work directly on it, which saves a huge amount of time and makes collaborating easier. 
+
+```
+
+## Exercise {#ex_loadexcel}
+
+This time Iw ant you to change two things about the `read_excel` code. 
+
+The file is now saved in a folder inside your working directory called `data`.
+
+And I don't want to load the `readxl` library every time I run this piece of code. Is there a short cut we can use?
+
+Remember to try this - play about with the code and talk to your classmates/friends before looking at the answer. [Answer here](#ans_loadexcel)
+
+
+
+
+
+
+

@@ -221,3 +221,7 @@ In our increasingly connected world, we are seeing more and more infographics. A
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">As an Indian woman, I can confirm that too much of my time is spent hiding behind a rock praying the terrifying gang of international giant ladies and their Latvian general don&#39;t find me <a href="https://t.co/sy9NHW9oTK">pic.twitter.com/sy9NHW9oTK</a></p>&mdash; Sabah Ibrahim (@reina_sabah) <a href="https://twitter.com/reina_sabah/status/1291509085855260672?ref_src=twsrc%5Etfw">August 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+
+Infographics can be extremely powerful, particularly when trying to communicate on social media. Unfortunately, sometimes the design choices can make it harder to understand exactly what the analysis has done. Infographics can be as misleading as bad charts. 
+
+In general, I would focus on chart visualisations over infographics, even for public engagement. When you are very confident with making clear and readable charts, then you can start to think about infographics. 

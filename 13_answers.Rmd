@@ -45,7 +45,53 @@ mpg2 <- mpg %>%
 `mutate_at` becomes a very useful way of shortening your code, but can also be a little bit more difficult to remember. I very often have to look it up. But that's fine - looking up code is good :)
 
 
-## ggplot answers {##gg_answers}
+
+## Loading csv data answers {#ans_loadcsv}
+Here's the answer to [how to change the name of a dataset from a csv file](#ex_loadcsv)
+
+```{r eval = FALSE, warning = FALSE, message = FALSE}
+
+dat <- read.csv("~/data/ch2_planets.csv")
+
+```
+
+
+
+Here is a chunk of text to hide the next answer from you in case you're doing these answers sequentially. 
+
+
+
+
+
+
+```{r echo = FALSE, fig.cap="Using the Import Dataset wizard to load a xlsx file", fig.align = 'center'}
+
+knitr::include_graphics("images/03_data/excel_open.gif")
+
+```
+
+
+
+
+
+
+## Loading excel data answers {#ans_loadexcel}
+In this section I asked you to [load data from a different folder and have a short cut to stop us having to load `readxl` each time](#ex_loadexcel)
+
+
+If the below code doesn't make sense to you - reach out to me! 
+```{r eval = FALSE, warning = FALSE, message = FALSE}
+
+dat <- readxl::read_excel("data/ch2_planets.xlsx")
+
+```
+
+
+
+
+
+
+## ggplot answers {#gg_answers}
 
 ### Boxplot of highway miles per gallon versus class (mpg dataset) 
 
