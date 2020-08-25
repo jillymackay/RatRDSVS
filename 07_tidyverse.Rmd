@@ -1,16 +1,69 @@
 # The Tidyverse {#tidyverse}
+```{block, type = "los"}
+You can skip this chapter if:
 
-The tidyverse is the only way to learn. 
+  * You are comfortable using the tidyverse `pivot_longer` and `pivot_wider` commands
+  
+  * You can rename variables
+  
+  * You can create and change variables in a dataset. 
+
+
+```
 
 ## Opinionated Packages {#tidy_opinions}
+Throughout this book I've been teaching you the `tidyverse` way of doing things. There's quite a lot of debate as to whether `tidyverse` is the easy or hard way to learn things. A lot of people think that `tidyverse` is more difficult because it sometimes generates more lines of code. However, I really like the way that `tidyverse` code is easily guessed. If you know you want to change something, you can take a guess at what [verb](https://dplyr.tidyverse.org/) you want to use.
 
-## How to tidy {#how_tidy}
+This is because the `tidyverse` is 'opinionated'. That means there's an underlying philosophy behind how each package tries to think about data. I like the underlying theory, and I also like that the packages are explicit about the fact that data science itself comes with its own philosophies. 
+
+One of the most important philosophies, as [everyone online says](http://vita.had.co.nz/papers/tidy-data.html) - tidy data has **one observation per row**.
+
+There are a few things that `tidyverse` makes really easy:
+
+  * Visualising data with [ggplot2](#gg_build)
+  
+  * Making new variables or changing variables with `mutate`
+  
+  * 'Pivoting' data into tall and wide formats with `pivot`
 
 
+We will cover them in this chapter
+
+
+## Data for this chapter
+For this chapter let's work on XXXXXX FIND DATA TO WORK ON XXXXXXXX
+
+Let's load the data and the tidyverse package first:
+
+```{r eval = FALSE, message = FALSE, warning = FALSE}
+
+library(tidyverse)
+
+# dat <- 
+
+```
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+# dat <- 
+```
+
+
+## Mutating data {#mutate}
+
+We have covered the `mutate` function in previous chapters, but I'm going to specifically cover a few different forms of it now. 
+
+
+## Wide and tall data {#pivoting_data}
+
+```{block, type = "hey"}
+If you are looking at older materials they may use the terms `gather` instead of `pivot_longer` and `spread` instead of `pivot_wider`. In fact you can find a very similar version of the below text [on my github page](https://rawgit.com/jillymackay/RConversations/master/WideandTall.html).
+
+This is a notable point about R - it is a language that is being actively used and changes as people use it. The idea is that `pivot_longer` is a more informative verb than `gather`, and so we should try to use that instead. At the moment both commands still work, but this may change in the years to come. 
+```
 
 
 ## The Observation
-As [everyone online says](http://vita.had.co.nz/papers/tidy-data.html) - tidy data has **one observation per row**. My headaches came from dealing with the publicly available [National Student Survey](https://www.officeforstudents.org.uk/advice-and-guidance/student-information-and-data/national-student-survey-nss/) data - the format of which *seems* tidy to the uninitiated. The data is presented with each subject at each university as a row - that's an observation, surely?
+
+ My headaches came from dealing with the publicly available [National Student Survey](https://www.officeforstudents.org.uk/advice-and-guidance/student-information-and-data/national-student-survey-nss/) data - the format of which *seems* tidy to the uninitiated. The data is presented with each subject at each university as a row - that's an observation, surely?
 
 
 ## The Data
@@ -61,5 +114,3 @@ widedata
 ```
 
 
-### Final Thoughts
-There is far more that `tidyverse` can do to reshape your data, which I might write up at some point, but these are two great commands that eluded me for a while. Hopefully this is a very quick and simple explanation for you to look up. :)

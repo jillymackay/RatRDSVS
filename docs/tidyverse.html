@@ -208,18 +208,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>
-<li class="chapter" data-level="6.2" data-path="dataprocessing.html"><a href="dataprocessing.html#editrmd"><i class="fa fa-check"></i><b>6.2</b> Editing R Markdown Docs</a></li>
+<li class="chapter" data-level="6.2" data-path="dataprocessing.html"><a href="dataprocessing.html#openrmd"><i class="fa fa-check"></i><b>6.2</b> Opening R Markdown Docs</a></li>
+<li class="chapter" data-level="6.3" data-path="dataprocessing.html"><a href="dataprocessing.html#codermd"><i class="fa fa-check"></i><b>6.3</b> Running Code</a></li>
+<li class="chapter" data-level="6.4" data-path="dataprocessing.html"><a href="dataprocessing.html#editrmd"><i class="fa fa-check"></i><b>6.4</b> Editing R Markdown Docs</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>7</b> The Tidyverse</a><ul>
 <li class="chapter" data-level="7.1" data-path="tidyverse.html"><a href="tidyverse.html#tidy_opinions"><i class="fa fa-check"></i><b>7.1</b> Opinionated Packages</a></li>
-<li class="chapter" data-level="7.2" data-path="tidyverse.html"><a href="tidyverse.html#how_tidy"><i class="fa fa-check"></i><b>7.2</b> How to tidy</a></li>
-<li class="chapter" data-level="7.3" data-path="tidyverse.html"><a href="tidyverse.html#the-observation"><i class="fa fa-check"></i><b>7.3</b> The Observation</a></li>
-<li class="chapter" data-level="7.4" data-path="tidyverse.html"><a href="tidyverse.html#the-data"><i class="fa fa-check"></i><b>7.4</b> The Data</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="tidyverse.html"><a href="tidyverse.html#gather"><i class="fa fa-check"></i><b>7.4.1</b> Gather</a></li>
+<li class="chapter" data-level="7.2" data-path="tidyverse.html"><a href="tidyverse.html#data-for-this-chapter"><i class="fa fa-check"></i><b>7.2</b> Data for this chapter</a></li>
+<li class="chapter" data-level="7.3" data-path="tidyverse.html"><a href="tidyverse.html#mutate"><i class="fa fa-check"></i><b>7.3</b> Mutating data</a></li>
+<li class="chapter" data-level="7.4" data-path="tidyverse.html"><a href="tidyverse.html#pivoting_data"><i class="fa fa-check"></i><b>7.4</b> Wide and tall data</a></li>
+<li class="chapter" data-level="7.5" data-path="tidyverse.html"><a href="tidyverse.html#the-observation"><i class="fa fa-check"></i><b>7.5</b> The Observation</a></li>
+<li class="chapter" data-level="7.6" data-path="tidyverse.html"><a href="tidyverse.html#the-data"><i class="fa fa-check"></i><b>7.6</b> The Data</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="tidyverse.html"><a href="tidyverse.html#gather"><i class="fa fa-check"></i><b>7.6.1</b> Gather</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="tidyverse.html"><a href="tidyverse.html#spread"><i class="fa fa-check"></i><b>7.5</b> Spread</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="tidyverse.html"><a href="tidyverse.html#final-thoughts"><i class="fa fa-check"></i><b>7.5.1</b> Final Thoughts</a></li>
-</ul></li>
+<li class="chapter" data-level="7.7" data-path="tidyverse.html"><a href="tidyverse.html#spread"><i class="fa fa-check"></i><b>7.7</b> Spread</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="trouble.html"><a href="trouble.html"><i class="fa fa-check"></i><b>8</b> Troubleshooting</a><ul>
 <li class="chapter" data-level="8.1" data-path="trouble.html"><a href="trouble.html#important-skills"><i class="fa fa-check"></i><b>8.1</b> Important skills</a></li>
@@ -268,27 +270,78 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tidyverse" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> The Tidyverse</h1>
-<p>The tidyverse is the only way to learn.</p>
+<div class="los">
+<p>
+You can skip this chapter if:
+</p>
+<ul>
+<li>
+<p>
+You are comfortable using the tidyverse <code>pivot_longer</code> and <code>pivot_wider</code> commands
+</p>
+</li>
+<li>
+<p>
+You can rename variables
+</p>
+</li>
+<li>
+<p>
+You can create and change variables in a dataset.
+</p>
+</li>
+</ul>
+</div>
 <div id="tidy_opinions" class="section level2">
 <h2><span class="header-section-number">7.1</span> Opinionated Packages</h2>
+<p>Throughout this book I’ve been teaching you the <code>tidyverse</code> way of doing things. There’s quite a lot of debate as to whether <code>tidyverse</code> is the easy or hard way to learn things. A lot of people think that <code>tidyverse</code> is more difficult because it sometimes generates more lines of code. However, I really like the way that <code>tidyverse</code> code is easily guessed. If you know you want to change something, you can take a guess at what <a href="https://dplyr.tidyverse.org/">verb</a> you want to use.</p>
+<p>This is because the <code>tidyverse</code> is ‘opinionated’. That means there’s an underlying philosophy behind how each package tries to think about data. I like the underlying theory, and I also like that the packages are explicit about the fact that data science itself comes with its own philosophies.</p>
+<p>One of the most important philosophies, as <a href="http://vita.had.co.nz/papers/tidy-data.html">everyone online says</a> - tidy data has <strong>one observation per row</strong>.</p>
+<p>There are a few things that <code>tidyverse</code> makes really easy:</p>
+<ul>
+<li><p>Visualising data with <a href="ggplot.html#gg_build">ggplot2</a></p></li>
+<li><p>Making new variables or changing variables with <code>mutate</code></p></li>
+<li><p>‘Pivoting’ data into tall and wide formats with <code>pivot</code></p></li>
+</ul>
+<p>We will cover them in this chapter</p>
 </div>
-<div id="how_tidy" class="section level2">
-<h2><span class="header-section-number">7.2</span> How to tidy</h2>
+<div id="data-for-this-chapter" class="section level2">
+<h2><span class="header-section-number">7.2</span> Data for this chapter</h2>
+<p>For this chapter let’s work on XXXXXX FIND DATA TO WORK ON XXXXXXXX</p>
+<p>Let’s load the data and the tidyverse package first:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb80-2" title="2"></a>
+<a class="sourceLine" id="cb80-3" title="3"><span class="co"># dat &lt;- </span></a></code></pre></div>
+</div>
+<div id="mutate" class="section level2">
+<h2><span class="header-section-number">7.3</span> Mutating data</h2>
+<p>We have covered the <code>mutate</code> function in previous chapters, but I’m going to specifically cover a few different forms of it now.</p>
+</div>
+<div id="pivoting_data" class="section level2">
+<h2><span class="header-section-number">7.4</span> Wide and tall data</h2>
+<div class="hey">
+<p>
+If you are looking at older materials they may use the terms <code>gather</code> instead of <code>pivot_longer</code> and <code>spread</code> instead of <code>pivot_wider</code>. In fact you can find a very similar version of the below text <a href="https://rawgit.com/jillymackay/RConversations/master/WideandTall.html">on my github page</a>.
+</p>
+<p>
+This is a notable point about R - it is a language that is being actively used and changes as people use it. The idea is that <code>pivot_longer</code> is a more informative verb than <code>gather</code>, and so we should try to use that instead. At the moment both commands still work, but this may change in the years to come.
+</p>
+</div>
 </div>
 <div id="the-observation" class="section level2">
-<h2><span class="header-section-number">7.3</span> The Observation</h2>
-<p>As <a href="http://vita.had.co.nz/papers/tidy-data.html">everyone online says</a> - tidy data has <strong>one observation per row</strong>. My headaches came from dealing with the publicly available <a href="https://www.officeforstudents.org.uk/advice-and-guidance/student-information-and-data/national-student-survey-nss/">National Student Survey</a> data - the format of which <em>seems</em> tidy to the uninitiated. The data is presented with each subject at each university as a row - that’s an observation, surely?</p>
+<h2><span class="header-section-number">7.5</span> The Observation</h2>
+<p>My headaches came from dealing with the publicly available <a href="https://www.officeforstudents.org.uk/advice-and-guidance/student-information-and-data/national-student-survey-nss/">National Student Survey</a> data - the format of which <em>seems</em> tidy to the uninitiated. The data is presented with each subject at each university as a row - that’s an observation, surely?</p>
 </div>
 <div id="the-data" class="section level2">
-<h2><span class="header-section-number">7.4</span> The Data</h2>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">data &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">group1 =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>),</a>
-<a class="sourceLine" id="cb76-2" title="2">                <span class="dt">group2 =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Z&quot;</span>, <span class="st">&quot;Z&quot;</span>),</a>
-<a class="sourceLine" id="cb76-3" title="3">                <span class="dt">q =</span> <span class="kw">c</span> (<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>,<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>),</a>
-<a class="sourceLine" id="cb76-4" title="4">                <span class="dt">disagree =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.3</span>),</a>
-<a class="sourceLine" id="cb76-5" title="5">                <span class="dt">neutral =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>),</a>
-<a class="sourceLine" id="cb76-6" title="6">                <span class="dt">agree =</span> <span class="kw">c</span>(<span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>),</a>
-<a class="sourceLine" id="cb76-7" title="7">                <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">121</span>, <span class="dv">121</span>, <span class="dv">140</span>, <span class="dv">140</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">57</span>,<span class="dv">57</span>)) </a>
-<a class="sourceLine" id="cb76-8" title="8">data</a></code></pre></div>
+<h2><span class="header-section-number">7.6</span> The Data</h2>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">data &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">group1 =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>),</a>
+<a class="sourceLine" id="cb81-2" title="2">                <span class="dt">group2 =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;Y&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;Z&quot;</span>, <span class="st">&quot;Z&quot;</span>),</a>
+<a class="sourceLine" id="cb81-3" title="3">                <span class="dt">q =</span> <span class="kw">c</span> (<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>,<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>),</a>
+<a class="sourceLine" id="cb81-4" title="4">                <span class="dt">disagree =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.3</span>),</a>
+<a class="sourceLine" id="cb81-5" title="5">                <span class="dt">neutral =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>),</a>
+<a class="sourceLine" id="cb81-6" title="6">                <span class="dt">agree =</span> <span class="kw">c</span>(<span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>),</a>
+<a class="sourceLine" id="cb81-7" title="7">                <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">121</span>, <span class="dv">121</span>, <span class="dv">140</span>, <span class="dv">140</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">57</span>,<span class="dv">57</span>)) </a>
+<a class="sourceLine" id="cb81-8" title="8">data</a></code></pre></div>
 <pre><code>## Warning: `...` is not empty.
 ## 
 ## We detected these problematic arguments:
@@ -310,16 +363,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>However, for a lot of what I was trying to do, I needed to know how many students responded at each level - how many agreed with Q1, Q2, etc, in each nested group. I wanted my data taller.</p>
 <p>(I’m using this specific format not because it’s a nice format, but because it’s a format that exists in the world and that lots of people make big decisions on.)</p>
 <div id="gather" class="section level3">
-<h3><span class="header-section-number">7.4.1</span> Gather</h3>
+<h3><span class="header-section-number">7.6.1</span> Gather</h3>
 <p>The <code>gather</code> command from <code>tidyverse</code> is a quick way to smush this data into a tall format. The <code>gather</code> command creates two new columns, the <code>key</code> column which collects your old column names and your <code>value</code> column which collects the row values (fairly self-explanatory).</p>
 <p>The trick with <code>gather</code> is that it will smush everything it can into those two columns, so you need to tell it which columns <em>not</em> to include. This is the step that eluded me for a whole afternoon once, so I’m stating it very obviously here.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">talldata &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb79-2" title="2"><span class="st">  </span><span class="kw">gather</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents,</a>
-<a class="sourceLine" id="cb79-3" title="3">          <span class="op">-</span>group1,</a>
-<a class="sourceLine" id="cb79-4" title="4">          <span class="op">-</span>group2,</a>
-<a class="sourceLine" id="cb79-5" title="5">          <span class="op">-</span>q,</a>
-<a class="sourceLine" id="cb79-6" title="6">          <span class="op">-</span>n)</a>
-<a class="sourceLine" id="cb79-7" title="7">talldata</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">talldata &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-2" title="2"><span class="st">  </span><span class="kw">gather</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents,</a>
+<a class="sourceLine" id="cb84-3" title="3">          <span class="op">-</span>group1,</a>
+<a class="sourceLine" id="cb84-4" title="4">          <span class="op">-</span>group2,</a>
+<a class="sourceLine" id="cb84-5" title="5">          <span class="op">-</span>q,</a>
+<a class="sourceLine" id="cb84-6" title="6">          <span class="op">-</span>n)</a>
+<a class="sourceLine" id="cb84-7" title="7">talldata</a></code></pre></div>
 <pre><code>## Warning: `...` is not empty.
 ## 
 ## We detected these problematic arguments:
@@ -342,19 +395,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 ## 10 A      X      Q2      121 neutral                0.4 
 ## # ... with 14 more rows</code></pre>
 <div id="nb---think-about-your-variable-names" class="section level4">
-<h4><span class="header-section-number">7.4.1.1</span> NB - Think About Your Variable Names</h4>
+<h4><span class="header-section-number">7.6.1.1</span> NB - Think About Your Variable Names</h4>
 <p>I once spent a whole afternoon unable to recreate an error message I was getting with <code>gather</code> - only to realise long after home time that I had sensibly called the <code>key</code> variable <em>question</em> which was a variable name that already existed in my dataset. R was re-writing the variable every time it gathered the data.</p>
 <p>The take home? <strong>Make sure your key and value names are unique!</strong></p>
 </div>
 </div>
 </div>
 <div id="spread" class="section level2">
-<h2><span class="header-section-number">7.5</span> Spread</h2>
+<h2><span class="header-section-number">7.7</span> Spread</h2>
 <p>What if, after all that, you realise that you never wanted your data gathered at all? <code>spread</code> is here to rescue you.</p>
 <p>Just as before, <code>spread</code> wants to know the <code>key</code> and the <code>value</code>, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don’t exclude any columns (in fact, try excluding the columns and see what spread says. )</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">widedata &lt;-<span class="st"> </span>talldata <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="st">  </span><span class="kw">spread</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents)</a>
-<a class="sourceLine" id="cb82-3" title="3">widedata</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">widedata &lt;-<span class="st"> </span>talldata <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb87-2" title="2"><span class="st">  </span><span class="kw">spread</span> (<span class="dt">key =</span> LikertScale, <span class="dt">value =</span> PercRespondents)</a>
+<a class="sourceLine" id="cb87-3" title="3">widedata</a></code></pre></div>
 <pre><code>## Warning: `...` is not empty.
 ## 
 ## We detected these problematic arguments:
@@ -373,11 +426,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 ## 6 B      X      Q2       50  0.1       0.5    0.4 
 ## 7 B      Z      Q1       57  0.2       0.6    0.2 
 ## 8 B      Z      Q2       57  0.4       0.3    0.3</code></pre>
-<div id="final-thoughts" class="section level3">
-<h3><span class="header-section-number">7.5.1</span> Final Thoughts</h3>
-<p>There is far more that <code>tidyverse</code> can do to reshape your data, which I might write up at some point, but these are two great commands that eluded me for a while. Hopefully this is a very quick and simple explanation for you to look up. :)</p>
 
-</div>
 </div>
 </div>
             </section>

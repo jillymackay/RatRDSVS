@@ -208,18 +208,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a></li>
-<li class="chapter" data-level="6.2" data-path="dataprocessing.html"><a href="dataprocessing.html#editrmd"><i class="fa fa-check"></i><b>6.2</b> Editing R Markdown Docs</a></li>
+<li class="chapter" data-level="6.2" data-path="dataprocessing.html"><a href="dataprocessing.html#openrmd"><i class="fa fa-check"></i><b>6.2</b> Opening R Markdown Docs</a></li>
+<li class="chapter" data-level="6.3" data-path="dataprocessing.html"><a href="dataprocessing.html#codermd"><i class="fa fa-check"></i><b>6.3</b> Running Code</a></li>
+<li class="chapter" data-level="6.4" data-path="dataprocessing.html"><a href="dataprocessing.html#editrmd"><i class="fa fa-check"></i><b>6.4</b> Editing R Markdown Docs</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>7</b> The Tidyverse</a><ul>
 <li class="chapter" data-level="7.1" data-path="tidyverse.html"><a href="tidyverse.html#tidy_opinions"><i class="fa fa-check"></i><b>7.1</b> Opinionated Packages</a></li>
-<li class="chapter" data-level="7.2" data-path="tidyverse.html"><a href="tidyverse.html#how_tidy"><i class="fa fa-check"></i><b>7.2</b> How to tidy</a></li>
-<li class="chapter" data-level="7.3" data-path="tidyverse.html"><a href="tidyverse.html#the-observation"><i class="fa fa-check"></i><b>7.3</b> The Observation</a></li>
-<li class="chapter" data-level="7.4" data-path="tidyverse.html"><a href="tidyverse.html#the-data"><i class="fa fa-check"></i><b>7.4</b> The Data</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="tidyverse.html"><a href="tidyverse.html#gather"><i class="fa fa-check"></i><b>7.4.1</b> Gather</a></li>
+<li class="chapter" data-level="7.2" data-path="tidyverse.html"><a href="tidyverse.html#data-for-this-chapter"><i class="fa fa-check"></i><b>7.2</b> Data for this chapter</a></li>
+<li class="chapter" data-level="7.3" data-path="tidyverse.html"><a href="tidyverse.html#mutate"><i class="fa fa-check"></i><b>7.3</b> Mutating data</a></li>
+<li class="chapter" data-level="7.4" data-path="tidyverse.html"><a href="tidyverse.html#pivoting_data"><i class="fa fa-check"></i><b>7.4</b> Wide and tall data</a></li>
+<li class="chapter" data-level="7.5" data-path="tidyverse.html"><a href="tidyverse.html#the-observation"><i class="fa fa-check"></i><b>7.5</b> The Observation</a></li>
+<li class="chapter" data-level="7.6" data-path="tidyverse.html"><a href="tidyverse.html#the-data"><i class="fa fa-check"></i><b>7.6</b> The Data</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="tidyverse.html"><a href="tidyverse.html#gather"><i class="fa fa-check"></i><b>7.6.1</b> Gather</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="tidyverse.html"><a href="tidyverse.html#spread"><i class="fa fa-check"></i><b>7.5</b> Spread</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="tidyverse.html"><a href="tidyverse.html#final-thoughts"><i class="fa fa-check"></i><b>7.5.1</b> Final Thoughts</a></li>
-</ul></li>
+<li class="chapter" data-level="7.7" data-path="tidyverse.html"><a href="tidyverse.html#spread"><i class="fa fa-check"></i><b>7.7</b> Spread</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="trouble.html"><a href="trouble.html"><i class="fa fa-check"></i><b>8</b> Troubleshooting</a><ul>
 <li class="chapter" data-level="8.1" data-path="trouble.html"><a href="trouble.html#important-skills"><i class="fa fa-check"></i><b>8.1</b> Important skills</a></li>
@@ -413,19 +415,20 @@ The <code>function</code> should <code>print</code> the result of pasting a stri
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">slice</span>(starwars)</a></code></pre></div>
 <p>Which should give you this:</p>
 <pre><code>## # A tibble: 87 x 14
-##    name     height  mass hair_color  skin_color  eye_color birth_year sex   gender homeworld species films vehicles starships
-##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt; &lt;list&gt;   &lt;list&gt;   
-##  1 Luke Sk~    172    77 blond       fair        blue            19   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [2~ &lt;chr [2]&gt;
-##  2 C-3PO       167    75 &lt;NA&gt;        gold        yellow         112   none  mascu~ Tatooine  Droid   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  3 R2-D2        96    32 &lt;NA&gt;        white, blue red             33   none  mascu~ Naboo     Droid   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  4 Darth V~    202   136 none        white       yellow          41.9 male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~ &lt;chr [1]&gt;
-##  5 Leia Or~    150    49 brown       light       brown           19   fema~ femin~ Alderaan  Human   &lt;chr~ &lt;chr [1~ &lt;chr [0]&gt;
-##  6 Owen La~    178   120 brown, grey light       blue            52   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  7 Beru Wh~    165    75 brown       light       blue            47   fema~ femin~ Tatooine  Human   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  8 R5-D4        97    32 &lt;NA&gt;        white, red  red             NA   none  mascu~ Tatooine  Droid   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  9 Biggs D~    183    84 black       light       brown           24   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~ &lt;chr [1]&gt;
-## 10 Obi-Wan~    182    77 auburn, wh~ fair        blue-gray       57   male  mascu~ Stewjon   Human   &lt;chr~ &lt;chr [1~ &lt;chr [5]&gt;
-## # ... with 77 more rows</code></pre>
+##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;    
+##  1 Luke~    172    77 blond      fair       blue            19   male  mascu~ Tatooine 
+##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu~ Tatooine 
+##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none  mascu~ Naboo    
+##  4 Dart~    202   136 none       white      yellow          41.9 male  mascu~ Tatooine 
+##  5 Leia~    150    49 brown      light      brown           19   fema~ femin~ Alderaan 
+##  6 Owen~    178   120 brown, gr~ light      blue            52   male  mascu~ Tatooine 
+##  7 Beru~    165    75 brown      light      blue            47   fema~ femin~ Tatooine 
+##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none  mascu~ Tatooine 
+##  9 Bigg~    183    84 black      light      brown           24   male  mascu~ Tatooine 
+## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male  mascu~ Stewjon  
+## # ... with 77 more rows, and 4 more variables: species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Now we have a new dataset (<code>starwars</code>) and a new thing we can do (<code>slice</code> the top of the data). We will talk much more about <code>tidyverse</code> in the <a href="data.html#data">data chapter</a>.</p>
 <div class="hey">
 <p>

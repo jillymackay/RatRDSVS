@@ -19,9 +19,30 @@ Throughout this book, I have been talking about the importance of repeatable wor
 
 In this chapter, you will work through a R Markdown document, run code, and adapt code within the document. 
 
+R Markdowns are great for sharing
+
+
+## Opening R Markdown Docs {#openrmd}
+
+
+```{r echo = FALSE, fig.cap="Opening an R Markdown file in R Studio", fig.align = 'center'}
+
+knitr::include_graphics("images/06_workflows/openrmd.gif")
+
+```
 
 
 
+## Running Code {#codermd}
+You can run code
+
+
+
+```{r echo = FALSE, fig.cap="Running a code chunk in an R Markdown file in R Studio", fig.align = 'center'}
+
+knitr::include_graphics("images/06_workflows/runcode.gif")
+
+```
 
 ## Editing R Markdown Docs  {#editrmd}
 

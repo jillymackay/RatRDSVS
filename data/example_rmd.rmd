@@ -1,0 +1,37 @@
+---
+title: "Basic R Markdown Guidance"
+author: "Jill MacKay"
+output: html_document
+---
+# Hashtags denote Headers
+
+```{r}
+# Load all your libraries first
+
+library(tidyverse)
+```
+
+## Two Hashtages is a Subheader
+
+
+```{r}
+
+# Load the data and show any transformations
+
+dat <- read.csv("dat.csv")
+
+dat_changed <- dat %>% 
+  mutate(new_factor = as_factor(var))
+
+```
+
+### Three Hashtags is a Sub-Subheader
+
+```{r}
+# Then run any code you want
+
+dat %>% 
+  ggplot(aes(x = new_factor, y = response)) +
+  geom_bar(stat = "summary")
+
+```
