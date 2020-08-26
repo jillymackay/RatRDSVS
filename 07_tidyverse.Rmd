@@ -27,11 +27,11 @@ There are a few things that `tidyverse` makes really easy:
   * 'Pivoting' data into tall and wide formats with `pivot`
 
 
-We will cover them in this chapter
+We will cover these commands in this chapter. 
 
 
 ## Data for this chapter
-For this chapter let's work on XXXXXX FIND DATA TO WORK ON XXXXXXXX
+For this chapter let's work on an example of student satisfaction data. We'll use a short, fictional example to avoid embarrassing anyone. Let's say I questioned my students on two courses, Professional Skills, an undergraduate course, and Research Methods, a postgraduate course. I know how many students (`n`) were in each class, and I asked each class if they agreed with two statements, "Jill was a good teacher" (`good_teacher`) and "I learned in this class" (`learned`). I know what percentage of students disagreed with the statement (`disagree`), were neutral about the statement (`neutral`), or agreed with the statement (`agree`). And I also know which of the two years I asked the question in (`year`). 
 
 Let's load the data and the tidyverse package first:
 
@@ -39,11 +39,33 @@ Let's load the data and the tidyverse package first:
 
 library(tidyverse)
 
-# dat <- 
+students <- tibble (course = c("Prof Skills", "Prof Skills", "Prof Skills", "Prof Skills", 
+                               "Research Methods", "Research Methods", "Research Methods", "Research Methods"),
+                    level = c("UG", "UG", "UG", "UG",
+                              "PG", "PG", "PG", "PG"),
+                    question = c("good_teacher", "learned","good_teacher", "learned",
+                                 "good_teacher", "learned","good_teacher", "learned"),
+                    year = c(1, 1, 2, 2,
+                             1, 1, 2, 2),
+                    disagree = c(0.8, 0.3, 0.8, 0.2, 0.7, 0.5, 0.6, 0.3),
+                    neutral = c(0.05, 0.4, 0.1, 0.3, 0.1, 0.4, 0.2, 0.3),
+                    agree = c(0.15, 0.3, 0.1, 0.5, 0.2, 0.1, 0.2, 0.4),
+                    n = c(121, 121, 140, 140, 50, 50, 57,57))  
 
 ```
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
-# dat <- 
+students <- tibble (course = c("Prof Skills", "Prof Skills", "Prof Skills", "Prof Skills", 
+                               "Research Methods", "Research Methods", "Research Methods", "Research Methods"),
+                    level = c("UG", "UG", "UG", "UG",
+                              "PG", "PG", "PG", "PG"),
+                    question = c("good_teacher", "learned","good_teacher", "learned",
+                                 "good_teacher", "learned","good_teacher", "learned"),
+                    year = c(1, 1, 2, 2,
+                             1, 1, 2, 2),
+                    disagree = c(80, 30, 80, 20, 70, 50, 60, 30),
+                    neutral = c(5, 40, 10, 30, 10, 40, 20, 30),
+                    agree = c(15, 30, 10, 50, 20, 10, 20, 40),
+                    n = c(121, 121, 140, 140, 50, 50, 57,57))  
 ```
 
 
@@ -51,6 +73,157 @@ library(tidyverse)
 
 We have covered the `mutate` function in previous chapters, but I'm going to specifically cover a few different forms of it now. 
 
+In this section I'm going to create a new dataset `students_tidy` which will leave our original dataset `students` untouched. This is to demonstrate how much data can be transformed, and you might want to think about the difference between the original dataset and the finished product when you're thinking about [workflows](#workflows). 
+
+
+### Mutate to change a variable type. 
+Let's start with an example you've seen before. At the moment, `year` is a numerical variable, which we can prove:
+
+```{r, warning = FALSE, message = FALSE}
+
+is.numeric(students$year)
+
+```
+
+So the first thing we want to do is make year a categorical variable, since there's only two years available to us. We can retain the order of the levels by specifying them with the `parse_factor` command. `parse_factor` is really useful, but it only works on character variables, so we need to first change year to a character, and then to a factor. 
+
+
+
+
+```{r, warning = FALSE, message = FALSE}
+
+students_tidy <- students %>% 
+  mutate(year = as.character(year),
+         year = parse_factor(year, levels = c("1", "2")))
+
+
+```
+
+You can try taking out the `year = as.character(year)` line to see what happens. What error messages do you get?
+
+
+And now we can ask:
+
+```{r, warning = FALSE, message = FALSE}
+
+is.factor(students$year)
+
+is.factor(students_tidy$year)
+
+```
+
+
+
+
+### Mutate to change the contents of data
+What if we don't want to change data type, but instead change the text of the data? There's a very cool function called `case_when` which works like an if statement in Excel. 
+
+
+```{r, warning = FALSE, message = FALSE}
+
+students_tidy <- students_tidy %>% 
+  mutate(level = case_when(level == "UG" ~ "Undergraduate",
+                           level == "PG" ~ "Postgraduate"))
+
+
+```
+
+
+```{block, type = "translate"}
+
+In this code chunk we:
+
+  1. Create the object `students_tidy` (which we are overwriting, since it already exists)
+  2. Make the new `students_tidy` object from the old one, and then ...
+  3. Change a variable within `students_tidy` (`mutate`)
+  4. Create a new variable `level` (which we are overwriting, since it already exists)
+  5. When a row of `level` reads `UG`, change it to (`~`) `Undergraduate`
+  6. When a row of `level` reads `PG`, change it to (`~`) `Postgraduate`
+
+```
+
+And we can check to see if this work by looking at a slice of the data. 
+
+
+```{r, message = FALSE, warning = FALSE}
+head(students_tidy)
+
+```
+
+### Mutate to change multiple variables
+We can also change multiple variables using the `mutate_at` function. This can be a little more difficult to master, but is often faster than typing out multiple lines of `mutate`.
+
+Our `disagree`, `neutral` and `agree` columns are currently expressed as percentages, e.g. row 1 above had 80% of students disagreing, 5% of students neutral, and 15% of students agreeing with the statement I was a good teacher. However, we know the number of students in each class, so it might be better to express those values as a proportion (e.g. 0.8, 0.05, 0.15). That's a simple calculation - we need to take each value and divide by 100. 
+
+To do this, we need to use two particularly cool things about `tidyverse`, the ability to select multiple variables, and the ability to use `.` to mean `whatever I just asked for`. 
+
+
+```{r, message = FALSE, warning = FALSE}
+
+students_tidy <- students_tidy %>% 
+  mutate_at(.vars = vars(c(disagree, neutral, agree)),
+            .funs = ~(.  / 100))
+
+
+```
+
+
+```{block, type = "translate"}
+
+In this code chunk we:
+
+  1. Create the object `students_tidy` (which we are overwriting, since it already exists)
+  2. Make the new `students_tidy` object from the old one, and then ...
+  3. Change more than one variable within `students_tidy` (`mutate`)
+  4. Specify what variables we want to change (`.vars = vars`)
+  5. List those variables, which are a string of names (`c(disagree, neutral, agree)`)
+  6. Specify the function we want to apply to each of the previously selected variables (`.funs = `)
+  7. We're not asking for a named function so we show this with `~`
+  8. We want to divide the previously asked for variables by 100 (`(./100)`, where `.` is a dummy variable standing in for the previously selected variables. )
+
+
+```
+
+
+And as always, we can test this by showing a slice of the data:
+
+```{r, message = FALSE, warning = FALSE}
+
+head(students_tidy)
+
+```
+
+### Summarise as a unique form of mutate
+
+Mutate is really powerful thing, so unsurprisingly the idea behind it is used in other calls. One that's really useful to know about (and that we'll talk more about in [descriptive statistics](#descstats)) is `summarise`.
+
+`summarise` creates a new mutated data frame by default, so its good for grouping together things, for example we can use it to look at the average percentage in each group by question:
+
+
+```{r, message=FALSE, warning = FALSE}
+
+students_summed <- students_tidy %>% 
+  group_by(question) %>% 
+  summarise(mean_disagree = mean(disagree),
+            mean_neutral= mean(neutral),
+            mean_agree = mean(agree))
+
+```
+
+
+And in fact, if we just want to look at this data quickly, we don't even need to create a new dataset, we can just look at the output in the console:
+
+
+```{r, message = FALSE, warning = FALSE}
+students_tidy %>% 
+  group_by(question) %>% 
+  summarise(mean_disagree = mean(disagree),
+            mean_neutral= mean(neutral),
+            mean_agree = mean(agree))
+
+```
+
+You'll note that we lose all the other variables (like `course`, `level` and `n`) doing this, so you might want to be careful if you're using `summarise` to make a new dataset. 
 
 ## Wide and tall data {#pivoting_data}
 
@@ -61,56 +234,91 @@ This is a notable point about R - it is a language that is being actively used a
 ```
 
 
-## The Observation
+### Processing data
 
- My headaches came from dealing with the publicly available [National Student Survey](https://www.officeforstudents.org.uk/advice-and-guidance/student-information-and-data/national-student-survey-nss/) data - the format of which *seems* tidy to the uninitiated. The data is presented with each subject at each university as a row - that's an observation, surely?
+Let's look at `students_tidy` again. 
 
 
-## The Data
-```{r}
-data <- tibble (group1 = c("A", "A", "A", "A", "B", "B", "B", "B"),
-                group2 = c("X", "X", "Y", "Y", "X", "X", "Z", "Z"),
-                q = c ("Q1", "Q2","Q1", "Q2", "Q1", "Q2", "Q1", "Q2"),
-                disagree = c(0.8, 0.3, 0.8, 0.2, 0.7, 0.5, 0.6, 0.3),
-                neutral = c(0.05, 0.4, 0.1, 0.3, 0.1, 0.4, 0.2, 0.3),
-                agree = c(0.15, 0.3, 0.1, 0.5, 0.2, 0.1, 0.2, 0.4),
-                n = c(121, 121, 140, 140, 50, 50, 57,57)) 
-data
+```{r, warning = FALSE, message = FALSE}
+
+head(students_tidy)
+
 ```
 
-However, for a lot of what I was trying to do, I needed to know how many students responded at each level - how many agreed with Q1, Q2, etc, in each nested group. I wanted my data taller. 
 
-(I'm using this specific format not because it's a nice format, but because it's a format that exists in the world and that lots of people make big decisions on.)
+At first glance, this looks tidy. The data is presented with each course on a row - surely I'm observing at the course level?
 
-### Gather
-The `gather` command from `tidyverse` is a quick way to smush this data into a tall format. The `gather` command creates two new columns, the `key` column which collects your old column names and your `value` column which collects the row values (fairly self-explanatory).
+Well, actually, I probably often want to know what % of students agreed (or not) with each statement in each course. The observation in this case is actually the proportion of students, with question response, question, course, level, and year, all being extra pieces of information I know about the proportion. 
 
-The trick with `gather` is that it will smush everything it can into those two columns, so you need to tell it which columns *not* to include. This is the step that eluded me for a whole afternoon once, so I'm stating it very obviously here.
+I want much taller data. 
 
-```{r}
-talldata <- data %>%
-  gather (key = LikertScale, value = PercRespondents,
-          -group1,
-          -group2,
-          -q,
-          -n)
-talldata
+(I'm using this specific example not because it's a particularly easy example, but because this is a format you'll see for data in the real world all the time, and people will make big decisions on this data. It's a good idea to show you how to tidy it.)
+
+### pivot_longer
+The `pivot_longer` command is a quick way to smush this data into a tall (or long) format. It creates two new columns, the `names_to` column which collects your old column names and your `values_to` column which collects the row values (fairly self-explanatory).
+
+
+
+
+```{r, warning = FALSE, message = FALSE}
+
+
+students_tall <- students_tidy %>% 
+  pivot_longer(cols = c(disagree, neutral, agree),
+               names_to = "response",
+               values_to = "prop")
+
 ```
 
-#### NB - Think About Your Variable Names
-I once spent a whole afternoon unable to recreate an error message I was getting with `gather` - only to realise long after home time that I had sensibly called the `key` variable *question* which was a variable name that already existed in my dataset. R was re-writing the variable every time it gathered the data. 
+This says:
 
-The take home? **Make sure your key and value names are unique!**
+```{block type = "translate"}
 
-## Spread
-What if, after all that, you realise that you never wanted your data gathered at all? `spread` is here to rescue you. 
+In the above code block we:
+
+  1. Create a new dataset called `students_tall`
+  2. `students_tall` is based on `students_tidy`
+  3. We want to squish the data into new columns (`pivot_longer`)
+  4. We specify the columns we want to stretch into two (`cols = c(disagree, neutral, agree)`)
+  5. We specify the name for new column which will take the value of the old column headers (`names_to = "response"` - note we have to put quotation marks around the new name, which is not very common in `tidyverse`)
+  6. We specify the name for the new column which will store the values of the old rows (`values_to = "prop"`)
+
+```
+
+
+And of course, we can see what this has done to the data:
+
+
+```{r, warning = FALSE, message = FALSE}
+
+head(students_tall)
+
+```
+
+
+```{block type = "hey"}
+
+It's very important to **think about  your variable names**
+
+I once spent a whole afternoon trying to recreate an error message I was getting with this, when I realised that I was saying `names_to = "question"`. The variable `question` already exists in the dataset, and so R was re-writing the variable every time it gathered the data. Unique variable names are really helpful!
+
+```
+
+
+## pivot_wider
+What if, after all that, you realise that you never wanted your data gathered at all? `pivot_wider` is here to rescue you. 
 
 Just as before, `spread` wants to know the `key` and the `value`, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don't exclude any columns (in fact, try excluding the columns and see what spread says. )
 
 ```{r}
-widedata <- talldata %>%
+students_wide <- talldata %>%
   spread (key = LikertScale, value = PercRespondents)
 widedata
+
+
+
+students_tall %>% 
+  pivot_wider(id = )
 ```
 
 

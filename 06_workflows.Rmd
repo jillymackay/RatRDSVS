@@ -17,7 +17,14 @@ You can skip this chapter if you:
 ## Workflows {#workflows}
 Throughout this book, I have been talking about the importance of repeatable workflows. 
 
-If you're on a course that I'm teaching, I will share R Markdown documents with you that you can edit and I can view. We could both start with the same dataset, and by sharing our workflow, we can both know exactly what the other person has done.
+If you're on a course that I'm teaching, I will share R Markdown documents with you that you can edit and I can view. We could both start with the same dataset, and by sharing our workflow, we can both know exactly what the other person has done. This data transparency is very important. Knowing what changes have been made to the data, and how those changes were made, can help prevent small mistakes being magnified. For example, a simple copy/paste error in excel, resulted in [an Edinburgh hospital being delivered over two years late](https://www.bbc.co.uk/news/uk-scotland-edinburgh-east-fife-53893101).
+
+You  might think this can't apply to you, but think how many times you might make a change to a dataset in the process of cleaning that data and tidying it. If you had to describe what you did to a collaborator, would you remember every change?
+
+One of the great advantages of using code to process data is that every stage can be documented. In this textbook I'm teaching you R, and on my courses I mainly use R Markdown files to document workflows, but R is just one statistical language and R Markdowns are just one file type. 
+
+
+### An example of sharing code
 
 Imagine you have a big dataset like the UK Farm Accounts dataset:
 

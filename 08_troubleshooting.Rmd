@@ -3,6 +3,6 @@
 ## Important skills
 working independently
 
+errors vs warnings
 
-
-http://varianceexplained.org/courses/errors/
+http://varianceexplained.org/courses/errors/ 
