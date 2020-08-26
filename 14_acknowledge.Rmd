@@ -9,3 +9,11 @@ Books icon by [OpenClipart-Vectors](https://pixabay.com/users/OpenClipart-Vector
 
 
 Ian Handel fixed the CSS
+
+I stole the wonderful Warnings and Errors infographic from [Rex-analytics](http://rex-analytics.com/decoding-error-messages-r/)
+
+
+
+
+
+And most importantly, when I wrote this book in the very stressful summer of 2020, Fraser brought me many cups of tea, chocolate biscuits, and kept me from going crazy. Thanks, babe. 

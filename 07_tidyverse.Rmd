@@ -310,15 +310,19 @@ What if, after all that, you realise that you never wanted your data gathered at
 
 Just as before, `spread` wants to know the `key` and the `value`, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don't exclude any columns (in fact, try excluding the columns and see what spread says. )
 
-```{r}
-students_wide <- talldata %>%
-  spread (key = LikertScale, value = PercRespondents)
-widedata
+```{r, warning = FALSE, message = FALSE}
 
-
-
-students_tall %>% 
-  pivot_wider(id = )
+students_wide <- students_tall %>% 
+  pivot_wider(names_from = response,
+              values_from = prop)
 ```
 
+
+And of course we can view this:
+
+```{r, warning = FALSE, message = FALSE}
+
+head(students_wide)
+
+```
 

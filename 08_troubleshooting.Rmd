@@ -1,8 +1,205 @@
 # Troubleshooting {#trouble}
 
-## Important skills
-working independently
+```{block type ="los"}
 
-errors vs warnings
+You can skip this chapter if:
 
-http://varianceexplained.org/courses/errors/ 
+  * You understand the difference between an R warning and an R error
+  
+  * You know the most common R errors
+  
+  * You know where you would go for help
+
+
+```
+## Working independently
+When you being working independently in R you will inevitably run into trouble. Maybe R doesn't run the command you think it should, maybe it just gives you a warning. 
+
+
+```{block type = "hey"}
+
+If something goes wrong, it does **not** mean you are bad at R. 
+
+You have probably just made a typo, or forgotten a line of code. This isn't a disaster. 
+
+
+
+```
+
+
+## Common warnings {#trouble_warnings}
+Sometimes (perhaps even 'often'), R will give you a warning when you run a line of code. For example:
+
+```{r}
+
+warn <- tibble(x = c(1,2,3,NA,1,2,3),
+               y = c(2,3,1,2,3,1,1))
+
+warn %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_point()
+
+```
+
+We receive the `Warning: Removed 1 rows containing missing values (geom_point).`
+
+In this case, its obvious that ggplot has had to get rid of the row of data with the `NA` value, and so we probably feel comfortable moving on with this warning. However, warnings can be a sign of something not behaving itself, and is usually a sign we should go back and double check our code. We might decide to move forward and ignore the warnings. 
+
+
+
+## Common errors {#trouble_errors}
+There are a lot of common errors in R, that can usually be easily fixed^[This section is nearly wholly stolen from [David Robinson](http://varianceexplained.org/courses/errors/)]. 
+
+Errors mean that R has not been able to 
+
+### Object not found.
+Sometimes you might ask R to find something that doesn't exist, for example:
+
+```{r eval = FALSE}
+
+thing
+
+```
+
+The quote `Error: object 'thing' not found` tells us that R can't find anything called 'thing' in the environment, or any of the loaded packages. 
+
+  * Check that you've loaded all your required packages
+  
+  * Make sure you're spelling 'thing' right (and remember, R is case sensitive, 'Thing' might be right)
+  
+  * Check you have definitely loaded all your datasets (if you're working in an R Markdown document you may have forgotten to run the line that tells R what 'thing' is.)
+  
+### Function not found
+Similarly, sometimes you might an error telling you that a function doesn't exist. 
+
+```{r eval = FALSE}
+
+thing(1)
+
+```
+
+Again, you want to:
+
+  * Check you've definitely loaded the right packages
+  
+  * Make sure you're spelling 'thing' right (remembering R is case sensitive...)
+  
+  * Make sure you definitely want to use a function. You can also get this error if you type `x (1 / 2)`, even if you've predefined 'x' as a value. R thinks that opening brackets usually means using a function, so if you want to perform the calculation `x * (1/2)` you need to include the `*` symbol.
+  
+  
+### Unexpected symbols
+
+There are a few errors which are all similar, such as:
+
+```{r eval = FALSE}
+mean(2,2,4,5,6))
+```
+`Error: unexpected ')' in "mean(2,2,4,5,6))"`
+
+
+and
+
+
+```{r eval = FALSE}
+
+mean(2,2,3,5 6)
+
+```
+`Error: unexpected numeric constant in "mean(2,2,3,5 6"`
+
+and
+
+```{r eval = FALSE}
+mean(2,2,3;5,6)
+
+```
+`Error: unexpected ';' in "mean(2,2,3;"`
+
+These are all clues to go back through the last run chunk of code and look for typos. 
+
+
+## Quick warnings and errors
+
+There is a great resource from [rex-analytics](http://rex-analytics.com/decoding-error-messages-r/) on errors and warnings, which I'll display here:
+
+```{r echo = FALSE, fig.cap="Rex-analytics great infographic on R warnings and errors", fig.align = 'center'}
+
+knitr::include_graphics("images/08_troubleshooting/errors-in-R-739x1024.png")
+
+```
+
+
+
+
+## Searching for help
+Of course sometimes you can't figure out with what you already know. When this happens your next step is to google^[or web search of your choice].
+
+Many, many people know that [they should just google things](https://dev.to/dvddpl/am-i-an-expert-developer-or-just-an-expert-googler-4390). These people have it cracked. If you know how to find an answer on Google, you will be immediately more employable than the person who doesn't. 
+
+This has even become a meme . . .
+
+
+```{r echo = FALSE, fig.cap="10 years of programming, stolen from /r/programmerhumor", fig.align = 'center'}
+
+knitr::include_graphics("images/08_troubleshooting/meme1.png")
+
+```
+
+Quite a few memes actually . . .
+
+```{r echo = FALSE, fig.cap="Jerry gets rewarded for googling, stolen from /r/programmerhumor", fig.align = 'center'}
+
+knitr::include_graphics("images/08_troubleshooting/meme2.png")
+
+```
+
+One more to make the point  . . . 
+
+
+```{r echo = FALSE, fig.cap="Young Thug knows how to google, stolen from /r/programmerhumor", fig.align = 'center'}
+
+knitr::include_graphics("images/08_troubleshooting/meme3.png")
+
+```
+
+
+The first step is to copy your error message and paste it into google. 
+
+Scroll through the answers until you see one that looks similar to yours. 
+
+
+Depending on how complex your code is, this might not be as simple as it seems. You may need to look at your error message for the key components. 
+
+More often than not, you will probably find yourself on [stackoverflow](https://stackoverflow.com/). I have [personally asked questions on there](https://stackoverflow.com/questions/56036568/how-to-use-fct-relevel-with-mutate-at-syntax). Lots of people make it their hobby to sit on stackoverflow and help people with their code. Sometimes you might find that the writer of the package you're working with [takes the time to answer](https://stackoverflow.com/questions/50375791/passing-top-n-and-arrange-to-ggplot-dplyr).
+
+
+When you start to ask a question on stackoverflow, it gives you a really helpful set of tips. I have often started to write an answer and by the time I've worked through stackoverflow's tips, I've figured out the answer.
+
+
+### Tips for asking for help {#trouble_help}
+
+  1. Summarise the problem
+  
+    + What are you trying to do (what's your ideal output?)
+    
+    + What is happening at the moment (what's going wrong?)
+    
+    + What errors/warnings is R giving you?
+    
+  2. Describe what you've tried
+  
+    + What different methods have you tried? (Hint: if you haven't tried anything it's going to annoy people)
+    
+    + Why do you think your attempts haven't worked?
+    
+  3. Show some code
+  
+    + Share a minimum reproducible example (reprex) so people can tell exactly what you're trying. 
+
+
+Even if you don't want to ask your question on stackoverflow, these tips can be really useful. 
+
+
+## Reproducible Examples (reprex) {#trouble_reprex}
+
+I've talked a lot about reproducible examples or reprexes. Again, stackoverflow [has great guidance on creating one of these](https://stackoverflow.com/help/minimal-reproducible-example). But we've actually already made one of these all the way back in [chapter three](#ex_createdata) when we were trying to figure out why `summary` was treating characters different from numerical variables. 
