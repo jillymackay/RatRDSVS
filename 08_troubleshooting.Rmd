@@ -158,7 +158,7 @@ One more to make the point  . . .
 
 ```{r echo = FALSE, fig.cap="Young Thug knows how to google, stolen from /r/programmerhumor", fig.align = 'center'}
 
-knitr::include_graphics("images/08_troubleshooting/meme3.png")
+knitr::include_graphics("images/08_troubleshooting/meme3.jpg")
 
 ```
 
