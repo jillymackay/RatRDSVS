@@ -138,3 +138,29 @@ mpg %>%
   facet_wrap(facets = ~ trans)
 
 ```
+
+
+
+## Proof of variance {#stats_proofvariance}
+
+
+If we take our `coos` dataset again and create a new variable taking each value away from the mean:
+
+```{r message = FALSE, warning = FALSE}
+
+distances <- coos %>% 
+  mutate(distances = mean(weight)-weight)
+
+distances
+
+```
+
+And then we add all the distances together . . .
+
+
+```{r message = FALSE, warning = FALSE}
+
+round(sum(distances$distances), digits = 1)
+
+```
+

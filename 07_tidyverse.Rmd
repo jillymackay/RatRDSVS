@@ -193,7 +193,7 @@ head(students_tidy)
 
 ```
 
-### Summarise as a unique form of mutate
+### Summarise as a unique form of mutate {#tidy_summ}
 
 Mutate is really powerful thing, so unsurprisingly the idea behind it is used in other calls. One that's really useful to know about (and that we'll talk more about in [descriptive statistics](#descstats)) is `summarise`.
 

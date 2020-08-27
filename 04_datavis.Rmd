@@ -13,7 +13,7 @@ You can skip this chapter if . . .
 ```
 
 
-## Data Vis {#datavis}
+## Data Visualisation {#datavis}
 
 Data visualisation is one of the most important skills a scientst can learn, and being able to identify good and bad data visualisation will make you the life and soul of every party, and incredibly popular at all times.
 
@@ -75,9 +75,9 @@ pie_df %>%
 
 Let's take **Figure 4.2** as an example. What proportion of people have a dog versus a cat. I'll wait for you to start puzzling through that question. 
 
-If we put labels on the chart stating the value, why would we not just put data in a 
+It's very hard to distinguish between a pie slice that's 2/5ths versus a pie slice that's 2/7ths. Many people put labels on their pie charts, but if I need to read the label to understand the difference, why not just put the text in a table? 
 
-
+Instead a bar chart shows use the exact ranking of this data and we can see how many more people have cats versus birds. 
 
 ```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "A much better chart describing proportion of people with type of pet (fictional data)"}
 

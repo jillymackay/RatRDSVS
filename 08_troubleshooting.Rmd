@@ -22,7 +22,7 @@ If something goes wrong, it does **not** mean you are bad at R.
 
 You have probably just made a typo, or forgotten a line of code. This isn't a disaster. 
 
-
+Everyone makes mistakes in R. The important thing is figuring out how to fix them. 
 
 ```
 
@@ -61,6 +61,9 @@ thing
 
 ```
 
+
+  + Error: object 'thing' not found
+
 The quote `Error: object 'thing' not found` tells us that R can't find anything called 'thing' in the environment, or any of the loaded packages. 
 
   * Check that you've loaded all your required packages
@@ -78,6 +81,8 @@ thing(1)
 
 ```
 
+  + Error in thing(1) : could not find function "thing"
+
 Again, you want to:
 
   * Check you've definitely loaded the right packages
@@ -94,8 +99,8 @@ There are a few errors which are all similar, such as:
 ```{r eval = FALSE}
 mean(2,2,4,5,6))
 ```
-`Error: unexpected ')' in "mean(2,2,4,5,6))"`
-
+   + Error: unexpected ')' in "mean(2,2,4,5,6))"
+   
 
 and
 
@@ -105,7 +110,7 @@ and
 mean(2,2,3,5 6)
 
 ```
-`Error: unexpected numeric constant in "mean(2,2,3,5 6"`
+  + Error: unexpected numeric constant in "mean(2,2,3,5 6"
 
 and
 
@@ -113,7 +118,7 @@ and
 mean(2,2,3;5,6)
 
 ```
-`Error: unexpected ';' in "mean(2,2,3;"`
+  + Error: unexpected ';' in "mean(2,2,3;"
 
 These are all clues to go back through the last run chunk of code and look for typos. 
 
@@ -180,21 +185,21 @@ When you start to ask a question on stackoverflow, it gives you a really helpful
 
   1. Summarise the problem
   
-    + What are you trying to do (what's your ideal output?)
+    * What are you trying to do (what's your ideal output?)
     
-    + What is happening at the moment (what's going wrong?)
+    * What is happening at the moment (what's going wrong?)
     
-    + What errors/warnings is R giving you?
+    * What errors/warnings is R giving you?
     
   2. Describe what you've tried
   
-    + What different methods have you tried? (Hint: if you haven't tried anything it's going to annoy people)
+    * What different methods have you tried? (Hint: if you haven't tried anything it's going to annoy people)
     
-    + Why do you think your attempts haven't worked?
+    * Why do you think your attempts haven't worked?
     
   3. Show some code
   
-    + Share a minimum reproducible example (reprex) so people can tell exactly what you're trying. 
+    * Share a minimum reproducible example (reprex) so people can tell exactly what you're trying. 
 
 
 Even if you don't want to ask your question on stackoverflow, these tips can be really useful. 
@@ -203,3 +208,21 @@ Even if you don't want to ask your question on stackoverflow, these tips can be 
 ## Reproducible Examples (reprex) {#trouble_reprex}
 
 I've talked a lot about reproducible examples or reprexes. Again, stackoverflow [has great guidance on creating one of these](https://stackoverflow.com/help/minimal-reproducible-example). But we've actually already made one of these all the way back in [chapter three](#ex_createdata) when we were trying to figure out why `summary` was treating characters different from numerical variables. 
+
+There are three key elements of a reprex:
+
+  1. Be minimal
+    * Use as little code as possible to reproduce the problem
+    * You can do this in two main ways:
+        * Create a new file and add only what you need to reproduce the problem
+        * Remove code bit by bit from your file until you find the part that isn't working
+        * In reprexes its often very useful to test on an inbuilt dataset in R, such as `mpg` or `cars`, because we all have access to these datasets, and it means you don't have to send big data files to anyone (particularly if you're working on data that shouldn't be shared, e.g. personal data)
+        
+  2. Make sure your question is complete when you send it to someone
+    * It sounds daft, but this happens more than you think.
+    * The person trying to solve your problem should be able to replicate it using your code
+    * Its a good idea to restart your R session, clear your environment, and run all your code fresh to check the problem still exists before sending it along. 
+    * Oh - and always send the actual code. Screenshots are not useful
+    
+  3. Describe the problem again before sending it
+    * You may be surprised at how the problem has changed while troubleshooting!
