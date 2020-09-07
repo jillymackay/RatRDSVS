@@ -26,7 +26,7 @@ print("Hello, I am an output block!")
 
 ```
 
-You can tell output blocks because they have two **##** symbol to show you that it is output. 
+You can tell output blocks because they have two **##** symbols to show you that it is output. 
 
 
 Often we will see **code blocks** and **output blocks** together, like this:

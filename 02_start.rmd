@@ -31,7 +31,7 @@ You should copy and paste other peoples' code.
 ```
 
 
-Yes, I'm serious. You should copy and paste and edit code you find online^[If you're reading this as part of your coursework you might be panicking about plagiarism here, after all, we spend a lot of time telling you plagiarism is the worst thing you could ever do and that we'll use software to detect it. Code is a bit different. We are always trying to find the most efficient way of doing something, and so ideally you would all write code that was identical. Sadly, humans naturally differ in the way the think about problems. My job would be a lot easier if everybody thought the same. If I have set you this book as reading, I can swear to you I will never put your code through a plagiarism checker. That would be very stupid.]. In this book you should always be copying bits of code and pasting it into your console. That is why I publish the code alongside it. 
+Yes, I'm serious. You should copy and paste and edit code you find online^[If you're reading this as part of your coursework you might be panicking about plagiarism here, after all, we spend a lot of time telling you plagiarism is the worst thing you could ever do and that we'll use software to detect it. Code is a bit different. We are always trying to find the most efficient way of doing something, and so ideally you would all write code that was identical. Sadly, humans naturally differ in the way the think about problems. My job would be a lot easier if everybody thought the same. If I have set you this book as reading, I can swear to you I will never put your code through a plagiarism checker. That would be very stupid.]. In this book you should always be copying bits of code and pasting it into your console. That is why I publish the code alongside each question and demonstration. 
 
 It took me about ten years of working in R to get over my fear of copying and pasting other peoples' code. Now I even have a [repository](https://github.com/jillymackay/commoncode) of all the code I use over and over so I can copy and paste my own code.
 
@@ -127,7 +127,7 @@ print(HELLO)
 
 ```
 
-You see, R ise **case sensitive**, meaning we have to be careful to always type things the same. This is one of the reasons why R Studio is really handy, because you can see what you've saved in your environment. 
+You see, R is **case sensitive**, meaning we have to be careful to always type things the same. This is one of the reasons why R Studio is really handy, because you can see what you've saved in your environment. 
 
 
 Now type this:

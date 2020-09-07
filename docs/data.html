@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-08-27" />
+<meta name="date" content="2020-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -363,7 +363,7 @@ You might wonder, what’s the <code>::</code> in the <code>datasets::</code> co
 <p>What happens when you enter the following code<a href="acks.html#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> into the console?</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">View</span>(mpg)</a></code></pre></div>
 <p>You should see something like <strong>Figure 3.1</strong></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-63"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-42"></span>
 <img src="images/03_data/rstud01.png" alt="The result of the 'View(mpg)' command" width="479" />
 <p class="caption">
 Figure: 3.1: The result of the ‘View(mpg)’ command
@@ -396,27 +396,20 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 ## 6 volkswagen   passat   3.6  2008     6 auto(s6)   f        17    26 p     midsize</code></pre>
 <p>Another very useful way to look at a dataset is with the <code>summary()</code> function, which takes its best guess at how to summarise each variable in the dataset.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">summary</span>(mpg)</a></code></pre></div>
-<pre><code>##  manufacturer          model               displ            year           cyl       
-##  Length:234         Length:234         Min.   :1.600   Min.   :1999   Min.   :4.000  
-##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000  
-##  Mode  :character   Mode  :character   Median :3.300   Median :2004   Median :6.000  
-##                                        Mean   :3.472   Mean   :2004   Mean   :5.889  
-##                                        3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000  
-##                                        Max.   :7.000   Max.   :2008   Max.   :8.000  
-##     trans               drv                 cty             hwy       
-##  Length:234         Length:234         Min.   : 9.00   Min.   :12.00  
-##  Class :character   Class :character   1st Qu.:14.00   1st Qu.:18.00  
-##  Mode  :character   Mode  :character   Median :17.00   Median :24.00  
-##                                        Mean   :16.86   Mean   :23.44  
-##                                        3rd Qu.:19.00   3rd Qu.:27.00  
-##                                        Max.   :35.00   Max.   :44.00  
-##       fl               class          
-##  Length:234         Length:234        
-##  Class :character   Class :character  
-##  Mode  :character   Mode  :character  
-##                                       
-##                                       
-## </code></pre>
+<pre><code>##  manufacturer          model               displ            year           cyl           trans               drv           
+##  Length:234         Length:234         Min.   :1.600   Min.   :1999   Min.   :4.000   Length:234         Length:234        
+##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Median :3.300   Median :2004   Median :6.000   Mode  :character   Mode  :character  
+##                                        Mean   :3.472   Mean   :2004   Mean   :5.889                                        
+##                                        3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000                                        
+##                                        Max.   :7.000   Max.   :2008   Max.   :8.000                                        
+##       cty             hwy             fl               class          
+##  Min.   : 9.00   Min.   :12.00   Length:234         Length:234        
+##  1st Qu.:14.00   1st Qu.:18.00   Class :character   Class :character  
+##  Median :17.00   Median :24.00   Mode  :character   Mode  :character  
+##  Mean   :16.86   Mean   :23.44                                        
+##  3rd Qu.:19.00   3rd Qu.:27.00                                        
+##  Max.   :35.00   Max.   :44.00</code></pre>
 <p>The <code>summary()</code> function highlights an important aspect of R - it knows the difference between numbers and characters. In the output block we can see that <code>manufacturer</code> is given the <code>Class</code> <code>character</code>. R knows it can’t create a mean and a median from this data, so it simply tells you the <code>Length</code> of that data instead. What do you think the 234 refers to here? Answer in the footnote<a href="acks.html#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
 <div id="created_data" class="section level2">
@@ -607,7 +600,7 @@ If you are learning independently, you will also find them in the <a href="https
 <p>The easy way is to navigate to the <strong>environment</strong> tab and click on <strong>Import Dataset</strong></p>
 <p>Scroll down to <strong>From Text (base)</strong> and click through the import wizard, navigating to where you saved your file.</p>
 Here is a short demonstration:
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-79"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-58"></span>
 <img src="images/03_data/csv_open.gif" alt="Using the Import Dataset wizard to load a csv file"  />
 <p class="caption">
 Figure: 3.2: Using the Import Dataset wizard to load a csv file
@@ -627,7 +620,7 @@ Figure: 3.2: Using the Import Dataset wizard to load a csv file
 <p>To use the wizard, you again navigate to the <strong>environment</strong> tab and click on <strong>Import Dataset</strong></p>
 <p>Scroll down to <strong>From Excel</strong> and click through the import wizard, navigating to where you saved your file. Depending on what your excel file looks like</p>
 Here is a short demonstration:
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-81"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-60"></span>
 <img src="images/03_data/excel_open.gif" alt="Using the Import Dataset wizard to load a xlsx file"  />
 <p class="caption">
 Figure: 3.3: Using the Import Dataset wizard to load a xlsx file

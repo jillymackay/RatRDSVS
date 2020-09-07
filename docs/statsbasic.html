@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-08-27" />
+<meta name="date" content="2020-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,28 +328,28 @@ You can describe the statistical formula for the mean and standard deviation
 <h2><span class="header-section-number">9.1</span> Descriptive stats</h2>
 <p>Descriptive statistics, unsurprisingly, <strong>describe</strong> the data. But why do we need to describe data?</p>
 <p>Imagine that we had a field of cows.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-164"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-143"></span>
 <img src="images/09_statbasic/cows_1.jpg" alt="A field of heifers" width="320" />
 <p class="caption">
 Figure: 9.1: A field of heifers
 </p>
 </div>
 <p>We know that the first heifer has a weight of 211.3kg</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-165"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-144"></span>
 <img src="images/09_statbasic/cows_2.png" alt="A field of heifers, 1 weight known" width="516" />
 <p class="caption">
 Figure: 9.2: A field of heifers, 1 weight known
 </p>
 </div>
 <p>And that the second heifer has a weight of 200.4kg</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-166"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-145"></span>
 <img src="images/09_statbasic/cows_3.png" alt="A field of heifers, 2 weights known" width="516" />
 <p class="caption">
 Figure: 9.3: A field of heifers, 2 weights known
 </p>
 </div>
 <p>We can keep going, recording weights for every cow until we know all of them.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-167"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-146"></span>
 <img src="images/09_statbasic/cows_4.png" alt="A field of heifers, all weights known" width="802" />
 <p class="caption">
 Figure: 9.4: A field of heifers, all weights known
@@ -388,8 +388,8 @@ Figure: 9.4: A field of heifers, all weights known
 <a class="sourceLine" id="cb116-7" title="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb116-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Weight (kg)&quot;</span>,</a>
 <a class="sourceLine" id="cb116-9" title="9">       <span class="dt">x =</span> <span class="st">&quot;Heifer ID&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-169"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-169-1.png" alt="Weight (kg) of 12 heifers" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-148"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-148-1.png" alt="Weight (kg) of 12 heifers" width="672" />
 <p class="caption">
 Figure: 9.5: Weight (kg) of 12 heifers
 </p>
@@ -405,8 +405,8 @@ Figure: 9.5: Weight (kg) of 12 heifers
 <a class="sourceLine" id="cb117-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Weight (kg)&quot;</span>,</a>
 <a class="sourceLine" id="cb117-9" title="9">       <span class="dt">x =</span> <span class="st">&quot;Heifer ID&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb117-10" title="10"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">12</span>, <span class="dt">y =</span> <span class="dv">207</span>, <span class="dt">yend =</span> <span class="dv">207</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-170"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-170-1.png" alt="Weight (kg) of 12 heifers, with a human-estimated best fit line" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-149"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-149-1.png" alt="Weight (kg) of 12 heifers, with a human-estimated best fit line" width="672" />
 <p class="caption">
 Figure: 9.6: Weight (kg) of 12 heifers, with a human-estimated best fit line
 </p>
@@ -454,7 +454,7 @@ Let’s break this equation down:
 </li>
 </ul>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-174"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-153"></span>
 <img src="images/09_statbasic/notation_mean.gif" alt="Formula for the mean"  />
 <p class="caption">
 Figure: 9.7: Formula for the mean
@@ -465,7 +465,7 @@ Figure: 9.7: Formula for the mean
 <div id="the-mean-as-a-model" class="section level3">
 <h3><span class="header-section-number">9.1.3</span> The mean as a model</h3>
 <p>So now we know that <span class="math inline">\(\overline{x}\)</span> = 210.6kg. We have created an imaginary <strong>model</strong> cow. This model cow has a weight of 210.6kg, and we know that she is not exactly real, but we can choose to make use of her, because she has a little bit of information from all of the samples.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-175"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-154"></span>
 <img src="images/09_statbasic/meancow.png" alt="The mean cow" width="176" />
 <p class="caption">
 Figure: 9.8: The mean cow
@@ -482,14 +482,14 @@ Figure: 9.8: The mean cow
 <a class="sourceLine" id="cb122-4" title="4"><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb122-5" title="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb122-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Weight (kg)&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-176"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-176-1.png" alt="Weight (kg) distribution of 12 heifers" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-155"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-155-1.png" alt="Weight (kg) distribution of 12 heifers" width="672" />
 <p class="caption">
 Figure: 9.9: Weight (kg) distribution of 12 heifers
 </p>
 </div>
 <p>The thick middle line in this boxplot represents the <strong>median</strong> cow.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-177"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-156"></span>
 <img src="images/09_statbasic/mediancow.png" alt="The median cow" width="171" />
 <p class="caption">
 Figure: 9.10: The median cow
@@ -536,7 +536,7 @@ Figure: 9.10: The median cow
 ##         &lt;dbl&gt;
 ## 1        211.</code></pre>
 <p>The mode is a bit . . . useless . . . but it is still a model cow, so it also gets its own picture in this example.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-181"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-160"></span>
 <img src="images/09_statbasic/modecow.png" alt="The modal cow" width="198" />
 <p class="caption">
 Figure: 9.11: The modal cow
@@ -559,8 +559,8 @@ Figure: 9.11: The modal cow
 <a class="sourceLine" id="cb129-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> weight)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb129-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">10</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb129-4" title="4"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-182"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-182-1.png" alt="A histogram of heifer weight" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-161"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-161-1.png" alt="A histogram of heifer weight" width="672" />
 <p class="caption">
 Figure: 9.12: A histogram of heifer weight
 </p>
@@ -573,8 +573,8 @@ Figure: 9.12: A histogram of heifer weight
 <a class="sourceLine" id="cb130-5" title="5"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">x =</span> <span class="fl">210.6</span>, <span class="dt">xend =</span> <span class="fl">210.6</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">4</span>, <span class="dt">colour =</span> <span class="st">&quot;pink2&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb130-6" title="6"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">x =</span> <span class="fl">210.5</span>, <span class="dt">xend =</span> <span class="fl">210.5</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="fl">3.5</span>, <span class="dt">colour =</span> <span class="st">&quot;yellow1&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb130-7" title="7"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">x =</span> <span class="fl">211.3</span>, <span class="dt">xend =</span> <span class="fl">211.3</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">yend =</span> <span class="dv">4</span>, <span class="dt">colour =</span> <span class="st">&quot;lightblue1&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-183"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-183-1.png" alt="A histogram of heifer weight(kg), mean, median and mode shown" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-162"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-162-1.png" alt="A histogram of heifer weight(kg), mean, median and mode shown" width="672" />
 <p class="caption">
 Figure: 9.13: A histogram of heifer weight(kg), mean, median and mode shown
 </p>
@@ -595,8 +595,8 @@ Figure: 9.13: A histogram of heifer weight(kg), mean, median and mode shown
 <a class="sourceLine" id="cb131-8" title="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Weight (kg)&quot;</span>,</a>
 <a class="sourceLine" id="cb131-9" title="9">       <span class="dt">x =</span> <span class="st">&quot;Heifer ID&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb131-10" title="10"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">xend =</span> <span class="dv">12</span>, <span class="dt">y =</span> <span class="fl">210.6</span>, <span class="dt">yend =</span> <span class="fl">210.6</span>, <span class="dt">colour =</span> <span class="st">&quot;pink2&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-184"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-184-1.png" alt="Weight (kg) of 12 heifers, with a mean line" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-163"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-163-1.png" alt="Weight (kg) of 12 heifers, with a mean line" width="672" />
 <p class="caption">
 Figure: 9.14: Weight (kg) of 12 heifers, with a mean line
 </p>
@@ -779,8 +779,8 @@ Divide this value by the square root of the total number in the sample (<span cl
 <a class="sourceLine" id="cb140-4" title="4"><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb140-5" title="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb140-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Weight (kg)&quot;</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-193"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-193-1.png" alt="Weight (kg) distribution of 12 heifers, mean = 210.6kg +/- 10.88kg" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-172"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-172-1.png" alt="Weight (kg) distribution of 12 heifers, mean = 210.6kg +/- 10.88kg" width="672" />
 <p class="caption">
 Figure: 9.15: Weight (kg) distribution of 12 heifers, mean = 210.6kg +/- 10.88kg
 </p>
