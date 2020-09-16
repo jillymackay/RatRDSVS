@@ -164,3 +164,17 @@ round(sum(distances$distances), digits = 1)
 
 ```
 
+
+
+## Tidy Unicorns {#ans_tidyunicorns}
+
+We can tidy our Unicorn dataset with the `pivot_longer` command:
+
+```{r eval = FALSE, message = FALSE, warning=FALSE}
+
+RadioTidy <- Radio %>% 
+  pivot_longer(cols = c(NoRadio:RadioDiscussion),
+               names_to = "Radio",
+               values_to = "DustYield")
+
+```
