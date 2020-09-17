@@ -1,5 +1,28 @@
 # What next {#whatnext}
 
+```{block type = "los"}
+
+You can skip this chapter if:
+
+  * You have no desire to take R any further
+
+```
+
+
+I learned R in 2006, as part of my undergraduate degree. For the next ten years I used it sporadically, mainly when my stats got complicated and I could no longer rely on other statistical softwares to help. Starting with the complicated stuff meant that I always had a lot of heartache. In 2016, I finally took the plunge and deleted those other softwares, meaning I had to use R (and my newly discovered R Studio) for everything. It was the best decision I made. 
+
+If you want to get better at R, you need to use it. Use it for the little things as well as the big things. Nowadays, I find it easier to work in R than in the other statistical softwares. 
+
+In this, short, chapter, I
+
+
+
+## Experiment and build
+
+
+
+
+
 ## github {#github}
 
 ## repeatabe code {#repeatablecode}
