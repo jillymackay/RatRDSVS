@@ -1,19 +1,30 @@
 # Acknowledgements {#acks}
 
-
-Rat sketch by [Gordon Johnson](https://pixabay.com/users/GDJ-1086657/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5139264) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5139264), Creative Commons 0 license. 
-
-Lightbulb icon by [OpenClipart-Vectors](https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2027372) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2027372), Creative Commons 0 license
-
-Books icon by [OpenClipart-Vectors](https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1294379) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1294379), Creative Commons 0 license
+## Image Sources
 
 
-Ian Handel fixed the CSS
+   * Rat sketch by [Gordon Johnson](https://pixabay.com/users/GDJ-1086657/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5139264) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5139264), Creative Commons 0 license. 
 
-I stole the wonderful Warnings and Errors infographic from [Rex-analytics](http://rex-analytics.com/decoding-error-messages-r/)
+  * Lightbulb icon by [OpenClipart-Vectors](https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2027372) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2027372), Creative Commons 0 license
+
+  * Books icon by [OpenClipart-Vectors](https://pixabay.com/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1294379) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1294379), Creative Commons 0 license
+
+  * I stole the wonderful Warnings and Errors infographic from [Rex-analytics](http://rex-analytics.com/decoding-error-messages-r/)
 
 
 
+
+
+## Specific Acknowledgements
+Ian Handel fixed the CSS, and also got me to delete Minitab from my laptop in 2016 in favour of RStudio. Thanks Ian!
+
+
+## Beta Testers and Helpers
+
+   * Steph Smith @ Edinburgh Uni
+   
+   
+## The biggest thanks
 
 
 And most importantly, when I wrote this book in the very stressful summer of 2020, Fraser brought me many cups of tea, chocolate biscuits, and kept me from going crazy. Thanks, babe. 

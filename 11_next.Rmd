@@ -13,21 +13,69 @@ I learned R in 2006, as part of my undergraduate degree. For the next ten years 
 
 If you want to get better at R, you need to use it. Use it for the little things as well as the big things. Nowadays, I find it easier to work in R than in the other statistical softwares. 
 
-In this, short, chapter, I
+In this, short, chapter, I will talk about some of the ways I've found that have helped me take R further. 
 
+## github {#github}
+I would encourage anyone who's interested in developing their R or coding skills to get a [github account](https://github.com/). Github is a mechanism for sharing code and resources. 
+
+If you get yourself a free github account you can create a repository where you can store project files. For example, [here's the repository for this book](https://github.com/jillymackay/RatRDSVS) and [here's a repository for processing data in WhatsApp chats](https://github.com/jillymackay/whatsappvisualiser). With code freely available and accessible, you can improve your skills by seeing what others do, and what you might like to start doing. 
+
+There are many tutorials about github, here are a few to get you started:
+
+  * [How to use github](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+  
+  * [GitGuides Hello World](https://guides.github.com/activities/hello-world/)
+  
+  * [Toward Data Science's Complete beginners guide](https://towardsdatascience.com/getting-started-with-git-and-github-6fcd0f2d4ac6)
+  
+And you will find many more on the internet. 
+
+There are a few advantages to using github:
+
+  * Collaboration is easier! 
+    + With 'pull requests', it can be clear what you and what your colleagues have contributed to a project.
+    + You can roll back mistakes easily - and share all your code quickly
+    
+  * You can work on projects wherever you are
+    + You can pull git projects from any computer, which means you can work more easily.
+    
+```{block type = "hey"}
+
+One thing to be wary of on github is the uploading of data. While you can upload your data to github to make your project sharing easier, you should always make sure you're happy for that data to be public facing! 
+
+For example, if you're working on survey data, you can only upload that data if all your participants have agreed for the data to be publicly facing.
+
+Private repositories are a way around this - but they can cost a subscription to github. 
+
+```
 
 
 ## Experiment and build
 
+Following on from getting a github is the biggest tip I can give you. Start to experiment with what you can do. 
+
+Experimenting always means failing. I particularly like this YouTube video of someone trying to create an algorithm to make recipes because it faithfully shows the failing process -  [Sabrina: I taught an AI to make pasta](https://youtu.be/Y_NvR5dIaOY?list=LLJ1tgo7aEDCRH3FJF6IJMdA)
+
+You cannot expect to get better if you don't make mistakes. Why don't you take a scroll through my github to see all the abandoned and broken projects I have. 
 
 
 
 
-## github {#github}
-
-## repeatabe code {#repeatablecode}
 
 
+## The R Community
 
-## Complicated stats {#adv_stats}
-AI - this is a good video about making AI [Sabrina: I taught an AI to make pasta](https://youtu.be/Y_NvR5dIaOY?list=LLJ1tgo7aEDCRH3FJF6IJMdA)
+Finally, I have also found the R Community to be a great resource. While back in 2006 I thought it was an unfriendly place, I've really warmed to it. 
+
+You can find great blogs and resources from RStudio including:
+
+  * Their awesome [RStudio Conference](https://rstudio.com/conference/) which always has very cool presentaitons.
+  
+But there are also resources like the:
+
+  * [#Rstats](https://twitter.com/search?q=rstats&src=typed_query) on Twitter - where people post queries or tips or tricks or just funny memes. 
+  
+  * And there are also lots of [@RLadies](https://twitter.com/RLadiesGlobal) communities to support women to use R more confidently. This is part of the [RLadies](https://rladies.org/) initiative. 
+  
+
+

@@ -1,8 +1,16 @@
 # Why use R {#whyr}
 
-Why is this chapter in the middle of the book?
+Why is this chapter at the end of the book?
 
-Partly because I wanted to get started faster. Partly because I think the light only shines when you learn about workflows. 
+Well, partly I wanted to get you guys started with R as quickly as possible. Partly, I think the 'why' of R only starts to make sense when you learn about workflows. With this said, it is important to think about Why we should use open source software and open data science. 
+
+There's no learning outcomes in this chapter. Instead, its more of a thesis, or more accurately, a blog post. 
+
+## Why does open source matter?
+If you've come to this book because I'm teaching you R in one of my courses, or as a PhD student of mine, then you have probably heard my thoughts on why science needs to become more transparent. ( [If you haven't, you can watch me talk about it here](https://media.ed.ac.uk/media/1_ixecew3h) ). 
+
+I take the view that science is a philosophy, it is a way of thinking about the world. We use science to help us answer questions about the natural world. The method of collecting data and analysing data 
+
 
 
 Transparency in data: https://www.bbc.co.uk/news/uk-scotland-edinburgh-east-fife-53893101
