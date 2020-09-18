@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-09-18" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,9 +281,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
 <li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#gg_answers"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
@@ -371,7 +371,7 @@ You should copy and paste other peoples’ code.
 </div>
 <div id="environment" class="section level2">
 <h2><span class="header-section-number">2.3</span> Environment</h2>
-<p>In your brand new project you will have a clean environment (refer back to <a href="install.html#navigate_rs">Figure 2.5</a>). Our first exercise is going to explore what the environment really means.</p>
+<p>In your brand new project you will have a clean environment (refer back to <a href="install.html#navigate_rs">Figure 1.5</a>). Our first exercise is going to explore what the environment really means.</p>
 <div id="ex_env" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Exercise - Environment</h3>
 <p>When we first installed R, you were typing mathematical equations into the console. Let’s remind ourselves of this by running an equation now. In the console, type a long and complicated equation, then hit ‘enter’ when you’re done.</p>
@@ -446,31 +446,34 @@ The <code>function</code> should <code>print</code> the result of pasting a stri
 <p>There are packages for everything, packages for drawing maps, packages for analysing data, packages for suggesting how to analyse your data, packages to give you more data, packages for tidying your data . . . this is one of the reasons we might all have different bits of code. There can be lots of ways to do something.</p>
 <div id="ex_packages" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Exercise - Install and Load a Package</h3>
-<p>Packages work in two stages. The very first time you need a package you need to install it. Then, every time you start R you need to load the package into your livrary.</p>
-<p>To install a package you need to type <code>install.package("package_name")</code>.</p>
+<p>Packages work in two stages. The very first time you need a package you need to install it. Then, every time you start R you need to load the package into your library.</p>
+<p>First you <strong>install</strong>.
+Next you <strong>load into library</strong>.</p>
+<p>To install a package you need to type <code>install.packages("package_name")</code>.</p>
 <p>To load it into your library you need to type <code>library(package_name)</code>.</p>
 <p>When you load a package from your library it goes into a special hidden environment where you can access all the functions that the package has written for you.</p>
 <p>For example, we will make great use of the <code>tidyverse</code> package in this book. You need to start by installing it with:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
-<p>And when it has finished downloading, you need to type:</p>
+<p>While the package is downloading and installing you may see a little red ‘stop’ sign in the top right hand corner of your console window. This means R is working, and you shouldn’t add any new commands until it has finished and the new line symbol appears again in the console (<code>&gt;</code>).</p>
+<p>When it has finished downloading &amp; installing, you need to type:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>to load it. You’ll see that nothing has appeared in your Environment, but actually you have a whole host of new functions &amp; data you can play with. For example:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">slice</span>(starwars)</a></code></pre></div>
 <p>Which should give you this:</p>
 <pre><code>## # A tibble: 87 x 14
-##    name     height  mass hair_color  skin_color  eye_color birth_year sex   gender homeworld species films vehicles starships
-##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt; &lt;list&gt;   &lt;list&gt;   
-##  1 Luke Sk~    172    77 blond       fair        blue            19   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [2~ &lt;chr [2]&gt;
-##  2 C-3PO       167    75 &lt;NA&gt;        gold        yellow         112   none  mascu~ Tatooine  Droid   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  3 R2-D2        96    32 &lt;NA&gt;        white, blue red             33   none  mascu~ Naboo     Droid   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  4 Darth V~    202   136 none        white       yellow          41.9 male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~ &lt;chr [1]&gt;
-##  5 Leia Or~    150    49 brown       light       brown           19   fema~ femin~ Alderaan  Human   &lt;chr~ &lt;chr [1~ &lt;chr [0]&gt;
-##  6 Owen La~    178   120 brown, grey light       blue            52   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  7 Beru Wh~    165    75 brown       light       blue            47   fema~ femin~ Tatooine  Human   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  8 R5-D4        97    32 &lt;NA&gt;        white, red  red             NA   none  mascu~ Tatooine  Droid   &lt;chr~ &lt;chr [0~ &lt;chr [0]&gt;
-##  9 Biggs D~    183    84 black       light       brown           24   male  mascu~ Tatooine  Human   &lt;chr~ &lt;chr [0~ &lt;chr [1]&gt;
-## 10 Obi-Wan~    182    77 auburn, wh~ fair        blue-gray       57   male  mascu~ Stewjon   Human   &lt;chr~ &lt;chr [1~ &lt;chr [5]&gt;
-## # ... with 77 more rows</code></pre>
+##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;
+##  1 Luke~    172    77 blond      fair       blue            19   male  mascu~ Tatooine  Human   &lt;chr~
+##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu~ Tatooine  Droid   &lt;chr~
+##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none  mascu~ Naboo     Droid   &lt;chr~
+##  4 Dart~    202   136 none       white      yellow          41.9 male  mascu~ Tatooine  Human   &lt;chr~
+##  5 Leia~    150    49 brown      light      brown           19   fema~ femin~ Alderaan  Human   &lt;chr~
+##  6 Owen~    178   120 brown, gr~ light      blue            52   male  mascu~ Tatooine  Human   &lt;chr~
+##  7 Beru~    165    75 brown      light      blue            47   fema~ femin~ Tatooine  Human   &lt;chr~
+##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none  mascu~ Tatooine  Droid   &lt;chr~
+##  9 Bigg~    183    84 black      light      brown           24   male  mascu~ Tatooine  Human   &lt;chr~
+## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male  mascu~ Stewjon   Human   &lt;chr~
+## # ... with 77 more rows, and 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 <p>Now we have a new dataset (<code>starwars</code>) and a new thing we can do (<code>slice</code> the top of the data). We will talk much more about <code>tidyverse</code> in the <a href="data.html#data">data chapter</a>.</p>
 <div class="hey">
 <p>
@@ -501,17 +504,19 @@ You will often get warnings in R when you type these code blocks. To keep the bo
 <a class="sourceLine" id="cb26-9" title="9"><span class="kw">print</span>(<span class="st">&quot;and edit those lines of code&quot;</span>)</a>
 <a class="sourceLine" id="cb26-10" title="10"></a>
 <a class="sourceLine" id="cb26-11" title="11"></a>
-<a class="sourceLine" id="cb26-12" title="12"><span class="co"># before you run them by pressing ctrl + enter at the same time  when your cursor is on that line. </span></a></code></pre></div>
+<a class="sourceLine" id="cb26-12" title="12"><span class="co"># before you run them by pressing ctrl + enter at the same time </span></a>
+<a class="sourceLine" id="cb26-13" title="13"><span class="co"># when your cursor is on that line. </span></a></code></pre></div>
 </div>
 <div id="r-markdown" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> R Markdown</h3>
 <p>R Markdown allows you to combine code with actual text. This book was written in R Markdown</p>
-<p>In R Markdown you can have a text chunk like this one.</p>
-<p>And follow that with code, bracketed with three ticks like this:
-```{r}</p>
-<p>print(“followed by code like this”)</p>
-<p>```</p>
-<pre><code>## [1] &quot;followed by code like this&quot;</code></pre>
+<p>In R Markdown you can combine normal text with code blocks, and R knows to only treat the text inside the code blocks as code.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-36"></span>
+<img src="images/03_data/rmarkdown.png" alt="An example of R Markdown with text and code" width="402" />
+<p class="caption">
+Figure: 2.1: An example of R Markdown with text and code
+</p>
+</div>
 <p><a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">There is a great R Markdown cheatsheet from R Studio here</a>. I had this printed out and hung above my desk for years.</p>
 </div>
 <div id="video_rmd" class="section level3">

@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-09-18" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,9 +281,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
 <li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#gg_answers"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
@@ -335,27 +335,27 @@ You can run an ANOVA or glm in R
 <p>In the previous chapter, we spent a lot of time defining <a href="statsbasic.html#stats_variance">variance</a>. Part of the reason why we spent so much time on it is because its key to understanding how some more complicated statistics work.</p>
 <p>Much of this section is taken from <a href="https://global.oup.com/uk/orc/biosciences/maths/grafen/">Grafe &amp; Hails’ Modern Statistics for the Life Sciences</a> which I think is a great stats book. If you’re enjoying statistics, or want more detail than is in these pages, its one that I personally used a lot when I was learning.</p>
 <p>In this exercise, we’re going to spend more time thinking about variance - and we need to have <code>tidyverse</code> loaded, so you know what to do:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <div id="perfect-worlds-vs-reality" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> Perfect Worlds vs Reality</h3>
 <p>Let’s think a little bit about what we mean by this question: <strong>does x affect y?</strong></p>
 <p>We want to know what proportion of the variation we observe in <strong>y</strong> can be explained by <strong>x</strong>.</p>
 <p>To do this, we want to think about a perfect example where <strong>all</strong> of the variation in <strong>y</strong> can be explained by <strong>x</strong>.</p>
 <p>Let’s create some data:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">examples &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">x.perfect =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb142-2" title="2">                    <span class="dt">y.perfect =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb142-3" title="3">                    <span class="dt">x.realistic =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">11</span>), </a>
-<a class="sourceLine" id="cb142-4" title="4">                    <span class="dt">y.realistic =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">9</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">examples &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">x.perfect =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>), </a>
+<a class="sourceLine" id="cb141-2" title="2">                    <span class="dt">y.perfect =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>), </a>
+<a class="sourceLine" id="cb141-3" title="3">                    <span class="dt">x.realistic =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">11</span>), </a>
+<a class="sourceLine" id="cb141-4" title="4">                    <span class="dt">y.realistic =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">9</span>))</a></code></pre></div>
 <p>First, let’s visualise the perfect world:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">examples <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb143-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span>(<span class="dt">x =</span> x.perfect, <span class="dt">y =</span> y.perfect))<span class="op">+</span></a>
-<a class="sourceLine" id="cb143-3" title="3"><span class="st">  </span><span class="kw">geom_point</span> () <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-4" title="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-5" title="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-6" title="6"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;100% of the variation in y is explained by x&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-176"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-176-1.png" alt="100% of the variation in y is explained by x" width="672" />
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">examples <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span>(<span class="dt">x =</span> x.perfect, <span class="dt">y =</span> y.perfect))<span class="op">+</span></a>
+<a class="sourceLine" id="cb142-3" title="3"><span class="st">  </span><span class="kw">geom_point</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-4" title="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-5" title="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-6" title="6"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;100% of the variation in y is explained by x&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-177"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-177-1.png" alt="100% of the variation in y is explained by x" width="672" />
 <p class="caption">
 Figure: 10.1: 100% of the variation in y is explained by x
 </p>
@@ -363,15 +363,15 @@ Figure: 10.1: 100% of the variation in y is explained by x
 <p>In a ‘perfect’ dataset, we see that for every unit increase in x, y increases by the same. There’s a 1:1 relationship between the two.</p>
 <p>Of course, we very rarely ever see this in the real world.</p>
 <p>How does it look with (slightly) more realistic data?</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">examples <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb144-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span>(<span class="dt">x =</span> x.realistic, <span class="dt">y =</span> y.realistic))<span class="op">+</span></a>
-<a class="sourceLine" id="cb144-3" title="3"><span class="st">  </span><span class="kw">geom_point</span> () <span class="op">+</span></a>
-<a class="sourceLine" id="cb144-4" title="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb144-5" title="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb144-6" title="6"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;How much of the variation in y is explained by x?&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb144-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-177"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-177-1.png" alt="A more realistic example" width="672" />
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">examples <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb143-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span>(<span class="dt">x =</span> x.realistic, <span class="dt">y =</span> y.realistic))<span class="op">+</span></a>
+<a class="sourceLine" id="cb143-3" title="3"><span class="st">  </span><span class="kw">geom_point</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-4" title="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-5" title="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-6" title="6"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;How much of the variation in y is explained by x?&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-178"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-178-1.png" alt="A more realistic example" width="672" />
 <p class="caption">
 Figure: 10.2: A more realistic example
 </p>
@@ -407,15 +407,15 @@ Figure: 10.2: A more realistic example
 <p>Our coefficient is very nearly zero (it’s not exactly zero because of a thing called <a href="https://0.30000000000000004.com/">floating point math</a> which is kind of interesting but not super relevant).</p>
 <p>We could plug this in to our equation above to predict a value of y. The coefficient of x is the same as the gradient in a simple linear model, and so we can predict y when x = 3:</p>
 <p><span class="math display">\[ y = mx + c \]</span></p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1">predict.perfect.y =<span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb147-2" title="2"></a>
-<a class="sourceLine" id="cb147-3" title="3">predict.perfect.y</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">predict.perfect.y =<span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb146-2" title="2"></a>
+<a class="sourceLine" id="cb146-3" title="3">predict.perfect.y</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Perfect!</p>
 <p>What if we try our realistic data? If you <code>View(examples)</code> you can see that when x.realistic = 3, y.realistic = 4. Does our linear model predict this?</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1">predict.realistic.y =<span class="st"> </span><span class="fl">0.7561</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="fl">1.3659</span></a>
-<a class="sourceLine" id="cb149-2" title="2"></a>
-<a class="sourceLine" id="cb149-3" title="3">predict.realistic.y</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">predict.realistic.y =<span class="st"> </span><span class="fl">0.7561</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="fl">1.3659</span></a>
+<a class="sourceLine" id="cb148-2" title="2"></a>
+<a class="sourceLine" id="cb148-3" title="3">predict.realistic.y</a></code></pre></div>
 <pre><code>## [1] 3.6342</code></pre>
 <p>… Sort of? It doesn’t predict it perfectly, but its pretty close . . .</p>
 <p>You might now be wondering, is this significant? You’ll have heard scientists talk about significance a lot. Well, we can find this out by asking R to summarise the model:</p>
@@ -440,16 +440,16 @@ Figure: 10.2: A more realistic example
 <p>This time we get more information. The coefficients are still listed in the table, alongside their standard error, a T Value and a P value. The P value is very small, much smaller than the cut-off of p&lt;0.05. Therefore we must say this is a significant result?</p>
 <p>At the top we have residuals which we’ll come to another day, and at the bottom we have an F statistic and a P Value (these are the ones I’d pay attention to if I were you) and an Adjusted R-squared. At the moment this tell us that 92% of the variation in y.realistic can be explained by x.realistic.</p>
 <p>And if we wanted, we could add this to our plot from earlier with the addition of a single line of code:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">examples <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb152-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span>(<span class="dt">x =</span> x.realistic, <span class="dt">y =</span> y.realistic))<span class="op">+</span></a>
-<a class="sourceLine" id="cb152-3" title="3"><span class="st">  </span><span class="kw">geom_point</span> () <span class="op">+</span></a>
-<a class="sourceLine" id="cb152-4" title="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb152-5" title="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb152-6" title="6"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;How much of the variation in y is explained by x?&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb152-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span><span class="st"> </span><span class="co"># And add a single line below:</span></a>
-<a class="sourceLine" id="cb152-8" title="8"><span class="st">  </span><span class="kw">geom_smooth</span> (<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>) </a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-183"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-183-1.png" alt="y.realstic and x.realistic with a fit line" width="672" />
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1">examples <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb151-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span>(<span class="dt">x =</span> x.realistic, <span class="dt">y =</span> y.realistic))<span class="op">+</span></a>
+<a class="sourceLine" id="cb151-3" title="3"><span class="st">  </span><span class="kw">geom_point</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb151-4" title="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb151-5" title="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb151-6" title="6"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;How much of the variation in y is explained by x?&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb151-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span><span class="st"> </span><span class="co"># And add a single line below:</span></a>
+<a class="sourceLine" id="cb151-8" title="8"><span class="st">  </span><span class="kw">geom_smooth</span> (<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>) </a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-184"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-184-1.png" alt="y.realstic and x.realistic with a fit line" width="672" />
 <p class="caption">
 Figure: 10.3: y.realstic and x.realistic with a fit line
 </p>
@@ -470,9 +470,9 @@ Figure: 10.3: y.realstic and x.realistic with a fit line
 <li><p>Farm 3 was a positive control farm, and played radio tuned to BBC Radio 4 for thoughtful discussion.</p></li>
 </ul>
 <p>We recorded the raw weekly dust yield of 10 unicorns on each farm, and the data looks like this:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1">Radio &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">NoRadio =</span> <span class="kw">c</span>(<span class="dv">150</span>, <span class="dv">130</span>, <span class="dv">121</span>, <span class="dv">90</span>, <span class="dv">98</span>, <span class="dv">100</span>, <span class="dv">98</span>, <span class="dv">100</span>, <span class="dv">113</span>, <span class="dv">111</span>),</a>
-<a class="sourceLine" id="cb153-2" title="2">                 <span class="dt">RadioMusic =</span> <span class="kw">c</span>(<span class="dv">112</span>, <span class="dv">127</span>, <span class="dv">132</span>, <span class="dv">150</span>, <span class="dv">112</span>, <span class="dv">128</span>, <span class="dv">110</span>, <span class="dv">120</span>, <span class="dv">98</span>, <span class="dv">107</span>),</a>
-<a class="sourceLine" id="cb153-3" title="3">                 <span class="dt">RadioDiscussion =</span> <span class="kw">c</span>(<span class="dv">75</span>, <span class="dv">98</span>, <span class="dv">88</span>, <span class="dv">83</span>, <span class="dv">83</span>, <span class="dv">77</span>, <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">93</span>, <span class="dv">99</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">Radio &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">NoRadio =</span> <span class="kw">c</span>(<span class="dv">150</span>, <span class="dv">130</span>, <span class="dv">121</span>, <span class="dv">90</span>, <span class="dv">98</span>, <span class="dv">100</span>, <span class="dv">98</span>, <span class="dv">100</span>, <span class="dv">113</span>, <span class="dv">111</span>),</a>
+<a class="sourceLine" id="cb152-2" title="2">                 <span class="dt">RadioMusic =</span> <span class="kw">c</span>(<span class="dv">112</span>, <span class="dv">127</span>, <span class="dv">132</span>, <span class="dv">150</span>, <span class="dv">112</span>, <span class="dv">128</span>, <span class="dv">110</span>, <span class="dv">120</span>, <span class="dv">98</span>, <span class="dv">107</span>),</a>
+<a class="sourceLine" id="cb152-3" title="3">                 <span class="dt">RadioDiscussion =</span> <span class="kw">c</span>(<span class="dv">75</span>, <span class="dv">98</span>, <span class="dv">88</span>, <span class="dv">83</span>, <span class="dv">83</span>, <span class="dv">77</span>, <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">93</span>, <span class="dv">99</span>))</a></code></pre></div>
 <p>In the majority of our experiments and statistical analyses, we always want to know <strong>Does x affect y?</strong>.</p>
 <p>In this case, we’re asking: <strong>Does radio as a background noise affect the magic dust yield of unicorns?</strong></p>
 <div id="ex_tidyunicorns" class="section level4">
@@ -488,14 +488,14 @@ If you use your own solution to tidy the data remember that R is case sensitive.
 <div id="visualising-our-unicorns" class="section level4">
 <h4><span class="header-section-number">10.1.2.2</span> Visualising our unicorns</h4>
 <p>We know we should start by visualising our data, but in this example I’m going to visualise it in a few different ways. You wouldn’t normally do this, but I’m trying to demonstrate some things about variance.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">RadioTidy <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb154-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> Radio, <span class="dt">y =</span> DustYield)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb154-3" title="3"><span class="st">     </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Radio, <span class="dt">colour =</span> Radio)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb154-4" title="4"><span class="st">     </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Radio Condition&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb154-5" title="5"><span class="st">     </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb154-6" title="6"><span class="st">     </span><span class="kw">theme_classic</span> ()</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-187"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-187-1.png" alt="Magic Dust Yield (kg) by Unicorn Farm" width="672" />
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1">RadioTidy <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb153-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> Radio, <span class="dt">y =</span> DustYield)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb153-3" title="3"><span class="st">     </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Radio, <span class="dt">colour =</span> Radio)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb153-4" title="4"><span class="st">     </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Radio Condition&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb153-5" title="5"><span class="st">     </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb153-6" title="6"><span class="st">     </span><span class="kw">theme_classic</span> ()</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-188"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-188-1.png" alt="Magic Dust Yield (kg) by Unicorn Farm" width="672" />
 <p class="caption">
 Figure: 10.4: Magic Dust Yield (kg) by Unicorn Farm
 </p>
@@ -505,44 +505,44 @@ Figure: 10.4: Magic Dust Yield (kg) by Unicorn Farm
 <p>The variance of a dataset describes how much the data is scattered around the mean. An ANOVA is simply asking:
 &gt;Is the mean of each group a better predictor than the mean of all the data?.</p>
 <p>Let’s start by looking at only one farm (note - you wouldn’t be likely to do this in a real life example, this is for explanation purposes only):</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">Radio <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb155-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">UnicornNo =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb155-3" title="3"><span class="st">  </span><span class="co"># The mutate function adds a new variable just to plot this one specific chart</span></a>
-<a class="sourceLine" id="cb155-4" title="4"><span class="st">  </span><span class="co"># And then we pipe it directly into ggplot, so we&#39;re not changing the Radio data</span></a>
-<a class="sourceLine" id="cb155-5" title="5"><span class="st">  </span><span class="co"># Remember you can check this with `View(Radio)`, you&#39;ll see &#39;UnicornNo&#39; doesn&#39;t exist.</span></a>
-<a class="sourceLine" id="cb155-6" title="6"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> UnicornNo, <span class="dt">y =</span> NoRadio)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb155-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb155-8" title="8"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb155-9" title="9"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb155-10" title="10"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb155-11" title="11"><span class="st">  </span><span class="kw">theme_classic</span> ()</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-188"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-188-1.png" alt="Magic dust yield (kg) for Farm 1" width="672" />
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">Radio <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb154-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">UnicornNo =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-3" title="3"><span class="st">  </span><span class="co"># The mutate function adds a new variable just to plot this one specific chart</span></a>
+<a class="sourceLine" id="cb154-4" title="4"><span class="st">  </span><span class="co"># And then we pipe it directly into ggplot, so we&#39;re not changing the Radio data</span></a>
+<a class="sourceLine" id="cb154-5" title="5"><span class="st">  </span><span class="co"># Remember you can check this with `View(Radio)`, you&#39;ll see &#39;UnicornNo&#39; doesn&#39;t exist.</span></a>
+<a class="sourceLine" id="cb154-6" title="6"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> UnicornNo, <span class="dt">y =</span> NoRadio)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb154-8" title="8"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb154-9" title="9"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb154-10" title="10"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb154-11" title="11"><span class="st">  </span><span class="kw">theme_classic</span> ()</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-189"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-189-1.png" alt="Magic dust yield (kg) for Farm 1" width="672" />
 <p class="caption">
 Figure: 10.5: Magic dust yield (kg) for Farm 1
 </p>
 </div>
 <p>Deviations from the mean will be both positive and negative, and the sum of these deviations will always be zero. First, let’s find out the mean dust yield of the farm without any radio . . .</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1">RadioTidy <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb156-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Radio) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb156-3" title="3"><span class="st">  </span><span class="kw">filter</span>(Radio <span class="op">==</span><span class="st"> &quot;NoRadio&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb156-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(DustYield))</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">RadioTidy <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb155-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Radio) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb155-3" title="3"><span class="st">  </span><span class="kw">filter</span>(Radio <span class="op">==</span><span class="st"> &quot;NoRadio&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb155-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(DustYield))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 2
 ##   Radio    mean
 ##   &lt;chr&gt;   &lt;dbl&gt;
 ## 1 NoRadio  111.</code></pre>
 <p>We could plot this mean on our chart with an extra line of code:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1">Radio <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb158-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">count =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb158-3" title="3"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> count, <span class="dt">y =</span> NoRadio)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb158-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb158-5" title="5"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb158-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb158-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span> () <span class="op">+</span></a>
-<a class="sourceLine" id="cb158-8" title="8"><span class="st">  </span><span class="co"># This new line basically draws a line on our chart based on the mean we just calculated</span></a>
-<a class="sourceLine" id="cb158-9" title="9"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="fl">111.1</span>) </a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-190"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-190-1.png" alt="Magic dust yield (kg) for Farm 1, Mean Line Added" width="672" />
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1">Radio <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb157-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">count =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb157-3" title="3"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> count, <span class="dt">y =</span> NoRadio)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb157-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb157-5" title="5"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb157-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb157-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb157-8" title="8"><span class="st">  </span><span class="co"># This new line basically draws a line on our chart based on the mean we just calculated</span></a>
+<a class="sourceLine" id="cb157-9" title="9"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="fl">111.1</span>) </a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-191"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-191-1.png" alt="Magic dust yield (kg) for Farm 1, Mean Line Added" width="672" />
 <p class="caption">
 Figure: 10.6: Magic dust yield (kg) for Farm 1, Mean Line Added
 </p>
@@ -551,8 +551,8 @@ Figure: 10.6: Magic dust yield (kg) for Farm 1, Mean Line Added
 <div id="deviation-from-the-group-mean" class="section level4">
 <h4><span class="header-section-number">10.1.2.3</span> Deviation from the group mean</h4>
 <p>We want to know what the deviation from the mean of the group is for each individual. We can ask R to calculate this for us using the handy mutate function:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1">Radio <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb159-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">NoRadioDeviation =</span> (<span class="kw">mean</span>(NoRadio) <span class="op">-</span><span class="st"> </span>NoRadio)) </a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1">Radio <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb158-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">NoRadioDeviation =</span> (<span class="kw">mean</span>(NoRadio) <span class="op">-</span><span class="st"> </span>NoRadio)) </a></code></pre></div>
 <pre><code>## # A tibble: 10 x 4
 ##    NoRadio RadioMusic RadioDiscussion NoRadioDeviation
 ##      &lt;dbl&gt;      &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
@@ -567,9 +567,9 @@ Figure: 10.6: Magic dust yield (kg) for Farm 1, Mean Line Added
 ##  9     113         98              93           -1.9  
 ## 10     111        107              99            0.100</code></pre>
 <p>You can check that the sum of NoRadioDeviation does add to zero (or at least very close to it given some rounding errors because of floating point math):</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">Radio <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb161-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">NoRadioDeviation =</span> (<span class="kw">mean</span>(NoRadio) <span class="op">-</span><span class="st"> </span>NoRadio)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb161-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="st">&quot;Sum of Deviations from No Radio Mean&quot;</span> =<span class="st"> </span><span class="kw">sum</span>(NoRadioDeviation))</a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1">Radio <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb160-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">NoRadioDeviation =</span> (<span class="kw">mean</span>(NoRadio) <span class="op">-</span><span class="st"> </span>NoRadio)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb160-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="st">&quot;Sum of Deviations from No Radio Mean&quot;</span> =<span class="st"> </span><span class="kw">sum</span>(NoRadioDeviation))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   `Sum of Deviations from No Radio Mean`
 ##                                    &lt;dbl&gt;
@@ -585,9 +585,9 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <p>Because the deviations will always sum to 0, the raw deviations are not very useful.</p>
 <p>So how can we compare the deviation (variance) between two datasets?</p>
 <p>If we square the deviations and then sum them we have a more useful measure of variance that we call Sums of Squares (SS)</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1">Radio <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb163-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">NoRadioDeviation =</span> (<span class="kw">mean</span>(NoRadio) <span class="op">-</span><span class="st"> </span>NoRadio),</a>
-<a class="sourceLine" id="cb163-3" title="3">          <span class="dt">SquaredNoRadioDeviation =</span> (NoRadioDeviation<span class="op">*</span>NoRadioDeviation))</a></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">Radio <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb162-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">NoRadioDeviation =</span> (<span class="kw">mean</span>(NoRadio) <span class="op">-</span><span class="st"> </span>NoRadio),</a>
+<a class="sourceLine" id="cb162-3" title="3">          <span class="dt">SquaredNoRadioDeviation =</span> (NoRadioDeviation<span class="op">*</span>NoRadioDeviation))</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 5
 ##    NoRadio RadioMusic RadioDiscussion NoRadioDeviation SquaredNoRadioDeviation
 ##      &lt;dbl&gt;      &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;                   &lt;dbl&gt;
@@ -606,23 +606,23 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <p><span class="math display">\[\sigma^2 = \frac{SumsofSquares}{n-1} \]</span> $$</p>
 <p>Variance is therefore a measure of the variability of a dataset that takes the size of the dataset into account. And we can use variance to compare variability across different datasets. It’s very useful!</p>
 <p>R, we know, has a very handy function to calculate variance automatically:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1">Radio <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb165-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="st">&quot;Variance No Radio&quot;</span> =<span class="st"> </span><span class="kw">var</span>(NoRadio))</a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1">Radio <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb164-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="st">&quot;Variance No Radio&quot;</span> =<span class="st"> </span><span class="kw">var</span>(NoRadio))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   `Variance No Radio`
 ##                 &lt;dbl&gt;
 ## 1                334.</code></pre>
 <p>But if you’re not convinced . . .</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1">Radio <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb167-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">NoRadioDeviation =</span> (<span class="kw">mean</span>(NoRadio) <span class="op">-</span><span class="st"> </span>NoRadio),</a>
-<a class="sourceLine" id="cb167-3" title="3">          <span class="dt">SquaredNoRadioDeviation =</span> (NoRadioDeviation<span class="op">*</span>NoRadioDeviation)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb167-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">SumSquaresNoRadio =</span> <span class="kw">sum</span>(SquaredNoRadioDeviation))</a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1">Radio <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb166-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">NoRadioDeviation =</span> (<span class="kw">mean</span>(NoRadio) <span class="op">-</span><span class="st"> </span>NoRadio),</a>
+<a class="sourceLine" id="cb166-3" title="3">          <span class="dt">SquaredNoRadioDeviation =</span> (NoRadioDeviation<span class="op">*</span>NoRadioDeviation)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb166-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">SumSquaresNoRadio =</span> <span class="kw">sum</span>(SquaredNoRadioDeviation))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   SumSquaresNoRadio
 ##               &lt;dbl&gt;
 ## 1             3007.</code></pre>
 <p>And then divide that by <code>n-1</code>:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="fl">3006.9</span><span class="op">/</span><span class="dv">9</span></a></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="fl">3006.9</span><span class="op">/</span><span class="dv">9</span></a></code></pre></div>
 <pre><code>## [1] 334.1</code></pre>
 </div>
 <div id="partitioning-variation" class="section level4">
@@ -636,61 +636,61 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <h5><span class="header-section-number">10.1.2.5.1</span> Imaginary Scenario 1</h5>
 <p>Let’s imagine a scenario where the condition (our categorical variable) explains almost all of the variance in the dataset.</p>
 <p>It would look like this:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1">Sce1 &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">Condition1 =</span> <span class="kw">c</span>(<span class="dv">99</span>,<span class="dv">100</span>,<span class="dv">101</span>,<span class="dv">99</span>,<span class="dv">100</span>,<span class="dv">101</span>,<span class="dv">99</span>,<span class="dv">101</span>,<span class="dv">100</span>,<span class="dv">101</span>),</a>
-<a class="sourceLine" id="cb171-2" title="2">              <span class="dt">Condition2 =</span> <span class="kw">c</span>(<span class="dv">120</span>,<span class="dv">121</span>,<span class="dv">122</span>,<span class="dv">120</span>,<span class="dv">121</span>,<span class="dv">122</span>,<span class="dv">120</span>,<span class="dv">123</span>,<span class="dv">121</span>,<span class="dv">120</span>),</a>
-<a class="sourceLine" id="cb171-3" title="3">              <span class="dt">Condition3 =</span> <span class="kw">c</span>(<span class="dv">83</span>,<span class="dv">84</span>,<span class="dv">85</span>,<span class="dv">85</span>,<span class="dv">84</span>,<span class="dv">83</span>,<span class="dv">83</span>,<span class="dv">84</span>,<span class="dv">85</span>,<span class="dv">86</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb171-4" title="4"><span class="st">  </span><span class="kw">pivot_longer</span> (<span class="dt">cols =</span> <span class="kw">c</span>(Condition1<span class="op">:</span>Condition3), <span class="dt">names_to =</span> <span class="st">&quot;Condition&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;DustYield&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb171-5" title="5"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">Count =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)) </a>
-<a class="sourceLine" id="cb171-6" title="6">  </a>
-<a class="sourceLine" id="cb171-7" title="7">  </a>
-<a class="sourceLine" id="cb171-8" title="8"><span class="co"># In the code above I&#39;ve gathered the data into a tidy format </span></a>
-<a class="sourceLine" id="cb171-9" title="9"></a>
-<a class="sourceLine" id="cb171-10" title="10"></a>
-<a class="sourceLine" id="cb171-11" title="11">ImaginaryScenario1 &lt;-<span class="st"> </span>Sce1 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb171-12" title="12"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> Count, <span class="dt">y =</span> DustYield)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb171-13" title="13"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Condition, <span class="dt">colour =</span> Condition)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb171-14" title="14"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Unicorn ID Number&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb171-15" title="15"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb171-16" title="16"><span class="st">  </span><span class="kw">theme_classic</span> ()</a>
-<a class="sourceLine" id="cb171-17" title="17">  </a>
-<a class="sourceLine" id="cb171-18" title="18"><span class="co"># I have also made this chart an object because we&#39;re going to update it</span></a>
-<a class="sourceLine" id="cb171-19" title="19"><span class="co"># It&#39;s quicker to do this as an object</span></a>
-<a class="sourceLine" id="cb171-20" title="20"><span class="co"># You can compare how we update this chart with how we update the ones above.</span></a>
-<a class="sourceLine" id="cb171-21" title="21"></a>
-<a class="sourceLine" id="cb171-22" title="22">ImaginaryScenario1</a></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-198-1.png" width="672" /></p>
-<p>We could fit the mean of the dataset on this:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1">ImaginaryScenario1 <span class="op">+</span></a>
-<a class="sourceLine" id="cb172-2" title="2"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(Sce1<span class="op">$</span>DustYield))</a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1">Sce1 &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">Condition1 =</span> <span class="kw">c</span>(<span class="dv">99</span>,<span class="dv">100</span>,<span class="dv">101</span>,<span class="dv">99</span>,<span class="dv">100</span>,<span class="dv">101</span>,<span class="dv">99</span>,<span class="dv">101</span>,<span class="dv">100</span>,<span class="dv">101</span>),</a>
+<a class="sourceLine" id="cb170-2" title="2">              <span class="dt">Condition2 =</span> <span class="kw">c</span>(<span class="dv">120</span>,<span class="dv">121</span>,<span class="dv">122</span>,<span class="dv">120</span>,<span class="dv">121</span>,<span class="dv">122</span>,<span class="dv">120</span>,<span class="dv">123</span>,<span class="dv">121</span>,<span class="dv">120</span>),</a>
+<a class="sourceLine" id="cb170-3" title="3">              <span class="dt">Condition3 =</span> <span class="kw">c</span>(<span class="dv">83</span>,<span class="dv">84</span>,<span class="dv">85</span>,<span class="dv">85</span>,<span class="dv">84</span>,<span class="dv">83</span>,<span class="dv">83</span>,<span class="dv">84</span>,<span class="dv">85</span>,<span class="dv">86</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb170-4" title="4"><span class="st">  </span><span class="kw">pivot_longer</span> (<span class="dt">cols =</span> <span class="kw">c</span>(Condition1<span class="op">:</span>Condition3), <span class="dt">names_to =</span> <span class="st">&quot;Condition&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;DustYield&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb170-5" title="5"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">Count =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)) </a>
+<a class="sourceLine" id="cb170-6" title="6">  </a>
+<a class="sourceLine" id="cb170-7" title="7">  </a>
+<a class="sourceLine" id="cb170-8" title="8"><span class="co"># In the code above I&#39;ve gathered the data into a tidy format </span></a>
+<a class="sourceLine" id="cb170-9" title="9"></a>
+<a class="sourceLine" id="cb170-10" title="10"></a>
+<a class="sourceLine" id="cb170-11" title="11">ImaginaryScenario1 &lt;-<span class="st"> </span>Sce1 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb170-12" title="12"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> Count, <span class="dt">y =</span> DustYield)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb170-13" title="13"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Condition, <span class="dt">colour =</span> Condition)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb170-14" title="14"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Unicorn ID Number&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb170-15" title="15"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb170-16" title="16"><span class="st">  </span><span class="kw">theme_classic</span> ()</a>
+<a class="sourceLine" id="cb170-17" title="17">  </a>
+<a class="sourceLine" id="cb170-18" title="18"><span class="co"># I have also made this chart an object because we&#39;re going to update it</span></a>
+<a class="sourceLine" id="cb170-19" title="19"><span class="co"># It&#39;s quicker to do this as an object</span></a>
+<a class="sourceLine" id="cb170-20" title="20"><span class="co"># You can compare how we update this chart with how we update the ones above.</span></a>
+<a class="sourceLine" id="cb170-21" title="21"></a>
+<a class="sourceLine" id="cb170-22" title="22">ImaginaryScenario1</a></code></pre></div>
 <p><img src="ratrdsvs_files/figure-html/unnamed-chunk-199-1.png" width="672" /></p>
+<p>We could fit the mean of the dataset on this:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1">ImaginaryScenario1 <span class="op">+</span></a>
+<a class="sourceLine" id="cb171-2" title="2"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(Sce1<span class="op">$</span>DustYield))</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-200-1.png" width="672" /></p>
 <p>Let’s compare the overall mean with the group means, and see which one is the best guess for any given data point. Remember - if the condition is explaining a lot of the variation around our response, we’ll see less deviation from each group mean than the overall mean.</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1">Sce1 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb173-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb173-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span> (DustYield))</a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1">Sce1 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb172-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb172-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span> (DustYield))</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   Condition   mean
 ##   &lt;chr&gt;      &lt;dbl&gt;
 ## 1 Condition1 100. 
 ## 2 Condition2 121  
 ## 3 Condition3  84.2</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">ImaginaryScenario1 <span class="op">+</span></a>
-<a class="sourceLine" id="cb175-2" title="2"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(Sce1<span class="op">$</span>DustYield)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb175-3" title="3"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span><span class="dv">1</span>, <span class="dt">y =</span> <span class="fl">100.1</span>, <span class="dt">xend =</span><span class="dv">10</span>, <span class="dt">yend =</span> <span class="fl">100.1</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb175-4" title="4"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">11</span>, <span class="dt">y =</span> <span class="fl">121.0</span>, <span class="dt">xend =</span> <span class="dv">20</span>, <span class="dt">yend =</span> <span class="fl">121.0</span>, <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb175-5" title="5"><span class="st">  </span><span class="kw">geom_segment</span> (<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">21</span>, <span class="dt">y =</span> <span class="fl">84.2</span>, <span class="dt">xend =</span> <span class="dv">30</span>, <span class="dt">yend =</span> <span class="fl">84.2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb175-6" title="6"><span class="st">  </span><span class="kw">theme</span> (<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-200-1.png" width="672" /></p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1">ImaginaryScenario1 <span class="op">+</span></a>
+<a class="sourceLine" id="cb174-2" title="2"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(Sce1<span class="op">$</span>DustYield)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb174-3" title="3"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span><span class="dv">1</span>, <span class="dt">y =</span> <span class="fl">100.1</span>, <span class="dt">xend =</span><span class="dv">10</span>, <span class="dt">yend =</span> <span class="fl">100.1</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb174-4" title="4"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">11</span>, <span class="dt">y =</span> <span class="fl">121.0</span>, <span class="dt">xend =</span> <span class="dv">20</span>, <span class="dt">yend =</span> <span class="fl">121.0</span>, <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb174-5" title="5"><span class="st">  </span><span class="kw">geom_segment</span> (<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">21</span>, <span class="dt">y =</span> <span class="fl">84.2</span>, <span class="dt">xend =</span> <span class="dv">30</span>, <span class="dt">yend =</span> <span class="fl">84.2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb174-6" title="6"><span class="st">  </span><span class="kw">theme</span> (<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-201-1.png" width="672" /></p>
 <p>In this case, the individual group means are a better description of the group than the overall population mean. Any statistics we were to apply would simply put a number to what we see on this chart.</p>
 <p>So let’s look at a second scenario:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">Sce2&lt;-<span class="kw">tibble</span> (<span class="dt">Condition1 =</span> <span class="kw">c</span>(<span class="dv">84</span>,<span class="dv">86</span>,<span class="dv">123</span>,<span class="dv">95</span>,<span class="dv">87</span>,<span class="dv">110</span>,<span class="dv">99</span>,<span class="dv">95</span>,<span class="dv">121</span>,<span class="dv">121</span>),</a>
-<a class="sourceLine" id="cb176-2" title="2">              <span class="dt">Condition2 =</span> <span class="kw">c</span>(<span class="dv">83</span>,<span class="dv">115</span>,<span class="dv">85</span>,<span class="dv">85</span>, <span class="dv">110</span>,<span class="dv">105</span>,<span class="dv">84</span>,<span class="dv">115</span>,<span class="dv">101</span>,<span class="dv">100</span>),</a>
-<a class="sourceLine" id="cb176-3" title="3">              <span class="dt">Condition3 =</span> <span class="kw">c</span>(<span class="dv">84</span>,<span class="dv">122</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">101</span>,<span class="dv">83</span>,<span class="dv">83</span>,<span class="dv">99</span>, <span class="dv">120</span>,<span class="dv">120</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb176-4" title="4"><span class="st">  </span><span class="kw">pivot_longer</span> (<span class="dt">cols =</span> <span class="kw">c</span>(Condition1<span class="op">:</span>Condition3), <span class="dt">names_to =</span> <span class="st">&quot;Condition&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;DustYield&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb176-5" title="5"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">Count =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)) </a>
-<a class="sourceLine" id="cb176-6" title="6">  </a>
-<a class="sourceLine" id="cb176-7" title="7">Sce2 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb176-8" title="8"><span class="st">  </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb176-9" title="9"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span> (DustYield))</a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">Sce2&lt;-<span class="kw">tibble</span> (<span class="dt">Condition1 =</span> <span class="kw">c</span>(<span class="dv">84</span>,<span class="dv">86</span>,<span class="dv">123</span>,<span class="dv">95</span>,<span class="dv">87</span>,<span class="dv">110</span>,<span class="dv">99</span>,<span class="dv">95</span>,<span class="dv">121</span>,<span class="dv">121</span>),</a>
+<a class="sourceLine" id="cb175-2" title="2">              <span class="dt">Condition2 =</span> <span class="kw">c</span>(<span class="dv">83</span>,<span class="dv">115</span>,<span class="dv">85</span>,<span class="dv">85</span>, <span class="dv">110</span>,<span class="dv">105</span>,<span class="dv">84</span>,<span class="dv">115</span>,<span class="dv">101</span>,<span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb175-3" title="3">              <span class="dt">Condition3 =</span> <span class="kw">c</span>(<span class="dv">84</span>,<span class="dv">122</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">101</span>,<span class="dv">83</span>,<span class="dv">83</span>,<span class="dv">99</span>, <span class="dv">120</span>,<span class="dv">120</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb175-4" title="4"><span class="st">  </span><span class="kw">pivot_longer</span> (<span class="dt">cols =</span> <span class="kw">c</span>(Condition1<span class="op">:</span>Condition3), <span class="dt">names_to =</span> <span class="st">&quot;Condition&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;DustYield&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb175-5" title="5"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">Count =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)) </a>
+<a class="sourceLine" id="cb175-6" title="6">  </a>
+<a class="sourceLine" id="cb175-7" title="7">Sce2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb175-8" title="8"><span class="st">  </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb175-9" title="9"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span> (DustYield))</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   Condition   mean
 ##   &lt;chr&gt;      &lt;dbl&gt;
@@ -698,18 +698,18 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 ## 2 Condition2  98.3
 ## 3 Condition3  97.2</code></pre>
 <p>Now we chart it, and add our segment lines for each group’s mean:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1">Sce2 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb178-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> Count, <span class="dt">y =</span> DustYield)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb178-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Condition, <span class="dt">colour =</span> Condition)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb178-4" title="4"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Unicorn ID Number&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb178-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb178-6" title="6"><span class="st">  </span><span class="kw">theme_classic</span> () <span class="op">+</span></a>
-<a class="sourceLine" id="cb178-7" title="7"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(Sce2<span class="op">$</span>DustYield)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb178-8" title="8"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span><span class="dv">1</span>, <span class="dt">y =</span> <span class="fl">102.1</span>, <span class="dt">xend =</span><span class="dv">10</span>, <span class="dt">yend =</span> <span class="fl">102.1</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb178-9" title="9"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">11</span>, <span class="dt">y =</span> <span class="fl">98.3</span>, <span class="dt">xend =</span> <span class="dv">20</span>, <span class="dt">yend =</span> <span class="fl">98.3</span>, <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb178-10" title="10"><span class="st">  </span><span class="kw">geom_segment</span> (<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">21</span>, <span class="dt">y =</span> <span class="fl">97.2</span>, <span class="dt">xend =</span> <span class="dv">30</span>, <span class="dt">yend =</span> <span class="fl">97.2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb178-11" title="11"><span class="st">  </span><span class="kw">theme</span> (<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-202-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1">Sce2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb177-2" title="2"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> Count, <span class="dt">y =</span> DustYield)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb177-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Condition, <span class="dt">colour =</span> Condition)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-4" title="4"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Unicorn ID Number&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-6" title="6"><span class="st">  </span><span class="kw">theme_classic</span> () <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-7" title="7"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(Sce2<span class="op">$</span>DustYield)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-8" title="8"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span><span class="dv">1</span>, <span class="dt">y =</span> <span class="fl">102.1</span>, <span class="dt">xend =</span><span class="dv">10</span>, <span class="dt">yend =</span> <span class="fl">102.1</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-9" title="9"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">11</span>, <span class="dt">y =</span> <span class="fl">98.3</span>, <span class="dt">xend =</span> <span class="dv">20</span>, <span class="dt">yend =</span> <span class="fl">98.3</span>, <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-10" title="10"><span class="st">  </span><span class="kw">geom_segment</span> (<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">21</span>, <span class="dt">y =</span> <span class="fl">97.2</span>, <span class="dt">xend =</span> <span class="dv">30</span>, <span class="dt">yend =</span> <span class="fl">97.2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-11" title="11"><span class="st">  </span><span class="kw">theme</span> (<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>In this second scenaro, the population mean is not very different from the means of each of the three conditions. In fact, it’s hard to see some of those means on the chart! We haven’t successfully partitioned off any of the dataset’s varaiance by looking at each of the condition means.</p>
 <p>In this second scenario, the explanatory variable is not explaining very much of the response variable at all.</p>
 </div>
@@ -717,14 +717,14 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <div id="our-scenario" class="section level4">
 <h4><span class="header-section-number">10.1.2.6</span> Our Scenario</h4>
 <p>If we plot our unicorn data in the same format:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1">RadioTidy <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb179-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">count =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb179-3" title="3"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> count, <span class="dt">y =</span> DustYield)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb179-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Radio, <span class="dt">colour =</span> Radio)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb179-5" title="5"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;Magic Dust Yield(kg)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Unicorn ID Number&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb179-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb179-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span> ()</a></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-203-1.png" width="672" /></p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1">RadioTidy <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb178-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">count =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb178-3" title="3"><span class="st">  </span><span class="kw">ggplot</span> (<span class="kw">aes</span> (<span class="dt">x =</span> count, <span class="dt">y =</span> DustYield)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb178-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Radio, <span class="dt">colour =</span> Radio)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb178-5" title="5"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;Magic Dust Yield(kg)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Unicorn ID Number&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb178-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb178-7" title="7"><span class="st">  </span><span class="kw">theme_classic</span> ()</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-204-1.png" width="672" /></p>
 <div id="going-back-to-sums-of-squares" class="section level5">
 <h5><span class="header-section-number">10.1.2.6.1</span> Going Back to Sums of Squares</h5>
 <p>In our two imaginary scenarios above we were (roughly) partitioning variances by drawing lines on our charts - much like we could draw a line of best fit on the perfect data chart earlier.</p>
@@ -742,35 +742,35 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <li><p>F is the condition mean</p></li>
 <li><p>Y is the ‘response variable’</p></li>
 </ul>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1">MFY &lt;-<span class="st"> </span>RadioTidy <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb180-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="st">&quot;Y&quot;</span> =<span class="st"> </span>DustYield) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb180-3" title="3"><span class="st">  </span><span class="kw">mutate</span> (<span class="st">&quot;M&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(Y)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb180-4" title="4"><span class="st">  </span><span class="co"># If we now ask R to group the data, it will calculate the mean per group:</span></a>
-<a class="sourceLine" id="cb180-5" title="5"><span class="st">  </span><span class="kw">group_by</span>(Radio) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb180-6" title="6"><span class="st">  </span><span class="kw">mutate</span> (<span class="st">&quot;F&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(Y)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb180-7" title="7"><span class="st">  </span><span class="co"># Remember to ungroup after!</span></a>
-<a class="sourceLine" id="cb180-8" title="8"><span class="st">  </span><span class="kw">ungroup</span>() </a>
-<a class="sourceLine" id="cb180-9" title="9"><span class="co">#  I suggest you View(MFY)</span></a></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1">MFY &lt;-<span class="st"> </span>RadioTidy <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb179-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="st">&quot;Y&quot;</span> =<span class="st"> </span>DustYield) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb179-3" title="3"><span class="st">  </span><span class="kw">mutate</span> (<span class="st">&quot;M&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(Y)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb179-4" title="4"><span class="st">  </span><span class="co"># If we now ask R to group the data, it will calculate the mean per group:</span></a>
+<a class="sourceLine" id="cb179-5" title="5"><span class="st">  </span><span class="kw">group_by</span>(Radio) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb179-6" title="6"><span class="st">  </span><span class="kw">mutate</span> (<span class="st">&quot;F&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(Y)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb179-7" title="7"><span class="st">  </span><span class="co"># Remember to ungroup after!</span></a>
+<a class="sourceLine" id="cb179-8" title="8"><span class="st">  </span><span class="kw">ungroup</span>() </a>
+<a class="sourceLine" id="cb179-9" title="9"><span class="co">#  I suggest you View(MFY)</span></a></code></pre></div>
 <p>We can also calculate:</p>
 <ul>
 <li><p>MY (The data - Dataset mean)</p></li>
 <li><p>MF (The condition mean - dataset mean)</p></li>
 <li><p>FY (The data - condition mean)</p></li>
 </ul>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1">MFY &lt;-<span class="st"> </span>MFY <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb181-2" title="2"><span class="st"> </span><span class="kw">mutate</span> (<span class="dt">MY =</span> (Y<span class="op">-</span>M),</a>
-<a class="sourceLine" id="cb181-3" title="3">         <span class="dt">MF =</span> (F<span class="op">-</span>M),</a>
-<a class="sourceLine" id="cb181-4" title="4">         <span class="dt">FY =</span> (Y <span class="op">-</span><span class="st"> </span>F))</a></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1">MFY &lt;-<span class="st"> </span>MFY <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb180-2" title="2"><span class="st"> </span><span class="kw">mutate</span> (<span class="dt">MY =</span> (Y<span class="op">-</span>M),</a>
+<a class="sourceLine" id="cb180-3" title="3">         <span class="dt">MF =</span> (F<span class="op">-</span>M),</a>
+<a class="sourceLine" id="cb180-4" title="4">         <span class="dt">FY =</span> (Y <span class="op">-</span><span class="st"> </span>F))</a></code></pre></div>
 <p>We’ve calculated a lot of deviations here - but we said we always wanted to square those deviations, so:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1">MFY &lt;-<span class="st"> </span>MFY <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb182-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">MY2 =</span> (MY<span class="op">*</span>MY),</a>
-<a class="sourceLine" id="cb182-3" title="3">          <span class="dt">MF2 =</span> (MF<span class="op">*</span>MF),</a>
-<a class="sourceLine" id="cb182-4" title="4">          <span class="dt">FY2 =</span> (FY<span class="op">*</span>FY))</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1">MFY &lt;-<span class="st"> </span>MFY <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb181-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">MY2 =</span> (MY<span class="op">*</span>MY),</a>
+<a class="sourceLine" id="cb181-3" title="3">          <span class="dt">MF2 =</span> (MF<span class="op">*</span>MF),</a>
+<a class="sourceLine" id="cb181-4" title="4">          <span class="dt">FY2 =</span> (FY<span class="op">*</span>FY))</a></code></pre></div>
 <p>MY2, MF2 &amp; FY2 are the squares of the deviations, but we need a sum of squares for each one.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1">MFY <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb183-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">SumSquareMY =</span> <span class="kw">sum</span>(MY2),</a>
-<a class="sourceLine" id="cb183-3" title="3">            <span class="dt">SumSquareMF =</span> <span class="kw">sum</span>(MF2),</a>
-<a class="sourceLine" id="cb183-4" title="4">            <span class="dt">SumSquareFY =</span> <span class="kw">sum</span>(FY2))</a></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1">MFY <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb182-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">SumSquareMY =</span> <span class="kw">sum</span>(MY2),</a>
+<a class="sourceLine" id="cb182-3" title="3">            <span class="dt">SumSquareMF =</span> <span class="kw">sum</span>(MF2),</a>
+<a class="sourceLine" id="cb182-4" title="4">            <span class="dt">SumSquareFY =</span> <span class="kw">sum</span>(FY2))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   SumSquareMY SumSquareMF SumSquareFY
 ##         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
@@ -797,15 +797,15 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <li><p><strong>MS-FY</strong> = (5751.8/27) = 213.0296</p></li>
 </ul>
 <p>And this is pretty much all we can do with the data.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1"><span class="co"># I&#39;m using the package &#39;knitr&#39; to display this. </span></a>
-<a class="sourceLine" id="cb185-2" title="2"></a>
-<a class="sourceLine" id="cb185-3" title="3">knitr<span class="op">::</span><span class="kw">kable</span>(MFY <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb185-4" title="4"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">SumSquareMY =</span> <span class="kw">sum</span>(MY2),</a>
-<a class="sourceLine" id="cb185-5" title="5">                  <span class="dt">SumSquareMF =</span> <span class="kw">sum</span>(MF2),</a>
-<a class="sourceLine" id="cb185-6" title="6">                  <span class="dt">SumSquareFY =</span> <span class="kw">sum</span>(FY2),</a>
-<a class="sourceLine" id="cb185-7" title="7">                  <span class="dt">MeanSquareMY =</span> <span class="kw">sum</span>(MY2)<span class="op">/</span><span class="dv">29</span>,</a>
-<a class="sourceLine" id="cb185-8" title="8">                  <span class="dt">MeanSquareMF =</span> <span class="kw">sum</span>(MF2)<span class="op">/</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb185-9" title="9">                  <span class="dt">MeanSquareFY =</span> <span class="kw">sum</span>(FY2)<span class="op">/</span><span class="dv">27</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="co"># I&#39;m using the package &#39;knitr&#39; to display this. </span></a>
+<a class="sourceLine" id="cb184-2" title="2"></a>
+<a class="sourceLine" id="cb184-3" title="3">knitr<span class="op">::</span><span class="kw">kable</span>(MFY <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb184-4" title="4"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">SumSquareMY =</span> <span class="kw">sum</span>(MY2),</a>
+<a class="sourceLine" id="cb184-5" title="5">                  <span class="dt">SumSquareMF =</span> <span class="kw">sum</span>(MF2),</a>
+<a class="sourceLine" id="cb184-6" title="6">                  <span class="dt">SumSquareFY =</span> <span class="kw">sum</span>(FY2),</a>
+<a class="sourceLine" id="cb184-7" title="7">                  <span class="dt">MeanSquareMY =</span> <span class="kw">sum</span>(MY2)<span class="op">/</span><span class="dv">29</span>,</a>
+<a class="sourceLine" id="cb184-8" title="8">                  <span class="dt">MeanSquareMF =</span> <span class="kw">sum</span>(MF2)<span class="op">/</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb184-9" title="9">                  <span class="dt">MeanSquareFY =</span> <span class="kw">sum</span>(FY2)<span class="op">/</span><span class="dv">27</span>))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -837,13 +837,13 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <p>If the condition (radio) has no effect on the data, then the variation we would see between the farms would be similar to the variation we saw within any given farm. It would be like Scenario 2, where the mean of the farm was no more use to us than the mean of the overall population.</p>
 <p>If that were the case: the <code>Condition Mean Square (FMS)  / Error Mean Square (EMS) = 1</code></p>
 <p>Let’s look again at that last table.</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(MFY <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb186-2" title="2"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">SumSquareMY =</span> <span class="kw">sum</span>(MY2),</a>
-<a class="sourceLine" id="cb186-3" title="3">                  <span class="dt">SumSquareMF =</span> <span class="kw">sum</span>(MF2),</a>
-<a class="sourceLine" id="cb186-4" title="4">                  <span class="dt">SumSquareFY =</span> <span class="kw">sum</span>(FY2),</a>
-<a class="sourceLine" id="cb186-5" title="5">                  <span class="dt">MeanSquareMY =</span> <span class="kw">sum</span>(MY2)<span class="op">/</span><span class="dv">29</span>,</a>
-<a class="sourceLine" id="cb186-6" title="6">                  <span class="dt">MeanSquareMF =</span> <span class="kw">sum</span>(MF2)<span class="op">/</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb186-7" title="7">                  <span class="dt">MeanSquareFY =</span> <span class="kw">sum</span>(FY2)<span class="op">/</span><span class="dv">27</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(MFY <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb185-2" title="2"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">SumSquareMY =</span> <span class="kw">sum</span>(MY2),</a>
+<a class="sourceLine" id="cb185-3" title="3">                  <span class="dt">SumSquareMF =</span> <span class="kw">sum</span>(MF2),</a>
+<a class="sourceLine" id="cb185-4" title="4">                  <span class="dt">SumSquareFY =</span> <span class="kw">sum</span>(FY2),</a>
+<a class="sourceLine" id="cb185-5" title="5">                  <span class="dt">MeanSquareMY =</span> <span class="kw">sum</span>(MY2)<span class="op">/</span><span class="dv">29</span>,</a>
+<a class="sourceLine" id="cb185-6" title="6">                  <span class="dt">MeanSquareMF =</span> <span class="kw">sum</span>(MF2)<span class="op">/</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb185-7" title="7">                  <span class="dt">MeanSquareFY =</span> <span class="kw">sum</span>(FY2)<span class="op">/</span><span class="dv">27</span>))</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -872,7 +872,7 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <li><p>ENS = 213.0296</p></li>
 </ul>
 <p>And we’ll call this the F Ratio.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="fl">3150.7</span><span class="op">/</span><span class="fl">213.0296</span></a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="fl">3150.7</span><span class="op">/</span><span class="fl">213.0296</span></a></code></pre></div>
 <pre><code>## [1] 14.78996</code></pre>
 </div>
 <div id="f-ratios-and-f-distributions" class="section level4">
@@ -896,8 +896,8 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <h4><span class="header-section-number">10.1.2.10</span> Prove It</h4>
 <p>Of course, we don’t run ANOVAs by hand. We don’t use all these steps to run an ANOVA. Instead we go back to the RadioTidy data, which if you <code>View(RadioTidy)</code>, you will note doesn’t have any of our squares or sum squares or mean squares calculated.</p>
 <p>And we ask R to run an ANOVA:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">ANOVA &lt;-<span class="st"> </span><span class="kw">aov</span>(DustYield <span class="op">~</span><span class="st"> </span>Radio, <span class="dt">data =</span> RadioTidy)</a>
-<a class="sourceLine" id="cb189-2" title="2"><span class="kw">summary</span>(ANOVA)</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1">ANOVA &lt;-<span class="st"> </span><span class="kw">aov</span>(DustYield <span class="op">~</span><span class="st"> </span>Radio, <span class="dt">data =</span> RadioTidy)</a>
+<a class="sourceLine" id="cb188-2" title="2"><span class="kw">summary</span>(ANOVA)</a></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)    
 ## Radio        2   6301    3151   14.79 4.6e-05 ***
 ## Residuals   27   5752     213                    

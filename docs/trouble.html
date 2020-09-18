@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-09-18" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,9 +281,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
 <li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#gg_answers"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
@@ -353,28 +353,26 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <div id="trouble_warnings" class="section level2">
 <h2><span class="header-section-number">8.2</span> Common warnings</h2>
 <p>Sometimes (perhaps even ‘often’), R will give you a warning when you run a line of code. For example:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1">warn &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="ot">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb105-2" title="2">               <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb105-3" title="3"></a>
-<a class="sourceLine" id="cb105-4" title="4">warn <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb105-5" title="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb105-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">warn &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="ot">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb104-2" title="2">               <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb104-3" title="3"></a>
+<a class="sourceLine" id="cb104-4" title="4">warn <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb104-5" title="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb104-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>We receive the <code>Warning: Removed 1 rows containing missing values (geom_point).</code></p>
 <p>In this case, its obvious that ggplot has had to get rid of the row of data with the <code>NA</code> value, and so we probably feel comfortable moving on with this warning. However, warnings can be a sign of something not behaving itself, and is usually a sign we should go back and double check our code. We might decide to move forward and ignore the warnings.</p>
 </div>
 <div id="trouble_errors" class="section level2">
 <h2><span class="header-section-number">8.3</span> Common errors</h2>
 <p>There are a lot of common errors in R, that can usually be easily fixed<a href="acks.html#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>.</p>
-<p>Errors mean that R has not been able to</p>
+<p>Errors mean that R has not been able to successfully run the code.</p>
 <div id="object-not-found." class="section level3">
 <h3><span class="header-section-number">8.3.1</span> Object not found.</h3>
 <p>Sometimes you might ask R to find something that doesn’t exist, for example:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">thing</a></code></pre></div>
-<ul>
-<li>Error: object ‘thing’ not found</li>
-</ul>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">thing</a></code></pre></div>
+<p><code>Error: object 'thing' not found</code></p>
 <p>The quote <code>Error: object 'thing' not found</code> tells us that R can’t find anything called ‘thing’ in the environment, or any of the loaded packages.</p>
 <ul>
 <li><p>Check that you’ve loaded all your required packages</p></li>
@@ -385,10 +383,8 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <div id="function-not-found" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> Function not found</h3>
 <p>Similarly, sometimes you might an error telling you that a function doesn’t exist.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw">thing</span>(<span class="dv">1</span>)</a></code></pre></div>
-<ul>
-<li>Error in thing(1) : could not find function “thing”</li>
-</ul>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">thing</span>(<span class="dv">1</span>)</a></code></pre></div>
+<p><code>Error in thing(1) : could not find function "thing"</code></p>
 <p>Again, you want to:</p>
 <ul>
 <li><p>Check you’ve definitely loaded the right packages</p></li>
@@ -399,27 +395,21 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <div id="unexpected-symbols" class="section level3">
 <h3><span class="header-section-number">8.3.3</span> Unexpected symbols</h3>
 <p>There are a few errors which are all similar, such as:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)<span class="er">)</span></a></code></pre></div>
-<ul>
-<li>Error: unexpected ‘)’ in “mean(2,2,4,5,6))”</li>
-</ul>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)<span class="er">)</span></a></code></pre></div>
+<p><code>Error: unexpected ')' in "mean(2,2,4,5,6))"</code></p>
 <p>and</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span> <span class="dv">6</span>)</a></code></pre></div>
-<ul>
-<li>Error: unexpected numeric constant in “mean(2,2,3,5 6”</li>
-</ul>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span> <span class="dv">6</span>)</a></code></pre></div>
+<p><code>Error: unexpected numeric constant in "mean(2,2,3,5 6"</code></p>
 <p>and</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>;<span class="dv">5</span>,<span class="dv">6</span>)</a></code></pre></div>
-<ul>
-<li>Error: unexpected ‘;’ in “mean(2,2,3;”</li>
-</ul>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>;<span class="dv">5</span>,<span class="dv">6</span>)</a></code></pre></div>
+<p><code>Error: unexpected ';' in "mean(2,2,3;"</code></p>
 <p>These are all clues to go back through the last run chunk of code and look for typos.</p>
 </div>
 </div>
 <div id="quick-warnings-and-errors" class="section level2">
 <h2><span class="header-section-number">8.4</span> Quick warnings and errors</h2>
 <p>There is a great resource from <a href="http://rex-analytics.com/decoding-error-messages-r/">rex-analytics</a> on errors and warnings, which I’ll display here:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-138"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-139"></span>
 <img src="images/08_troubleshooting/errors-in-R-739x1024.png" alt="Rex-analytics great infographic on R warnings and errors" width="370" />
 <p class="caption">
 Figure: 8.1: Rex-analytics great infographic on R warnings and errors
@@ -431,21 +421,21 @@ Figure: 8.1: Rex-analytics great infographic on R warnings and errors
 <p>Of course sometimes you can’t figure out with what you already know. When this happens your next step is to google<a href="acks.html#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>.</p>
 <p>Many, many people know that <a href="https://dev.to/dvddpl/am-i-an-expert-developer-or-just-an-expert-googler-4390">they should just google things</a>. These people have it cracked. If you know how to find an answer on Google, you will be immediately more employable than the person who doesn’t.</p>
 <p>This has even become a meme . . .</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-139"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-140"></span>
 <img src="images/08_troubleshooting/meme1.png" alt="10 years of programming, stolen from /r/programmerhumor" width="427" />
 <p class="caption">
 Figure: 8.2: 10 years of programming, stolen from /r/programmerhumor
 </p>
 </div>
 <p>Quite a few memes actually . . .</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-140"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-141"></span>
 <img src="images/08_troubleshooting/meme2.png" alt="Jerry gets rewarded for googling, stolen from /r/programmerhumor" width="250" />
 <p class="caption">
 Figure: 8.3: Jerry gets rewarded for googling, stolen from /r/programmerhumor
 </p>
 </div>
 <p>One more to make the point . . .</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-141"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-142"></span>
 <img src="images/08_troubleshooting/meme3.jpg" alt="Young Thug knows how to google, stolen from /r/programmerhumor" width="374" />
 <p class="caption">
 Figure: 8.4: Young Thug knows how to google, stolen from /r/programmerhumor
@@ -461,21 +451,22 @@ Figure: 8.4: Young Thug knows how to google, stolen from /r/programmerhumor
 <ol style="list-style-type: decimal">
 <li>Summarise the problem</li>
 </ol>
-<pre><code>* What are you trying to do (what&#39;s your ideal output?)
+<pre><code>+ What are you trying to do (what&#39;s your ideal output?)
 
-* What is happening at the moment (what&#39;s going wrong?)
++ What is happening at the moment (what&#39;s going wrong?)
 
-* What errors/warnings is R giving you?</code></pre>
++ What errors/warnings is R giving you?</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Describe what you’ve tried</li>
 </ol>
-<pre><code>* What different methods have you tried? (Hint: if you haven&#39;t tried anything it&#39;s going to annoy people)
+<pre><code>+ What different methods have you tried? 
+    + (Hint: if you haven&#39;t tried anything it&#39;s going to annoy people)
 
-* Why do you think your attempts haven&#39;t worked?</code></pre>
++ Why do you think your attempts haven&#39;t worked?</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Show some code</li>
 </ol>
-<pre><code>* Share a minimum reproducible example (reprex) so people can tell exactly what you&#39;re trying. </code></pre>
+<pre><code>+ Share a minimum reproducible example (reprex) so people can tell exactly what you&#39;re trying. </code></pre>
 <p>Even if you don’t want to ask your question on stackoverflow, these tips can be really useful.</p>
 </div>
 </div>

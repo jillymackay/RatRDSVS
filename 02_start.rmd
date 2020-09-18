@@ -66,7 +66,7 @@ Using R Studio you will get a lot better at 'directory management', or knowing w
 
 
 ## Environment {#environment}
-In your brand new project you will have a clean environment (refer back to [Figure 2.5](#navigate_rs)). Our first exercise is going to explore what the environment really means. 
+In your brand new project you will have a clean environment (refer back to [Figure 1.5](#navigate_rs)). Our first exercise is going to explore what the environment really means. 
 
 ### Exercise - Environment {#ex_env}
 When we first installed R, you were typing mathematical equations into the console. Let's remind ourselves of this by running an equation now. In the console, type a long and complicated equation, then hit 'enter' when you're done.
@@ -207,9 +207,12 @@ There are packages for everything, packages for drawing maps, packages for analy
 
 ### Exercise - Install and Load a Package {#ex_packages}
 
-Packages work in two stages. The very first time you need a package you need to install it. Then, every time you start R you need to load the package into your livrary.
+Packages work in two stages. The very first time you need a package you need to install it. Then, every time you start R you need to load the package into your library.
 
-To install a package you need to type `install.package("package_name")`. 
+First you **install**.
+Next you **load into library**.
+
+To install a package you need to type `install.packages("package_name")`. 
 
 To load it into your library you need to type `library(package_name)`.
 
@@ -223,7 +226,10 @@ install.packages("tidyverse")
 
 ```
 
-And when it has finished downloading, you need to type:
+While the package is downloading and installing you may see a little red 'stop' sign in the top right hand corner of your console window. This means R is working, and you shouldn't add any new commands until it has finished and the new line symbol appears again in the console (`>`).
+
+
+When it has finished downloading & installing, you need to type:
 
 ```{r eval = FALSE}
 
@@ -288,7 +294,8 @@ print("You can also use script files to write multiple lines of code")
 print("and edit those lines of code")
 
 
-# before you run them by pressing ctrl + enter at the same time  when your cursor is on that line. 
+# before you run them by pressing ctrl + enter at the same time 
+# when your cursor is on that line. 
 
 
 ```
@@ -299,19 +306,14 @@ print("and edit those lines of code")
 ### R Markdown
 R Markdown allows you to combine code with actual text. This book was written in R Markdown
 
+In R Markdown you can combine normal text with code blocks, and R knows to only treat the text inside the code blocks as code. 
 
-In R Markdown you can have a text chunk like this one.
+```{r echo = FALSE, fig.width = 4, fig.cap="An example of R Markdown with text and code", fig.align = 'center'}
 
-And follow that with code, bracketed with three ticks like this:
-\```{r}
+knitr::include_graphics("images/03_data/rmarkdown.png")
 
-print("followed by code like this")
-
-\```
-
-```{r echo = FALSE, warning = FALSE, message = FALSE}
-print("followed by code like this")
 ```
+
 
 
 [There is a great R Markdown cheatsheet from R Studio here](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf). I had this printed out and hung above my desk for years. 

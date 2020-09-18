@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-09-18" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,9 +281,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
 <li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#gg_answers"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
@@ -345,12 +345,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li id="fn2"><p>If you’re reading this as part of your coursework you might be panicking about plagiarism here, after all, we spend a lot of time telling you plagiarism is the worst thing you could ever do and that we’ll use software to detect it. Code is a bit different. We are always trying to find the most efficient way of doing something, and so ideally you would all write code that was identical. Sadly, humans naturally differ in the way the think about problems. My job would be a lot easier if everybody thought the same. If I have set you this book as reading, I can swear to you I will never put your code through a plagiarism checker. That would be very stupid.<a href="start.html#fnref2" class="footnote-back">↩</a></p></li>
 <li id="fn3"><p>‘Default’ here means one you won’t need to install or load into the library<a href="data.html#fnref3" class="footnote-back">↩</a></p></li>
 <li id="fn4"><p>If its not working - are you sure you have spelled it with a capital <code>View</code>?<a href="data.html#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>The Length of these variables is the number of rows in each one, which for this case is the same because this is a nice, tidy dataset<a href="data.html#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>The Length of these variables is the number of rows in each one, which for this case is the same for each variable because this is a nice, tidy dataset<a href="data.html#fnref5" class="footnote-back">↩</a></p></li>
 <li id="fn6"><p>A factor is also called a categorical variable, or a grouping variable. If you’re not sure you know what a factor is, <a href="https://en.wikipedia.org/wiki/Categorical_variable">wiki</a> is a good place to review<a href="data.html#fnref6" class="footnote-back">↩</a></p></li>
 <li id="fn7"><p><code>is.character(y)</code> should give you an error message like <code>Error: object 'y' is not found</code> because <code>y</code> by itself does not exist in your environment. There’s a way around this by ‘attaching’ data to your environment, which is a bit old fashioned and can result in problems down the line with your workflow (because you won’t necessarily know if the person you’re working with has also attached the data), so I recommend against it. <code>is.character(dat::y)</code> should give you an error like <code>Error in loadNamespace(name) : there is no package called 'dat'</code>. Unsurprisingly, this is telling you that the <code>::</code> sequence tells R to look inside a <strong>package</strong> for a thing called <code>y</code>, but that package doesn’t exist. Packages and data frames are different things.<a href="data.html#fnref7" class="footnote-back">↩</a></p></li>
 <li id="fn8"><p>I like <code>nord</code> so much its the colour scheme for this book<a href="charts.html#fnref8" class="footnote-back">↩</a></p></li>
 <li id="fn9"><p>The hinges are actually calculated based on the <code>boxplot.stats</code> <a href="https://www.rdocumentation.org/packages/grDevices/versions/3.6.2/topics/boxplot.stats">function</a> which is a little more complicated than 95% of the data - but if you ever need to worry about this you have gone beyond what this book can teach you.<a href="charts.html#fnref9" class="footnote-back">↩</a></p></li>
-<li id="fn10"><p>You may be interested to know that the <code>+</code> symbol is a precursor to the <code>%&gt;%</code> symbol. Both <code>ggplot2</code> and <code>tidyverse</code> were mainly written by <a href="https://twitter.com/hadleywickham">Hadley Wickham</a> who has often spoken about <a href="https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7">why ggplot won’t ever use the %&gt;% operator</a><a href="ggplot.html#fnref10" class="footnote-back">↩</a></p></li>
+<li id="fn10"><p>You may be interested to know that the <code>+</code> symbol is a precursor to the <code>%&gt;%</code> symbol. Both <code>ggplot2</code> and <code>tidyverse</code> were mainly written by <a href="https://twitter.com/hadleywickham">Hadley Wickham</a> who has spoken about <a href="https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7">why ggplot won’t ever use the %&gt;% operator</a><a href="ggplot.html#fnref10" class="footnote-back">↩</a></p></li>
 <li id="fn11"><p>This section is nearly wholly stolen from <a href="http://varianceexplained.org/courses/errors/">David Robinson</a><a href="trouble.html#fnref11" class="footnote-back">↩</a></p></li>
 <li id="fn12"><p>or web search of your choice<a href="trouble.html#fnref12" class="footnote-back">↩</a></p></li>
 </ol>

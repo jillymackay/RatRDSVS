@@ -153,7 +153,7 @@ head(students_tidy)
 ### Mutate to change multiple variables
 We can also change multiple variables using the `mutate_at` function. This can be a little more difficult to master, but is often faster than typing out multiple lines of `mutate`.
 
-Our `disagree`, `neutral` and `agree` columns are currently expressed as percentages, e.g. row 1 above had 80% of students disagreing, 5% of students neutral, and 15% of students agreeing with the statement I was a good teacher. However, we know the number of students in each class, so it might be better to express those values as a proportion (e.g. 0.8, 0.05, 0.15). That's a simple calculation - we need to take each value and divide by 100. 
+Our `disagree`, `neutral` and `agree` columns are currently expressed as percentages, e.g. row 1 above had 80% of students disagreeing, 5% of students neutral, and 15% of students agreeing with the statement I was a good teacher. However, we know the number of students in each class, so it might be better to express those values as a proportion (e.g. 0.8, 0.05, 0.15). That's a simple calculation - we need to take each value and divide by 100. 
 
 To do this, we need to use two particularly cool things about `tidyverse`, the ability to select multiple variables, and the ability to use `.` to mean `whatever I just asked for`. 
 
@@ -174,7 +174,7 @@ In this code chunk we:
 
   1. Create the object `students_tidy` (which we are overwriting, since it already exists)
   2. Make the new `students_tidy` object from the old one, and then ...
-  3. Change more than one variable within `students_tidy` (`mutate`)
+  3. Change more than one variable within `students_tidy` (`mutate_at`)
   4. Specify what variables we want to change (`.vars = vars`)
   5. List those variables, which are a string of names (`c(disagree, neutral, agree)`)
   6. Specify the function we want to apply to each of the previously selected variables (`.funs = `)
@@ -308,7 +308,7 @@ I once spent a whole afternoon trying to recreate an error message I was getting
 ## pivot_wider
 What if, after all that, you realise that you never wanted your data gathered at all? `pivot_wider` is here to rescue you. 
 
-Just as before, `spread` wants to know the `key` and the `value`, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don't exclude any columns (in fact, try excluding the columns and see what spread says. )
+Just as before, `pivot_wider` wants to know the `names` and the `value`, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don't exclude any columns (in fact, try excluding the columns and see what spread says. )
 
 ```{r, warning = FALSE, message = FALSE}
 

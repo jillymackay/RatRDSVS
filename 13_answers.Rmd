@@ -91,7 +91,7 @@ dat <- readxl::read_excel("data/ch2_planets.xlsx")
 
 
 
-## ggplot answers {#gg_answers}
+## ggplot answers {#ans_ggbox}
 
 ### Boxplot of highway miles per gallon versus class (mpg dataset) 
 
@@ -125,7 +125,7 @@ mpg %>%
 
 
 
-### Histogram of city miles per gallon faceted by transmission type (mpg dataset)
+### Histogram of city miles per gallon faceted by transmission type (mpg dataset) {#ans_gghist}
 
 A possible solution:
 

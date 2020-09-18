@@ -21,7 +21,7 @@ If you're on a course that I'm teaching, I will share R Markdown documents with 
 
 You  might think this can't apply to you, but think how many times you might make a change to a dataset in the process of cleaning that data and tidying it. If you had to describe what you did to a collaborator, would you remember every change?
 
-One of the great advantages of using code to process data is that every stage can be documented. In this textbook I'm teaching you R, and on my courses I mainly use R Markdown files to document workflows, but R is just one statistical language and R Markdowns are just one file type. 
+One of the great advantages of using code to process data is that every stage can be documented. In this textbook I'm teaching you R, and on my courses I mainly use R Markdown files to document workflows, but R is just one statistical language and R Markdowns are just one file type. The process is the important part. 
 
 
 ### An example of sharing code

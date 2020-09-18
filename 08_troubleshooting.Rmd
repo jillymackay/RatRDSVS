@@ -50,7 +50,7 @@ In this case, its obvious that ggplot has had to get rid of the row of data with
 ## Common errors {#trouble_errors}
 There are a lot of common errors in R, that can usually be easily fixed^[This section is nearly wholly stolen from [David Robinson](http://varianceexplained.org/courses/errors/)]. 
 
-Errors mean that R has not been able to 
+Errors mean that R has not been able to successfully run the code.
 
 ### Object not found.
 Sometimes you might ask R to find something that doesn't exist, for example:
@@ -62,7 +62,7 @@ thing
 ```
 
 
-  + Error: object 'thing' not found
+` Error: object 'thing' not found`
 
 The quote `Error: object 'thing' not found` tells us that R can't find anything called 'thing' in the environment, or any of the loaded packages. 
 
@@ -81,7 +81,7 @@ thing(1)
 
 ```
 
-  + Error in thing(1) : could not find function "thing"
+`Error in thing(1) : could not find function "thing"`
 
 Again, you want to:
 
@@ -99,7 +99,7 @@ There are a few errors which are all similar, such as:
 ```{r eval = FALSE}
 mean(2,2,4,5,6))
 ```
-   + Error: unexpected ')' in "mean(2,2,4,5,6))"
+`Error: unexpected ')' in "mean(2,2,4,5,6))"`
    
 
 and
@@ -110,7 +110,7 @@ and
 mean(2,2,3,5 6)
 
 ```
-  + Error: unexpected numeric constant in "mean(2,2,3,5 6"
+`Error: unexpected numeric constant in "mean(2,2,3,5 6"`
 
 and
 
@@ -118,7 +118,7 @@ and
 mean(2,2,3;5,6)
 
 ```
-  + Error: unexpected ';' in "mean(2,2,3;"
+`Error: unexpected ';' in "mean(2,2,3;"`
 
 These are all clues to go back through the last run chunk of code and look for typos. 
 
@@ -185,21 +185,22 @@ When you start to ask a question on stackoverflow, it gives you a really helpful
 
   1. Summarise the problem
   
-    * What are you trying to do (what's your ideal output?)
+    + What are you trying to do (what's your ideal output?)
     
-    * What is happening at the moment (what's going wrong?)
+    + What is happening at the moment (what's going wrong?)
     
-    * What errors/warnings is R giving you?
+    + What errors/warnings is R giving you?
     
   2. Describe what you've tried
   
-    * What different methods have you tried? (Hint: if you haven't tried anything it's going to annoy people)
+    + What different methods have you tried? 
+        + (Hint: if you haven't tried anything it's going to annoy people)
     
-    * Why do you think your attempts haven't worked?
+    + Why do you think your attempts haven't worked?
     
   3. Show some code
   
-    * Share a minimum reproducible example (reprex) so people can tell exactly what you're trying. 
+    + Share a minimum reproducible example (reprex) so people can tell exactly what you're trying. 
 
 
 Even if you don't want to ask your question on stackoverflow, these tips can be really useful. 
@@ -226,3 +227,4 @@ There are three key elements of a reprex:
     
   3. Describe the problem again before sending it
     * You may be surprised at how the problem has changed while troubleshooting!
+    

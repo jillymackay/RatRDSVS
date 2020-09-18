@@ -31,27 +31,26 @@ library(readxl)
 
 
 ## Built In Data {#data_builtin}
-Many packages, such as the `tidyverse` package, and the default^['Default' here means one you won't need to install or load into the library] `datasets` package come with data in them. These datasets can be really useful for testing code that you're unfamiliar with, because you know what the data should look like, and how it should perform. 
+Many packages, such as the `tidyverse` package, and the default ^['Default' here means one you won't need to install or load into the library] `datasets` package come with data in them. These datasets can be really useful for testing code that you're unfamiliar with, because you know what the data should look like, and how it should perform. 
 
 Some common datasets are:
 
 * `mpg`
-  + Fuel economy data from 1999 to 2008 for 38 popular models of cars
+    + Fuel economy data from 1999 to 2008 for 38 popular models of cars
   
 *  `ChickWeight`
-
-  + Weight versus age of chicks on different diets
+    + Weight versus age of chicks on different diets
 
 * `starwars`
-  + Name, height, weight, age, and other characteristics of Star Wars characters
+    + Name, height, weight, age, and other characteristics of Star Wars characters
 
 * `iris`
-  + The measurements (in cm) of the sepal length and width and petal length and width of 50 flowers in 3 species of iris
+    + The measurements (in cm) of the sepal length and width and petal length and width of 50 flowers in 3 species of iris
   
 There are many, many more. You can explore some of them by typing `datasets::` into the console and instead of pressing 'enter', scroll the menu that pops up to help you autocomplete your command. 
 
 ```{block, type = "hey"}
-You might wonder, what's the `::` in the `datasets::` command. The `::` is very useful and tells R to look inside the `datasets` package without having to actually load it into your library which can be very quick and easy
+You might wonder, what's the `::` in the `datasets::` command. The `::` is very useful and tells R to look inside the `datasets` package without having to actually load it into your library which can be very quick and easy.
 ```
 
 
@@ -108,7 +107,7 @@ summary(mpg)
 
 ```
 
-The `summary()` function highlights an important aspect of R - it knows the difference between numbers and characters. In the output block we can see that `manufacturer` is given the `Class` `character`. R knows it can't create a mean and a median from this data, so it simply tells you the `Length` of that data instead. What do you think the `r length(mpg$manufacturer)` refers to here? Answer in the footnote^[The Length of these variables is the number of rows in each one, which for this case is the same because this is a nice, tidy dataset].
+The `summary()` function highlights an important aspect of R - it knows the difference between numbers and characters. In the output block we can see that `manufacturer` is given the `Class` `character`. R knows it can't create a mean and a median from this data, so it simply tells you the `Length` of that data instead. What do you think the `r length(mpg$manufacturer)` refers to here? Answer in the footnote^[The Length of these variables is the number of rows in each one, which for this case is the same for each variable because this is a nice, tidy dataset].
 
 
 ## Data you create {#created_data}
@@ -385,11 +384,11 @@ You can send me your script and your data file together, and I can work directly
 
 ## Exercise {#ex_loadexcel}
 
-This time Iw ant you to change two things about the `read_excel` code. 
+This time I want you to load the ch2_planets.xlsx file into your environment. 
 
-The file is now saved in a folder inside your working directory called `data`.
+I assume that you have saved the ch2_planets.xlsx file to your working directory in a folder called `data`.
 
-And I don't want to load the `readxl` library every time I run this piece of code. Is there a short cut we can use?
+Your task: I don't want to have to load the `readxl` library every time I read in an excel file. Is there a short cut we can use?
 
 Remember to try this - play about with the code and talk to your classmates/friends before looking at the answer. [Answer here](#ans_loadexcel)
 

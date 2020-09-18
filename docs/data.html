@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-09-18" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,9 +281,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
 <li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#gg_answers"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
@@ -338,20 +338,22 @@ Are comfortable loading .csv and .xlsx files into R
 <div id="packages-for-this-chapter" class="section level2">
 <h2><span class="header-section-number">3.1</span> Packages for this chapter</h2>
 <p>In this chapter you’ll want the following packages loaded in your R session. At the start, you will need to run the following code. Remember if you don’t have a package you can install it with the <code>install.package("package_name")</code> command.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb28-2" title="2"><span class="kw">library</span>(readxl)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">library</span>(readxl)</a></code></pre></div>
 </div>
 <div id="data_builtin" class="section level2">
 <h2><span class="header-section-number">3.2</span> Built In Data</h2>
-<p>Many packages, such as the <code>tidyverse</code> package, and the default<a href="acks.html#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> <code>datasets</code> package come with data in them. These datasets can be really useful for testing code that you’re unfamiliar with, because you know what the data should look like, and how it should perform.</p>
+<p>Many packages, such as the <code>tidyverse</code> package, and the default <a href="acks.html#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> <code>datasets</code> package come with data in them. These datasets can be really useful for testing code that you’re unfamiliar with, because you know what the data should look like, and how it should perform.</p>
 <p>Some common datasets are:</p>
 <ul>
 <li><code>mpg</code>
 <ul>
 <li>Fuel economy data from 1999 to 2008 for 38 popular models of cars</li>
 </ul></li>
-<li><p><code>ChickWeight</code></p></li>
-<li><p>Weight versus age of chicks on different diets</p></li>
+<li><code>ChickWeight</code>
+<ul>
+<li>Weight versus age of chicks on different diets</li>
+</ul></li>
 <li><code>starwars</code>
 <ul>
 <li>Name, height, weight, age, and other characteristics of Star Wars characters</li>
@@ -364,7 +366,7 @@ Are comfortable loading .csv and .xlsx files into R
 <p>There are many, many more. You can explore some of them by typing <code>datasets::</code> into the console and instead of pressing ‘enter’, scroll the menu that pops up to help you autocomplete your command.</p>
 <div class="hey">
 <p>
-You might wonder, what’s the <code>::</code> in the <code>datasets::</code> command. The <code>::</code> is very useful and tells R to look inside the <code>datasets</code> package without having to actually load it into your library which can be very quick and easy
+You might wonder, what’s the <code>::</code> in the <code>datasets::</code> command. The <code>::</code> is very useful and tells R to look inside the <code>datasets</code> package without having to actually load it into your library which can be very quick and easy.
 </p>
 </div>
 </div>
@@ -372,7 +374,7 @@ You might wonder, what’s the <code>::</code> in the <code>datasets::</code> co
 <h2><span class="header-section-number">3.3</span> Exercise</h2>
 <p>For our first exercise we are going to look at some of the inbuilt datasets.</p>
 <p>What happens when you enter the following code<a href="acks.html#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> into the console?</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">View</span>(mpg)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">View</span>(mpg)</a></code></pre></div>
 <p>You should see something like <strong>Figure 3.1</strong></p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-42"></span>
 <img src="images/03_data/rstud01.png" alt="The result of the 'View(mpg)' command" width="479" />
@@ -383,7 +385,7 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 <p>The <code>View()</code> command is very handy for getting a quick window onto what data looks like. Unfortunately, the <code>View()</code> command only really works for <strong>you</strong> getting a look at your data. If you wanted to share your code, you would be better using a command which prints some of the data into the console.</p>
 <p>So - what functions will tell R to print data into the console?</p>
 <p>You can view the top of a dataset with <code>head()</code></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"> <span class="kw">head</span>(mpg)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"> <span class="kw">head</span>(mpg)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class  
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -395,7 +397,7 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact</code></pre>
 <p>Note that this code has produced an output block. Unlike <code>View()</code> where I had to share a screengrab to show you what the output of the code was. This is why <code>head()</code> is a lot more reproducible than <code>View()</code> and should be your default for code sharing. See more about this in <a href="dataprocessing.html#workflows">workflows</a>.</p>
 <p>Unsurprisingly we can also view the bottom of a dataset with …</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">tail</span>(mpg)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">tail</span>(mpg)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   manufacturer model  displ  year   cyl trans      drv     cty   hwy fl    class  
 ##   &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -406,21 +408,28 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 ## 5 volkswagen   passat   2.8  1999     6 manual(m5) f        18    26 p     midsize
 ## 6 volkswagen   passat   3.6  2008     6 auto(s6)   f        17    26 p     midsize</code></pre>
 <p>Another very useful way to look at a dataset is with the <code>summary()</code> function, which takes its best guess at how to summarise each variable in the dataset.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">summary</span>(mpg)</a></code></pre></div>
-<pre><code>##  manufacturer          model               displ            year           cyl           trans               drv           
-##  Length:234         Length:234         Min.   :1.600   Min.   :1999   Min.   :4.000   Length:234         Length:234        
-##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Median :3.300   Median :2004   Median :6.000   Mode  :character   Mode  :character  
-##                                        Mean   :3.472   Mean   :2004   Mean   :5.889                                        
-##                                        3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000                                        
-##                                        Max.   :7.000   Max.   :2008   Max.   :8.000                                        
-##       cty             hwy             fl               class          
-##  Min.   : 9.00   Min.   :12.00   Length:234         Length:234        
-##  1st Qu.:14.00   1st Qu.:18.00   Class :character   Class :character  
-##  Median :17.00   Median :24.00   Mode  :character   Mode  :character  
-##  Mean   :16.86   Mean   :23.44                                        
-##  3rd Qu.:19.00   3rd Qu.:27.00                                        
-##  Max.   :35.00   Max.   :44.00</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">summary</span>(mpg)</a></code></pre></div>
+<pre><code>##  manufacturer          model               displ            year           cyl       
+##  Length:234         Length:234         Min.   :1.600   Min.   :1999   Min.   :4.000  
+##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000  
+##  Mode  :character   Mode  :character   Median :3.300   Median :2004   Median :6.000  
+##                                        Mean   :3.472   Mean   :2004   Mean   :5.889  
+##                                        3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000  
+##                                        Max.   :7.000   Max.   :2008   Max.   :8.000  
+##     trans               drv                 cty             hwy             fl           
+##  Length:234         Length:234         Min.   : 9.00   Min.   :12.00   Length:234        
+##  Class :character   Class :character   1st Qu.:14.00   1st Qu.:18.00   Class :character  
+##  Mode  :character   Mode  :character   Median :17.00   Median :24.00   Mode  :character  
+##                                        Mean   :16.86   Mean   :23.44                     
+##                                        3rd Qu.:19.00   3rd Qu.:27.00                     
+##                                        Max.   :35.00   Max.   :44.00                     
+##     class          
+##  Length:234        
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+## </code></pre>
 <p>The <code>summary()</code> function highlights an important aspect of R - it knows the difference between numbers and characters. In the output block we can see that <code>manufacturer</code> is given the <code>Class</code> <code>character</code>. R knows it can’t create a mean and a median from this data, so it simply tells you the <code>Length</code> of that data instead. What do you think the 234 refers to here? Answer in the footnote<a href="acks.html#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
 <div id="created_data" class="section level2">
@@ -432,10 +441,10 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 <h2><span class="header-section-number">3.5</span> Exercise - Creating data</h2>
 <p>We are going to use a new function here called <code>tibble</code> which will make a dataframe quickly and easily. Before when we were typing things like <code>x &lt;- 1</code>, we created a single thing in the environment. Now we want to create multiple thing (rows and columns) and that’s what the <code>tibble</code> function will do.</p>
 <p>Try the following and watch what happens in your environment (you’ll need the <code>tidyverse</code> loaded - see <a href="data.html#data">above</a>)</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb36-2" title="2">              <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb35-2" title="2">              <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</a></code></pre></div>
 <p>You can <code>View(dat)</code> to look at this (or use <code>head(dat)</code>). Let’s try and replicate our weird <code>summary(mpg)</code> character issue.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
 <pre><code>##        x             y            
 ##  Min.   :1.00   Length:6          
 ##  1st Qu.:2.25   Class :character  
@@ -446,16 +455,16 @@ Figure: 3.1: The result of the ‘View(mpg)’ command
 <p>We <strong>can</strong> replicate the issue. You can see that the <code>y</code> variable has the <code>class: Character</code>. What can we do about it?</p>
 <p>We essentially want to tell R that <code>y</code> is not a character, but a factor<a href="acks.html#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
 <p>We can ask R more directly what <code>y</code> is by telling it exactly where to look.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">is.character</span>(dat<span class="op">$</span>y)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">is.character</span>(dat<span class="op">$</span>y)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>The <code>$</code> symbol tells R that it needs to look inside <code>dat</code> for <code>y</code>. Try typing out <code>is.character(y)</code> or <code>is.character(dat::y)</code> and see what happens. What are those error messages telling you? <a href="acks.html#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
 <p>If the <code>is.character()</code> function asks R if the named object is a character, how do you think we ask R if the named object is a factor? Try typing out your answer in the console to see what happens.</p>
 <p>We therefore need to ask R to change the data. We can do this like so:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">as.factor</span>(dat<span class="op">$</span>y)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">as.factor</span>(dat<span class="op">$</span>y)</a></code></pre></div>
 <pre><code>## [1] A B A B A B
 ## Levels: A B</code></pre>
 <p>And we get a response. But what happens if we run <code>summary(dat)</code> again?</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">summary</span>(dat)</a></code></pre></div>
 <pre><code>##        x             y            
 ##  Min.   :1.00   Length:6          
 ##  1st Qu.:2.25   Class :character  
@@ -473,10 +482,10 @@ You should take time to stop and answer these questions before reading on - prac
 <p>Here’s the fun part. We can do this in two (or actually - many) different ways. In a lot of ways, its personal preference which one you choose . . .</p>
 <p>To demonstrate, we will make two new dataframes.</p>
 <p><strong>Option 1</strong></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">option1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> dat<span class="op">$</span>x, <span class="dt">y =</span> <span class="kw">as.factor</span>(dat<span class="op">$</span>y))</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">option1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> dat<span class="op">$</span>x, <span class="dt">y =</span> <span class="kw">as.factor</span>(dat<span class="op">$</span>y))</a></code></pre></div>
 <p><strong>Option 2</strong></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">option2 &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y =</span> <span class="kw">as.factor</span>(y))</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">option2 &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y =</span> <span class="kw">as.factor</span>(y))</a></code></pre></div>
 <div class="translate">
 <p>
 In Option 1, using what’s called ‘base R’, we are essentially saying something like:
@@ -543,7 +552,7 @@ You do not have to code like I do - so long as I can run your code, we don’t h
 </div>
 <p>This will become clearer as we work through the book.</p>
 <p>To test that we have done what we wanted to do - let’s run the <code>summary()</code> function again.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">summary</span>(option1)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">summary</span>(option1)</a></code></pre></div>
 <pre><code>##        x        y    
 ##  Min.   :1.00   A:3  
 ##  1st Qu.:2.25   B:3  
@@ -551,7 +560,7 @@ You do not have to code like I do - so long as I can run your code, we don’t h
 ##  Mean   :3.50        
 ##  3rd Qu.:4.75        
 ##  Max.   :6.00</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">summary</span>(option2)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">summary</span>(option2)</a></code></pre></div>
 <pre><code>##        x        y    
 ##  Min.   :1.00   A:3  
 ##  1st Qu.:2.25   B:3  
@@ -618,7 +627,7 @@ Figure: 3.2: Using the Import Dataset wizard to load a csv file
 </p>
 </div>
 <p>Note that the the import wizard runs code in the <strong>console</strong> which says something like:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">ch2_planets &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/data/ch2_planets.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">ch2_planets &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/data/ch2_planets.csv&quot;</span>)</a></code></pre></div>
 <p>If you copy this code you can run it yourself. You know by now that anything to the left of the assign command (<code>&lt;-</code>) is the name of the thing you’re creating.</p>
 </div>
 </div>
@@ -638,8 +647,8 @@ Figure: 3.3: Using the Import Dataset wizard to load a xlsx file
 </p>
 </div>
 <p>This time, note that the <strong>console</strong> first loads a package (<code>library(readxl)</code>) before it loads the data.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb52-2" title="2">ch2_planets &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;ch2_planets.xlsx&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb51-2" title="2">ch2_planets &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;ch2_planets.xlsx&quot;</span>)</a></code></pre></div>
 <p>Again you can copy this code and run the code itself in an R Script file, in a R Markdown file, or in the console, to load the data without going through the wizard.</p>
 <div class="hey">
 <p>
@@ -656,9 +665,9 @@ You can send me your script and your data file together, and I can work directly
 </div>
 <div id="ex_loadexcel" class="section level2">
 <h2><span class="header-section-number">3.9</span> Exercise</h2>
-<p>This time Iw ant you to change two things about the <code>read_excel</code> code.</p>
-<p>The file is now saved in a folder inside your working directory called <code>data</code>.</p>
-<p>And I don’t want to load the <code>readxl</code> library every time I run this piece of code. Is there a short cut we can use?</p>
+<p>This time I want you to load the ch2_planets.xlsx file into your environment.</p>
+<p>I assume that you have saved the ch2_planets.xlsx file to your working directory in a folder called <code>data</code>.</p>
+<p>Your task: I don’t want to have to load the <code>readxl</code> library every time I read in an excel file. Is there a short cut we can use?</p>
 <p>Remember to try this - play about with the code and talk to your classmates/friends before looking at the answer. <a href="answers.html#ans_loadexcel">Answer here</a></p>
 
 </div>
@@ -668,7 +677,7 @@ You can send me your script and your data file together, and I can work directly
 <ol start="3">
 <li id="fn3"><p>‘Default’ here means one you won’t need to install or load into the library<a href="data.html#fnref3" class="footnote-back">↩</a></p></li>
 <li id="fn4"><p>If its not working - are you sure you have spelled it with a capital <code>View</code>?<a href="data.html#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>The Length of these variables is the number of rows in each one, which for this case is the same because this is a nice, tidy dataset<a href="data.html#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>The Length of these variables is the number of rows in each one, which for this case is the same for each variable because this is a nice, tidy dataset<a href="data.html#fnref5" class="footnote-back">↩</a></p></li>
 <li id="fn6"><p>A factor is also called a categorical variable, or a grouping variable. If you’re not sure you know what a factor is, <a href="https://en.wikipedia.org/wiki/Categorical_variable">wiki</a> is a good place to review<a href="data.html#fnref6" class="footnote-back">↩</a></p></li>
 <li id="fn7"><p><code>is.character(y)</code> should give you an error message like <code>Error: object 'y' is not found</code> because <code>y</code> by itself does not exist in your environment. There’s a way around this by ‘attaching’ data to your environment, which is a bit old fashioned and can result in problems down the line with your workflow (because you won’t necessarily know if the person you’re working with has also attached the data), so I recommend against it. <code>is.character(dat::y)</code> should give you an error like <code>Error in loadNamespace(name) : there is no package called 'dat'</code>. Unsurprisingly, this is telling you that the <code>::</code> sequence tells R to look inside a <strong>package</strong> for a thing called <code>y</code>, but that package doesn’t exist. Packages and data frames are different things.<a href="data.html#fnref7" class="footnote-back">↩</a></p></li>
 </ol>

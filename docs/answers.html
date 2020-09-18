@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-09-18" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,9 +281,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
 <li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#gg_answers"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
@@ -319,30 +319,30 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="changing-mpg-data" class="section level3">
 <h3><span class="header-section-number">13.1.1</span> Changing mpg data</h3>
 <p>Changing one variable is pretty easy to do in <code>tidyverse</code>:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb193-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manufacturer =</span> <span class="kw">as.factor</span>(manufacturer))</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb192-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manufacturer =</span> <span class="kw">as.factor</span>(manufacturer))</a></code></pre></div>
 <p>But what if we want to change all the character variables?</p>
 <p>We can still use <code>mutate</code> like this:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb194-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manufacturer =</span> <span class="kw">as.factor</span>(manufacturer),</a>
-<a class="sourceLine" id="cb194-3" title="3">         <span class="dt">model =</span> <span class="kw">as.factor</span>(model),</a>
-<a class="sourceLine" id="cb194-4" title="4">         <span class="dt">trans =</span> <span class="kw">as.factor</span>(trans),</a>
-<a class="sourceLine" id="cb194-5" title="5">         <span class="dt">drv =</span> <span class="kw">as.factor</span>(drv),</a>
-<a class="sourceLine" id="cb194-6" title="6">         <span class="dt">fl =</span> <span class="kw">as.factor</span>(fl),</a>
-<a class="sourceLine" id="cb194-7" title="7">         <span class="dt">class =</span> <span class="kw">as.factor</span>(class))</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb193-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">manufacturer =</span> <span class="kw">as.factor</span>(manufacturer),</a>
+<a class="sourceLine" id="cb193-3" title="3">         <span class="dt">model =</span> <span class="kw">as.factor</span>(model),</a>
+<a class="sourceLine" id="cb193-4" title="4">         <span class="dt">trans =</span> <span class="kw">as.factor</span>(trans),</a>
+<a class="sourceLine" id="cb193-5" title="5">         <span class="dt">drv =</span> <span class="kw">as.factor</span>(drv),</a>
+<a class="sourceLine" id="cb193-6" title="6">         <span class="dt">fl =</span> <span class="kw">as.factor</span>(fl),</a>
+<a class="sourceLine" id="cb193-7" title="7">         <span class="dt">class =</span> <span class="kw">as.factor</span>(class))</a></code></pre></div>
 <p>Or we can use a slightly different command to apply the <code>as.factor</code> function across selected variables, predictably called <code>mutate_at()</code></p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb195-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(<span class="kw">c</span>(manufacturer, model, trans, drv, fl, class)),</a>
-<a class="sourceLine" id="cb195-3" title="3">            <span class="dt">.funs =</span> as.factor)</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">mpg2 &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb194-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(<span class="kw">c</span>(manufacturer, model, trans, drv, fl, class)),</a>
+<a class="sourceLine" id="cb194-3" title="3">            <span class="dt">.funs =</span> as.factor)</a></code></pre></div>
 <p><code>mutate_at</code> becomes a very useful way of shortening your code, but can also be a little bit more difficult to remember. I very often have to look it up. But that’s fine - looking up code is good :)</p>
 </div>
 </div>
 <div id="ans_loadcsv" class="section level2">
 <h2><span class="header-section-number">13.2</span> Loading csv data answers</h2>
 <p>Here’s the answer to <a href="data.html#ex_loadcsv">how to change the name of a dataset from a csv file</a></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/data/ch2_planets.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/data/ch2_planets.csv&quot;</span>)</a></code></pre></div>
 <p>Here is a chunk of text to hide the next answer from you in case you’re doing these answers sequentially.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-219"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-220"></span>
 <img src="images/03_data/excel_open.gif" alt="Using the Import Dataset wizard to load a xlsx file"  />
 <p class="caption">
 Figure: 13.1: Using the Import Dataset wizard to load a xlsx file
@@ -353,43 +353,43 @@ Figure: 13.1: Using the Import Dataset wizard to load a xlsx file
 <h2><span class="header-section-number">13.3</span> Loading excel data answers</h2>
 <p>In this section I asked you to <a href="data.html#ex_loadexcel">load data from a different folder and have a short cut to stop us having to load <code>readxl</code> each time</a></p>
 <p>If the below code doesn’t make sense to you - reach out to me!</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">dat &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/ch2_planets.xlsx&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1">dat &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/ch2_planets.xlsx&quot;</span>)</a></code></pre></div>
 </div>
-<div id="gg_answers" class="section level2">
+<div id="ans_ggbox" class="section level2">
 <h2><span class="header-section-number">13.4</span> ggplot answers</h2>
 <div id="boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset" class="section level3">
 <h3><span class="header-section-number">13.4.1</span> Boxplot of highway miles per gallon versus class (mpg dataset)</h3>
 <p>Here is one possible solution:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb198-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb198-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
-<p>A prettier solution might be:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb199-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, <span class="op">-</span>hwy), <span class="dt">y =</span> hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb199-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb199-4" title="4"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">x =</span> <span class="st">&quot;Car class&quot;</span>,</a>
-<a class="sourceLine" id="cb199-5" title="5">        <span class="dt">y =</span> <span class="st">&quot;Highway miles per gallon&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb199-6" title="6"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb197-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb197-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="ratrdsvs_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
+<p>A prettier solution might be:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb198-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, <span class="op">-</span>hwy), <span class="dt">y =</span> hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb198-3" title="3"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb198-4" title="4"><span class="st">  </span><span class="kw">labs</span> (<span class="dt">x =</span> <span class="st">&quot;Car class&quot;</span>,</a>
+<a class="sourceLine" id="cb198-5" title="5">        <span class="dt">y =</span> <span class="st">&quot;Highway miles per gallon&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb198-6" title="6"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 </div>
-<div id="histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset" class="section level3">
+<div id="ans_gghist" class="section level3">
 <h3><span class="header-section-number">13.4.2</span> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</h3>
 <p>A possible solution:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb200-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cty)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb200-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb200-4" title="4"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="op">~</span><span class="st"> </span>trans)</a></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">mpg <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb199-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cty)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb199-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb199-4" title="4"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="op">~</span><span class="st"> </span>trans)</a></code></pre></div>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
 </div>
 </div>
 <div id="stats_proofvariance" class="section level2">
 <h2><span class="header-section-number">13.5</span> Proof of variance</h2>
 <p>If we take our <code>coos</code> dataset again and create a new variable taking each value away from the mean:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">distances &lt;-<span class="st"> </span>coos <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb201-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">distances =</span> <span class="kw">mean</span>(weight)<span class="op">-</span>weight)</a>
-<a class="sourceLine" id="cb201-3" title="3"></a>
-<a class="sourceLine" id="cb201-4" title="4">distances</a></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1">distances &lt;-<span class="st"> </span>coos <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb200-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">distances =</span> <span class="kw">mean</span>(weight)<span class="op">-</span>weight)</a>
+<a class="sourceLine" id="cb200-3" title="3"></a>
+<a class="sourceLine" id="cb200-4" title="4">distances</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 3
 ##    heifer_id weight distances
 ##        &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
@@ -406,16 +406,16 @@ Figure: 13.1: Using the Import Dataset wizard to load a xlsx file
 ## 11        11   194.    16.9  
 ## 12        12   210.     0.917</code></pre>
 <p>And then we add all the distances together . . .</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1"><span class="kw">round</span>(<span class="kw">sum</span>(distances<span class="op">$</span>distances), <span class="dt">digits =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="kw">round</span>(<span class="kw">sum</span>(distances<span class="op">$</span>distances), <span class="dt">digits =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 </div>
 <div id="ans_tidyunicorns" class="section level2">
 <h2><span class="header-section-number">13.6</span> Tidy Unicorns</h2>
 <p>We can tidy our Unicorn dataset with the <code>pivot_longer</code> command:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1">RadioTidy &lt;-<span class="st"> </span>Radio <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb205-2" title="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(NoRadio<span class="op">:</span>RadioDiscussion),</a>
-<a class="sourceLine" id="cb205-3" title="3">               <span class="dt">names_to =</span> <span class="st">&quot;Radio&quot;</span>,</a>
-<a class="sourceLine" id="cb205-4" title="4">               <span class="dt">values_to =</span> <span class="st">&quot;DustYield&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1">RadioTidy &lt;-<span class="st"> </span>Radio <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb204-2" title="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(NoRadio<span class="op">:</span>RadioDiscussion),</a>
+<a class="sourceLine" id="cb204-3" title="3">               <span class="dt">names_to =</span> <span class="st">&quot;Radio&quot;</span>,</a>
+<a class="sourceLine" id="cb204-4" title="4">               <span class="dt">values_to =</span> <span class="st">&quot;DustYield&quot;</span>)</a></code></pre></div>
 
 </div>
 </div>

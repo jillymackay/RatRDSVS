@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-09-18" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,9 +281,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
 <li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#gg_answers"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
 <li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#histogram-of-city-miles-per-gallon-faceted-by-transmission-type-mpg-dataset"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
@@ -350,7 +350,7 @@ Figure: 4.1: US State of Georgia, COVID-19 Deaths,
 Source: <a href="https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/" class="uri">https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/</a>
 </p>
 </div>
-<p>There is an <a href="https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/">excellents article</a> from the Financial Times about this chart. I think this chart is a great example of why data visualisation is important.</p>
+<p>There is an <a href="https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/">excellent article</a> from the Financial Times about this chart. I think this chart is a great example of why data visualisation is important.</p>
 <p>We use charts to communicate large amounts of data quickly and easily.</p>
 <p>Often, in life, we are trying to communicate something important. We are often trying to persuade someone to do something, like give us more research money, or to make a change that we want to see.</p>
 <p>What message do you think <strong>Figure 4.1</strong> is trying to communicate?</p>
@@ -366,14 +366,14 @@ Source: <a href="https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-
 <li><p>The <strong>y axis</strong> which goes <strong>up the chart</strong> (upp-<strong>y</strong>/down-<strong>y</strong> was how I used to remember it).</p></li>
 </ul>
 <p>As in data science we are often interested in <strong>does x affect y</strong>, we usually put the <strong>explanatory</strong> variable on the x axis. We try to always have the thing that drives variation going across the chart, whereas the thing that responds to variation goes up and down the chart. (The response-<strong>y</strong> variable.)</p>
-<p>You should always thing about your axes - and they should be clear to the reader from the beginning. No messing with the order (see again <strong>Figure 4.1</strong>).</p>
+<p>You should always think about your axes - and they should be clear to the reader from the beginning. No messing with the order (see again <strong>Figure 4.1</strong>).</p>
 <p>Unless you have a very good reason, I would always have two axes. That means if you’re trying to put in a second Y axis, you are breaking the two-axes rule, and should re-evaluate your chart. If you’re trying to make a pie-chart, you are breaking the two-axes rule, and should re-evaluate your chart.</p>
 <p>Follow the two-axes rule, and your life will be a lot easier.</p>
 </div>
 <div id="why-i-hate-pie-charts" class="section level4">
 <h4><span class="header-section-number">4.1.2.2</span> Why I hate pie charts</h4>
 <p>Pie charts are the worst visualisation in the world.</p>
-<div class="figure"><span id="fig:unnamed-chunk-65"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-65"></span>
 <img src="ratrdsvs_files/figure-html/unnamed-chunk-65-1.png" alt="The worst kind of chart describing proportion of people with type of pet (fictional data)" width="672" />
 <p class="caption">
 Figure: 4.2: The worst kind of chart describing proportion of people with type of pet (fictional data)
@@ -382,7 +382,7 @@ Figure: 4.2: The worst kind of chart describing proportion of people with type o
 <p>Let’s take <strong>Figure 4.2</strong> as an example. What proportion of people have a dog versus a cat. I’ll wait for you to start puzzling through that question.</p>
 <p>It’s very hard to distinguish between a pie slice that’s 2/5ths versus a pie slice that’s 2/7ths. Many people put labels on their pie charts, but if I need to read the label to understand the difference, why not just put the text in a table?</p>
 <p>Instead a bar chart shows use the exact ranking of this data and we can see how many more people have cats versus birds.</p>
-<div class="figure"><span id="fig:unnamed-chunk-66"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-66"></span>
 <img src="ratrdsvs_files/figure-html/unnamed-chunk-66-1.png" alt="A much better chart describing proportion of people with type of pet (fictional data)" width="672" />
 <p class="caption">
 Figure: 4.3: A much better chart describing proportion of people with type of pet (fictional data)
@@ -399,7 +399,7 @@ Figure: 4.3: A much better chart describing proportion of people with type of pe
 </div>
 <div id="colours" class="section level4">
 <h4><span class="header-section-number">4.1.2.5</span> Colours</h4>
-<p>The use of colours in charts is a curious thing. Colour can be very useful in a chart, but also very distracting. There’s another <a href="https://www.ft.com/content/c4b7d8be-2eb0-11e8-9b4b-bc4b9f08f381">brilliant FT article on the use of colour to indicate gender in charts</a> and all the ensuing complications.</p>
+<p>The use of colours in charts is a curious thing. Colour can be very useful in a chart, but also very distracting. There’s another <a href="https://www.ft.com/content/c4b7d8be-2eb0-11e8-9b4b-bc4b9f08f381">brilliant FT article on the use of colour to indicate gender in charts</a> and all the ensuing complications. (University of Edinburgh folk can log in to the FT for free).</p>
 <div id="advanced-r-users" class="section level5">
 <h5><span class="header-section-number">4.1.2.5.1</span> Advanced R users</h5>
 <p>If you have gotten really into R, or you really like pretty colours, I highly recommend checking out <a href="https://github.com/EmilHvitfeldt/r-color-palettes">Emil Hvitfeldt’s well maintained repository</a> listing all the R colour palette packages out there. Personally I really like <code>nord</code><a href="acks.html#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> and <code>LaCroixColoR</code> and <code>NineteenEightyR</code>. Much of my life is spent tweaking colours on charts.</p>
@@ -408,25 +408,25 @@ Figure: 4.3: A much better chart describing proportion of people with type of pe
 </div>
 <div id="vis_bar" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Bar charts</h3>
-<p>Bar charts are good for describing a continuous (numerical) variable by a categorical (grouping) variable. The continuous variable is often the average of a group. For example:</p>
+<p>Bar charts are good for describing a continuous (numerical) variable by a categorical (grouping) variable. When you are describing a continuous variable by a categorical variable, you are usually describing the mean of that category, but it can also be the median, or other measures. For example:</p>
 <div class="figure"><span id="fig:unnamed-chunk-67"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-67-1.png" alt="Averge height (cm) of Star Wars characters by gender" width="672" />
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-67-1.png" alt="Average height (cm) of Star Wars characters by gender" width="672" />
 <p class="caption">
-Figure: 4.4: Averge height (cm) of Star Wars characters by gender
+Figure: 4.4: Average height (cm) of Star Wars characters by gender
 </p>
 </div>
 <p>They can also be flipped around, particularly if the axis text is hard to read in one particular direction:</p>
-<div class="figure"><span id="fig:unnamed-chunk-68"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-68-1.png" alt="Averge height (cm) of Star Wars characters by species" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-68"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-68-1.png" alt="Average height (cm) of Star Wars characters by species" width="672" />
 <p class="caption">
-Figure: 4.5: Averge height (cm) of Star Wars characters by species
+Figure: 4.5: Average height (cm) of Star Wars characters by species
 </p>
 </div>
 </div>
 <div id="vis_hist" class="section level3">
 <h3><span class="header-section-number">4.1.4</span> Histograms</h3>
 <p>A histogram shows the relative frequency of a continuous variable. For example we can see the most common height of Star Wars characters, with 20 characters, is around 180cm:</p>
-<div class="figure"><span id="fig:unnamed-chunk-69"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-69"></span>
 <img src="ratrdsvs_files/figure-html/unnamed-chunk-69-1.png" alt="Histogram of height (cm) of Star Wars characters" width="672" />
 <p class="caption">
 Figure: 4.6: Histogram of height (cm) of Star Wars characters
@@ -436,17 +436,17 @@ Figure: 4.6: Histogram of height (cm) of Star Wars characters
 <div id="vis_scatter" class="section level3">
 <h3><span class="header-section-number">4.1.5</span> Scatterplots</h3>
 <p>Scatterplots are good for showing the relationship between two continuous variables.</p>
-<div class="figure"><span id="fig:unnamed-chunk-70"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-70-1.png" alt="Averge height (cm) of Star Wars characters by weight (kg)" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-70"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-70-1.png" alt="Average height (cm) of Star Wars characters by weight (kg)" width="672" />
 <p class="caption">
-Figure: 4.7: Averge height (cm) of Star Wars characters by weight (kg)
+Figure: 4.7: Average height (cm) of Star Wars characters by weight (kg)
 </p>
 </div>
 <p>But we can use other aspects, such as shape or colour, to add in a categorical variable:</p>
-<div class="figure"><span id="fig:unnamed-chunk-71"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-71-1.png" alt="Averge height (cm) of Star Wars characters by weight (kg) and species" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-71"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-71-1.png" alt="Average height (cm) of Star Wars characters by weight (kg) and species" width="672" />
 <p class="caption">
-Figure: 4.8: Averge height (cm) of Star Wars characters by weight (kg) and species
+Figure: 4.8: Average height (cm) of Star Wars characters by weight (kg) and species
 </p>
 </div>
 </div>
@@ -462,10 +462,10 @@ Figure: 4.8: Averge height (cm) of Star Wars characters by weight (kg) and speci
 <li><p>An <strong>upper hinge</strong> (the top thin line) which roughy equates to 95% of the data will not be above this value.</p></li>
 <li><p>Any <strong>outliers</strong> (the dots) which are observations which lie outside of 95% of the data<a href="acks.html#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p></li>
 </ul>
-<div class="figure"><span id="fig:unnamed-chunk-72"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-72-1.png" alt="Averge height (cm) of Star Wars characters by gender" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-72"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-72-1.png" alt="5Average height (cm) of Star Wars characters by gender" width="672" />
 <p class="caption">
-Figure: 4.9: Averge height (cm) of Star Wars characters by gender
+Figure: 4.9: 5Average height (cm) of Star Wars characters by gender
 </p>
 </div>
 </div>

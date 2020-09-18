@@ -30,7 +30,7 @@ knitr::include_graphics("images/04_datavis/georgia_covid.jpg")
 
 ```
 
-There is an [excellents article](https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/) from the Financial Times about this chart. I think this chart is a great example of why data visualisation is important. 
+There is an [excellent article](https://ftalphaville.ft.com/2020/05/18/1589795135000/When-axes-get-truly-evil/) from the Financial Times about this chart. I think this chart is a great example of why data visualisation is important. 
 
 We use charts to communicate large amounts of data quickly and easily.
 
@@ -52,7 +52,7 @@ Most charts will have two axes:
 
 As in data science we are often interested in **does x affect y**, we usually put the **explanatory** variable on the x axis. We try to always have the thing that drives variation going across the chart, whereas the thing that responds to variation goes up and down the chart. (The response-**y** variable.)
 
-You should always thing about your axes - and they should be clear to the reader from the beginning. No messing with the order (see again **Figure 4.1**).
+You should always think about your axes - and they should be clear to the reader from the beginning. No messing with the order (see again **Figure 4.1**).
 
 Unless you have a very good reason, I would always have two axes. That means if you're trying to put in a second Y axis, you are breaking the two-axes rule, and should re-evaluate your chart. If you're trying to make a pie-chart, you are breaking the two-axes rule, and should re-evaluate your chart. 
 
@@ -61,7 +61,7 @@ Follow the two-axes rule, and your life will be a lot easier.
 #### Why I hate pie charts
 Pie charts are the worst visualisation in the world. 
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.cap="The worst kind of chart describing proportion of people with type of pet (fictional data)"}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.cap="The worst kind of chart describing proportion of people with type of pet (fictional data)", fig.align='center'}
 
 pie_df <- data.frame(group = c("Cats", "Dogs", "Fish", "Birds", "Reptiles", "Rabbits"),
                      values = c(25,28, 20, 15 ,2,10))
@@ -79,7 +79,7 @@ It's very hard to distinguish between a pie slice that's 2/5ths versus a pie sli
 
 Instead a bar chart shows use the exact ranking of this data and we can see how many more people have cats versus birds. 
 
-```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "A much better chart describing proportion of people with type of pet (fictional data)"}
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "A much better chart describing proportion of people with type of pet (fictional data)", fig.align='center'}
 
 
 pie_df %>% 
@@ -101,7 +101,7 @@ Like figure headings, legends should be informative and clear. They will always 
 
 
 #### Colours
-The use of colours in charts is a curious thing. Colour can be very useful in a chart, but also very distracting. There's another [brilliant FT article on the use of colour to indicate gender in charts](https://www.ft.com/content/c4b7d8be-2eb0-11e8-9b4b-bc4b9f08f381) and all the ensuing complications. 
+The use of colours in charts is a curious thing. Colour can be very useful in a chart, but also very distracting. There's another [brilliant FT article on the use of colour to indicate gender in charts](https://www.ft.com/content/c4b7d8be-2eb0-11e8-9b4b-bc4b9f08f381) and all the ensuing complications. (University of Edinburgh folk can log in to the FT for free).
 
 
 ##### Advanced R users
@@ -110,10 +110,10 @@ If you have gotten really into R, or you really like pretty colours, I highly re
 
 
 ### Bar charts {#vis_bar}
-Bar charts are good for describing a continuous (numerical) variable by a categorical (grouping) variable. The continuous variable is often the average of a group. For example:
+Bar charts are good for describing a continuous (numerical) variable by a categorical (grouping) variable. When you are describing a continuous variable by a categorical variable, you are usually describing the mean of that category, but it can also be the median, or other measures. For example:
 
 
-```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by gender"}
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by gender"}
 
 
 starwars %>% 
@@ -126,7 +126,7 @@ starwars %>%
 
 They can also be flipped around, particularly if the axis text is hard to read in one particular direction:
 
-```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by species"}
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by species", fig.align='center'}
 
 
 starwars %>% 
@@ -143,7 +143,7 @@ starwars %>%
 ### Histograms {#vis_hist}
 A histogram shows the relative frequency of a continuous variable. For example we can see the most common height of Star Wars characters, with 20 characters, is around 180cm:
 
-```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Histogram of height (cm) of Star Wars characters"}
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Histogram of height (cm) of Star Wars characters", fig.align='center'}
 
 
 starwars %>% 
@@ -157,7 +157,7 @@ starwars %>%
 ### Scatterplots {#vis_scatter}
 Scatterplots are good for showing the relationship between two continuous variables. 
 
-```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by weight (kg)"}
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by weight (kg)", fig.align='center'}
 
 
 starwars %>% 
@@ -172,14 +172,15 @@ But we can use other aspects, such as shape or colour, to add in a categorical v
 
 
 
-```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by weight (kg) and species"}
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by weight (kg) and species", fig.align= 'center'}
 
 
 starwars %>% 
   ggplot(aes(x = height, y = mass, colour = species)) +
   geom_point() +
   labs(y = "Weight (kg)",
-       x = "Height (cm)")
+       x = "Height (cm)") + 
+  guides(col= guide_legend(nco = 3))
 
 ```
 
@@ -202,7 +203,7 @@ A boxplot shows you:
   
   * Any **outliers** (the dots) which are observations which lie outside of 95% of the data^[The hinges are actually calculated based on the `boxplot.stats` [function](https://www.rdocumentation.org/packages/grDevices/versions/3.6.2/topics/boxplot.stats) which is a little more complicated than 95% of the data - but if you ever need to worry about this you have gone beyond what this book can teach you.]
 
-```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Averge height (cm) of Star Wars characters by gender"}
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "5Average height (cm) of Star Wars characters by gender", fig.align='center'}
 
 
 starwars %>% 
