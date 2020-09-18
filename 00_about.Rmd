@@ -1,4 +1,5 @@
 # About this book {- #about}
+This version of the book was last published on `r Sys.Date()`
 
 ## How to use this book {#howuse}
 

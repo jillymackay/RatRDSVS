@@ -39,4 +39,4 @@ R is an open source software, meaning that absolutely anyone can download it, us
 
 R, and the way that we teach R and use R, is not free of biases. There are other programs, other methods, but I use R because I think it is a more transparent and accountable way of doing research. 
 
-And ultimately, that's the what I'm striving for. 
+And ultimately, that's what I'm striving for. 
