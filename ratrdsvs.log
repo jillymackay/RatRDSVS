@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.10)  10 AUG 2020 10:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.8.10)  18 SEP 2020 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -560,37 +560,22 @@ Package pdftex.def Info: images/ratrdsvs.png  used on input line 133.
 [5 <./images/ratrdsvs.png>] [6
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-51.
-(c:/Users/jmackay4/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 152.
-[7]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 186.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 186.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 186.
-[8]
 
-! LaTeX Error: Environment foo undefined.
+! LaTeX Error: Environment los undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.216 \begin{foo}
+l.144 \begin{los}
                   
 Here is how much of TeX's memory you used:
- 10669 strings out of 482841
- 153845 string characters out of 5954774
- 395717 words of memory out of 5000000
- 25814 multiletter control sequences out of 15000+600000
- 599020 words of font info for 75 fonts, out of 8000000 for 9000
+ 10572 strings out of 482841
+ 152565 string characters out of 5954774
+ 392717 words of memory out of 5000000
+ 25752 multiletter control sequences out of 15000+600000
+ 571387 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,8n,37p,306b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,6n,37p,242b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 !  ==> Fatal error occurred, no output PDF file produced!

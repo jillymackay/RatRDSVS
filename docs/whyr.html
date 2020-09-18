@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-09-16" />
+<meta name="date" content="2020-09-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -268,10 +268,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="whatnext.html"><a href="whatnext.html"><i class="fa fa-check"></i><b>11</b> What next</a><ul>
 <li class="chapter" data-level="11.1" data-path="whatnext.html"><a href="whatnext.html#github"><i class="fa fa-check"></i><b>11.1</b> github</a></li>
-<li class="chapter" data-level="11.2" data-path="whatnext.html"><a href="whatnext.html#repeatablecode"><i class="fa fa-check"></i><b>11.2</b> repeatabe code</a></li>
-<li class="chapter" data-level="11.3" data-path="whatnext.html"><a href="whatnext.html#adv_stats"><i class="fa fa-check"></i><b>11.3</b> Complicated stats</a></li>
+<li class="chapter" data-level="11.2" data-path="whatnext.html"><a href="whatnext.html#experiment-and-build"><i class="fa fa-check"></i><b>11.2</b> Experiment and build</a></li>
+<li class="chapter" data-level="11.3" data-path="whatnext.html"><a href="whatnext.html#the-r-community"><i class="fa fa-check"></i><b>11.3</b> The R Community</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="whyr.html"><a href="whyr.html"><i class="fa fa-check"></i><b>12</b> Why use R</a></li>
+<li class="chapter" data-level="12" data-path="whyr.html"><a href="whyr.html"><i class="fa fa-check"></i><b>12</b> Why use R</a><ul>
+<li class="chapter" data-level="12.1" data-path="whyr.html"><a href="whyr.html#why-does-open-source-matter"><i class="fa fa-check"></i><b>12.1</b> Why does open source matter?</a></li>
+<li class="chapter" data-level="12.2" data-path="whyr.html"><a href="whyr.html#so-why-r"><i class="fa fa-check"></i><b>12.2</b> So why R?</a></li>
+</ul></li>
 <li class="chapter" data-level="13" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>13</b> Answers</a><ul>
 <li class="chapter" data-level="13.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>13.1</b> Creating Data Answers</a><ul>
 <li class="chapter" data-level="13.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>13.1.1</b> Changing mpg data</a></li>
@@ -285,7 +288,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>14</b> Acknowledgements</a></li>
+<li class="chapter" data-level="14" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>14</b> Acknowledgements</a><ul>
+<li class="chapter" data-level="14.1" data-path="acks.html"><a href="acks.html#image-sources"><i class="fa fa-check"></i><b>14.1</b> Image Sources</a></li>
+<li class="chapter" data-level="14.2" data-path="acks.html"><a href="acks.html#specific-acknowledgements"><i class="fa fa-check"></i><b>14.2</b> Specific Acknowledgements</a></li>
+<li class="chapter" data-level="14.3" data-path="acks.html"><a href="acks.html#beta-testers-and-helpers"><i class="fa fa-check"></i><b>14.3</b> Beta Testers and Helpers</a></li>
+<li class="chapter" data-level="14.4" data-path="acks.html"><a href="acks.html#the-biggest-thanks"><i class="fa fa-check"></i><b>14.4</b> The biggest thanks</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -305,10 +313,38 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="whyr" class="section level1">
 <h1><span class="header-section-number">Chapter 12</span> Why use R</h1>
-<p>Why is this chapter in the middle of the book?</p>
-<p>Partly because I wanted to get started faster. Partly because I think the light only shines when you learn about workflows.</p>
-<p>Transparency in data: <a href="https://www.bbc.co.uk/news/uk-scotland-edinburgh-east-fife-53893101" class="uri">https://www.bbc.co.uk/news/uk-scotland-edinburgh-east-fife-53893101</a></p>
+<p>Why is this chapter at the end of the book?</p>
+<p>Well, partly I wanted to get you guys started with R as quickly as possible. Partly, I think the ‘why’ of R only starts to make sense when you learn about workflows. With this said, it is important to think about Why we should use open source software and open data science.</p>
+<p>There’s no learning outcomes in this chapter. Instead, its more of a thesis, or more accurately, a blog post.</p>
+<div id="why-does-open-source-matter" class="section level2">
+<h2><span class="header-section-number">12.1</span> Why does open source matter?</h2>
+<p>If you’ve come to this book because I’m teaching you R in one of my courses, or as a PhD student of mine, then you have probably heard my thoughts on why science needs to become more transparent. ( <a href="https://media.ed.ac.uk/media/1_ixecew3h">If you haven’t, you can watch me talk about it here</a> ).</p>
+<p>I take the view that science is a philosophy, it is a way of thinking about the world. We use science to help us answer questions about the natural world. The process of collecting data and analysing data is not free from sources of bias. This is why reporting methodologies is such an important tenet of scientific process. Small variations in methodology can account for persistent effects that become reported as ‘truth’.</p>
+<p>Mice, for example, are stressed by <a href="https://www.nature.com/news/male-researchers-stress-out-rodents-1.15106#:~:text=Male%2C%20but%20not%20female%2C%20experimenters,today%20in%20Nature%20Methods1.&amp;text=For%20years%2C%20anecdotal%20reports%20have,handler%20remains%20in%20the%20room.">male handlers</a>, which may have increased observed stress in many trials, as we rarely report the gender of the mouse handlers. Many medical studies focus only on <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1761670/">male participants</a>, resulting in treatments that have lower efficacy for women. Many medical treatments are calibrated with <a href="https://pubmed.ncbi.nlm.nih.gov/2868172/">the wrong kind of statistical test</a>, meaning that a true understanding of what being measured is often missing. And of course we have the replication crisis, <a href="https://www.vox.com/2016/3/14/11219446/psychology-replication-crisis">a discovery that a majority of psychology results cannot be replicated in independent trials</a>.</p>
+<p>I believe that psychology is the tip of the iceberg, and that we will see more and more fields endure a replication crisis. There is a brilliant <a href="https://www.nytimes.com/2017/10/18/magazine/when-the-revolution-came-for-amy-cuddy.html">New York Time Magazine article about Amy Cuddy</a> which I encourage all my students to read. It weaves a story of academic ambition, the fundamental issues with reproducibility in science, and the important personal relationships in science. I really recommend you read it.</p>
+<p>The point of all this is that science is not an infallible process that arrives at an objective truth. It is a process that we need to discuss, a process we need to review, and a process we need to critique in order to better understand our world.
+Alongside this, there is a push in science to be more open and transparent about data. There is a difference between:</p>
+<blockquote>
+<p>71 chicks were allocated into six groups, with each group given a different feed supplement. Their weight in grams after six weeks was compared in an ANOVA, and feed was found to significantly affect weight (F<sup>5,65</sup> = 15.37, p &lt; 0.001)</p>
+</blockquote>
+<p>And specifiying exactly:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">summary</span>(<span class="kw">aov</span>(<span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>feed, <span class="dt">data =</span> chickwts))</a></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## feed         5 231129   46226   15.37 5.94e-10 ***
+## Residuals   65 195556    3009                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>There are whole organisations dedicated to providing resources on <a href="https://opendatahandbook.org/guide/en/why-open-data/">open data</a> and <a href="https://osf.io/">open practices</a> in science.</p>
+<p>I personally try to provide my data and my analyses for my papers. Its not always possible (sometimes the data is too sensitive to be shared, sometimes another member of a team is ideologically opposed, and that’s fair too), and I hope that if I make a mistake, it won’t be replicated throughout the scientific world. Mistakes can be <a href="https://www.bbc.co.uk/news/uk-scotland-edinburgh-east-fife-53893101">very costly</a>.</p>
+<p>It is nervewracking though. Sharing your practice, how you arrived at a conclusion, can feel like you are exposing yourself to be found out for the imposter you really are. I have an awful lot of privilege in my life that allows me to accept this risk. See <a href="https://www.nytimes.com/2017/10/18/magazine/when-the-revolution-came-for-amy-cuddy.html">Amy Cuddy</a>. Science needs to become kinder, and safer for all people, for these ideas to take hold.</p>
+</div>
+<div id="so-why-r" class="section level2">
+<h2><span class="header-section-number">12.2</span> So why R?</h2>
+<p>R is an open source software, meaning that absolutely anyone can download it, use it, and improve it. It also has a low barrier to entry in that there are lots of free resources to help you learn. A scientist in Scotland can directly collaborate with a scientist in Malawi, sharing code, sharing resources, and improving the scientific world.</p>
+<p>R, and the way that we teach R and use R, is not free of biases. There are other programs, other methods, but I use R because I think it is a more transparent and accountable way of doing research.</p>
+<p>And ultimately, that’s the what I’m striving for.</p>
 
+</div>
 </div>
             </section>
 
