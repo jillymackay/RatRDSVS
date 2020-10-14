@@ -34,7 +34,7 @@ head(diamonds)
 ```
 
 
-```{block type = "hey"}
+```{block, type = "hey"}
 
 The `diamonds` dataset is really big and has lots of variables. This makes it good for learning ggplot2 because you can continue using the same example dataset even when we need lots of variables. 
 
