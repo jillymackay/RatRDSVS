@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-10-14" />
+<meta name="date" content="2021-01-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,6 +138,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.3" data-path="about.html"><a href="about.html#useteach"><i class="fa fa-check"></i><b>0.1.3</b> As a teacher</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="about.html"><a href="about.html#usetips"><i class="fa fa-check"></i><b>0.2</b> Tips for using an online textbook</a></li>
+<li class="chapter" data-level="0.3" data-path="about.html"><a href="about.html#license"><i class="fa fa-check"></i><b>0.3</b> Licensing</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R</a><ul>
 <li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#install_r"><i class="fa fa-check"></i><b>1.1</b> Install R</a></li>
@@ -375,31 +379,31 @@ You should copy and paste other peoples’ code.
 <div id="ex_env" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Exercise - Environment</h3>
 <p>When we first installed R, you were typing mathematical equations into the console. Let’s remind ourselves of this by running an equation now. In the console, type a long and complicated equation, then hit ‘enter’ when you’re done.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="dv">500</span> <span class="op">+</span><span class="st"> </span><span class="dv">23</span> <span class="op">/</span><span class="st"> </span><span class="dv">91</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="start.html#cb5-1"></a><span class="dv">500</span> <span class="op">+</span><span class="st"> </span><span class="dv">23</span> <span class="op">/</span><span class="st"> </span><span class="dv">91</span></span></code></pre></div>
 <pre><code>## [1] 500.2527</code></pre>
 <p>If this was a calculation we often ran, we might want to save the answer. We can do this by using the <strong>assign</strong> symbol <strong>&lt;-</strong>.</p>
 <p>For example, if we type this:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">x &lt;-<span class="st"> </span><span class="dv">500</span> <span class="op">+</span><span class="st"> </span><span class="dv">23</span> <span class="op">/</span><span class="st"> </span><span class="dv">91</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="start.html#cb7-1"></a>x &lt;-<span class="st"> </span><span class="dv">500</span> <span class="op">+</span><span class="st"> </span><span class="dv">23</span> <span class="op">/</span><span class="st"> </span><span class="dv">91</span></span></code></pre></div>
 <p>… you will see that we simply get a new line returned. We don’t get the answer. However, in your environment you will see under the heading ‘Values’, a new thing called <code>x</code>.</p>
 <p>Enter the following code:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">x</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="start.html#cb8-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 500.2527</code></pre>
 <p>R remembers what x is and recalled it. This is useful if we want to do more with <code>x</code> after we’ve calculated it.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">x <span class="op">/</span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="start.html#cb10-1"></a>x <span class="op">/</span><span class="dv">100</span></span></code></pre></div>
 <pre><code>## [1] 5.002527</code></pre>
 <p>As well as values, we can ask R to remember a string of text as well. Try this:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">hello &lt;-<span class="st"> &quot;Computers always print &#39;Hello World!&#39; but we never say hello back&quot;</span></a>
-<a class="sourceLine" id="cb12-2" title="2"></a>
-<a class="sourceLine" id="cb12-3" title="3"></a>
-<a class="sourceLine" id="cb12-4" title="4"><span class="kw">print</span>(hello)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="start.html#cb12-1"></a>hello &lt;-<span class="st"> &quot;Computers always print &#39;Hello World!&#39; but we never say hello back&quot;</span></span>
+<span id="cb12-2"><a href="start.html#cb12-2"></a></span>
+<span id="cb12-3"><a href="start.html#cb12-3"></a></span>
+<span id="cb12-4"><a href="start.html#cb12-4"></a><span class="kw">print</span>(hello)</span></code></pre></div>
 <pre><code>## [1] &quot;Computers always print &#39;Hello World!&#39; but we never say hello back&quot;</code></pre>
 <p>But R is very fussy. What happens if you run this code:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">print</span>(HELLO)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="start.html#cb14-1"></a><span class="kw">print</span>(HELLO)</span></code></pre></div>
 <p>You see, R is <strong>case sensitive</strong>, meaning we have to be careful to always type things the same. This is one of the reasons why R Studio is really handy, because you can see what you’ve saved in your environment.</p>
 <p>Now type this:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">hello &lt;-<span class="st"> &quot;Hello, R!&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="start.html#cb15-1"></a>hello &lt;-<span class="st"> &quot;Hello, R!&quot;</span></span></code></pre></div>
 <p>Take a guess what is going to happen before you type the next line. Were you right?</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">print</span>(hello)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="start.html#cb16-1"></a><span class="kw">print</span>(hello)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello, R!&quot;</code></pre>
 </div>
 <div id="ex_func" class="section level3">
@@ -409,10 +413,10 @@ You should copy and paste other peoples’ code.
 <p>A function is a handy way to bundle together some lines of code. David Robinson <a href="https://twitter.com/drob/status/928447584712253440?s=20">says that</a> if you run a few lines more than twice you should write a function to do it instead.</p>
 <p>I’m going to contradict myself now. Functions are really important in R, but I’m not going to ask you to write one anywhere else but in this exercise. Most things in this book I expect you to practice over and over, but functions are useful to understand <a href="start.html#packages">packages</a>, and that’s why we’re going to talk about them now.</p>
 <p>Let’s create a function to make R welcome us. Copy and paste this code into a new script file (you may want to save it as your functions example), and then run it.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">mynameis &lt;-<span class="st"> </span><span class="cf">function</span> (name) {</a>
-<a class="sourceLine" id="cb18-2" title="2">  <span class="kw">print</span> (<span class="kw">paste0</span>(<span class="st">&quot;Hello, &quot;</span>, name, <span class="st">&quot;, how are you today?&quot;</span>))</a>
-<a class="sourceLine" id="cb18-3" title="3">}</a>
-<a class="sourceLine" id="cb18-4" title="4"><span class="kw">mynameis</span> (<span class="st">&quot;Jill&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="start.html#cb18-1"></a>mynameis &lt;-<span class="st"> </span><span class="cf">function</span> (name) {</span>
+<span id="cb18-2"><a href="start.html#cb18-2"></a>  <span class="kw">print</span> (<span class="kw">paste0</span>(<span class="st">&quot;Hello, &quot;</span>, name, <span class="st">&quot;, how are you today?&quot;</span>))</span>
+<span id="cb18-3"><a href="start.html#cb18-3"></a>}</span>
+<span id="cb18-4"><a href="start.html#cb18-4"></a><span class="kw">mynameis</span> (<span class="st">&quot;Jill&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello, Jill, how are you today?&quot;</code></pre>
 <p><strong>What is this code saying?</strong></p>
 <div class="translate">
@@ -432,7 +436,7 @@ The <code>function</code> should <code>print</code> the result of pasting a stri
 <p>You may have noticed that, just like when we were assigning <code>x</code> a value, we now have something in our environment called <code>mynameis</code>.</p>
 <p>Whenever we type <code>mynameis("Jill")</code> into the console, or execute that line in a script file, R knows it should look to the environment and run the code that’s been bundled up into that package.</p>
 <p>For example, we could make R welcome us in exactly the same way by typing:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">print</span> (<span class="kw">paste0</span>(<span class="st">&quot;Hello, &quot;</span>, <span class="st">&quot;Jill&quot;</span>, <span class="st">&quot;, how are you today?&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="start.html#cb20-1"></a><span class="kw">print</span> (<span class="kw">paste0</span>(<span class="st">&quot;Hello, &quot;</span>, <span class="st">&quot;Jill&quot;</span>, <span class="st">&quot;, how are you today?&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Hello, Jill, how are you today?&quot;</code></pre>
 <p>But we would need to change the name every time we wanted welcome a new user. <strong>We are lazy, so we use the function to reduce the amount of things we need to change to get a different outcome.</strong></p>
 <p>Functions make our code more standardised. If we all define the <code>mynameis</code> function at the start of our documentation, we don’t need to worry about accidentally deleting an important character in the code. This is especially important as we like to copy-paste code when we need to.</p>
@@ -453,27 +457,27 @@ Next you <strong>load into library</strong>.</p>
 <p>To load it into your library you need to type <code>library(package_name)</code>.</p>
 <p>When you load a package from your library it goes into a special hidden environment where you can access all the functions that the package has written for you.</p>
 <p>For example, we will make great use of the <code>tidyverse</code> package in this book. You need to start by installing it with:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="start.html#cb22-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>While the package is downloading and installing you may see a little red ‘stop’ sign in the top right hand corner of your console window. This means R is working, and you shouldn’t add any new commands until it has finished and the new line symbol appears again in the console (<code>&gt;</code>).</p>
 <p>When it has finished downloading &amp; installing, you need to type:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="start.html#cb23-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>to load it. You’ll see that nothing has appeared in your Environment, but actually you have a whole host of new functions &amp; data you can play with. For example:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">slice</span>(starwars)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="start.html#cb24-1"></a><span class="kw">slice</span>(starwars)</span></code></pre></div>
 <p>Which should give you this:</p>
 <pre><code>## # A tibble: 87 x 14
-##    name  height  mass hair_color skin_color eye_color birth_year sex   gender homeworld species films
-##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;lis&gt;
-##  1 Luke~    172    77 blond      fair       blue            19   male  mascu~ Tatooine  Human   &lt;chr~
-##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu~ Tatooine  Droid   &lt;chr~
-##  3 R2-D2     96    32 &lt;NA&gt;       white, bl~ red             33   none  mascu~ Naboo     Droid   &lt;chr~
-##  4 Dart~    202   136 none       white      yellow          41.9 male  mascu~ Tatooine  Human   &lt;chr~
-##  5 Leia~    150    49 brown      light      brown           19   fema~ femin~ Alderaan  Human   &lt;chr~
-##  6 Owen~    178   120 brown, gr~ light      blue            52   male  mascu~ Tatooine  Human   &lt;chr~
-##  7 Beru~    165    75 brown      light      blue            47   fema~ femin~ Tatooine  Human   &lt;chr~
-##  8 R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none  mascu~ Tatooine  Droid   &lt;chr~
-##  9 Bigg~    183    84 black      light      brown           24   male  mascu~ Tatooine  Human   &lt;chr~
-## 10 Obi-~    182    77 auburn, w~ fair       blue-gray       57   male  mascu~ Stewjon   Human   &lt;chr~
-## # ... with 77 more rows, and 2 more variables: vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+##    name        height  mass hair_color   skin_color  eye_color birth_year sex   gender  homeworld species films  vehicles starships
+##    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   &lt;list&gt; &lt;list&gt;   &lt;list&gt;   
+##  1 Luke Skywa~    172    77 blond        fair        blue            19   male  mascul~ Tatooine  Human   &lt;chr ~ &lt;chr [2~ &lt;chr [2]&gt;
+##  2 C-3PO          167    75 &lt;NA&gt;         gold        yellow         112   none  mascul~ Tatooine  Droid   &lt;chr ~ &lt;chr [0~ &lt;chr [0]&gt;
+##  3 R2-D2           96    32 &lt;NA&gt;         white, blue red             33   none  mascul~ Naboo     Droid   &lt;chr ~ &lt;chr [0~ &lt;chr [0]&gt;
+##  4 Darth Vader    202   136 none         white       yellow          41.9 male  mascul~ Tatooine  Human   &lt;chr ~ &lt;chr [0~ &lt;chr [1]&gt;
+##  5 Leia Organa    150    49 brown        light       brown           19   fema~ femini~ Alderaan  Human   &lt;chr ~ &lt;chr [1~ &lt;chr [0]&gt;
+##  6 Owen Lars      178   120 brown, grey  light       blue            52   male  mascul~ Tatooine  Human   &lt;chr ~ &lt;chr [0~ &lt;chr [0]&gt;
+##  7 Beru White~    165    75 brown        light       blue            47   fema~ femini~ Tatooine  Human   &lt;chr ~ &lt;chr [0~ &lt;chr [0]&gt;
+##  8 R5-D4           97    32 &lt;NA&gt;         white, red  red             NA   none  mascul~ Tatooine  Droid   &lt;chr ~ &lt;chr [0~ &lt;chr [0]&gt;
+##  9 Biggs Dark~    183    84 black        light       brown           24   male  mascul~ Tatooine  Human   &lt;chr ~ &lt;chr [0~ &lt;chr [1]&gt;
+## 10 Obi-Wan Ke~    182    77 auburn, whi~ fair        blue-gray       57   male  mascul~ Stewjon   Human   &lt;chr ~ &lt;chr [1~ &lt;chr [5]&gt;
+## # ... with 77 more rows</code></pre>
 <p>Now we have a new dataset (<code>starwars</code>) and a new thing we can do (<code>slice</code> the top of the data). We will talk much more about <code>tidyverse</code> in the <a href="data.html#data">data chapter</a>.</p>
 <div class="hey">
 <p>
@@ -493,19 +497,19 @@ You will often get warnings in R when you type these code blocks. To keep the bo
 <p>Everything you type in an R script file is executable code.</p>
 <p>Unlike working in the <strong>console</strong>, you can type multiple lines of code in an R script, and run each one by hitting <code>ctrl + enter</code>.</p>
 <p>You <strong>can’t type</strong> plain text in an R Script file. Text has to be annotated by the comment symbol (<code>#</code>)</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="co"># In an R script file - you can write comments</span></a>
-<a class="sourceLine" id="cb26-2" title="2"><span class="co"># Which always begin with a hashtag</span></a>
-<a class="sourceLine" id="cb26-3" title="3"></a>
-<a class="sourceLine" id="cb26-4" title="4"><span class="co"># Comments can be useful to say things like what date you wrote the script on,</span></a>
-<a class="sourceLine" id="cb26-5" title="5"><span class="co"># or what you were trying to do. </span></a>
-<a class="sourceLine" id="cb26-6" title="6"></a>
-<a class="sourceLine" id="cb26-7" title="7"><span class="kw">print</span>(<span class="st">&quot;You can also use script files to write multiple lines of code&quot;</span>)</a>
-<a class="sourceLine" id="cb26-8" title="8"></a>
-<a class="sourceLine" id="cb26-9" title="9"><span class="kw">print</span>(<span class="st">&quot;and edit those lines of code&quot;</span>)</a>
-<a class="sourceLine" id="cb26-10" title="10"></a>
-<a class="sourceLine" id="cb26-11" title="11"></a>
-<a class="sourceLine" id="cb26-12" title="12"><span class="co"># before you run them by pressing ctrl + enter at the same time </span></a>
-<a class="sourceLine" id="cb26-13" title="13"><span class="co"># when your cursor is on that line. </span></a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="start.html#cb26-1"></a><span class="co"># In an R script file - you can write comments</span></span>
+<span id="cb26-2"><a href="start.html#cb26-2"></a><span class="co"># Which always begin with a hashtag</span></span>
+<span id="cb26-3"><a href="start.html#cb26-3"></a></span>
+<span id="cb26-4"><a href="start.html#cb26-4"></a><span class="co"># Comments can be useful to say things like what date you wrote the script on,</span></span>
+<span id="cb26-5"><a href="start.html#cb26-5"></a><span class="co"># or what you were trying to do. </span></span>
+<span id="cb26-6"><a href="start.html#cb26-6"></a></span>
+<span id="cb26-7"><a href="start.html#cb26-7"></a><span class="kw">print</span>(<span class="st">&quot;You can also use script files to write multiple lines of code&quot;</span>)</span>
+<span id="cb26-8"><a href="start.html#cb26-8"></a></span>
+<span id="cb26-9"><a href="start.html#cb26-9"></a><span class="kw">print</span>(<span class="st">&quot;and edit those lines of code&quot;</span>)</span>
+<span id="cb26-10"><a href="start.html#cb26-10"></a></span>
+<span id="cb26-11"><a href="start.html#cb26-11"></a></span>
+<span id="cb26-12"><a href="start.html#cb26-12"></a><span class="co"># before you run them by pressing ctrl + enter at the same time </span></span>
+<span id="cb26-13"><a href="start.html#cb26-13"></a><span class="co"># when your cursor is on that line. </span></span></code></pre></div>
 </div>
 <div id="r-markdown" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> R Markdown</h3>
@@ -537,7 +541,7 @@ Figure: 2.1: An example of R Markdown with text and code
 <div class="footnotes">
 <hr />
 <ol start="2">
-<li id="fn2"><p>If you’re reading this as part of your coursework you might be panicking about plagiarism here, after all, we spend a lot of time telling you plagiarism is the worst thing you could ever do and that we’ll use software to detect it. Code is a bit different. We are always trying to find the most efficient way of doing something, and so ideally you would all write code that was identical. Sadly, humans naturally differ in the way the think about problems. My job would be a lot easier if everybody thought the same. If I have set you this book as reading, I can swear to you I will never put your code through a plagiarism checker. That would be very stupid.<a href="start.html#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>If you’re reading this as part of your coursework you might be panicking about plagiarism here, after all, we spend a lot of time telling you plagiarism is the worst thing you could ever do and that we’ll use software to detect it. Code is a bit different. We are always trying to find the most efficient way of doing something, and so ideally you would all write code that was identical. Sadly, humans naturally differ in the way the think about problems. My job would be a lot easier if everybody thought the same. If I have set you this book as reading, I can swear to you I will never put your code through a plagiarism checker. That would be very stupid.<a href="start.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

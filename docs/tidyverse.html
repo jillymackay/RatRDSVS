@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-10-14" />
+<meta name="date" content="2021-01-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,6 +138,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.3" data-path="about.html"><a href="about.html#useteach"><i class="fa fa-check"></i><b>0.1.3</b> As a teacher</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="about.html"><a href="about.html#usetips"><i class="fa fa-check"></i><b>0.2</b> Tips for using an online textbook</a></li>
+<li class="chapter" data-level="0.3" data-path="about.html"><a href="about.html#license"><i class="fa fa-check"></i><b>0.3</b> Licensing</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R</a><ul>
 <li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#install_r"><i class="fa fa-check"></i><b>1.1</b> Install R</a></li>
@@ -352,20 +356,20 @@ You can create and change variables in a dataset.
 <h2><span class="header-section-number">7.2</span> Data for this chapter</h2>
 <p>For this chapter let’s work on an example of student satisfaction data. We’ll use a short, fictional example to avoid embarrassing anyone. Let’s say I questioned my students on two courses, Professional Skills, an undergraduate course, and Research Methods, a postgraduate course. I know how many students (<code>n</code>) were in each class, and I asked each class if they agreed with two statements, “Jill was a good teacher” (<code>good_teacher</code>) and “I learned in this class” (<code>learned</code>). I know what percentage of students disagreed with the statement (<code>disagree</code>), were neutral about the statement (<code>neutral</code>), or agreed with the statement (<code>agree</code>). And I also know which of the two years I asked the question in (<code>year</code>).</p>
 <p>Let’s load the data and the tidyverse package first:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb79-2" title="2"></a>
-<a class="sourceLine" id="cb79-3" title="3">students &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">course =</span> <span class="kw">c</span>(<span class="st">&quot;Prof Skills&quot;</span>, <span class="st">&quot;Prof Skills&quot;</span>, <span class="st">&quot;Prof Skills&quot;</span>, <span class="st">&quot;Prof Skills&quot;</span>, </a>
-<a class="sourceLine" id="cb79-4" title="4">                               <span class="st">&quot;Research Methods&quot;</span>, <span class="st">&quot;Research Methods&quot;</span>, <span class="st">&quot;Research Methods&quot;</span>, <span class="st">&quot;Research Methods&quot;</span>),</a>
-<a class="sourceLine" id="cb79-5" title="5">                    <span class="dt">level =</span> <span class="kw">c</span>(<span class="st">&quot;UG&quot;</span>, <span class="st">&quot;UG&quot;</span>, <span class="st">&quot;UG&quot;</span>, <span class="st">&quot;UG&quot;</span>,</a>
-<a class="sourceLine" id="cb79-6" title="6">                              <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;PG&quot;</span>),</a>
-<a class="sourceLine" id="cb79-7" title="7">                    <span class="dt">question =</span> <span class="kw">c</span>(<span class="st">&quot;good_teacher&quot;</span>, <span class="st">&quot;learned&quot;</span>,<span class="st">&quot;good_teacher&quot;</span>, <span class="st">&quot;learned&quot;</span>,</a>
-<a class="sourceLine" id="cb79-8" title="8">                                 <span class="st">&quot;good_teacher&quot;</span>, <span class="st">&quot;learned&quot;</span>,<span class="st">&quot;good_teacher&quot;</span>, <span class="st">&quot;learned&quot;</span>),</a>
-<a class="sourceLine" id="cb79-9" title="9">                    <span class="dt">year =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb79-10" title="10">                             <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>),</a>
-<a class="sourceLine" id="cb79-11" title="11">                    <span class="dt">disagree =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.3</span>),</a>
-<a class="sourceLine" id="cb79-12" title="12">                    <span class="dt">neutral =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>),</a>
-<a class="sourceLine" id="cb79-13" title="13">                    <span class="dt">agree =</span> <span class="kw">c</span>(<span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>),</a>
-<a class="sourceLine" id="cb79-14" title="14">                    <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">121</span>, <span class="dv">121</span>, <span class="dv">140</span>, <span class="dv">140</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">57</span>,<span class="dv">57</span>))  </a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="tidyverse.html#cb79-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb79-2"><a href="tidyverse.html#cb79-2"></a></span>
+<span id="cb79-3"><a href="tidyverse.html#cb79-3"></a>students &lt;-<span class="st"> </span><span class="kw">tibble</span> (<span class="dt">course =</span> <span class="kw">c</span>(<span class="st">&quot;Prof Skills&quot;</span>, <span class="st">&quot;Prof Skills&quot;</span>, <span class="st">&quot;Prof Skills&quot;</span>, <span class="st">&quot;Prof Skills&quot;</span>, </span>
+<span id="cb79-4"><a href="tidyverse.html#cb79-4"></a>                               <span class="st">&quot;Research Methods&quot;</span>, <span class="st">&quot;Research Methods&quot;</span>, <span class="st">&quot;Research Methods&quot;</span>, <span class="st">&quot;Research Methods&quot;</span>),</span>
+<span id="cb79-5"><a href="tidyverse.html#cb79-5"></a>                    <span class="dt">level =</span> <span class="kw">c</span>(<span class="st">&quot;UG&quot;</span>, <span class="st">&quot;UG&quot;</span>, <span class="st">&quot;UG&quot;</span>, <span class="st">&quot;UG&quot;</span>,</span>
+<span id="cb79-6"><a href="tidyverse.html#cb79-6"></a>                              <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;PG&quot;</span>),</span>
+<span id="cb79-7"><a href="tidyverse.html#cb79-7"></a>                    <span class="dt">question =</span> <span class="kw">c</span>(<span class="st">&quot;good_teacher&quot;</span>, <span class="st">&quot;learned&quot;</span>,<span class="st">&quot;good_teacher&quot;</span>, <span class="st">&quot;learned&quot;</span>,</span>
+<span id="cb79-8"><a href="tidyverse.html#cb79-8"></a>                                 <span class="st">&quot;good_teacher&quot;</span>, <span class="st">&quot;learned&quot;</span>,<span class="st">&quot;good_teacher&quot;</span>, <span class="st">&quot;learned&quot;</span>),</span>
+<span id="cb79-9"><a href="tidyverse.html#cb79-9"></a>                    <span class="dt">year =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>,</span>
+<span id="cb79-10"><a href="tidyverse.html#cb79-10"></a>                             <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb79-11"><a href="tidyverse.html#cb79-11"></a>                    <span class="dt">disagree =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.3</span>),</span>
+<span id="cb79-12"><a href="tidyverse.html#cb79-12"></a>                    <span class="dt">neutral =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>),</span>
+<span id="cb79-13"><a href="tidyverse.html#cb79-13"></a>                    <span class="dt">agree =</span> <span class="kw">c</span>(<span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>),</span>
+<span id="cb79-14"><a href="tidyverse.html#cb79-14"></a>                    <span class="dt">n =</span> <span class="kw">c</span>(<span class="dv">121</span>, <span class="dv">121</span>, <span class="dv">140</span>, <span class="dv">140</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">57</span>,<span class="dv">57</span>))  </span></code></pre></div>
 </div>
 <div id="mutate" class="section level2">
 <h2><span class="header-section-number">7.3</span> Mutating data</h2>
@@ -374,25 +378,25 @@ You can create and change variables in a dataset.
 <div id="mutate-to-change-a-variable-type." class="section level3">
 <h3><span class="header-section-number">7.3.1</span> Mutate to change a variable type.</h3>
 <p>Let’s start with an example you’ve seen before. At the moment, <code>year</code> is a numerical variable, which we can prove:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">is.numeric</span>(students<span class="op">$</span>year)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="tidyverse.html#cb80-1"></a><span class="kw">is.numeric</span>(students<span class="op">$</span>year)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>So the first thing we want to do is make year a categorical variable, since there’s only two years available to us. We can retain the order of the levels by specifying them with the <code>parse_factor</code> command. <code>parse_factor</code> is really useful, but it only works on character variables, so we need to first change year to a character, and then to a factor.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">students_tidy &lt;-<span class="st"> </span>students <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">as.character</span>(year),</a>
-<a class="sourceLine" id="cb82-3" title="3">         <span class="dt">year =</span> <span class="kw">parse_factor</span>(year, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="tidyverse.html#cb82-1"></a>students_tidy &lt;-<span class="st"> </span>students <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb82-2"><a href="tidyverse.html#cb82-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">as.character</span>(year),</span>
+<span id="cb82-3"><a href="tidyverse.html#cb82-3"></a>         <span class="dt">year =</span> <span class="kw">parse_factor</span>(year, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>)))</span></code></pre></div>
 <p>You can try taking out the <code>year = as.character(year)</code> line to see what happens. What error messages do you get?</p>
 <p>And now we can ask:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">is.factor</span>(students<span class="op">$</span>year)</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="tidyverse.html#cb83-1"></a><span class="kw">is.factor</span>(students<span class="op">$</span>year)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">is.factor</span>(students_tidy<span class="op">$</span>year)</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="tidyverse.html#cb85-1"></a><span class="kw">is.factor</span>(students_tidy<span class="op">$</span>year)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="mutate-to-change-the-contents-of-data" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> Mutate to change the contents of data</h3>
 <p>What if we don’t want to change data type, but instead change the text of the data? There’s a very cool function called <code>case_when</code> which works like an if statement in Excel.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">students_tidy &lt;-<span class="st"> </span>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb87-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">level =</span> <span class="kw">case_when</span>(level <span class="op">==</span><span class="st"> &quot;UG&quot;</span> <span class="op">~</span><span class="st"> &quot;Undergraduate&quot;</span>,</a>
-<a class="sourceLine" id="cb87-3" title="3">                           level <span class="op">==</span><span class="st"> &quot;PG&quot;</span> <span class="op">~</span><span class="st"> &quot;Postgraduate&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="tidyverse.html#cb87-1"></a>students_tidy &lt;-<span class="st"> </span>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb87-2"><a href="tidyverse.html#cb87-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">level =</span> <span class="kw">case_when</span>(level <span class="op">==</span><span class="st"> &quot;UG&quot;</span> <span class="op">~</span><span class="st"> &quot;Undergraduate&quot;</span>,</span>
+<span id="cb87-3"><a href="tidyverse.html#cb87-3"></a>                           level <span class="op">==</span><span class="st"> &quot;PG&quot;</span> <span class="op">~</span><span class="st"> &quot;Postgraduate&quot;</span>))</span></code></pre></div>
 <div class="translate">
 <p>
 In this code chunk we:
@@ -419,7 +423,7 @@ When a row of <code>level</code> reads <code>PG</code>, change it to (<code>~</c
 </ol>
 </div>
 <p>And we can check to see if this work by looking at a slice of the data.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">head</span>(students_tidy)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="tidyverse.html#cb88-1"></a><span class="kw">head</span>(students_tidy)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   course           level         question     year  disagree neutral agree     n
 ##   &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;        &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -435,9 +439,9 @@ When a row of <code>level</code> reads <code>PG</code>, change it to (<code>~</c
 <p>We can also change multiple variables using the <code>mutate_at</code> function. This can be a little more difficult to master, but is often faster than typing out multiple lines of <code>mutate</code>.</p>
 <p>Our <code>disagree</code>, <code>neutral</code> and <code>agree</code> columns are currently expressed as percentages, e.g. row 1 above had 80% of students disagreeing, 5% of students neutral, and 15% of students agreeing with the statement I was a good teacher. However, we know the number of students in each class, so it might be better to express those values as a proportion (e.g. 0.8, 0.05, 0.15). That’s a simple calculation - we need to take each value and divide by 100.</p>
 <p>To do this, we need to use two particularly cool things about <code>tidyverse</code>, the ability to select multiple variables, and the ability to use <code>.</code> to mean <code>whatever I just asked for</code>.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">students_tidy &lt;-<span class="st"> </span>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb90-2" title="2"><span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(<span class="kw">c</span>(disagree, neutral, agree)),</a>
-<a class="sourceLine" id="cb90-3" title="3">            <span class="dt">.funs =</span> <span class="op">~</span>(.  <span class="op">/</span><span class="st"> </span><span class="dv">100</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="tidyverse.html#cb90-1"></a>students_tidy &lt;-<span class="st"> </span>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb90-2"><a href="tidyverse.html#cb90-2"></a><span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(<span class="kw">c</span>(disagree, neutral, agree)),</span>
+<span id="cb90-3"><a href="tidyverse.html#cb90-3"></a>            <span class="dt">.funs =</span> <span class="op">~</span>(.  <span class="op">/</span><span class="st"> </span><span class="dv">100</span>))</span></code></pre></div>
 <div class="translate">
 <p>
 In this code chunk we:
@@ -470,7 +474,7 @@ We want to divide the previously asked for variables by 100 (<code>(./100)</code
 </ol>
 </div>
 <p>And as always, we can test this by showing a slice of the data:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">head</span>(students_tidy)</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="tidyverse.html#cb91-1"></a><span class="kw">head</span>(students_tidy)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   course           level         question     year  disagree neutral agree     n
 ##   &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;        &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -485,17 +489,17 @@ We want to divide the previously asked for variables by 100 (<code>(./100)</code
 <h3><span class="header-section-number">7.3.4</span> Summarise as a unique form of mutate</h3>
 <p>Mutate is really powerful thing, so unsurprisingly the idea behind it is used in other calls. One that’s really useful to know about (and that we’ll talk more about in <a href="statsbasic.html#descstats">descriptive statistics</a>) is <code>summarise</code>.</p>
 <p><code>summarise</code> creates a new mutated data frame by default, so its good for grouping together things, for example we can use it to look at the average percentage in each group by question:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">students_summed &lt;-<span class="st"> </span>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb93-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(question) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb93-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_disagree =</span> <span class="kw">mean</span>(disagree),</a>
-<a class="sourceLine" id="cb93-4" title="4">            <span class="dt">mean_neutral=</span> <span class="kw">mean</span>(neutral),</a>
-<a class="sourceLine" id="cb93-5" title="5">            <span class="dt">mean_agree =</span> <span class="kw">mean</span>(agree))</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="tidyverse.html#cb93-1"></a>students_summed &lt;-<span class="st"> </span>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb93-2"><a href="tidyverse.html#cb93-2"></a><span class="st">  </span><span class="kw">group_by</span>(question) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb93-3"><a href="tidyverse.html#cb93-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_disagree =</span> <span class="kw">mean</span>(disagree),</span>
+<span id="cb93-4"><a href="tidyverse.html#cb93-4"></a>            <span class="dt">mean_neutral=</span> <span class="kw">mean</span>(neutral),</span>
+<span id="cb93-5"><a href="tidyverse.html#cb93-5"></a>            <span class="dt">mean_agree =</span> <span class="kw">mean</span>(agree))</span></code></pre></div>
 <p>And in fact, if we just want to look at this data quickly, we don’t even need to create a new dataset, we can just look at the output in the console:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">students_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb94-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(question) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb94-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_disagree =</span> <span class="kw">mean</span>(disagree),</a>
-<a class="sourceLine" id="cb94-4" title="4">            <span class="dt">mean_neutral=</span> <span class="kw">mean</span>(neutral),</a>
-<a class="sourceLine" id="cb94-5" title="5">            <span class="dt">mean_agree =</span> <span class="kw">mean</span>(agree))</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="tidyverse.html#cb94-1"></a>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb94-2"><a href="tidyverse.html#cb94-2"></a><span class="st">  </span><span class="kw">group_by</span>(question) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb94-3"><a href="tidyverse.html#cb94-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_disagree =</span> <span class="kw">mean</span>(disagree),</span>
+<span id="cb94-4"><a href="tidyverse.html#cb94-4"></a>            <span class="dt">mean_neutral=</span> <span class="kw">mean</span>(neutral),</span>
+<span id="cb94-5"><a href="tidyverse.html#cb94-5"></a>            <span class="dt">mean_agree =</span> <span class="kw">mean</span>(agree))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   question     mean_disagree mean_neutral mean_agree
 ##   &lt;chr&gt;                &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;
@@ -517,7 +521,7 @@ This is a notable point about R - it is a language that is being actively used a
 <div id="processing-data" class="section level3">
 <h3><span class="header-section-number">7.4.1</span> Processing data</h3>
 <p>Let’s look at <code>students_tidy</code> again.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">head</span>(students_tidy)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="tidyverse.html#cb96-1"></a><span class="kw">head</span>(students_tidy)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   course           level         question     year  disagree neutral agree     n
 ##   &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;        &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -535,10 +539,10 @@ This is a notable point about R - it is a language that is being actively used a
 <div id="pivot_longer" class="section level3">
 <h3><span class="header-section-number">7.4.2</span> pivot_longer</h3>
 <p>The <code>pivot_longer</code> command is a quick way to smush this data into a tall (or long) format. It creates two new columns, the <code>names_to</code> column which collects your old column names and your <code>values_to</code> column which collects the row values (fairly self-explanatory).</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1">students_tall &lt;-<span class="st"> </span>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb98-2" title="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(disagree, neutral, agree),</a>
-<a class="sourceLine" id="cb98-3" title="3">               <span class="dt">names_to =</span> <span class="st">&quot;response&quot;</span>,</a>
-<a class="sourceLine" id="cb98-4" title="4">               <span class="dt">values_to =</span> <span class="st">&quot;prop&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="tidyverse.html#cb98-1"></a>students_tall &lt;-<span class="st"> </span>students_tidy <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb98-2"><a href="tidyverse.html#cb98-2"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(disagree, neutral, agree),</span>
+<span id="cb98-3"><a href="tidyverse.html#cb98-3"></a>               <span class="dt">names_to =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb98-4"><a href="tidyverse.html#cb98-4"></a>               <span class="dt">values_to =</span> <span class="st">&quot;prop&quot;</span>)</span></code></pre></div>
 <p>This says:</p>
 <div class="translate">
 <p>
@@ -566,7 +570,7 @@ We specify the name for the new column which will store the values of the old ro
 </ol>
 </div>
 <p>And of course, we can see what this has done to the data:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">head</span>(students_tall)</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="tidyverse.html#cb99-1"></a><span class="kw">head</span>(students_tall)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##   course      level         question     year      n response  prop
 ##   &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt;        &lt;fct&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
@@ -590,11 +594,11 @@ I once spent a whole afternoon trying to recreate an error message I was getting
 <h2><span class="header-section-number">7.5</span> pivot_wider</h2>
 <p>What if, after all that, you realise that you never wanted your data gathered at all? <code>pivot_wider</code> is here to rescue you.</p>
 <p>Just as before, <code>pivot_wider</code> wants to know the <code>names</code> and the <code>value</code>, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don’t exclude any columns (in fact, try excluding the columns and see what spread says. )</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">students_wide &lt;-<span class="st"> </span>students_tall <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb101-2" title="2"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> response,</a>
-<a class="sourceLine" id="cb101-3" title="3">              <span class="dt">values_from =</span> prop)</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="tidyverse.html#cb101-1"></a>students_wide &lt;-<span class="st"> </span>students_tall <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb101-2"><a href="tidyverse.html#cb101-2"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> response,</span>
+<span id="cb101-3"><a href="tidyverse.html#cb101-3"></a>              <span class="dt">values_from =</span> prop)</span></code></pre></div>
 <p>And of course we can view this:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">head</span>(students_wide)</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="tidyverse.html#cb102-1"></a><span class="kw">head</span>(students_wide)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   course           level         question     year      n disagree neutral agree
 ##   &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;        &lt;fct&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;

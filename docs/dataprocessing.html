@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-10-14" />
+<meta name="date" content="2021-01-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,6 +138,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.3" data-path="about.html"><a href="about.html#useteach"><i class="fa fa-check"></i><b>0.1.3</b> As a teacher</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="about.html"><a href="about.html#usetips"><i class="fa fa-check"></i><b>0.2</b> Tips for using an online textbook</a></li>
+<li class="chapter" data-level="0.3" data-path="about.html"><a href="about.html#license"><i class="fa fa-check"></i><b>0.3</b> Licensing</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R</a><ul>
 <li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#install_r"><i class="fa fa-check"></i><b>1.1</b> Install R</a></li>
@@ -344,27 +348,27 @@ Can execute code in an R Markdown file
 <div id="an-example-of-sharing-code" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> An example of sharing code</h3>
 <p>Imagine you have a big dataset like the UK Farm Accounts dataset:</p>
-<pre><code>##   Year Gross.output.at.basic.prices...million Intermediate.consumption...million
-## 1 1995                               14741.13                           7491.238
-## 2 1996                               14953.92                           7899.517
-## 3 1997                               13334.00                           7471.959
-## 4 1998                               12329.07                           7008.115
-## 5 1999                               11925.87                           6876.278
-## 6 2000                               10962.54                           6483.353
-##   Total.Income.from.Farming...million Agriculture.s.share.of.total.regional.employment.. Country
-## 1                           3668.6456                                                 NA England
-## 2                           3435.5194                                                 NA England
-## 3                           2028.4870                                                 NA England
-## 4                           1472.7142                                                 NA England
-## 5                           1535.0130                                                 NA England
-## 6                            941.3956                                           1.319703 England</code></pre>
+<pre><code>##   Year Gross.output.at.basic.prices...million Intermediate.consumption...million Total.Income.from.Farming...million
+## 1 1995                               14741.13                           7491.238                           3668.6456
+## 2 1996                               14953.92                           7899.517                           3435.5194
+## 3 1997                               13334.00                           7471.959                           2028.4870
+## 4 1998                               12329.07                           7008.115                           1472.7142
+## 5 1999                               11925.87                           6876.278                           1535.0130
+## 6 2000                               10962.54                           6483.353                            941.3956
+##   Agriculture.s.share.of.total.regional.employment.. Country
+## 1                                                 NA England
+## 2                                                 NA England
+## 3                                                 NA England
+## 4                                                 NA England
+## 5                                                 NA England
+## 6                                           1.319703 England</code></pre>
 <p>And let’s say you want to explore the gross output of farming per year. You might decided it would be easier to change the name of the gross output variable to make coding easier. So you write the following in the console:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">farm &lt;-<span class="st"> </span>farm <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb76-2" title="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">gross_output =</span> Gross.output.at.basic.prices...million)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="dataprocessing.html#cb76-1"></a>farm &lt;-<span class="st"> </span>farm <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb76-2"><a href="dataprocessing.html#cb76-2"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">gross_output =</span> Gross.output.at.basic.prices...million)</span></code></pre></div>
 <p>And then you summarise gross output by year:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">farm <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb77-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Year) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb77-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_gross_output =</span> <span class="kw">mean</span>(gross_output))</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="dataprocessing.html#cb77-1"></a>farm <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb77-2"><a href="dataprocessing.html#cb77-2"></a><span class="st">  </span><span class="kw">group_by</span>(Year) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb77-3"><a href="dataprocessing.html#cb77-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_gross_output =</span> <span class="kw">mean</span>(gross_output))</span></code></pre></div>
 <pre><code>## # A tibble: 25 x 2
 ##     Year mean_gross_output
 ##    &lt;int&gt;             &lt;dbl&gt;

@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2020-10-14" />
+<meta name="date" content="2021-01-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,6 +138,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.3" data-path="about.html"><a href="about.html#useteach"><i class="fa fa-check"></i><b>0.1.3</b> As a teacher</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="about.html"><a href="about.html#usetips"><i class="fa fa-check"></i><b>0.2</b> Tips for using an online textbook</a></li>
+<li class="chapter" data-level="0.3" data-path="about.html"><a href="about.html#license"><i class="fa fa-check"></i><b>0.3</b> Licensing</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R</a><ul>
 <li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#install_r"><i class="fa fa-check"></i><b>1.1</b> Install R</a></li>
@@ -353,12 +357,12 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <div id="trouble_warnings" class="section level2">
 <h2><span class="header-section-number">8.2</span> Common warnings</h2>
 <p>Sometimes (perhaps even ‘often’), R will give you a warning when you run a line of code. For example:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">warn &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="ot">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb104-2" title="2">               <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb104-3" title="3"></a>
-<a class="sourceLine" id="cb104-4" title="4">warn <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb104-5" title="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb104-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="trouble.html#cb104-1"></a>warn &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="ot">NA</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),</span>
+<span id="cb104-2"><a href="trouble.html#cb104-2"></a>               <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb104-3"><a href="trouble.html#cb104-3"></a></span>
+<span id="cb104-4"><a href="trouble.html#cb104-4"></a>warn <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb104-5"><a href="trouble.html#cb104-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
+<span id="cb104-6"><a href="trouble.html#cb104-6"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
 <p><img src="ratrdsvs_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>We receive the <code>Warning: Removed 1 rows containing missing values (geom_point).</code></p>
@@ -371,7 +375,7 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <div id="object-not-found." class="section level3">
 <h3><span class="header-section-number">8.3.1</span> Object not found.</h3>
 <p>Sometimes you might ask R to find something that doesn’t exist, for example:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">thing</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="trouble.html#cb106-1"></a>thing</span></code></pre></div>
 <p><code>Error: object 'thing' not found</code></p>
 <p>The quote <code>Error: object 'thing' not found</code> tells us that R can’t find anything called ‘thing’ in the environment, or any of the loaded packages.</p>
 <ul>
@@ -383,7 +387,7 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <div id="function-not-found" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> Function not found</h3>
 <p>Similarly, sometimes you might an error telling you that a function doesn’t exist.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">thing</span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="trouble.html#cb107-1"></a><span class="kw">thing</span>(<span class="dv">1</span>)</span></code></pre></div>
 <p><code>Error in thing(1) : could not find function "thing"</code></p>
 <p>Again, you want to:</p>
 <ul>
@@ -395,13 +399,13 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <div id="unexpected-symbols" class="section level3">
 <h3><span class="header-section-number">8.3.3</span> Unexpected symbols</h3>
 <p>There are a few errors which are all similar, such as:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)<span class="er">)</span></a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="trouble.html#cb108-1"></a><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)<span class="er">)</span></span></code></pre></div>
 <p><code>Error: unexpected ')' in "mean(2,2,4,5,6))"</code></p>
 <p>and</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span> <span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="trouble.html#cb109-1"></a><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span> <span class="dv">6</span>)</span></code></pre></div>
 <p><code>Error: unexpected numeric constant in "mean(2,2,3,5 6"</code></p>
 <p>and</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>;<span class="dv">5</span>,<span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="trouble.html#cb110-1"></a><span class="kw">mean</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>;<span class="dv">5</span>,<span class="dv">6</span>)</span></code></pre></div>
 <p><code>Error: unexpected ';' in "mean(2,2,3;"</code></p>
 <p>These are all clues to go back through the last run chunk of code and look for typos.</p>
 </div>
@@ -475,9 +479,9 @@ Figure: 8.4: Young Thug knows how to google, stolen from /r/programmerhumor
 <p>I’ve talked a lot about reproducible examples or reprexes. Again, stackoverflow <a href="https://stackoverflow.com/help/minimal-reproducible-example">has great guidance on creating one of these</a>. But we’ve actually already made one of these all the way back in <a href="data.html#ex_createdata">chapter three</a> when we were trying to figure out why <code>summary</code> was treating characters different from numerical variables.</p>
 <p>There are three key elements of a reprex:</p>
 <ol style="list-style-type: decimal">
-<li>Be minimal
+<li><p>Be minimal
 * Use as little code as possible to reproduce the problem
-* You can do this in two main ways:
+* You can do this in two main ways:</p>
 <ul>
 <li>Create a new file and add only what you need to reproduce the problem</li>
 <li>Remove code bit by bit from your file until you find the part that isn’t working</li>
@@ -497,8 +501,8 @@ Figure: 8.4: Young Thug knows how to google, stolen from /r/programmerhumor
 <div class="footnotes">
 <hr />
 <ol start="11">
-<li id="fn11"><p>This section is nearly wholly stolen from <a href="http://varianceexplained.org/courses/errors/">David Robinson</a><a href="trouble.html#fnref11" class="footnote-back">↩</a></p></li>
-<li id="fn12"><p>or web search of your choice<a href="trouble.html#fnref12" class="footnote-back">↩</a></p></li>
+<li id="fn11"><p>This section is nearly wholly stolen from <a href="http://varianceexplained.org/courses/errors/">David Robinson</a><a href="trouble.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>or web search of your choice<a href="trouble.html#fnref12" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
