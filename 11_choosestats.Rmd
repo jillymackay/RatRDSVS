@@ -1,0 +1,57 @@
+# How to choose your stats {#choosestats}
+
+```{block type = "los"}
+
+You can skip this chapter if:
+
+  * You are comfortable deciding which statistical test to use
+
+```
+
+
+So its happened. You've collected your data, you've installed R, and now you're ready to run some analyses! But what on earth do you do next? How do you choose and interpret the right statistic?
+
+To be brutally honest, only repeated practice and engaging with statistics can help build this skill, and the more you learn, the more uncertain you may feel! But what this chapter **can** do is to give you a bit of a cheat sheet and show you the 'greatest hits' of statistical testing in R. I will also use the [APA 7th Edition Numbers and Statistics guide](https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf) to report the statistical tests, and show you how to extract that information from the output, but you should also look up the style guide of your desired report (e.g. [APA 7th Edition](https://apastyle.apa.org/style-grammar-guidelines)).
+
+```{block type = "hey"}
+
+For this chapter I will use in-built R datasets to demonstrate these tests. I will also use the tidyverse package throughout (which offers a few more datasets)
+
+
+```
+
+
+## Where to start {#cs_start}
+
+To work your way through this chapter, you need to identify your:
+
+    * Response variable (the **y axis**)
+    
+    * Explanatory variable (the **x axis**)
+    
+and then work your way down this handy list:
+
+**I have a . . .**
+
+
+
+
+
+
+## {#cs_rcat}
+
+### {#cs_rcat_ecat}
+
+#### {#cs_rcat_ecat_g1}
+
+#### {#cs_rcat_ecat_g2}
+
+### {cs_rcat_enum}
+
+
+## {#cs_rnum}
+
+### {#cs_rnum_ecat}
+
+### {#cs_rnum_enum}
+    
