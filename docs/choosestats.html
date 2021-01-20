@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 How to choose your stats | R @ R(D)SVS</title>
+  <meta name="description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 How to choose your stats | R @ R(D)SVS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 How to choose your stats | R @ R(D)SVS" />
+  
+  <meta name="twitter:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
+  
+
+<meta name="author" content="Jill R D MacKay" />
+
+
+<meta name="date" content="2021-01-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="statsfreq.html"/>
+<link rel="next" href="whatnext.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>R @ R(D)SVS</a></li>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About this book</a><ul>
+<li class="chapter" data-level="0.1" data-path="about.html"><a href="about.html#howuse"><i class="fa fa-check"></i><b>0.1</b> How to use this book</a><ul>
+<li class="chapter" data-level="0.1.1" data-path="about.html"><a href="about.html#useinclass"><i class="fa fa-check"></i><b>0.1.1</b> As a student in class</a></li>
+<li class="chapter" data-level="0.1.2" data-path="about.html"><a href="about.html#useindependent"><i class="fa fa-check"></i><b>0.1.2</b> As a student learning independently</a></li>
+<li class="chapter" data-level="0.1.3" data-path="about.html"><a href="about.html#useteach"><i class="fa fa-check"></i><b>0.1.3</b> As a teacher</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="about.html"><a href="about.html#usetips"><i class="fa fa-check"></i><b>0.2</b> Tips for using an online textbook</a></li>
+<li class="chapter" data-level="0.3" data-path="about.html"><a href="about.html#license"><i class="fa fa-check"></i><b>0.3</b> Licensing</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R</a><ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#install_r"><i class="fa fa-check"></i><b>1.1</b> Install R</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#install_rs"><i class="fa fa-check"></i><b>1.2</b> Install R Studio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="install.html"><a href="install.html#navigate_rs"><i class="fa fa-check"></i><b>1.2.1</b> Quick R Studio Navigation Guide</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#install_rsc"><i class="fa fa-check"></i><b>1.3</b> Using the Cloud</a></li>
+<li class="chapter" data-level="1.4" data-path="install.html"><a href="install.html#install_vids"><i class="fa fa-check"></i><b>1.4</b> Install R and R Studio - Video Instruction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="start.html"><a href="start.html#thesecret"><i class="fa fa-check"></i><b>2.1</b> The Big Secret</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="start.html"><a href="start.html#ex_tidytuesday"><i class="fa fa-check"></i><b>2.1.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="start.html"><a href="start.html#projects"><i class="fa fa-check"></i><b>2.2</b> Projects</a></li>
+<li class="chapter" data-level="2.3" data-path="start.html"><a href="start.html#environment"><i class="fa fa-check"></i><b>2.3</b> Environment</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="start.html"><a href="start.html#ex_env"><i class="fa fa-check"></i><b>2.3.1</b> Exercise - Environment</a></li>
+<li class="chapter" data-level="2.3.2" data-path="start.html"><a href="start.html#ex_func"><i class="fa fa-check"></i><b>2.3.2</b> Exercise - Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="start.html"><a href="start.html#packages"><i class="fa fa-check"></i><b>2.4</b> Packages</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="start.html"><a href="start.html#ex_packages"><i class="fa fa-check"></i><b>2.4.1</b> Exercise - Install and Load a Package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="start.html"><a href="start.html#scripts_rmd"><i class="fa fa-check"></i><b>2.5</b> R Markdown vs R Scripts</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="start.html"><a href="start.html#r-scripts"><i class="fa fa-check"></i><b>2.5.1</b> R Scripts</a></li>
+<li class="chapter" data-level="2.5.2" data-path="start.html"><a href="start.html#r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> R Markdown</a></li>
+<li class="chapter" data-level="2.5.3" data-path="start.html"><a href="start.html#video_rmd"><i class="fa fa-check"></i><b>2.5.3</b> A video on R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="start.html"><a href="start.html#video_env"><i class="fa fa-check"></i><b>2.6</b> Video Introductions</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#packages-for-this-chapter"><i class="fa fa-check"></i><b>3.1</b> Packages for this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#data_builtin"><i class="fa fa-check"></i><b>3.2</b> Built In Data</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#ex_inbuiltdata"><i class="fa fa-check"></i><b>3.3</b> Exercise</a></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#created_data"><i class="fa fa-check"></i><b>3.4</b> Data you create</a></li>
+<li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#ex_createdata"><i class="fa fa-check"></i><b>3.5</b> Exercise - Creating data</a></li>
+<li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#data_load"><i class="fa fa-check"></i><b>3.6</b> Loading data from your hard drive</a></li>
+<li class="chapter" data-level="3.7" data-path="data.html"><a href="data.html#ex_data_load"><i class="fa fa-check"></i><b>3.7</b> Loading data</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="data.html"><a href="data.html#loading-from-a-csv"><i class="fa fa-check"></i><b>3.7.1</b> Loading from a CSV</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="data.html"><a href="data.html#ex_loadcsv"><i class="fa fa-check"></i><b>3.8</b> Exercise</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="data.html"><a href="data.html#loading-from-an-excel-file"><i class="fa fa-check"></i><b>3.8.1</b> Loading from an Excel file</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="data.html"><a href="data.html#ex_loadexcel"><i class="fa fa-check"></i><b>3.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>4</b> Charts</a><ul>
+<li class="chapter" data-level="4.1" data-path="charts.html"><a href="charts.html#datavis"><i class="fa fa-check"></i><b>4.1</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="charts.html"><a href="charts.html#vis_bad"><i class="fa fa-check"></i><b>4.1.1</b> When charts go bad</a></li>
+<li class="chapter" data-level="4.1.2" data-path="charts.html"><a href="charts.html#vis_anatomy"><i class="fa fa-check"></i><b>4.1.2</b> Chart anatomy</a></li>
+<li class="chapter" data-level="4.1.3" data-path="charts.html"><a href="charts.html#vis_bar"><i class="fa fa-check"></i><b>4.1.3</b> Bar charts</a></li>
+<li class="chapter" data-level="4.1.4" data-path="charts.html"><a href="charts.html#vis_hist"><i class="fa fa-check"></i><b>4.1.4</b> Histograms</a></li>
+<li class="chapter" data-level="4.1.5" data-path="charts.html"><a href="charts.html#vis_scatter"><i class="fa fa-check"></i><b>4.1.5</b> Scatterplots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="charts.html"><a href="charts.html#vis_box"><i class="fa fa-check"></i><b>4.1.6</b> Boxplots</a></li>
+<li class="chapter" data-level="4.1.7" data-path="charts.html"><a href="charts.html#vis_infographic"><i class="fa fa-check"></i><b>4.1.7</b> Infographics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
+<li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object (a scatterplot)</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="ggplot.html"><a href="ggplot.html#gg_axis"><i class="fa fa-check"></i><b>5.2.1</b> Changing an axis in ggplot2</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ggplot.html"><a href="ggplot.html#gg_theme"><i class="fa fa-check"></i><b>5.2.2</b> Changing themes</a></li>
+<li class="chapter" data-level="5.2.3" data-path="ggplot.html"><a href="ggplot.html#gg_labs"><i class="fa fa-check"></i><b>5.2.3</b> Changing labels and titles</a></li>
+<li class="chapter" data-level="5.2.4" data-path="ggplot.html"><a href="ggplot.html#gg_smooth"><i class="fa fa-check"></i><b>5.2.4</b> Adding regression lines to ggplot</a></li>
+<li class="chapter" data-level="5.2.5" data-path="ggplot.html"><a href="ggplot.html#gg_groups"><i class="fa fa-check"></i><b>5.2.5</b> Adding groups to ggplot</a></li>
+<li class="chapter" data-level="5.2.6" data-path="ggplot.html"><a href="ggplot.html#gg_legend"><i class="fa fa-check"></i><b>5.2.6</b> Changing legends</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#gg_boxplot"><i class="fa fa-check"></i><b>5.3</b> Building a boxplot</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot.html"><a href="ggplot.html#gg_facets"><i class="fa fa-check"></i><b>5.4</b> Facets</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot.html"><a href="ggplot.html#gg_bars"><i class="fa fa-check"></i><b>5.5</b> Bar charts</a></li>
+<li class="chapter" data-level="5.6" data-path="ggplot.html"><a href="ggplot.html#ex_ggplot"><i class="fa fa-check"></i><b>5.6</b> Exercise</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.7</b> Videos</a></li>
+<li class="chapter" data-level="5.8" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.8</b> Useful resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
+<li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="dataprocessing.html"><a href="dataprocessing.html#an-example-of-sharing-code"><i class="fa fa-check"></i><b>6.1.1</b> An example of sharing code</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="dataprocessing.html"><a href="dataprocessing.html#openrmd"><i class="fa fa-check"></i><b>6.2</b> Opening R Markdown Docs</a></li>
+<li class="chapter" data-level="6.3" data-path="dataprocessing.html"><a href="dataprocessing.html#codermd"><i class="fa fa-check"></i><b>6.3</b> Running Code</a></li>
+<li class="chapter" data-level="6.4" data-path="dataprocessing.html"><a href="dataprocessing.html#editrmd"><i class="fa fa-check"></i><b>6.4</b> Editing R Markdown Docs</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>7</b> The Tidyverse</a><ul>
+<li class="chapter" data-level="7.1" data-path="tidyverse.html"><a href="tidyverse.html#tidy_opinions"><i class="fa fa-check"></i><b>7.1</b> Opinionated Packages</a></li>
+<li class="chapter" data-level="7.2" data-path="tidyverse.html"><a href="tidyverse.html#data-for-this-chapter"><i class="fa fa-check"></i><b>7.2</b> Data for this chapter</a></li>
+<li class="chapter" data-level="7.3" data-path="tidyverse.html"><a href="tidyverse.html#mutate"><i class="fa fa-check"></i><b>7.3</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="tidyverse.html"><a href="tidyverse.html#mutate-to-change-a-variable-type."><i class="fa fa-check"></i><b>7.3.1</b> Mutate to change a variable type.</a></li>
+<li class="chapter" data-level="7.3.2" data-path="tidyverse.html"><a href="tidyverse.html#mutate-to-change-the-contents-of-data"><i class="fa fa-check"></i><b>7.3.2</b> Mutate to change the contents of data</a></li>
+<li class="chapter" data-level="7.3.3" data-path="tidyverse.html"><a href="tidyverse.html#mutate-to-change-multiple-variables"><i class="fa fa-check"></i><b>7.3.3</b> Mutate to change multiple variables</a></li>
+<li class="chapter" data-level="7.3.4" data-path="tidyverse.html"><a href="tidyverse.html#tidy_summ"><i class="fa fa-check"></i><b>7.3.4</b> Summarise as a unique form of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="tidyverse.html"><a href="tidyverse.html#pivoting_data"><i class="fa fa-check"></i><b>7.4</b> Wide and tall data</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="tidyverse.html"><a href="tidyverse.html#processing-data"><i class="fa fa-check"></i><b>7.4.1</b> Processing data</a></li>
+<li class="chapter" data-level="7.4.2" data-path="tidyverse.html"><a href="tidyverse.html#pivot_longer"><i class="fa fa-check"></i><b>7.4.2</b> pivot_longer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="tidyverse.html"><a href="tidyverse.html#pivot_wider"><i class="fa fa-check"></i><b>7.5</b> pivot_wider</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="trouble.html"><a href="trouble.html"><i class="fa fa-check"></i><b>8</b> Troubleshooting</a><ul>
+<li class="chapter" data-level="8.1" data-path="trouble.html"><a href="trouble.html#working-independently"><i class="fa fa-check"></i><b>8.1</b> Working independently</a></li>
+<li class="chapter" data-level="8.2" data-path="trouble.html"><a href="trouble.html#trouble_warnings"><i class="fa fa-check"></i><b>8.2</b> Common warnings</a></li>
+<li class="chapter" data-level="8.3" data-path="trouble.html"><a href="trouble.html#trouble_errors"><i class="fa fa-check"></i><b>8.3</b> Common errors</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="trouble.html"><a href="trouble.html#object-not-found."><i class="fa fa-check"></i><b>8.3.1</b> Object not found.</a></li>
+<li class="chapter" data-level="8.3.2" data-path="trouble.html"><a href="trouble.html#function-not-found"><i class="fa fa-check"></i><b>8.3.2</b> Function not found</a></li>
+<li class="chapter" data-level="8.3.3" data-path="trouble.html"><a href="trouble.html#unexpected-symbols"><i class="fa fa-check"></i><b>8.3.3</b> Unexpected symbols</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="trouble.html"><a href="trouble.html#quick-warnings-and-errors"><i class="fa fa-check"></i><b>8.4</b> Quick warnings and errors</a></li>
+<li class="chapter" data-level="8.5" data-path="trouble.html"><a href="trouble.html#searching-for-help"><i class="fa fa-check"></i><b>8.5</b> Searching for help</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="trouble.html"><a href="trouble.html#trouble_help"><i class="fa fa-check"></i><b>8.5.1</b> Tips for asking for help</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="trouble.html"><a href="trouble.html#trouble_reprex"><i class="fa fa-check"></i><b>8.6</b> Reproducible Examples (reprex)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="statsbasic.html"><a href="statsbasic.html"><i class="fa fa-check"></i><b>9</b> Basic Statistics</a><ul>
+<li class="chapter" data-level="9.1" data-path="statsbasic.html"><a href="statsbasic.html#descstats"><i class="fa fa-check"></i><b>9.1</b> Descriptive stats</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="statsbasic.html"><a href="statsbasic.html#mathematical-notation"><i class="fa fa-check"></i><b>9.1.1</b> Mathematical notation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="statsbasic.html"><a href="statsbasic.html#stats_mean"><i class="fa fa-check"></i><b>9.1.2</b> The mean</a></li>
+<li class="chapter" data-level="9.1.3" data-path="statsbasic.html"><a href="statsbasic.html#the-mean-as-a-model"><i class="fa fa-check"></i><b>9.1.3</b> The mean as a model</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="statsbasic.html"><a href="statsbasic.html#stats_median"><i class="fa fa-check"></i><b>9.2</b> Median</a></li>
+<li class="chapter" data-level="9.3" data-path="statsbasic.html"><a href="statsbasic.html#stats_mode"><i class="fa fa-check"></i><b>9.3</b> Mode</a></li>
+<li class="chapter" data-level="9.4" data-path="statsbasic.html"><a href="statsbasic.html#stats_which"><i class="fa fa-check"></i><b>9.4</b> Which model?</a></li>
+<li class="chapter" data-level="9.5" data-path="statsbasic.html"><a href="statsbasic.html#stats_variation"><i class="fa fa-check"></i><b>9.5</b> Measures of variation</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="statsbasic.html"><a href="statsbasic.html#stats_variance"><i class="fa fa-check"></i><b>9.5.1</b> Variance</a></li>
+<li class="chapter" data-level="9.5.2" data-path="statsbasic.html"><a href="statsbasic.html#stats_sd"><i class="fa fa-check"></i><b>9.5.2</b> Standard Deviation</a></li>
+<li class="chapter" data-level="9.5.3" data-path="statsbasic.html"><a href="statsbasic.html#stats_se"><i class="fa fa-check"></i><b>9.5.3</b> Standard Error</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="statsbasic.html"><a href="statsbasic.html#calculating-descriptive-stats"><i class="fa fa-check"></i><b>9.6</b> Calculating descriptive stats</a></li>
+<li class="chapter" data-level="9.7" data-path="statsbasic.html"><a href="statsbasic.html#reporting-on-heifer-weight"><i class="fa fa-check"></i><b>9.7</b> Reporting on heifer weight</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="statsfreq.html"><a href="statsfreq.html"><i class="fa fa-check"></i><b>10</b> Predicting more things</a><ul>
+<li class="chapter" data-level="10.1" data-path="statsfreq.html"><a href="statsfreq.html#ex_anovatheory"><i class="fa fa-check"></i><b>10.1</b> Partitioning Variation</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="statsfreq.html"><a href="statsfreq.html#perfect-worlds-vs-reality"><i class="fa fa-check"></i><b>10.1.1</b> Perfect Worlds vs Reality</a></li>
+<li class="chapter" data-level="10.1.2" data-path="statsfreq.html"><a href="statsfreq.html#a-fake-experiment"><i class="fa fa-check"></i><b>10.1.2</b> A Fake Experiment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="choosestats.html"><a href="choosestats.html"><i class="fa fa-check"></i><b>11</b> How to choose your stats</a><ul>
+<li class="chapter" data-level="11.1" data-path="choosestats.html"><a href="choosestats.html#cs_start"><i class="fa fa-check"></i><b>11.1</b> Where to start</a></li>
+<li class="chapter" data-level="11.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat"><i class="fa fa-check"></i><b>11.2</b> My response is a categorical variable</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_ecat"><i class="fa fa-check"></i><b>11.2.1</b> Categorical Response, Categorical Explanatory</a></li>
+<li class="chapter" data-level="11.2.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.2</b> {cs_rcat_enum}</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> </a><ul>
+<li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.1</b> </a></li>
+<li class="chapter" data-level="11.3.2" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.2</b> </a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="whatnext.html"><a href="whatnext.html"><i class="fa fa-check"></i><b>12</b> What next</a><ul>
+<li class="chapter" data-level="12.1" data-path="whatnext.html"><a href="whatnext.html#github"><i class="fa fa-check"></i><b>12.1</b> github</a></li>
+<li class="chapter" data-level="12.2" data-path="whatnext.html"><a href="whatnext.html#experiment-and-build"><i class="fa fa-check"></i><b>12.2</b> Experiment and build</a></li>
+<li class="chapter" data-level="12.3" data-path="whatnext.html"><a href="whatnext.html#the-r-community"><i class="fa fa-check"></i><b>12.3</b> The R Community</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="whyr.html"><a href="whyr.html"><i class="fa fa-check"></i><b>13</b> Why use R</a><ul>
+<li class="chapter" data-level="13.1" data-path="whyr.html"><a href="whyr.html#why-does-open-source-matter"><i class="fa fa-check"></i><b>13.1</b> Why does open source matter?</a></li>
+<li class="chapter" data-level="13.2" data-path="whyr.html"><a href="whyr.html#so-why-r"><i class="fa fa-check"></i><b>13.2</b> So why R?</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>14</b> Answers</a><ul>
+<li class="chapter" data-level="14.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>14.1</b> Creating Data Answers</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>14.1.1</b> Changing mpg data</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>14.2</b> Loading csv data answers</a></li>
+<li class="chapter" data-level="14.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>14.3</b> Loading excel data answers</a></li>
+<li class="chapter" data-level="14.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>14.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>14.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
+<li class="chapter" data-level="14.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>14.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>14.5</b> Proof of variance</a></li>
+<li class="chapter" data-level="14.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>14.6</b> Tidy Unicorns</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>15</b> Acknowledgements</a><ul>
+<li class="chapter" data-level="15.1" data-path="acks.html"><a href="acks.html#image-sources"><i class="fa fa-check"></i><b>15.1</b> Image Sources</a></li>
+<li class="chapter" data-level="15.2" data-path="acks.html"><a href="acks.html#specific-acknowledgements"><i class="fa fa-check"></i><b>15.2</b> Specific Acknowledgements</a></li>
+<li class="chapter" data-level="15.3" data-path="acks.html"><a href="acks.html#beta-testers-and-helpers"><i class="fa fa-check"></i><b>15.3</b> Beta Testers and Helpers</a></li>
+<li class="chapter" data-level="15.4" data-path="acks.html"><a href="acks.html#the-biggest-thanks"><i class="fa fa-check"></i><b>15.4</b> The biggest thanks</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R @ R(D)SVS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="choosestats" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> How to choose your stats</h1>
+<div class="los">
+<p>
+You can skip this chapter if:
+</p>
+<ul>
+<li>
+You are comfortable deciding which statistical test to use
+</li>
+</ul>
+</div>
+<p>So its happened. You’ve collected your data, you’ve installed R, and now you’re ready to run some analyses! But what on earth do you do next? How do you choose and interpret the right statistic?</p>
+<p>To be brutally honest, only repeated practice and engaging with statistics can help build this skill, and the more you learn, the more uncertain you may feel! But what this chapter <strong>can</strong> do is to give you a bit of a cheat sheet and show you the ‘greatest hits’ of statistical testing in R. I will also use the <a href="https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf">APA 7th Edition Numbers and Statistics guide</a> to report the statistical tests, and show you how to extract that information from the output, but you should also look up the style guide of your desired report (e.g. <a href="https://apastyle.apa.org/style-grammar-guidelines">APA 7th Edition</a>).</p>
+<div class="hey">
+<p>
+For this chapter I will use in-built R datasets to demonstrate these tests. I will also use the tidyverse package throughout (which offers a few more datasets), so you will want to have that loaded.
+</p>
+<p>
+I will note here all the packages that are uses in this chapter, and highlight them at their specific tests. Remember, you can always install a package with <code>install.packages(“package_name”)</code>
+</p>
+<pre><code>* `library(tidyverse)`</code></pre>
+</div>
+<div id="cs_start" class="section level2">
+<h2><span class="header-section-number">11.1</span> Where to start</h2>
+<p>To work your way through this chapter, you need to identify your:</p>
+<ul>
+<li><p>Response variable (the <strong>y axis</strong>)</p></li>
+<li><p>Explanatory variable (the <strong>x axis</strong>)</p></li>
+</ul>
+<p>and then work your way down this handy list:</p>
+<p><strong>I have a . . .</strong></p>
+</div>
+<div id="cs_rcat" class="section level2">
+<h2><span class="header-section-number">11.2</span> My response is a categorical variable</h2>
+<div id="cs_rcat_ecat" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Categorical Response, Categorical Explanatory</h3>
+<div id="proportion-of-responses-different-from-a-knownexpected-result" class="section level4">
+<h4><span class="header-section-number">11.2.1.1</span> Proportion of responses different from a known/expected result</h4>
+<p>If you have:</p>
+<ul>
+<li><p>A categorical response (e.g. gender, colour, tested positive for a disease yes/no …)</p></li>
+<li><p>That is binary (e.g. Yes Red Hair vs No Red Hair, Yes Disease Present vs No Disease Present)</p></li>
+<li><p>And you want to know if this is different from a historical or expected result</p></li>
+<li><p>You need a <strong>1 Sample Proportion Test</strong></p></li>
+</ul>
+<p><strong>Our Data</strong></p>
+<p>Let’s say we have 20 German Shepherd dogs, and we know that the prevalence of hip dysplasia, a very painful condition, is usually 18% in this breed. We want to know if these particular dogs (perhaps they are from a new genetic line) are showing less hip dysplasia than we would expect. We have recorded whether or not these dogs are showing signs of dysplasia as a ‘yes/no’ categorical variable, and 3 dogs are showing signs of hip dysplasia.</p>
+<p>We can run a <strong>1 proportion test</strong> like so:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="choosestats.html#cb190-1"></a><span class="kw">binom.test</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">n =</span> <span class="dv">20</span>, <span class="dt">p =</span> <span class="fl">0.18</span>, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## 	Exact binomial test
+## 
+## data:  3 and 20
+## number of successes = 3, number of trials = 20, p-value = 1
+## alternative hypothesis: true probability of success is not equal to 0.18
+## 95 percent confidence interval:
+##  0.03207094 0.37892683
+## sample estimates:
+## probability of success 
+##                   0.15</code></pre>
+<p>Note that we don’t even need any real ‘data’ to run this test - its simply drawn from statistical probabilities. We would write this up as:</p>
+<blockquote>
+<p>In this study, 15% of the dogs presented with signs of hip dysplacia, which is not significantly different from the historical prevalence of 18% in a binomial test (95% CI [3%-38%], <em>p</em> &gt; .9).</p>
+</blockquote>
+<p><strong>What if we had more dogs?</strong></p>
+<p>We’ve continued running this study, mainly because we’re worried that only having 20 dogs is not accounting for enough of the natural variation we see in the world. This time we have 50 dogs from this genetic line and we’ve seen 4 of them develop dysplasia. As we have more than <strong>30</strong> responses, we can use a different version of the test.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="choosestats.html#cb192-1"></a><span class="kw">prop.test</span>(<span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">n =</span> <span class="dv">50</span>, <span class="dt">p =</span> <span class="fl">0.18</span>, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## 	1-sample proportions test with continuity correction
+## 
+## data:  4 out of 50, null probability 0.18
+## X-squared = 2.7439, df = 1, p-value = 0.09763
+## alternative hypothesis: true p is not equal to 0.18
+## 95 percent confidence interval:
+##  0.0259402 0.2011004
+## sample estimates:
+##    p 
+## 0.08</code></pre>
+<p>This time we have a little more information that we can report with:</p>
+<blockquote>
+<p>In this study, 8% of the dogs presented with hip dysplasia, which is not significantly different from the historical prevalence of 18% in a one sample proportion test (95% CI[3%-20%], <em>x<sup>2</sup></em> = 2.74, <em>p</em> = .098)</p>
+</blockquote>
+</div>
+<div id="proportion-of-responses-different-from-an-observed-result" class="section level4">
+<h4><span class="header-section-number">11.2.1.2</span> Proportion of responses different from an observed result</h4>
+<p>If you have:</p>
+<ul>
+<li><p>A categorical response (e.g. gender, colour, tested positive for a disease yes/no …)</p></li>
+<li><p>That is binary (e.g. Yes Red Hair vs No Red Hair, Yes Disease Present vs No Disease Present)</p></li>
+<li><p>And you want to know if this is different between two groups</p></li>
+<li><p>You need a <strong>Chi<sup>2</sup> Test</strong></p></li>
+</ul>
+<div id="fishers-exact-test-small-sample-sizes-summarised-data" class="section level5">
+<h5><span class="header-section-number">11.2.1.2.1</span> Fisher’s Exact Test (Small Sample Sizes / Summarised Data)</h5>
+<p><strong>Our Data</strong>
+German Shepherd Dogs suffer from hip dysplasia, a very painful condition. We know that more inbred dogs are more susceptible, and so we have followed 20 highly inbred dogs and 20 less inbred dogs and observed whether they developed the disease or not. As the prevalence is low (18% historically), we would not expect more than 3.6 dogs to develop dysplasia in either category (if it was left up to chance). For this reason, we should use <strong>Fisher’s Exact Test</strong>, which is more robust for smaller sample sizes.</p>
+<p>Of the inbred dogs, we’ve seen 4 cases of dysplasia. Of the less inbred dogs, we’ve seen 2 cases of dysplasia. Like before, we can test this without having any actual data in R:</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="choosestats.html#cb194-1"></a><span class="kw">fisher.test</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">16</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">18</span>))</span></code></pre></div>
+<pre><code>## 
+## 	Fisher&#39;s Exact Test for Count Data
+## 
+## data:  c(4, 16) and c(2, 18)
+## p-value = 1
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  0.02564066        Inf
+## sample estimates:
+## odds ratio 
+##        Inf</code></pre>
+<p>We do need to calculate one more thing to add to our report,the odds ratio:</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="choosestats.html#cb196-1"></a>(<span class="dv">4</span><span class="op">+</span><span class="dv">18</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 1.222222</code></pre>
+<p>And this is reported like so:</p>
+<blockquote>
+<p>A Fisher’s Exact Test found no significant difference in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dogs (OR = 1.2, 95% CI[0.02-Inf], <em>p</em> &gt; .9)</p>
+</blockquote>
+</div>
+<div id="chi2-test-larger-sample-sizes" class="section level5">
+<h5><span class="header-section-number">11.2.1.2.2</span> Chi2 Test (Larger Sample Sizes)</h5>
+<p><strong>Our Data</strong>
+This time we have observed more German Shepherd Dogs, a highly inbred line which we think will be more prone to hip dysplasia, and a less inbred line which we think will be less prone to hip dysplasia. For this dataset we will create a contingency table:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="choosestats.html#cb198-1"></a>gsd &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">84</span>, <span class="dv">12</span>, <span class="dv">86</span>), </span>
+<span id="cb198-2"><a href="choosestats.html#cb198-2"></a>              <span class="dt">ncol=</span><span class="dv">2</span>, </span>
+<span id="cb198-3"><a href="choosestats.html#cb198-3"></a>              <span class="dt">byrow=</span><span class="ot">TRUE</span>,</span>
+<span id="cb198-4"><a href="choosestats.html#cb198-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;Inbred&quot;</span>, <span class="st">&quot;Less Inbred&quot;</span>)))</span></code></pre></div>
+<p>We run this Chi^2 test like so:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="choosestats.html#cb199-1"></a><span class="kw">chisq.test</span>(gsd)</span></code></pre></div>
+<pre><code>## 
+## 	Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  gsd
+## X-squared = 0.30714, df = 1, p-value = 0.5794</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="choosestats.html#cb201-1"></a><span class="co">#Odds Ratio</span></span>
+<span id="cb201-2"><a href="choosestats.html#cb201-2"></a>(<span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">86</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">84</span> <span class="op">+</span><span class="st"> </span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## [1] 1.0625</code></pre>
+<p>And report like so:</p>
+<blockquote>
+<p>A Chi^2 test found no significant different in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dos (OR 1.06, <em>X^2</em>[1, n = 198] = 0.307, <em>p</em> = .579)</p>
+</blockquote>
+</div>
+</div>
+<div id="cs_rcat_ecat_g2" class="section level4">
+<h4><span class="header-section-number">11.2.1.3</span> </h4>
+</div>
+</div>
+<div id="cs_rcat_enum" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> {cs_rcat_enum}</h3>
+</div>
+</div>
+<div id="cs_rnum" class="section level2">
+<h2><span class="header-section-number">11.3</span> </h2>
+<div id="cs_rnum_ecat" class="section level3">
+<h3><span class="header-section-number">11.3.1</span> </h3>
+</div>
+<div id="cs_rnum_enum" class="section level3">
+<h3><span class="header-section-number">11.3.2</span> </h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="statsfreq.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="whatnext.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"collapse": "subsection"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

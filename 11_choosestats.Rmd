@@ -15,8 +15,13 @@ To be brutally honest, only repeated practice and engaging with statistics can h
 
 ```{block type = "hey"}
 
-For this chapter I will use in-built R datasets to demonstrate these tests. I will also use the tidyverse package throughout (which offers a few more datasets)
+For this chapter I will use in-built R datasets to demonstrate these tests. I will also use the tidyverse package throughout (which offers a few more datasets), so you will want to have that loaded.
 
+I will  note here all the packages that are uses in this chapter, and highlight them at their specific tests. Remember, you can always install a package with `install.packages("package_name")`
+
+   * `library(tidyverse)`
+
+   * `library(vcd)`
 
 ```
 
@@ -25,11 +30,12 @@ For this chapter I will use in-built R datasets to demonstrate these tests. I wi
 
 To work your way through this chapter, you need to identify your:
 
-    * Response variable (the **y axis**)
+  * Response variable (the **y axis**)
     
-    * Explanatory variable (the **x axis**)
+  * Explanatory variable (the **x axis**)
     
 and then work your way down this handy list:
+
 
 **I have a . . .**
 
@@ -38,20 +44,184 @@ and then work your way down this handy list:
 
 
 
-## {#cs_rcat}
+## My response is a categorical variable {#cs_rcat}
 
-### {#cs_rcat_ecat}
+### Categorical Response, Historical/Known Comparisons {#cs_rcat_hist}
 
-#### {#cs_rcat_ecat_g1}
+#### Proportion of responses different from a known/expected result (1 Sample Proportion Test)
+**Our Data**
 
-#### {#cs_rcat_ecat_g2}
+Let's say we have 20 German Shepherd dogs, and we know that the prevalence of hip dysplasia, a very painful condition, is usually 18% in this breed. We want to know if these particular dogs (perhaps they are from a new genetic line) are showing less hip dysplasia than we would expect. We have recorded whether or not these dogs are showing signs of dysplasia as a 'yes/no' categorical variable, and 3 dogs are showing signs of hip dysplasia.
+
+We can run a **1 proportion test** like so:
+
+```{r message = FALSE, warning = FALSE}
+
+binom.test(x = 3, n = 20, p = 0.18, alternative = "two.sided")
+
+
+```
+
+Note that we don't even need any real 'data' to run this test - its simply drawn from statistical probabilities. We would write this up as:
+
+> In this study, 15% of the dogs presented with signs of hip dysplacia, which is not significantly different from the historical prevalence of 18% in a binomial test (95% CI [3%-38%], *p* > .9).
+
+
+
+**What if we had more dogs?**
+
+We've continued running this study, mainly because we're worried that only having 20 dogs is not accounting for enough of the natural variation we see in the world. This time we have 50 dogs from this genetic line and we've seen 4 of them develop dysplasia. As we have more than **30** responses, we can use a different version of the test.
+
+```{r message = FALSE, warning  = FALSE}
+
+prop.test(x = 4, n = 50, p = 0.18, alternative = "two.sided")
+
+```
+This time we have a little more information that we can report with:
+
+> In this study, 8% of the dogs presented with hip dysplasia, which is not significantly different from the historical prevalence of 18% in a one sample proportion test (95% CI[3%-20%], *x^2^* = 2.74, *p*  = .098)
+
+### Categorical Response, Categorical Explanatory {#cs_rcat_ecat}
+
+#### Categorical Response (Repeated Measures) Categorical Explanatory, McNemar's Test {#cs_rcat_ecat_r}
+**Our Data**
+
+We have 40 German Shepherd dogs, some of whom already present with dysplasia, a painful condition. We're concerned that after a season of work more dogs will develop dysplasia, and want to see if this is true. For this dataset we will create a contingency table:
+
+```{r message = FALSE, warning = FALSE}
+
+work <- matrix(c(2, 38, 5, 35), 
+              ncol=2, 
+              byrow=TRUE,
+              dimnames = list(c("Dysplasia", "No Dysplasia"),c("Before Work Season", "After Work Season")))
+
+```
+
+We are going to run a specific test which accounts for the fact we have the same dogs in both conditions (before and after work):
+
+```{r message = FALSE, warning = FALSE}
+
+mcnemar.test(work)
+
+```
+
+> After the work season significantly more dogs developed dysplasia in McNemar's test (*X*^2^[1, n = 40] = 23.81, *p* = <.001)
+
+#### Proportion of responses compared across groups (Fishers/Chi^2^ test)
+
+##### Fisher's Exact Test (Small Sample Sizes / Summarised Data)
+**Our Data**
+
+German Shepherd Dogs suffer from hip dysplasia, a very painful condition. We know that more inbred dogs are more susceptible, and so we have followed 20 highly inbred dogs and 20 less inbred dogs and observed whether they developed the disease or not. As the prevalence is low (18% historically), we would not expect more than 3.6 dogs to develop dysplasia in either category (if it was left up to chance). For this reason, we should use **Fisher's Exact Test**, which is more robust for smaller sample sizes. 
+
+Of the inbred dogs, we've seen 4 cases of dysplasia. Of the less inbred dogs, we've seen 2 cases of dysplasia. Like before, we can test this without having any actual data in R:
+
+
+```{r message = FALSE, warning = FALSE}
+
+fisher.test(x = c(4,16), y = c(2,18))
+
+```
+
+We do need to calculate one more thing to add to our report,the odds ratio:
+
+```{r message = FALSE, warning = FALSE}
+
+(4+18) / (16 + 2)
+
+```
+
+And this is reported like so:
+
+> A Fisher's Exact Test found no significant difference in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dogs (OR = 1.2, 95% CI[0.02-Inf], *p* > .9)
+
+##### Chi^2^ Test (Larger Sample Sizes)
+
+**Our Data**
+
+This time we have observed more German Shepherd Dogs, a highly inbred line which we think will be more prone to hip dysplasia, and a less inbred line which we think will be less prone to hip dysplasia. For this dataset we will create a contingency table:
+
+```{r message = FALSE, warning = FALSE}
+
+gsd <- matrix(c(16, 84, 12, 86), 
+              ncol=2, 
+              byrow=TRUE,
+              dimnames = list(c("Dysplasia", "No Dysplasia"),c("Inbred", "Less Inbred")))
+
+```
+
+With a Chi^2^ test we often also want to calculate an effect size, and there's a handy package (`vcd`) which we can use to calculate Cramer's V. We'll calculate it here too. To interpret V, a small effect size is <0.10, a medium effect size < 0.30, and a large effect size is <0.50.
+
+```{r message = FALSE, warning = FALSE}
+
+chisq.test(gsd)
+
+#Odds Ratio
+(16 + 86) / (84 + 12)
+
+library(vcd)
+assocstats(gsd)
+
+```
+
+And report like so:
+
+> A Chi^2^ test found no significant different in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dos (OR 1.06, *X^2^*[1, n = 198] = 0.307, *V* = .05, *p* = .579)
+
 
 ### {cs_rcat_enum}
 
 
-## {#cs_rnum}
+## My response is a numerical variable {#cs_rnum}
 
-### {#cs_rnum_ecat}
+### Numerical Response, Historical/Known Comparisons {#cs_rnum_hist}
+#### Does a range of data differ from a known/historical mean? (One Sample t-Test)
+
+**Our Data**
+
+The dataset `trees` gives us the height in feet of 31 black cherry trees. We want to know if these trees differ from a historical average height of 80ft. The t test command in R is simplistic, and so we do need to calculate the mean of height in addition to the t test to report properly. 
+
+```{r message = FALSE, warning = FALSE}
+
+t.test(trees$Height, mu = 80)
+
+trees %>% 
+  summarise(mean= mean(Height),
+            sd = sd(Height))
+
+
+```
+
+We would report this like so:
+
+> The mean height (76ft +/- 6.37) for black cherry trees was smaller than the historical average of 80ft in a one-sample t-test (*t*(30) = -3.50, *p* = .001)
+
+### Numerical Response, Categorical Explanatory {#cs_rnum_ecat}
+
+
+
+
+
 
 ### {#cs_rnum_enum}
     
+
+
+
+
+## My response is an ordinal variable {cs_rord}
+
+### Ordinal Response, Historical/Known Comparisons {#cs_rord_hist}
+
+For this we can use the *One Sample Wilcoxan Test*, but we need to calculate an additional step, the median, as this test is goo
+
+```{r message = FALSE, warning = FALSE}
+
+wilcox.test(trees$Height, mu = 80)
+
+
+```
+
+### Ordinal Response, Categorical Explanatory {#cs_rord_ecat}
+
+### Ordinal Response, Numerical Explanatory {#cs_rord_enum}
