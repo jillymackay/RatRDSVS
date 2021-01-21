@@ -1,5 +1,8 @@
 # How to choose your stats {#choosestats}
 
+```{block type = "hey"}
+This chapter is still under development
+```
 ```{block type = "los"}
 
 You can skip this chapter if:
@@ -7,6 +10,8 @@ You can skip this chapter if:
   * You are comfortable deciding which statistical test to use
 
 ```
+
+
 
 
 So its happened. You've collected your data, you've installed R, and now you're ready to run some analyses! But what on earth do you do next? How do you choose and interpret the right statistic?
@@ -39,31 +44,35 @@ and then work your way down this handy list:
 
 **I have a . . .**
 
-   * [Categorical response variable](#cs_rcat)
+  * [Categorical response variable](#cs_rcat)
    
       + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rcat_hist)
       
       + [And I want to compare it repeated measures of the same response in one sample group](#cs_rcat_ecat_r)
       
-      + [And I want to compare it across two groups](#cs_rcat_ecat_g)
+      + [And I want to compare it across two groups](#cs_rcat_ecat)
       
       + [And I want to predict it with a numerical response](#cs_rcat_enum)
       
-    * [Numerical response variable]()
+ * [Numerical response variable]()
     
-      + [And I want to compare it to a historical/known condition or I have only one sample group]()
+      + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rnum_hist)
       
-      + [And I want to compare it repeated measures of the same response in one sample group]()
+      + [And I want to compare it repeated measures of the same response in one sample group](#cs_rnum_ecat_r)
       
-      + [And I want to compare it across two groups]()
+      + [And I want to compare it across two groups](#cs_rnum_ecat)
       
-    * [Ordinal response variable]()
+      + [And I want to predict it with a numerical response](#cs_rnum_enum)
+      
+  * [Ordinal response variable](#cs_rord)
     
-      + [And I want to compare it to a historical/known condition or I have only one sample group]()
+      + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rord_hist)
       
-      + [And I want to compare it repeated measures of the same response in one sample group]()
+      + [And I want to compare it repeated measures of the same response in one sample group](#cs_rord_ecat_r)
+
+      + [And I want to compare it across two groups](#cs_rord_ecat)
       
-      + [And I want to compare it across two groups]()
+      + [And I want to predict it with a numerical response](#cs_rord_rnum)
    
    
 
@@ -135,7 +144,7 @@ mcnemar.test(work)
 
 > After the work season significantly more dogs developed dysplasia in McNemar's test (*X*^2^[1, n = 40] = 23.81, *p* = <.001)
 
-#### Proportion of responses compared across groups (Fishers/Chi^2^ test) {#cs_rcat_ecat_g}
+#### Proportion of responses compared across groups (Fishers/Chi^2^ test) {#cs_rcat_ecat}
 
 ##### Fisher's Exact Test (Small Sample Sizes / Summarised Data)
 **Our Data**
@@ -240,7 +249,7 @@ library(broom)
 tidy(logit) %>% 
   mutate(OddsRatio = exp(coef(logit))) %>% 
   select(term, estimate, std.error, statistic, OddsRatio, p.value ) %>% 
-  kable(caption = "Table 11.1: Coefficient table for variables in binary logistic regression predicting hip dysplasia\nfrom inflammation markers in 21 German Shepard Dogs")
+  kable(caption = "Coefficient table for variables in binary logistic regression predicting hip dysplasia\nfrom inflammation markers in 21 German Shepard Dogs")
 
 ```
 
@@ -250,8 +259,7 @@ If you want to dig more deeply into logistic regressions, or model more predicto
 
 ## My response is a numerical variable {#cs_rnum}
 
-### Numerical Response, Historical/Known Comparisons {#cs_rnum_hist}
-#### Does a range of data differ from a known/historical mean? (One Sample t-Test)
+### Numerical Response, Historical/Known Comparisons (One Sample t-Test) {#cs_rnum_hist}
 
 **Our Data**
 
@@ -272,6 +280,30 @@ We would report this like so:
 
 > The mean height (76ft +/- 6.37) for black cherry trees was smaller than the historical average of 80ft in a one-sample t-test (*t*(30) = -3.50, *p* = .001)
 
+### Numerical Response (Repeated Measures), Categorical Explanatory (Paired t-Test) {#cs_rnum_ecat_r}
+
+**Our Data**
+
+In this example we have 10 housecats who we put on a special weight-loss diet. We weigh them before the diet and after, and we want to see if they have lost any weight. We can do this with a *paired t-test*.
+
+
+```{r message = FALSE, warning = FALSE}
+
+diet <- tibble (before = c(5.04, 4.63, 4.04, 5.10, 5.43, 4.83, 3.45, 3.49, 5.02, 4.81),
+                after = c( 4.78, 2.49, 4.46, 2.03, 5.13, 7.23, 3.50, 1.89, 3.30, 3.91))
+
+diet %>% 
+  summarise(b_mean = mean(before),
+            a_mean = mean(after),
+            b_sd = sd(before),
+            a_sd = sd(after))
+
+t.test(diet$before, diet$after, paired = TRUE, alternative = "two.sided")
+
+```
+
+> After being on the weight-loss diet, cats weighed 3.9kg (+/- 1.62kg SD), compared to a mean weight of 4.6kg (+/- 0.69kg SD) before going on the diet, but this difference of 0.71kg (95% CI [-0.39, 1.81]) was not statistically significant in a paired t-test (*t*(9) = 1.46, *p* = .178)
+
 ### Numerical Response, Categorical Explanatory {#cs_rnum_ecat}
 
 
@@ -287,16 +319,49 @@ We would report this like so:
 
 ## My response is an ordinal variable {cs_rord}
 
-### Ordinal Response, Historical/Known Comparisons {#cs_rord_hist}
+### Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test) {#cs_rord_hist}
+**Our data**
 
-For this we can use the *One Sample Wilcoxan Test*, but we need to calculate an additional step, the median, as this test is goo
+In this example we have student ratings of this textbook from 1 (very unsatisfied) to 5 (very satisfied). We're hoping that at the very least, people are satisfied, and have ranked the book a 4. For this we can use the *One Sample Wilcoxan Test*, but we need to calculate an additional step, the median.
 
 ```{r message = FALSE, warning = FALSE}
 
-wilcox.test(trees$Height, mu = 80)
+ratings <- tibble(satisfaction = c(1,2,1,1,3,2,1,5,1,2,5,1,2,3,3,1,3))
+
+ratings %>% 
+  summarise(median = median(satisfaction))
+
+
+wilcox.test(ratings$satisfaction, mu = 4)
 
 
 ```
+> The textbook achieved a medium score of '2', or 'unsatisfied' from students, which was significantly lower than the desired median score of '4' or 'satisfied' in a one-sample Wilcoxan test (*V* = 7, *p* = <.001).
+
+### Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test) {#cs_rord_ecat_r}
+**Our data**
+
+In this example we have student ratings of this textbook from 1 (very unsatisfied) to 5 (very satisfied). We made some changes to the book after the first set of reviews and we're hoping the same students will now score the book higher. For this we can use the *Wilcoxan Signed Rank Test*, but we need to calculate an additional step, the median.
+
+```{r message = FALSE, warning = FALSE}
+
+ratings <- tibble(satisfaction1 = c(1,2,1,1,3,2,1,5,1,2,5,1,2,3,3,1,3),
+                  satisfaction2 = c(1,4,2,3,3,3,2,5,2,4,5,3,3,3,4,1,3))
+
+ratings %>% 
+  summarise(satis1 = median(satisfaction1),
+            satis2 = median(satisfaction2))
+
+
+wilcox.test(x = ratings$satisfaction1, ratings$satisfaction2, paired = TRUE, alternative = "two.sided")
+
+
+```
+
+> After revisions, the textbook received a median score of '3' (undecided), which was significantly higher than the before revision median score of '2' (unsatisfied) in a Wilcoxan Signed Rank Test (*V* = 0, *p* = .005).
+
+
+
 
 ### Ordinal Response, Categorical Explanatory {#cs_rord_ecat}
 

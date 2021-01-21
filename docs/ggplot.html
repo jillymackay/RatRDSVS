@@ -275,7 +275,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat"><i class="fa fa-check"></i><b>11.2</b> My response is a categorical variable</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_hist"><i class="fa fa-check"></i><b>11.2.1</b> Categorical Response, Historical/Known Comparisons</a></li>
 <li class="chapter" data-level="11.2.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_ecat"><i class="fa fa-check"></i><b>11.2.2</b> Categorical Response, Categorical Explanatory</a></li>
-<li class="chapter" data-level="11.2.3" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.3</b> {cs_rcat_enum}</a></li>
+<li class="chapter" data-level="11.2.3" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.3</b> Categorical Response, Numerical Explanatory (Logistic Regression)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> My response is a numerical variable</a><ul>
 <li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_hist"><i class="fa fa-check"></i><b>11.3.1</b> Numerical Response, Historical/Known Comparisons</a></li>
@@ -393,8 +393,8 @@ We want to take the <code>diamonds</code> dataset and then (<code>%&gt;%</code>)
 <p>This code ends up giving us a blank chart. This seems strange until you figure out that ggplot works by <strong>layering</strong> elements of a chart on top of one another:</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="ggplot.html#cb56-1"></a>diamonds <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb56-2"><a href="ggplot.html#cb56-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-79"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-79-1.png" alt="A ggplot object with no geom layers" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-92"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-92-1.png" alt="A ggplot object with no geom layers" width="672" />
 <p class="caption">
 Figure: 5.1: A ggplot object with no geom layers
 </p>
@@ -403,8 +403,8 @@ Figure: 5.1: A ggplot object with no geom layers
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="ggplot.html#cb57-1"></a>diamonds <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb57-2"><a href="ggplot.html#cb57-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb57-3"><a href="ggplot.html#cb57-3"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-80"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-80-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-93"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-93-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat" width="672" />
 <p class="caption">
 Figure: 5.2: A ggplot object with a geom_point layer, the price of diamonds by their carat
 </p>
@@ -419,8 +419,8 @@ Figure: 5.2: A ggplot object with a geom_point layer, the price of diamonds by t
 <span id="cb58-2"><a href="ggplot.html#cb58-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb58-3"><a href="ggplot.html#cb58-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
 <span id="cb58-4"><a href="ggplot.html#cb58-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-81"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-81-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-94"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-94-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
 <p class="caption">
 Figure: 5.3: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
 </p>
@@ -448,8 +448,8 @@ The sequence starts at <code>0</code>, goes to <code>5</code>, and the spaces be
 <span id="cb59-2"><a href="ggplot.html#cb59-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb59-3"><a href="ggplot.html#cb59-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
 <span id="cb59-4"><a href="ggplot.html#cb59-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-83"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-83-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-96"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-96-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
 <p class="caption">
 Figure: 5.4: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
 </p>
@@ -485,8 +485,8 @@ Start at <code>0</code> and end at <code>6</code>
 <span id="cb60-2"><a href="ggplot.html#cb60-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb60-3"><a href="ggplot.html#cb60-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
 <span id="cb60-4"><a href="ggplot.html#cb60-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">6</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-85"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-85-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-98"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-98-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed" width="672" />
 <p class="caption">
 Figure: 5.5: A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed
 </p>
@@ -497,8 +497,8 @@ Figure: 5.5: A ggplot object with a geom_point layer, the price of diamonds by t
 <span id="cb61-3"><a href="ggplot.html#cb61-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
 <span id="cb61-4"><a href="ggplot.html#cb61-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">5</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>)) <span class="op">+</span></span>
 <span id="cb61-5"><a href="ggplot.html#cb61-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">2500</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-86"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-86-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-99"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-99-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed" width="672" />
 <p class="caption">
 Figure: 5.6: A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed
 </p>
@@ -513,8 +513,8 @@ Figure: 5.6: A ggplot object with a geom_point layer, the price of diamonds by t
 <span id="cb62-4"><a href="ggplot.html#cb62-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">6</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb62-5"><a href="ggplot.html#cb62-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">2500</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>)) <span class="op">+</span></span>
 <span id="cb62-6"><a href="ggplot.html#cb62-6"></a><span class="st">  </span><span class="kw">theme_bw</span>() </span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-87"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-87-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, black &amp; white theme" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-100"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-100-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, black &amp; white theme" width="672" />
 <p class="caption">
 Figure: 5.7: A ggplot object with a geom_point layer, the price of diamonds by their carat, black &amp; white theme
 </p>
@@ -536,8 +536,8 @@ Figure: 5.7: A ggplot object with a geom_point layer, the price of diamonds by t
 <span id="cb63-4"><a href="ggplot.html#cb63-4"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span> (<span class="dv">0</span>, <span class="dv">6</span>, <span class="fl">0.5</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb63-5"><a href="ggplot.html#cb63-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">2500</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>)) <span class="op">+</span></span>
 <span id="cb63-6"><a href="ggplot.html#cb63-6"></a><span class="st">  </span><span class="kw">theme_classic</span>() </span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-88"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-88-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-101"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-101-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme" width="672" />
 <p class="caption">
 Figure: 5.8: A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme
 </p>
@@ -559,8 +559,8 @@ If you were to take a wild guess at how to change labels - what would you add to
 <span id="cb64-5"><a href="ggplot.html#cb64-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">2500</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>)) <span class="op">+</span></span>
 <span id="cb64-6"><a href="ggplot.html#cb64-6"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
 <span id="cb64-7"><a href="ggplot.html#cb64-7"></a><span class="st">  </span><span class="kw">labs</span> (<span class="dt">x =</span> <span class="st">&quot;Carat (a measure of diamond weight)&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-90"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-90-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-103"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-103-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
 <p class="caption">
 Figure: 5.9: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
 </p>
@@ -574,8 +574,8 @@ Figure: 5.9: A ggplot object with a geom_point layer, the price of diamonds by t
 <span id="cb65-6"><a href="ggplot.html#cb65-6"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
 <span id="cb65-7"><a href="ggplot.html#cb65-7"></a><span class="st">  </span><span class="kw">labs</span> (<span class="dt">x =</span> <span class="st">&quot;Carat (a measure of diamond weight)&quot;</span>,</span>
 <span id="cb65-8"><a href="ggplot.html#cb65-8"></a>        <span class="dt">y =</span> <span class="st">&quot;Price in US dollars ($)&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-91"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-91-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-104"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-104-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
 <p class="caption">
 Figure: 5.10: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
 </p>
@@ -591,8 +591,8 @@ Figure: 5.10: A ggplot object with a geom_point layer, the price of diamonds by 
 <span id="cb66-8"><a href="ggplot.html#cb66-8"></a>        <span class="dt">y =</span> <span class="st">&quot;Price in US dollars ($)&quot;</span>,</span>
 <span id="cb66-9"><a href="ggplot.html#cb66-9"></a>        <span class="dt">title =</span> <span class="st">&quot;Price of &gt;50,000 round-cut diamonds&quot;</span>,</span>
 <span id="cb66-10"><a href="ggplot.html#cb66-10"></a>        <span class="dt">subtitle =</span> <span class="st">&quot;Data from ggplot2 package&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-92"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-92-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-105"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-105-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels" width="672" />
 <p class="caption">
 Figure: 5.11: A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels
 </p>
@@ -624,8 +624,8 @@ We don’t want to see any standard error bars around the line (<code>se = FALSE
 <span id="cb67-9"><a href="ggplot.html#cb67-9"></a>        <span class="dt">title =</span> <span class="st">&quot;Price of &gt;50,000 round-cut diamonds&quot;</span>,</span>
 <span id="cb67-10"><a href="ggplot.html#cb67-10"></a>        <span class="dt">subtitle =</span> <span class="st">&quot;Data from ggplot2 package&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb67-11"><a href="ggplot.html#cb67-11"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-94"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-94-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-107"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-107-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added" width="672" />
 <p class="caption">
 Figure: 5.12: A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added
 </p>
@@ -647,8 +647,8 @@ Figure: 5.12: A ggplot object with a geom_point layer, the price of diamonds by 
 <span id="cb68-9"><a href="ggplot.html#cb68-9"></a>        <span class="dt">title =</span> <span class="st">&quot;Price of &gt;50,000 round-cut diamonds&quot;</span>,</span>
 <span id="cb68-10"><a href="ggplot.html#cb68-10"></a>        <span class="dt">subtitle =</span> <span class="st">&quot;Data from ggplot2 package&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb68-11"><a href="ggplot.html#cb68-11"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-95"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-95-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-108"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-108-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
 <p class="caption">
 Figure: 5.13: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
 </p>
@@ -670,8 +670,8 @@ Figure: 5.13: A ggplot object with a geom_point layer, the price of diamonds by 
 <span id="cb69-10"><a href="ggplot.html#cb69-10"></a>        <span class="dt">subtitle =</span> <span class="st">&quot;Data from ggplot2 package&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb69-11"><a href="ggplot.html#cb69-11"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
 <span id="cb69-12"><a href="ggplot.html#cb69-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-96"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-96-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-109"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-109-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
 <p class="caption">
 Figure: 5.14: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
 </p>
@@ -690,8 +690,8 @@ Figure: 5.14: A ggplot object with a geom_point layer, the price of diamonds by 
 <span id="cb70-11"><a href="ggplot.html#cb70-11"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
 <span id="cb70-12"><a href="ggplot.html#cb70-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span></span>
 <span id="cb70-13"><a href="ggplot.html#cb70-13"></a><span class="st">  </span><span class="kw">scale_color_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Cut of Diamond&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-97"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-97-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-110"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-110-1.png" alt="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added" width="672" />
 <p class="caption">
 Figure: 5.15: A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added
 </p>
@@ -706,8 +706,8 @@ Figure: 5.15: A ggplot object with a geom_point layer, the price of diamonds by 
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="ggplot.html#cb71-1"></a>diamonds <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb71-2"><a href="ggplot.html#cb71-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> clarity, <span class="dt">y =</span> carat)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb71-3"><a href="ggplot.html#cb71-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-98"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-98-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-111"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-111-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
 <p class="caption">
 Figure: 5.16: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
 </p>
@@ -722,8 +722,8 @@ Figure: 5.16: A ggplot object with a geom_boxplot, the carat of diamonds by thei
 <span id="cb72-7"><a href="ggplot.html#cb72-7"></a>       <span class="dt">y =</span> <span class="st">&quot;Carat (weight) of diamond&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb72-8"><a href="ggplot.html#cb72-8"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
 <span id="cb72-9"><a href="ggplot.html#cb72-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-99"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-99-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-112"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-112-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
 <p class="caption">
 Figure: 5.17: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
 </p>
@@ -742,8 +742,8 @@ Figure: 5.17: A ggplot object with a geom_boxplot, the carat of diamonds by thei
 <span id="cb73-8"><a href="ggplot.html#cb73-8"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
 <span id="cb73-9"><a href="ggplot.html#cb73-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
 <span id="cb73-10"><a href="ggplot.html#cb73-10"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="op">~</span>cut)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-100"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-100-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-113"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-113-1.png" alt="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity" width="672" />
 <p class="caption">
 Figure: 5.18: A ggplot object with a geom_boxplot, the carat of diamonds by their clarity
 </p>
@@ -762,8 +762,8 @@ Figure: 5.18: A ggplot object with a geom_boxplot, the carat of diamonds by thei
 <span id="cb74-8"><a href="ggplot.html#cb74-8"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
 <span id="cb74-9"><a href="ggplot.html#cb74-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
 <span id="cb74-10"><a href="ggplot.html#cb74-10"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="op">~</span>cut)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-101"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-101-1.png" alt="A ggplot object with a geom_bar, the carat of diamonds by their clarity" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-114"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-114-1.png" alt="A ggplot object with a geom_bar, the carat of diamonds by their clarity" width="672" />
 <p class="caption">
 Figure: 5.19: A ggplot object with a geom_bar, the carat of diamonds by their clarity
 </p>

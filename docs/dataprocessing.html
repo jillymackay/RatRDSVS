@@ -275,7 +275,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat"><i class="fa fa-check"></i><b>11.2</b> My response is a categorical variable</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_hist"><i class="fa fa-check"></i><b>11.2.1</b> Categorical Response, Historical/Known Comparisons</a></li>
 <li class="chapter" data-level="11.2.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_ecat"><i class="fa fa-check"></i><b>11.2.2</b> Categorical Response, Categorical Explanatory</a></li>
-<li class="chapter" data-level="11.2.3" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.3</b> {cs_rcat_enum}</a></li>
+<li class="chapter" data-level="11.2.3" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.3</b> Categorical Response, Numerical Explanatory (Logistic Regression)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> My response is a numerical variable</a><ul>
 <li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_hist"><i class="fa fa-check"></i><b>11.3.1</b> Numerical Response, Historical/Known Comparisons</a></li>
@@ -410,7 +410,7 @@ Can execute code in an R Markdown file
 <li>Perform any analyses.</li>
 </ol>
 <p>There may be times when there’s a good reason to do things in a different order, but you will rarely go wrong with this order (Figure 6.1)</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-106"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-119"></span>
 <img src="images/06_workflows/example_workflow.png" alt="A general format of R Markdown files" width="414" />
 <p class="caption">
 Figure: 6.1: A general format of R Markdown files
@@ -423,7 +423,7 @@ Figure: 6.1: A general format of R Markdown files
 <h2><span class="header-section-number">6.2</span> Opening R Markdown Docs</h2>
 <p>R Markdown files work just like any other file in R Studio. You can open any R Markdown file by going to <code>File &gt; Open File ...</code> and navigating to the folder your file is stored in.</p>
 <p>Your R Markdown file will ‘look’ for any linked files in the same folder its saved in, so if your data is saved in the same folder your R Markdown file is saved in, you can be quite lazy about your directories, e.g. <code>read.csv("data.csv")</code>. This can be very helpful in repeatable analyses.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-107"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-120"></span>
 <img src="images/06_workflows/openrmd.gif" alt="Opening an R Markdown file in R Studio"  />
 <p class="caption">
 Figure: 6.2: Opening an R Markdown file in R Studio
@@ -433,7 +433,7 @@ Figure: 6.2: Opening an R Markdown file in R Studio
 <div id="codermd" class="section level2">
 <h2><span class="header-section-number">6.3</span> Running Code</h2>
 <p>You can run code in R Markdown files by pressing the green ‘triangle’ button to run that specific piece of code.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-108"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-121"></span>
 <img src="images/06_workflows/runcode.gif" alt="Running a code chunk in an R Markdown file in R Studio"  />
 <p class="caption">
 Figure: 6.3: Running a code chunk in an R Markdown file in R Studio
