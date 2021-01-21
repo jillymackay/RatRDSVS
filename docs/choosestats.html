@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-01-20" />
+<meta name="date" content="2021-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -273,12 +273,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="choosestats.html"><a href="choosestats.html"><i class="fa fa-check"></i><b>11</b> How to choose your stats</a><ul>
 <li class="chapter" data-level="11.1" data-path="choosestats.html"><a href="choosestats.html#cs_start"><i class="fa fa-check"></i><b>11.1</b> Where to start</a></li>
 <li class="chapter" data-level="11.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat"><i class="fa fa-check"></i><b>11.2</b> My response is a categorical variable</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_ecat"><i class="fa fa-check"></i><b>11.2.1</b> Categorical Response, Categorical Explanatory</a></li>
-<li class="chapter" data-level="11.2.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.2</b> {cs_rcat_enum}</a></li>
+<li class="chapter" data-level="11.2.1" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_hist"><i class="fa fa-check"></i><b>11.2.1</b> Categorical Response, Historical/Known Comparisons</a></li>
+<li class="chapter" data-level="11.2.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_ecat"><i class="fa fa-check"></i><b>11.2.2</b> Categorical Response, Categorical Explanatory</a></li>
+<li class="chapter" data-level="11.2.3" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.3</b> {cs_rcat_enum}</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> </a><ul>
-<li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.1</b> </a></li>
-<li class="chapter" data-level="11.3.2" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.2</b> </a></li>
+<li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> My response is a numerical variable</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_hist"><i class="fa fa-check"></i><b>11.3.1</b> Numerical Response, Historical/Known Comparisons</a></li>
+<li class="chapter" data-level="11.3.2" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.2</b> Numerical Response, Categorical Explanatory</a></li>
+<li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.3</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#my-response-is-an-ordinal-variable-cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable {cs_rord}</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons</a></li>
+<li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response, Categorical Explanatory</a></li>
+<li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_enum"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Numerical Explanatory</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="whatnext.html"><a href="whatnext.html"><i class="fa fa-check"></i><b>12</b> What next</a><ul>
@@ -347,7 +354,18 @@ For this chapter I will use in-built R datasets to demonstrate these tests. I wi
 <p>
 I will note here all the packages that are uses in this chapter, and highlight them at their specific tests. Remember, you can always install a package with <code>install.packages(“package_name”)</code>
 </p>
-<pre><code>* `library(tidyverse)`</code></pre>
+<ul>
+<li>
+<p>
+<code>library(tidyverse)</code>
+</p>
+</li>
+<li>
+<p>
+<code>library(vcd)</code>
+</p>
+</li>
+</ul>
 </div>
 <div id="cs_start" class="section level2">
 <h2><span class="header-section-number">11.1</span> Where to start</h2>
@@ -361,17 +379,10 @@ I will note here all the packages that are uses in this chapter, and highlight t
 </div>
 <div id="cs_rcat" class="section level2">
 <h2><span class="header-section-number">11.2</span> My response is a categorical variable</h2>
-<div id="cs_rcat_ecat" class="section level3">
-<h3><span class="header-section-number">11.2.1</span> Categorical Response, Categorical Explanatory</h3>
-<div id="proportion-of-responses-different-from-a-knownexpected-result" class="section level4">
-<h4><span class="header-section-number">11.2.1.1</span> Proportion of responses different from a known/expected result</h4>
-<p>If you have:</p>
-<ul>
-<li><p>A categorical response (e.g. gender, colour, tested positive for a disease yes/no …)</p></li>
-<li><p>That is binary (e.g. Yes Red Hair vs No Red Hair, Yes Disease Present vs No Disease Present)</p></li>
-<li><p>And you want to know if this is different from a historical or expected result</p></li>
-<li><p>You need a <strong>1 Sample Proportion Test</strong></p></li>
-</ul>
+<div id="cs_rcat_hist" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Categorical Response, Historical/Known Comparisons</h3>
+<div id="proportion-of-responses-different-from-a-knownexpected-result-1-sample-proportion-test" class="section level4">
+<h4><span class="header-section-number">11.2.1.1</span> Proportion of responses different from a known/expected result (1 Sample Proportion Test)</h4>
 <p><strong>Our Data</strong></p>
 <p>Let’s say we have 20 German Shepherd dogs, and we know that the prevalence of hip dysplasia, a very painful condition, is usually 18% in this breed. We want to know if these particular dogs (perhaps they are from a new genetic line) are showing less hip dysplasia than we would expect. We have recorded whether or not these dogs are showing signs of dysplasia as a ‘yes/no’ categorical variable, and 3 dogs are showing signs of hip dysplasia.</p>
 <p>We can run a <strong>1 proportion test</strong> like so:</p>
@@ -410,21 +421,36 @@ I will note here all the packages that are uses in this chapter, and highlight t
 <p>In this study, 8% of the dogs presented with hip dysplasia, which is not significantly different from the historical prevalence of 18% in a one sample proportion test (95% CI[3%-20%], <em>x<sup>2</sup></em> = 2.74, <em>p</em> = .098)</p>
 </blockquote>
 </div>
-<div id="proportion-of-responses-different-from-an-observed-result" class="section level4">
-<h4><span class="header-section-number">11.2.1.2</span> Proportion of responses different from an observed result</h4>
-<p>If you have:</p>
-<ul>
-<li><p>A categorical response (e.g. gender, colour, tested positive for a disease yes/no …)</p></li>
-<li><p>That is binary (e.g. Yes Red Hair vs No Red Hair, Yes Disease Present vs No Disease Present)</p></li>
-<li><p>And you want to know if this is different between two groups</p></li>
-<li><p>You need a <strong>Chi<sup>2</sup> Test</strong></p></li>
-</ul>
+</div>
+<div id="cs_rcat_ecat" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Categorical Response, Categorical Explanatory</h3>
+<div id="cs_rcat_ecat_r" class="section level4">
+<h4><span class="header-section-number">11.2.2.1</span> Categorical Response (Repeated Measures) Categorical Explanatory, McNemar’s Test</h4>
+<p><strong>Our Data</strong></p>
+<p>We have 40 German Shepherd dogs, some of whom already present with dysplasia, a painful condition. We’re concerned that after a season of work more dogs will develop dysplasia, and want to see if this is true. For this dataset we will create a contingency table:</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="choosestats.html#cb194-1"></a>work &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">38</span>, <span class="dv">5</span>, <span class="dv">35</span>), </span>
+<span id="cb194-2"><a href="choosestats.html#cb194-2"></a>              <span class="dt">ncol=</span><span class="dv">2</span>, </span>
+<span id="cb194-3"><a href="choosestats.html#cb194-3"></a>              <span class="dt">byrow=</span><span class="ot">TRUE</span>,</span>
+<span id="cb194-4"><a href="choosestats.html#cb194-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;Before Work Season&quot;</span>, <span class="st">&quot;After Work Season&quot;</span>)))</span></code></pre></div>
+<p>We are going to run a specific test which accounts for the fact we have the same dogs in both conditions (before and after work):</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="choosestats.html#cb195-1"></a><span class="kw">mcnemar.test</span>(work)</span></code></pre></div>
+<pre><code>## 
+## 	McNemar&#39;s Chi-squared test with continuity correction
+## 
+## data:  work
+## McNemar&#39;s chi-squared = 23.814, df = 1, p-value = 1.061e-06</code></pre>
+<blockquote>
+<p>After the work season significantly more dogs developed dysplasia in McNemar’s test (<em>X</em><sup>2</sup>[1, n = 40] = 23.81, <em>p</em> = &lt;.001)</p>
+</blockquote>
+</div>
+<div id="proportion-of-responses-compared-across-groups-fisherschi2-test" class="section level4">
+<h4><span class="header-section-number">11.2.2.2</span> Proportion of responses compared across groups (Fishers/Chi<sup>2</sup> test)</h4>
 <div id="fishers-exact-test-small-sample-sizes-summarised-data" class="section level5">
-<h5><span class="header-section-number">11.2.1.2.1</span> Fisher’s Exact Test (Small Sample Sizes / Summarised Data)</h5>
-<p><strong>Our Data</strong>
-German Shepherd Dogs suffer from hip dysplasia, a very painful condition. We know that more inbred dogs are more susceptible, and so we have followed 20 highly inbred dogs and 20 less inbred dogs and observed whether they developed the disease or not. As the prevalence is low (18% historically), we would not expect more than 3.6 dogs to develop dysplasia in either category (if it was left up to chance). For this reason, we should use <strong>Fisher’s Exact Test</strong>, which is more robust for smaller sample sizes.</p>
+<h5><span class="header-section-number">11.2.2.2.1</span> Fisher’s Exact Test (Small Sample Sizes / Summarised Data)</h5>
+<p><strong>Our Data</strong></p>
+<p>German Shepherd Dogs suffer from hip dysplasia, a very painful condition. We know that more inbred dogs are more susceptible, and so we have followed 20 highly inbred dogs and 20 less inbred dogs and observed whether they developed the disease or not. As the prevalence is low (18% historically), we would not expect more than 3.6 dogs to develop dysplasia in either category (if it was left up to chance). For this reason, we should use <strong>Fisher’s Exact Test</strong>, which is more robust for smaller sample sizes.</p>
 <p>Of the inbred dogs, we’ve seen 4 cases of dysplasia. Of the less inbred dogs, we’ve seen 2 cases of dysplasia. Like before, we can test this without having any actual data in R:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="choosestats.html#cb194-1"></a><span class="kw">fisher.test</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">16</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">18</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="choosestats.html#cb197-1"></a><span class="kw">fisher.test</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">16</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">18</span>))</span></code></pre></div>
 <pre><code>## 
 ## 	Fisher&#39;s Exact Test for Count Data
 ## 
@@ -437,7 +463,7 @@ German Shepherd Dogs suffer from hip dysplasia, a very painful condition. We kno
 ## odds ratio 
 ##        Inf</code></pre>
 <p>We do need to calculate one more thing to add to our report,the odds ratio:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="choosestats.html#cb196-1"></a>(<span class="dv">4</span><span class="op">+</span><span class="dv">18</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="choosestats.html#cb199-1"></a>(<span class="dv">4</span><span class="op">+</span><span class="dv">18</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 1.222222</code></pre>
 <p>And this is reported like so:</p>
 <blockquote>
@@ -445,44 +471,99 @@ German Shepherd Dogs suffer from hip dysplasia, a very painful condition. We kno
 </blockquote>
 </div>
 <div id="chi2-test-larger-sample-sizes" class="section level5">
-<h5><span class="header-section-number">11.2.1.2.2</span> Chi2 Test (Larger Sample Sizes)</h5>
-<p><strong>Our Data</strong>
-This time we have observed more German Shepherd Dogs, a highly inbred line which we think will be more prone to hip dysplasia, and a less inbred line which we think will be less prone to hip dysplasia. For this dataset we will create a contingency table:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="choosestats.html#cb198-1"></a>gsd &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">84</span>, <span class="dv">12</span>, <span class="dv">86</span>), </span>
-<span id="cb198-2"><a href="choosestats.html#cb198-2"></a>              <span class="dt">ncol=</span><span class="dv">2</span>, </span>
-<span id="cb198-3"><a href="choosestats.html#cb198-3"></a>              <span class="dt">byrow=</span><span class="ot">TRUE</span>,</span>
-<span id="cb198-4"><a href="choosestats.html#cb198-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;Inbred&quot;</span>, <span class="st">&quot;Less Inbred&quot;</span>)))</span></code></pre></div>
-<p>We run this Chi^2 test like so:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="choosestats.html#cb199-1"></a><span class="kw">chisq.test</span>(gsd)</span></code></pre></div>
+<h5><span class="header-section-number">11.2.2.2.2</span> Chi<sup>2</sup> Test (Larger Sample Sizes)</h5>
+<p><strong>Our Data</strong></p>
+<p>This time we have observed more German Shepherd Dogs, a highly inbred line which we think will be more prone to hip dysplasia, and a less inbred line which we think will be less prone to hip dysplasia. For this dataset we will create a contingency table:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="choosestats.html#cb201-1"></a>gsd &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">84</span>, <span class="dv">12</span>, <span class="dv">86</span>), </span>
+<span id="cb201-2"><a href="choosestats.html#cb201-2"></a>              <span class="dt">ncol=</span><span class="dv">2</span>, </span>
+<span id="cb201-3"><a href="choosestats.html#cb201-3"></a>              <span class="dt">byrow=</span><span class="ot">TRUE</span>,</span>
+<span id="cb201-4"><a href="choosestats.html#cb201-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;Inbred&quot;</span>, <span class="st">&quot;Less Inbred&quot;</span>)))</span></code></pre></div>
+<p>With a Chi<sup>2</sup> test we often also want to calculate an effect size, and there’s a handy package (<code>vcd</code>) which we can use to calculate Cramer’s V. We’ll calculate it here too. To interpret V, a small effect size is &lt;0.10, a medium effect size &lt; 0.30, and a large effect size is &lt;0.50.</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="choosestats.html#cb202-1"></a><span class="kw">chisq.test</span>(gsd)</span></code></pre></div>
 <pre><code>## 
 ## 	Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 ## 
 ## data:  gsd
 ## X-squared = 0.30714, df = 1, p-value = 0.5794</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="choosestats.html#cb201-1"></a><span class="co">#Odds Ratio</span></span>
-<span id="cb201-2"><a href="choosestats.html#cb201-2"></a>(<span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">86</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">84</span> <span class="op">+</span><span class="st"> </span><span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="choosestats.html#cb204-1"></a><span class="co">#Odds Ratio</span></span>
+<span id="cb204-2"><a href="choosestats.html#cb204-2"></a>(<span class="dv">16</span> <span class="op">+</span><span class="st"> </span><span class="dv">86</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">84</span> <span class="op">+</span><span class="st"> </span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## [1] 1.0625</code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="choosestats.html#cb206-1"></a><span class="kw">library</span>(vcd)</span>
+<span id="cb206-2"><a href="choosestats.html#cb206-2"></a><span class="kw">assocstats</span>(gsd)</span></code></pre></div>
+<pre><code>##                      X^2 df P(&gt; X^2)
+## Likelihood Ratio 0.57672  1  0.44760
+## Pearson          0.57481  1  0.44835
+## 
+## Phi-Coefficient   : 0.054 
+## Contingency Coeff.: 0.054 
+## Cramer&#39;s V        : 0.054</code></pre>
 <p>And report like so:</p>
 <blockquote>
-<p>A Chi^2 test found no significant different in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dos (OR 1.06, <em>X^2</em>[1, n = 198] = 0.307, <em>p</em> = .579)</p>
+<p>A Chi<sup>2</sup> test found no significant different in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dos (OR 1.06, <em>X<sup>2</sup></em>[1, n = 198] = 0.307, <em>V</em> = .05, <em>p</em> = .579)</p>
 </blockquote>
 </div>
 </div>
-<div id="cs_rcat_ecat_g2" class="section level4">
-<h4><span class="header-section-number">11.2.1.3</span> </h4>
-</div>
 </div>
 <div id="cs_rcat_enum" class="section level3">
-<h3><span class="header-section-number">11.2.2</span> {cs_rcat_enum}</h3>
+<h3><span class="header-section-number">11.2.3</span> {cs_rcat_enum}</h3>
 </div>
 </div>
 <div id="cs_rnum" class="section level2">
-<h2><span class="header-section-number">11.3</span> </h2>
+<h2><span class="header-section-number">11.3</span> My response is a numerical variable</h2>
+<div id="cs_rnum_hist" class="section level3">
+<h3><span class="header-section-number">11.3.1</span> Numerical Response, Historical/Known Comparisons</h3>
+<div id="does-a-range-of-data-differ-from-a-knownhistorical-mean-one-sample-t-test" class="section level4">
+<h4><span class="header-section-number">11.3.1.1</span> Does a range of data differ from a known/historical mean? (One Sample t-Test)</h4>
+<p><strong>Our Data</strong></p>
+<p>The dataset <code>trees</code> gives us the height in feet of 31 black cherry trees. We want to know if these trees differ from a historical average height of 80ft. The t test command in R is simplistic, and so we do need to calculate the mean of height in addition to the t test to report properly.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="choosestats.html#cb208-1"></a><span class="kw">t.test</span>(trees<span class="op">$</span>Height, <span class="dt">mu =</span> <span class="dv">80</span>)</span></code></pre></div>
+<pre><code>## 
+## 	One Sample t-test
+## 
+## data:  trees$Height
+## t = -3.4952, df = 30, p-value = 0.001496
+## alternative hypothesis: true mean is not equal to 80
+## 95 percent confidence interval:
+##  73.6628 78.3372
+## sample estimates:
+## mean of x 
+##        76</code></pre>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="choosestats.html#cb210-1"></a>trees <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb210-2"><a href="choosestats.html#cb210-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean=</span> <span class="kw">mean</span>(Height),</span>
+<span id="cb210-3"><a href="choosestats.html#cb210-3"></a>            <span class="dt">sd =</span> <span class="kw">sd</span>(Height))</span></code></pre></div>
+<pre><code>##   mean       sd
+## 1   76 6.371813</code></pre>
+<p>We would report this like so:</p>
+<blockquote>
+<p>The mean height (76ft +/- 6.37) for black cherry trees was smaller than the historical average of 80ft in a one-sample t-test (<em>t</em>(30) = -3.50, <em>p</em> = .001)</p>
+</blockquote>
+</div>
+</div>
 <div id="cs_rnum_ecat" class="section level3">
-<h3><span class="header-section-number">11.3.1</span> </h3>
+<h3><span class="header-section-number">11.3.2</span> Numerical Response, Categorical Explanatory</h3>
 </div>
 <div id="cs_rnum_enum" class="section level3">
-<h3><span class="header-section-number">11.3.2</span> </h3>
+<h3><span class="header-section-number">11.3.3</span> </h3>
+</div>
+</div>
+<div id="my-response-is-an-ordinal-variable-cs_rord" class="section level2">
+<h2><span class="header-section-number">11.4</span> My response is an ordinal variable {cs_rord}</h2>
+<div id="cs_rord_hist" class="section level3">
+<h3><span class="header-section-number">11.4.1</span> Ordinal Response, Historical/Known Comparisons</h3>
+<p>For this we can use the <em>One Sample Wilcoxan Test</em>, but we need to calculate an additional step, the median, as this test is goo</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="choosestats.html#cb212-1"></a><span class="kw">wilcox.test</span>(trees<span class="op">$</span>Height, <span class="dt">mu =</span> <span class="dv">80</span>)</span></code></pre></div>
+<pre><code>## 
+## 	Wilcoxon signed rank test with continuity correction
+## 
+## data:  trees$Height
+## V = 58.5, p-value = 0.003062
+## alternative hypothesis: true location is not equal to 80</code></pre>
+</div>
+<div id="cs_rord_ecat" class="section level3">
+<h3><span class="header-section-number">11.4.2</span> Ordinal Response, Categorical Explanatory</h3>
+</div>
+<div id="cs_rord_enum" class="section level3">
+<h3><span class="header-section-number">11.4.3</span> Ordinal Response, Numerical Explanatory</h3>
 
 </div>
 </div>

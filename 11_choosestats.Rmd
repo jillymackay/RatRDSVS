@@ -39,6 +39,34 @@ and then work your way down this handy list:
 
 **I have a . . .**
 
+   * [Categorical response variable](#cs_rcat)
+   
+      + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rcat_hist)
+      
+      + [And I want to compare it repeated measures of the same response in one sample group](#cs_rcat_ecat_r)
+      
+      + [And I want to compare it across two groups](#cs_rcat_ecat_g)
+      
+      + [And I want to predict it with a numerical response](#cs_rcat_enum)
+      
+    * [Numerical response variable]()
+    
+      + [And I want to compare it to a historical/known condition or I have only one sample group]()
+      
+      + [And I want to compare it repeated measures of the same response in one sample group]()
+      
+      + [And I want to compare it across two groups]()
+      
+    * [Ordinal response variable]()
+    
+      + [And I want to compare it to a historical/known condition or I have only one sample group]()
+      
+      + [And I want to compare it repeated measures of the same response in one sample group]()
+      
+      + [And I want to compare it across two groups]()
+   
+   
+
 
 
 
@@ -107,7 +135,7 @@ mcnemar.test(work)
 
 > After the work season significantly more dogs developed dysplasia in McNemar's test (*X*^2^[1, n = 40] = 23.81, *p* = <.001)
 
-#### Proportion of responses compared across groups (Fishers/Chi^2^ test)
+#### Proportion of responses compared across groups (Fishers/Chi^2^ test) {#cs_rcat_ecat_g}
 
 ##### Fisher's Exact Test (Small Sample Sizes / Summarised Data)
 **Our Data**
@@ -169,7 +197,55 @@ And report like so:
 > A Chi^2^ test found no significant different in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dos (OR 1.06, *X^2^*[1, n = 198] = 0.307, *V* = .05, *p* = .579)
 
 
-### {cs_rcat_enum}
+### Categorical Response, Numerical Explanatory (Logistic Regression){#cs_rcat_enum}
+Logistic regression is a bit of a 'catch-all' phase, certainly in this chapter. It's also having its own day in the sun and is often now called a form of machine learning. I have mixed feelings about this that we can't get into in this chapter. If you're reading this chapter from top-to-bottom this subheading will feel like a step-change in difficulty. It is. We are beginning to step into the land of generalised linear models which are powerful statistical tools.  If you're very new to statistics and this is where your path has led you, you should really seek out advice from others. This is really getting into the fun, meaty parts of statistical theory. But I did say I'd walk you through it . . . 
+
+**Our Data**
+
+We have 21 German Shepherd Dogs. We took a measure of inflammation from their bodies, and then later recorded whether or not they were showing signs of hip dysplasia. We want to see if inflammation (a numerical score) can be used to predict whether the dogs will end up with hip dysplasia (a categorical variable, 0 = no signs, 1 = hip dysplasia).
+
+We will need to generate this data in R:
+
+```{r message = FALSE, warning = FALSE}
+dysp <- tibble(dysplasia = c(1, 1, 1, 1, 1, 1, 1,
+                              0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0),
+                inflammation =c(0.91, 0.79, 1.40, 0.71, 1.01, 0.77, 0.85,
+                                0.42, 1.02, 0.31, 0.05, 1.17, 0.04, 0.36, 
+                                0.12, 0.02, 0.05, 0.42, 0.92, 0.72,  1.05)) 
+
+```
+
+To run a binary logistic regression (predicting yes vs no from a numerical variable) we can use the `glm` command. We do need to take a few extra steps. For reporting we'll also make use of the `broom` package.
+
+```{r message = FALSE, warning = FALSE}
+
+logit <- glm(dysplasia ~ inflammation, data = dysp, family = "binomial")
+summary(logit)
+logLik(logit)
+exp(cbind(OddsRatio = coef(logit), confint(logit)))
+
+
+
+```
+
+And we could report this like so:
+
+> For each unit increase in inflammation, the odds of developing hip dysplasia increases by a factor of 32.7 in a binary logistic regression (Table 11.1)
+
+```{r message = FALSE, warning = FALSE}
+
+library(broom)
+
+tidy(logit) %>% 
+  mutate(OddsRatio = exp(coef(logit))) %>% 
+  select(term, estimate, std.error, statistic, OddsRatio, p.value ) %>% 
+  kable(caption = "Table 11.1: Coefficient table for variables in binary logistic regression predicting hip dysplasia\nfrom inflammation markers in 21 German Shepard Dogs")
+
+```
+
+If you want to dig more deeply into logistic regressions, or model more predictor variables, I think [this link is good](https://stats.idre.ucla.edu/r/dae/logit-regression/). Remember to talk to your nearest friendly statistician. 
+
 
 
 ## My response is a numerical variable {#cs_rnum}
