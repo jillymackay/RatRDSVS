@@ -75,6 +75,8 @@ and then work your way down this handy list:
       + [And I want to compare it across two groups](#cs_rord_ecat)
       
       + [And I want to predict it with a numerical response](#cs_rord_rnum)
+      
+  * [Uh, I got all of them I think](#cs_glms)
    
    
 
@@ -321,31 +323,62 @@ I  like using the [Grafen and Hails](https://global.oup.com/uk/orc/biosciences/m
 
 **Our data**
 
-Let's use the `chickwts` data to explore this. `chickwts` describes a simple experiment with six different feedtypes and the weights of the chicks fed on them. 
+Let's use the `chickwts` data to explore this. `chickwts` describes a simple experiment with six different feedtypes and the weights of the chicks fed on them. We are looking for the feedtype which provides the heaviest chick on average. 
 
 **As an ANOVA**
+
+The basic steps of running a one-way ANOVA test is to create the model, inspect the model, check the model assumptions with a residual plot, and run pairwise comparisons to define the difference between the levels. Its also very difficult to interpret this without a plot so we'll add on of those to our interpretation.
+
 
 ```{r message = FALSE, warning = FALSE}
 
 chk_a <- aov(weight ~ feed, data = chickwts)
+
+plot(chk_a, 1)
+
 summary(chk_a)
 TukeyHSD(chk_a)
+```
 
+
+
+We first inspect the plot to ensure the residuals are normally distributed. If we saw a pattern here we would know that the model is consistently underfitting or overfitting some observations, and that one of the ANOVA's key assumptions had not been met (in this case there are many future options but you really should be talking to a statistician or friendly peer at this point). 
+
+> There was a significant effect of feedtype on chick weight in a one-way ANOVA (*F*^(5,65)^ = 15.37, *p* <.001, Figure 11.1). Post-hoc comparisons with Tukeys HSD found variety in performance, with sunflower feeds significantly outperformed soybean (82g, *p* = .003) linseed (110g, *p* <.001), and horsebean (168g, *p* <.001). Casein diets outperform horsebean (163g, *p* <.001), linseed (105g, *p* <.001), and soybean (77g, *p* = .008). Meatmeal outperforms horsebean (117g, *p* <.001) and soybean outperformed horsebean (86g, *p* = .004).
+
+```{r message = FALSE, warning = FALSE, fig.align="center", fig.cap = "Chick weight (g) per feed type, data from 'chickwts'"}
+chickwts %>% 
+  ggplot(aes(x = reorder(feed, -weight), y = weight)) +
+  geom_boxplot()+
+  theme_classic() +
+  labs(y = "Weight (g)",
+       x = "Feedtype")
 
 ```
->
 
 
 
+**As a linear model**
 
-**As a glm**
+The `lm` argument fits linear models and can do ANOVAs and regressions. Its my preferred way of running this kind of analysis. We can also use the `broom` package for extra reporting.
 
 ```{r message = FALSE, warning = FALSE}
 
-chk_g <- glm(weight ~ feed, data = chickwts)
-summary(chk_g)
+chk_l <- lm(weight ~ feed, data = chickwts)
+summary(chk_l)
+
+library(broom)
+chk_l %>% 
+  tidy() %>% 
+  ggplot(aes(x = term, y = estimate)) +
+  geom_point(aes(colour = term, shape = term)) +
+  geom_errorbar(aes(x = term, ymin = estimate-std.error, ymax = estimate+std.error, colour = term)) +
+  theme_classic()
 
 ```
+
+> Feedtype had a significant effect in a linear model, explaining 51% of the variance observed in chick weight. (*F*^(5,65)^ = 15.36, *p* < .001). 
+
 
 
 
