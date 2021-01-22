@@ -27,6 +27,8 @@ I will  note here all the packages that are uses in this chapter, and highlight 
    * `library(tidyverse)`
 
    * `library(vcd)`
+   
+   * `library(broom)`
 
 ```
 
@@ -304,9 +306,46 @@ t.test(diet$before, diet$after, paired = TRUE, alternative = "two.sided")
 
 > After being on the weight-loss diet, cats weighed 3.9kg (+/- 1.62kg SD), compared to a mean weight of 4.6kg (+/- 0.69kg SD) before going on the diet, but this difference of 0.71kg (95% CI [-0.39, 1.81]) was not statistically significant in a paired t-test (*t*(9) = 1.46, *p* = .178)
 
-### Numerical Response, Categorical Explanatory {#cs_rnum_ecat}
+### Numerical Response, Categorical Explanatory (ANOVA/GLM){#cs_rnum_ecat}
+
+Traditionally, depending on how many explanatory variables you have and whether your design is balanced or unbalanced, you would select a different type of test, leading up to a general linear model as the most flexible form. 
+
+   * One explanatory factor = 1 way ANOVA
+   
+   * Two explanatory factors and balanced design = 2-way ANOVA
+   
+   * Three or more explanatory factor or unbalanced design = general linear model (glm)
+
+I  like using the [Grafen and Hails](https://global.oup.com/uk/orc/biosciences/maths/grafen/) approach to statistics, and considering all ANOVAs to be a glm. 
 
 
+**Our data**
+
+Let's use the `chickwts` data to explore this. `chickwts` describes a simple experiment with six different feedtypes and the weights of the chicks fed on them. 
+
+**As an ANOVA**
+
+```{r message = FALSE, warning = FALSE}
+
+chk_a <- aov(weight ~ feed, data = chickwts)
+summary(chk_a)
+TukeyHSD(chk_a)
+
+
+```
+>
+
+
+
+
+**As a glm**
+
+```{r message = FALSE, warning = FALSE}
+
+chk_g <- glm(weight ~ feed, data = chickwts)
+summary(chk_g)
+
+```
 
 
 
