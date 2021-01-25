@@ -509,4 +509,27 @@ textbk %>%
 
 ```
 
-### Ordinal Response, Numerical Explanatory {#cs_rord_enum}
+### Ordinal Response, Numerical Explanatory (Spearman rank correlation){#cs_rord_rnum}
+
+**Our data**
+
+When you have an ordinal response and either a numerical explanatory or an ordinal explanatory variable, a *Spearman rank correlation* is probably for you. A Spearman rank correlation is exactly the same as a [Pearson](#cs_rnum_enum) correlation, but the data is ranked (or ordered) before the calculation is run. Spearman rank correlations are therefore often used for skewed data. 
+
+Let's say we have 15 students who have ranked their satisfaction with the course (from 1, "Very unsatisfied" to 5, "Very satisfied") and their grades (E, "very poor", to A "excellent"). We think students who are very satisfied will have higher grades. 
+```{r message = FALSE, warning = FALSE}
+
+grades <- tibble(satisfaction = c(1, 5, 2, 1, 1, 5, 4, 5, 4, 5, 5, 3, 4, 3, 1),
+                 grade = c(1, 4, 1,2, 1, 4, 5, 5, 5, 4, 3, 3, 2, 2,1 ))
+
+cor.test(grades$satisfaction, grades$grade,method = "spearman")
+
+```
+
+> Student satisfaction was strongly positively associated with grade (*r~s~* = .78,*p*<.001)
+
+
+## I got all of them (generalised linear model){#cs_glms}
+
+If your data is looking extremely complicated, and you have multiple explanatory variables, you likely want a glm. At this point you really should consult a statistician and start thinking seriously about your model assumptions, but as we've come this far . . .
+
+**Our data**
