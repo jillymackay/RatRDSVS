@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-01-21" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -278,14 +278,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2.3" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.3</b> Categorical Response, Numerical Explanatory (Logistic Regression)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> My response is a numerical variable</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_hist"><i class="fa fa-check"></i><b>11.3.1</b> Numerical Response, Historical/Known Comparisons</a></li>
-<li class="chapter" data-level="11.3.2" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.2</b> Numerical Response, Categorical Explanatory</a></li>
-<li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.3</b> </a></li>
+<li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_hist"><i class="fa fa-check"></i><b>11.3.1</b> Numerical Response, Historical/Known Comparisons (One Sample t-Test)</a></li>
+<li class="chapter" data-level="11.3.2" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat_r"><i class="fa fa-check"></i><b>11.3.2</b> Numerical Response (Repeated Measures), Categorical Explanatory (Paired t-Test)</a></li>
+<li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.3</b> Numerical Response, Categorical Explanatory (ANOVA/GLM)</a></li>
+<li class="chapter" data-level="11.3.4" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.4</b> </a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#my-response-is-an-ordinal-variable-cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable {cs_rord}</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons</a></li>
-<li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response, Categorical Explanatory</a></li>
-<li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_enum"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Numerical Explanatory</a></li>
+<li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat_r"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test)</a></li>
+<li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Categorical Explanatory</a></li>
+<li class="chapter" data-level="11.4.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord_enum"><i class="fa fa-check"></i><b>11.4.4</b> Ordinal Response, Numerical Explanatory</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="whatnext.html"><a href="whatnext.html"><i class="fa fa-check"></i><b>12</b> What next</a><ul>
@@ -382,7 +384,7 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <span id="cb104-5"><a href="trouble.html#cb104-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
 <span id="cb104-6"><a href="trouble.html#cb104-6"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>We receive the <code>Warning: Removed 1 rows containing missing values (geom_point).</code></p>
 <p>In this case, its obvious that ggplot has had to get rid of the row of data with the <code>NA</code> value, and so we probably feel comfortable moving on with this warning. However, warnings can be a sign of something not behaving itself, and is usually a sign we should go back and double check our code. We might decide to move forward and ignore the warnings.</p>
 </div>
@@ -431,7 +433,7 @@ Everyone makes mistakes in R. The important thing is figuring out how to fix the
 <div id="quick-warnings-and-errors" class="section level2">
 <h2><span class="header-section-number">8.4</span> Quick warnings and errors</h2>
 <p>There is a great resource from <a href="http://rex-analytics.com/decoding-error-messages-r/">rex-analytics</a> on errors and warnings, which I’ll display here:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-152"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-139"></span>
 <img src="images/08_troubleshooting/errors-in-R-739x1024.png" alt="Rex-analytics great infographic on R warnings and errors" width="370" />
 <p class="caption">
 Figure: 8.1: Rex-analytics great infographic on R warnings and errors
@@ -443,21 +445,21 @@ Figure: 8.1: Rex-analytics great infographic on R warnings and errors
 <p>Of course sometimes you can’t figure out with what you already know. When this happens your next step is to google<a href="acks.html#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>.</p>
 <p>Many, many people know that <a href="https://dev.to/dvddpl/am-i-an-expert-developer-or-just-an-expert-googler-4390">they should just google things</a>. These people have it cracked. If you know how to find an answer on Google, you will be immediately more employable than the person who doesn’t.</p>
 <p>This has even become a meme . . .</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-153"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-140"></span>
 <img src="images/08_troubleshooting/meme1.png" alt="10 years of programming, stolen from /r/programmerhumor" width="427" />
 <p class="caption">
 Figure: 8.2: 10 years of programming, stolen from /r/programmerhumor
 </p>
 </div>
 <p>Quite a few memes actually . . .</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-154"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-141"></span>
 <img src="images/08_troubleshooting/meme2.png" alt="Jerry gets rewarded for googling, stolen from /r/programmerhumor" width="250" />
 <p class="caption">
 Figure: 8.3: Jerry gets rewarded for googling, stolen from /r/programmerhumor
 </p>
 </div>
 <p>One more to make the point . . .</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-155"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-142"></span>
 <img src="images/08_troubleshooting/meme3.jpg" alt="Young Thug knows how to google, stolen from /r/programmerhumor" width="374" />
 <p class="caption">
 Figure: 8.4: Young Thug knows how to google, stolen from /r/programmerhumor
