@@ -1,8 +1,11 @@
 # How to choose your stats {#choosestats}
 
 ```{block type = "hey"}
-This chapter is still under development
+This chapter is potentially controversial. I deliberately haven't discussed statistics in great detail in this book, not least because I'm not entirely confident in this area myself. 
+
+Another reason is that Andy Field, Jeremy Miles, and Zoe Field have already covered this in their brilliant [Discovering Statistics Using R](https://www.discoveringstatistics.com/books/discovering-statistics-using-r/) book. 
 ```
+
 ```{block type = "los"}
 
 You can skip this chapter if:
@@ -530,6 +533,8 @@ cor.test(grades$satisfaction, grades$grade,method = "spearman")
 
 ## I got all of them (generalised linear model){#cs_glms}
 
-If your data is looking extremely complicated, and you have multiple explanatory variables, you likely want a glm. At this point you really should consult a statistician and start thinking seriously about your model assumptions, but as we've come this far . . .
+If your data is looking extremely complicated, and you have multiple explanatory variables, you likely want a glm. At this point you really should consult a statistician and start thinking seriously about your model assumptions . . .
 
-**Our data**
+But as we're here.
+
+
