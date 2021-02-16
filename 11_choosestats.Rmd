@@ -1,9 +1,11 @@
 # How to choose your stats {#choosestats}
 
 ```{block type = "hey"}
-This chapter is potentially controversial. I deliberately haven't discussed statistics in great detail in this book, not least because I'm not entirely confident in this area myself. 
+This chapter is potentially controversial. I deliberately haven't discussed statistics in great detail in this book, not least because I feel I re-learn stats every few years. This chapter is not setting out to teach you statistics. There are many statistical assumptions and issues that I breeze past in this chapter. In this chapter I want to give you a quick reference to running statistical analyses in R, and, importantly, interpreting those results. 
 
-Another reason is that Andy Field, Jeremy Miles, and Zoe Field have already covered this in their brilliant [Discovering Statistics Using R](https://www.discoveringstatistics.com/books/discovering-statistics-using-r/) book. 
+
+
+A much, much better book is Andy Field, Jeremy Miles, and Zoe Field's brilliant [Discovering Statistics Using R](https://www.discoveringstatistics.com/books/discovering-statistics-using-r/) book. 
 ```
 
 ```{block type = "los"}
@@ -57,7 +59,7 @@ and then work your way down this handy list:
    
       + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rcat_hist)
       
-      + [And I want to compare it repeated measures of the same response in one sample group](#cs_rcat_ecat_r)
+      + [And I want to compare it with repeated measures of the same response in one sample group](#cs_rcat_ecat_r)
       
       + [And I want to compare it across two groups](#cs_rcat_ecat)
       
@@ -67,7 +69,7 @@ and then work your way down this handy list:
     
       + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rnum_hist)
       
-      + [And I want to compare it repeated measures of the same response in one sample group](#cs_rnum_ecat_r)
+      + [And I want to compare it with repeated measures of the same response in one sample group](#cs_rnum_ecat_r)
       
       + [And I want to compare it across two groups](#cs_rnum_ecat)
       
@@ -77,7 +79,7 @@ and then work your way down this handy list:
     
       + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rord_hist)
       
-      + [And I want to compare it repeated measures of the same response in one sample group](#cs_rord_ecat_r)
+      + [And I want to compare it with repeated measures of the same response in one sample group](#cs_rord_ecat_r)
 
       + [And I want to compare it across two groups](#cs_rord_ecat)
       
@@ -127,7 +129,7 @@ prop.test(x = 4, n = 50, p = 0.18, alternative = "two.sided")
 ```
 This time we have a little more information that we can report with:
 
-> In this study, 8% of the dogs presented with hip dysplasia, which is not significantly different from the historical prevalence of 18% in a one sample proportion test (95% CI[3%-20%], *x^2^* = 2.74, *p*  = .098)
+> In this study, 8% of the dogs presented with hip dysplasia, which is not significantly different from the historical prevalence of 18% in a one sample proportion test (95% CI[3%-20%], *X^2^* = 2.74, *p*  = .098)
 
 ### Categorical Response, Categorical Explanatory {#cs_rcat_ecat}
 
@@ -141,7 +143,8 @@ We have 40 German Shepherd dogs, some of whom already present with dysplasia, a 
 work <- matrix(c(2, 38, 5, 35), 
               ncol=2, 
               byrow=TRUE,
-              dimnames = list(c("Dysplasia", "No Dysplasia"),c("Before Work Season", "After Work Season")))
+              dimnames = list(c("Dysplasia", "No Dysplasia"),
+                              c("Before Work Season", "After Work Season")))
 
 ```
 
@@ -194,7 +197,8 @@ This time we have observed more German Shepherd Dogs, a highly inbred line which
 gsd <- matrix(c(16, 84, 12, 86), 
               ncol=2, 
               byrow=TRUE,
-              dimnames = list(c("Dysplasia", "No Dysplasia"),c("Inbred", "Less Inbred")))
+              dimnames = list(c("Dysplasia", "No Dysplasia"),
+                              c("Inbred", "Less Inbred")))
 
 ```
 
@@ -218,7 +222,10 @@ And report like so:
 
 
 ### Categorical Response, Numerical Explanatory (Logistic Regression){#cs_rcat_enum}
-Logistic regression is a bit of a 'catch-all' phase, certainly in this chapter. It's also having its own day in the sun and is often now called a form of machine learning. I have mixed feelings about this that we can't get into in this chapter. If you're reading this chapter from top-to-bottom this subheading will feel like a step-change in difficulty. It is. We are beginning to step into the land of generalised linear models which are powerful statistical tools.  If you're very new to statistics and this is where your path has led you, you should really seek out advice from others. This is really getting into the fun, meaty parts of statistical theory. But I did say I'd walk you through it . . . 
+Logistic regression is a bit of a 'catch-all' phase, certainly in this chapter. It's also having its own day in the sun and is  now often called a form of machine learning. I have mixed feelings about this that we can't get into right now.
+
+
+If you're reading this chapter from top-to-bottom, this subheading will feel like a huge jump in difficulty. It is. We are beginning to step into the land of generalised linear models which are powerful statistical tools.  If you're very new to statistics and this is where your path has led you, you should really seek out advice from others. This is  getting into the fun, meaty parts of statistical theory. But I did say I'd walk you through it . . . 
 
 **Our Data**
 
@@ -274,7 +281,7 @@ If you want to dig more deeply into logistic regressions, or model more predicto
 
 **Our Data**
 
-The dataset `trees` gives us the height in feet of 31 black cherry trees. We want to know if these trees differ from a historical average height of 80ft. The t test command in R is simplistic, and so we do need to calculate the mean of height in addition to the t test to report properly. 
+The dataset `trees` gives us the height in feet of 31 black cherry trees. We want to know if these trees differ from a historical average height of 80ft. The t test command in R is simplistic, and so we do need to calculate the mean of height (`mu`) in addition to the t test to report properly. 
 
 ```{r message = FALSE, warning = FALSE}
 
@@ -325,7 +332,7 @@ Traditionally, depending on how many explanatory variables you have and whether 
    
    * Three or more explanatory factor or unbalanced design = general linear model (glm)
 
-I  like using the [Grafen and Hails](https://global.oup.com/uk/orc/biosciences/maths/grafen/) approach to statistics, and considering all ANOVAs to be a glm. 
+I  like using the [Grafen and Hails](https://global.oup.com/uk/orc/biosciences/maths/grafen/) approach to statistics, and considering all ANOVAs to be a glm. I am fundamentally lazy, and don't like to remember three separate things when one model will do it all for me. Real statisicians may cry at this. 
 
 
 **Our data**
@@ -399,7 +406,7 @@ We will use the trusty `cars` dataset which describes the speed (mph) and stoppi
 
 **As Pearson's correlation**
 
-As many, many, [many]() folk say, *correlation is not causation*. In statistical terms, that means that correlation does not aim to predict y from x, only to see if there is an underlying structure to the variation.
+As many, many, [many](https://xkcd.com/552/) folk say, *correlation is not causation*. In statistical terms, that means that correlation does not aim to predict y from x, only to see if there is an underlying structure to the variation.
 
 ```{r message = FALSE, warning = FALSE}
 
@@ -423,7 +430,7 @@ summary(carm)
 > Stopping distance increased by 3.9ft for every mph faster the car travelled at (*R^2^* = 64%, *F^(1,48)^* = 89.6, *p*<.001)
 
 
-## My response is an ordinal variable {cs_rord}
+## My response is an ordinal variable {#cs_rord}
 
 ### Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test) {#cs_rord_hist}
 **Our data**
@@ -535,6 +542,8 @@ cor.test(grades$satisfaction, grades$grade,method = "spearman")
 
 If your data is looking extremely complicated, and you have multiple explanatory variables, you likely want a glm. At this point you really should consult a statistician and start thinking seriously about your model assumptions . . .
 
-But as we're here.
+
+
+
 
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,7 +117,7 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -283,7 +283,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.3</b> Numerical Response, Categorical Explanatory (ANOVA/GLM)</a></li>
 <li class="chapter" data-level="11.3.4" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.4</b> Numerical Response, Numerical Explanatory (Correlation &amp; Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#my-response-is-an-ordinal-variable-cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable {cs_rord}</a><ul>
+<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</a></li>
 <li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat_r"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test)</a></li>
 <li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Categorical Explanatory</a></li>
@@ -340,7 +340,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 11</span> How to choose your stats</h1>
 <div class="hey">
 <p>
-This chapter is still under development
+This chapter is potentially controversial. I deliberately haven’t discussed statistics in great detail in this book, not least because I feel I re-learn stats every few years. This chapter is not setting out to teach you statistics. There are many statistical assumptions and issues that I breeze past in this chapter. In this chapter I want to give you a quick reference to running statistical analyses in R, and, importantly, interpreting those results.
+</p>
+<p>
+A much, much better book is Andy Field, Jeremy Miles, and Zoe Field’s brilliant <a href="https://www.discoveringstatistics.com/books/discovering-statistics-using-r/">Discovering Statistics Using R</a> book.
 </p>
 </div>
 <div class="los">
@@ -403,21 +406,21 @@ I will note here all the packages that are used in this chapter, and highlight t
 <li><p><a href="choosestats.html#cs_rcat">Categorical response variable</a></p>
 <ul>
 <li><p><a href="choosestats.html#cs_rcat_hist">And I want to compare it to a historical/known condition or I have only one sample group</a></p></li>
-<li><p><a href="choosestats.html#cs_rcat_ecat_r">And I want to compare it repeated measures of the same response in one sample group</a></p></li>
+<li><p><a href="choosestats.html#cs_rcat_ecat_r">And I want to compare it with repeated measures of the same response in one sample group</a></p></li>
 <li><p><a href="choosestats.html#cs_rcat_ecat">And I want to compare it across two groups</a></p></li>
 <li><p><a href="choosestats.html#cs_rcat_enum">And I want to predict it with a numerical response</a></p></li>
 </ul></li>
 <li><p><a href="choosestats.html#cs_rnum">Numerical response variable</a></p>
 <ul>
 <li><p><a href="choosestats.html#cs_rnum_hist">And I want to compare it to a historical/known condition or I have only one sample group</a></p></li>
-<li><p><a href="choosestats.html#cs_rnum_ecat_r">And I want to compare it repeated measures of the same response in one sample group</a></p></li>
+<li><p><a href="choosestats.html#cs_rnum_ecat_r">And I want to compare it with repeated measures of the same response in one sample group</a></p></li>
 <li><p><a href="choosestats.html#cs_rnum_ecat">And I want to compare it across two groups</a></p></li>
 <li><p><a href="choosestats.html#cs_rnum_enum">And I want to predict it with a numerical response</a></p></li>
 </ul></li>
-<li><p><a href="#cs_rord">Ordinal response variable</a></p>
+<li><p><a href="choosestats.html#cs_rord">Ordinal response variable</a></p>
 <ul>
 <li><p><a href="choosestats.html#cs_rord_hist">And I want to compare it to a historical/known condition or I have only one sample group</a></p></li>
-<li><p><a href="choosestats.html#cs_rord_ecat_r">And I want to compare it repeated measures of the same response in one sample group</a></p></li>
+<li><p><a href="choosestats.html#cs_rord_ecat_r">And I want to compare it with repeated measures of the same response in one sample group</a></p></li>
 <li><p><a href="choosestats.html#cs_rord_ecat">And I want to compare it across two groups</a></p></li>
 <li><p><a href="choosestats.html#cs_rord_rnum">And I want to predict it with a numerical response</a></p></li>
 </ul></li>
@@ -465,7 +468,7 @@ I will note here all the packages that are used in this chapter, and highlight t
 ## 0.08</code></pre>
 <p>This time we have a little more information that we can report with:</p>
 <blockquote>
-<p>In this study, 8% of the dogs presented with hip dysplasia, which is not significantly different from the historical prevalence of 18% in a one sample proportion test (95% CI[3%-20%], <em>x<sup>2</sup></em> = 2.74, <em>p</em> = .098)</p>
+<p>In this study, 8% of the dogs presented with hip dysplasia, which is not significantly different from the historical prevalence of 18% in a one sample proportion test (95% CI[3%-20%], <em>X<sup>2</sup></em> = 2.74, <em>p</em> = .098)</p>
 </blockquote>
 </div>
 </div>
@@ -478,7 +481,8 @@ I will note here all the packages that are used in this chapter, and highlight t
 <div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="choosestats.html#cb194-1"></a>work &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">38</span>, <span class="dv">5</span>, <span class="dv">35</span>), </span>
 <span id="cb194-2"><a href="choosestats.html#cb194-2"></a>              <span class="dt">ncol=</span><span class="dv">2</span>, </span>
 <span id="cb194-3"><a href="choosestats.html#cb194-3"></a>              <span class="dt">byrow=</span><span class="ot">TRUE</span>,</span>
-<span id="cb194-4"><a href="choosestats.html#cb194-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;Before Work Season&quot;</span>, <span class="st">&quot;After Work Season&quot;</span>)))</span></code></pre></div>
+<span id="cb194-4"><a href="choosestats.html#cb194-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),</span>
+<span id="cb194-5"><a href="choosestats.html#cb194-5"></a>                              <span class="kw">c</span>(<span class="st">&quot;Before Work Season&quot;</span>, <span class="st">&quot;After Work Season&quot;</span>)))</span></code></pre></div>
 <p>We are going to run a specific test which accounts for the fact we have the same dogs in both conditions (before and after work):</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="choosestats.html#cb195-1"></a><span class="kw">mcnemar.test</span>(work)</span></code></pre></div>
 <pre><code>## 
@@ -524,7 +528,8 @@ I will note here all the packages that are used in this chapter, and highlight t
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="choosestats.html#cb201-1"></a>gsd &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">84</span>, <span class="dv">12</span>, <span class="dv">86</span>), </span>
 <span id="cb201-2"><a href="choosestats.html#cb201-2"></a>              <span class="dt">ncol=</span><span class="dv">2</span>, </span>
 <span id="cb201-3"><a href="choosestats.html#cb201-3"></a>              <span class="dt">byrow=</span><span class="ot">TRUE</span>,</span>
-<span id="cb201-4"><a href="choosestats.html#cb201-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),<span class="kw">c</span>(<span class="st">&quot;Inbred&quot;</span>, <span class="st">&quot;Less Inbred&quot;</span>)))</span></code></pre></div>
+<span id="cb201-4"><a href="choosestats.html#cb201-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),</span>
+<span id="cb201-5"><a href="choosestats.html#cb201-5"></a>                              <span class="kw">c</span>(<span class="st">&quot;Inbred&quot;</span>, <span class="st">&quot;Less Inbred&quot;</span>)))</span></code></pre></div>
 <p>With a Chi<sup>2</sup> test we often also want to calculate an effect size, and there’s a handy package (<code>vcd</code>) which we can use to calculate Cramer’s V. We’ll calculate it here too. To interpret V, a small effect size is &lt;0.10, a medium effect size &lt; 0.30, and a large effect size is &lt;0.50.</p>
 <div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="choosestats.html#cb202-1"></a><span class="kw">chisq.test</span>(gsd)</span></code></pre></div>
 <pre><code>## 
@@ -553,7 +558,8 @@ I will note here all the packages that are used in this chapter, and highlight t
 </div>
 <div id="cs_rcat_enum" class="section level3">
 <h3><span class="header-section-number">11.2.3</span> Categorical Response, Numerical Explanatory (Logistic Regression)</h3>
-<p>Logistic regression is a bit of a ‘catch-all’ phase, certainly in this chapter. It’s also having its own day in the sun and is often now called a form of machine learning. I have mixed feelings about this that we can’t get into in this chapter. If you’re reading this chapter from top-to-bottom this subheading will feel like a step-change in difficulty. It is. We are beginning to step into the land of generalised linear models which are powerful statistical tools. If you’re very new to statistics and this is where your path has led you, you should really seek out advice from others. This is really getting into the fun, meaty parts of statistical theory. But I did say I’d walk you through it . . .</p>
+<p>Logistic regression is a bit of a ‘catch-all’ phase, certainly in this chapter. It’s also having its own day in the sun and is now often called a form of machine learning. I have mixed feelings about this that we can’t get into right now.</p>
+<p>If you’re reading this chapter from top-to-bottom, this subheading will feel like a huge jump in difficulty. It is. We are beginning to step into the land of generalised linear models which are powerful statistical tools. If you’re very new to statistics and this is where your path has led you, you should really seek out advice from others. This is getting into the fun, meaty parts of statistical theory. But I did say I’d walk you through it . . .</p>
 <p><strong>Our Data</strong></p>
 <p>We have 21 German Shepherd Dogs. We took a measure of inflammation from their bodies, and then later recorded whether or not they were showing signs of hip dysplasia. We want to see if inflammation (a numerical score) can be used to predict whether the dogs will end up with hip dysplasia (a categorical variable, 0 = no signs, 1 = hip dysplasia).</p>
 <p>We will need to generate this data in R:</p>
@@ -606,7 +612,7 @@ I will note here all the packages that are used in this chapter, and highlight t
 <span id="cb215-5"><a href="choosestats.html#cb215-5"></a><span class="st">  </span><span class="kw">select</span>(term, estimate, std.error, statistic, OddsRatio, p.value ) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb215-6"><a href="choosestats.html#cb215-6"></a><span class="st">  </span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Coefficient table for variables in binary logistic regression predicting hip dysplasia</span><span class="ch">\n</span><span class="st">from inflammation markers in 21 German Shepard Dogs&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-262">Table: 11.1: </span>Coefficient table for variables in binary logistic regression predicting hip dysplasia
+<caption><span id="tab:unnamed-chunk-226">Table: 11.1: </span>Coefficient table for variables in binary logistic regression predicting hip dysplasia
 from inflammation markers in 21 German Shepard Dogs</caption>
 <thead>
 <tr class="header">
@@ -645,7 +651,7 @@ from inflammation markers in 21 German Shepard Dogs</caption>
 <div id="cs_rnum_hist" class="section level3">
 <h3><span class="header-section-number">11.3.1</span> Numerical Response, Historical/Known Comparisons (One Sample t-Test)</h3>
 <p><strong>Our Data</strong></p>
-<p>The dataset <code>trees</code> gives us the height in feet of 31 black cherry trees. We want to know if these trees differ from a historical average height of 80ft. The t test command in R is simplistic, and so we do need to calculate the mean of height in addition to the t test to report properly.</p>
+<p>The dataset <code>trees</code> gives us the height in feet of 31 black cherry trees. We want to know if these trees differ from a historical average height of 80ft. The t test command in R is simplistic, and so we do need to calculate the mean of height (<code>mu</code>) in addition to the t test to report properly.</p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="choosestats.html#cb216-1"></a><span class="kw">t.test</span>(trees<span class="op">$</span>Height, <span class="dt">mu =</span> <span class="dv">80</span>)</span></code></pre></div>
 <pre><code>## 
 ## 	One Sample t-test
@@ -708,7 +714,7 @@ from inflammation markers in 21 German Shepard Dogs</caption>
 <li><p>Two explanatory factors and balanced design = 2-way ANOVA</p></li>
 <li><p>Three or more explanatory factor or unbalanced design = general linear model (glm)</p></li>
 </ul>
-<p>I like using the <a href="https://global.oup.com/uk/orc/biosciences/maths/grafen/">Grafen and Hails</a> approach to statistics, and considering all ANOVAs to be a glm.</p>
+<p>I like using the <a href="https://global.oup.com/uk/orc/biosciences/maths/grafen/">Grafen and Hails</a> approach to statistics, and considering all ANOVAs to be a glm. I am fundamentally lazy, and don’t like to remember three separate things when one model will do it all for me. Real statisicians may cry at this.</p>
 <p><strong>Our data</strong></p>
 <p>Let’s use the <code>chickwts</code> data to explore this. <code>chickwts</code> describes a simple experiment with six different feedtypes and the weights of the chicks fed on them. We are looking for the feedtype which provides the heaviest chick on average.</p>
 <p><strong>As an ANOVA</strong></p>
@@ -716,7 +722,7 @@ from inflammation markers in 21 German Shepard Dogs</caption>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="choosestats.html#cb224-1"></a>chk_a &lt;-<span class="st"> </span><span class="kw">aov</span>(weight <span class="op">~</span><span class="st"> </span>feed, <span class="dt">data =</span> chickwts)</span>
 <span id="cb224-2"><a href="choosestats.html#cb224-2"></a></span>
 <span id="cb224-3"><a href="choosestats.html#cb224-3"></a><span class="kw">plot</span>(chk_a, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-265-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="choosestats.html#cb225-1"></a><span class="kw">summary</span>(chk_a)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## feed         5 231129   46226   15.37 5.94e-10 ***
@@ -756,8 +762,8 @@ from inflammation markers in 21 German Shepard Dogs</caption>
 <span id="cb229-4"><a href="choosestats.html#cb229-4"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
 <span id="cb229-5"><a href="choosestats.html#cb229-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Weight (g)&quot;</span>,</span>
 <span id="cb229-6"><a href="choosestats.html#cb229-6"></a>       <span class="dt">x =</span> <span class="st">&quot;Feedtype&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-266"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-266-1.png" alt="Chick weight (g) per feed type, data from 'chickwts'" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-230"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-230-1.png" alt="Chick weight (g) per feed type, data from 'chickwts'" width="672" />
 <p class="caption">
 Figure: 11.1: Chick weight (g) per feed type, data from ‘chickwts’
 </p>
@@ -795,7 +801,7 @@ Figure: 11.1: Chick weight (g) per feed type, data from ‘chickwts’
 <span id="cb232-5"><a href="choosestats.html#cb232-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> term, <span class="dt">shape =</span> term)) <span class="op">+</span></span>
 <span id="cb232-6"><a href="choosestats.html#cb232-6"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> term, <span class="dt">ymin =</span> estimate<span class="op">-</span>std.error, <span class="dt">ymax =</span> estimate<span class="op">+</span>std.error, <span class="dt">colour =</span> term)) <span class="op">+</span></span>
 <span id="cb232-7"><a href="choosestats.html#cb232-7"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-267-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
 <blockquote>
 <p>Feedtype had a significant effect in a linear model, explaining 51% of the variance observed in chick weight. (<em>F</em><sup>(5,65)</sup> = 15.36, <em>p</em> &lt; .001). Meatmeal had a moderately lower weight gain than casein (<em>t</em> = -2.04 <em>p</em> = .046), soybean (<em>t</em> = -3.58, <em>p</em> = &lt; .001), linseed (<em>t</em> = -4.68, <em>p</em> &lt; .001), and horsebean (<em>t</em> = -6.96, <em>p</em> &lt;.001) all had much lower weight gains. There was no significant difference between the casein diet and the sunflower diet (<em>t</em> = 0.24, <em>p</em> = .812).</p>
 </blockquote>
@@ -805,7 +811,7 @@ Figure: 11.1: Chick weight (g) per feed type, data from ‘chickwts’
 <p><strong>Our data</strong></p>
 <p>We will use the trusty <code>cars</code> dataset which describes the speed (mph) and stopping distance (ft) of cars in the 1920s to talk about two types of test, <strong>Pearson’s correlation</strong> and <strong>linear regression</strong>.</p>
 <p><strong>As Pearson’s correlation</strong></p>
-<p>As many, many, <a href="">many</a> folk say, <em>correlation is not causation</em>. In statistical terms, that means that correlation does not aim to predict y from x, only to see if there is an underlying structure to the variation.</p>
+<p>As many, many, <a href="https://xkcd.com/552/">many</a> folk say, <em>correlation is not causation</em>. In statistical terms, that means that correlation does not aim to predict y from x, only to see if there is an underlying structure to the variation.</p>
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="choosestats.html#cb233-1"></a><span class="kw">cor.test</span>(<span class="dt">x =</span> cars<span class="op">$</span>speed, <span class="dt">y =</span> cars<span class="op">$</span>dist, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## 	Pearson&#39;s product-moment correlation
@@ -848,8 +854,8 @@ Figure: 11.1: Chick weight (g) per feed type, data from ‘chickwts’
 </blockquote>
 </div>
 </div>
-<div id="my-response-is-an-ordinal-variable-cs_rord" class="section level2">
-<h2><span class="header-section-number">11.4</span> My response is an ordinal variable {cs_rord}</h2>
+<div id="cs_rord" class="section level2">
+<h2><span class="header-section-number">11.4</span> My response is an ordinal variable</h2>
 <div id="cs_rord_hist" class="section level3">
 <h3><span class="header-section-number">11.4.1</span> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</h3>
 <p><strong>Our data</strong></p>
@@ -945,8 +951,8 @@ Figure: 11.1: Chick weight (g) per feed type, data from ‘chickwts’
 <span id="cb251-6"><a href="choosestats.html#cb251-6"></a>                                                                  <span class="st">&quot;Satisfied&quot;</span>, <span class="st">&quot;Very satisfied&quot;</span>)) <span class="op">+</span></span>
 <span id="cb251-7"><a href="choosestats.html#cb251-7"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Self-Taught&quot;</span>, <span class="st">&quot;Textbook&quot;</span>, <span class="st">&quot;Textbook plus lecture&quot;</span>)) <span class="op">+</span></span>
 <span id="cb251-8"><a href="choosestats.html#cb251-8"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Teaching Method&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Score&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-273"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-273-1.png" alt="Student satisfaction by teaching method" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-237"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-237-1.png" alt="Student satisfaction by teaching method" width="672" />
 <p class="caption">
 Figure: 11.2: Student satisfaction by teaching method
 </p>
@@ -977,8 +983,7 @@ Figure: 11.2: Student satisfaction by teaching method
 </div>
 <div id="cs_glms" class="section level2">
 <h2><span class="header-section-number">11.5</span> I got all of them (generalised linear model)</h2>
-<p>If your data is looking extremely complicated, and you have multiple explanatory variables, you likely want a glm. At this point you really should consult a statistician and start thinking seriously about your model assumptions, but as we’ve come this far . . .</p>
-<p><strong>Our data</strong></p>
+<p>If your data is looking extremely complicated, and you have multiple explanatory variables, you likely want a glm. At this point you really should consult a statistician and start thinking seriously about your model assumptions . . .</p>
 
 </div>
 </div>

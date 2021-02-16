@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,7 +117,7 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -283,7 +283,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.3</b> Numerical Response, Categorical Explanatory (ANOVA/GLM)</a></li>
 <li class="chapter" data-level="11.3.4" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.4</b> Numerical Response, Numerical Explanatory (Correlation &amp; Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#my-response-is-an-ordinal-variable-cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable {cs_rord}</a><ul>
+<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</a></li>
 <li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat_r"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test)</a></li>
 <li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Categorical Explanatory</a></li>
@@ -367,7 +367,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Here’s the answer to <a href="data.html#ex_loadcsv">how to change the name of a dataset from a csv file</a></p>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="answers.html#cb259-1"></a>dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/data/ch2_planets.csv&quot;</span>)</span></code></pre></div>
 <p>Here is a chunk of text to hide the next answer from you in case you’re doing these answers sequentially.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-282"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-246"></span>
 <img src="images/03_data/excel_open.gif" alt="Using the Import Dataset wizard to load a xlsx file"  />
 <p class="caption">
 Figure: 14.1: Using the Import Dataset wizard to load a xlsx file
@@ -388,7 +388,7 @@ Figure: 14.1: Using the Import Dataset wizard to load a xlsx file
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="answers.html#cb261-1"></a>mpg <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb261-2"><a href="answers.html#cb261-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> class, <span class="dt">y =</span> hwy)) <span class="op">+</span></span>
 <span id="cb261-3"><a href="answers.html#cb261-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
 <p>A prettier solution might be:</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="answers.html#cb262-1"></a>mpg <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb262-2"><a href="answers.html#cb262-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, <span class="op">-</span>hwy), <span class="dt">y =</span> hwy)) <span class="op">+</span></span>
@@ -396,7 +396,7 @@ Figure: 14.1: Using the Import Dataset wizard to load a xlsx file
 <span id="cb262-4"><a href="answers.html#cb262-4"></a><span class="st">  </span><span class="kw">labs</span> (<span class="dt">x =</span> <span class="st">&quot;Car class&quot;</span>,</span>
 <span id="cb262-5"><a href="answers.html#cb262-5"></a>        <span class="dt">y =</span> <span class="st">&quot;Highway miles per gallon&quot;</span>) <span class="op">+</span></span>
 <span id="cb262-6"><a href="answers.html#cb262-6"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-285-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-249-1.png" width="672" /></p>
 </div>
 <div id="ans_gghist" class="section level3">
 <h3><span class="header-section-number">14.4.2</span> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</h3>
@@ -405,7 +405,7 @@ Figure: 14.1: Using the Import Dataset wizard to load a xlsx file
 <span id="cb263-2"><a href="answers.html#cb263-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cty)) <span class="op">+</span></span>
 <span id="cb263-3"><a href="answers.html#cb263-3"></a><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></span>
 <span id="cb263-4"><a href="answers.html#cb263-4"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="op">~</span><span class="st"> </span>trans)</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-286-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
 </div>
 </div>
 <div id="stats_proofvariance" class="section level2">

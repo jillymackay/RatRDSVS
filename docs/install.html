@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,7 +117,7 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -283,7 +283,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.3</b> Numerical Response, Categorical Explanatory (ANOVA/GLM)</a></li>
 <li class="chapter" data-level="11.3.4" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.4</b> Numerical Response, Numerical Explanatory (Correlation &amp; Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#my-response-is-an-ordinal-variable-cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable {cs_rord}</a><ul>
+<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</a></li>
 <li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat_r"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test)</a></li>
 <li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Categorical Explanatory</a></li>
@@ -368,7 +368,7 @@ You can skip this chapter if you already have access to R and R Studio, and feel
 <h3><span class="header-section-number">1.2.1</span> Quick R Studio Navigation Guide</h3>
 <p>If you have never coded before, R Studio might look very intimidating. In this short section we will walk through the different parts of R Studio. If you find yourself getting lost later in the book, come back here to get a refresher.</p>
 <p>In <strong>Figure 1.1</strong> you will see a view of R Studio as you first open it. There may be some differences, e.g. you will likely have a different R Version number.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-45"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="images/02_install/rstud01.png" alt="R Studio Overview" width="866" />
 <p class="caption">
 Figure: 1.1: R Studio Overview
@@ -377,7 +377,7 @@ Figure: 1.1: R Studio Overview
 <div id="click-on-file-new-file-r-script" class="section level4">
 <h4><span class="header-section-number">1.2.1.1</span> Click on File &gt; New File&gt; R Script</h4>
 <p>Now your screen should look like <strong>Figure 1.2</strong>. You will have four panes in your window, and each pane can be dragged around or minimised. Note - you want to create a new R Script file, <strong>not</strong> an R Markdown or R Notebook file. We will do that next.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-46"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="images/02_install/rstud02.png" alt="R Studio Overview with Script File" width="893" />
 <p class="caption">
 Figure: 1.2: R Studio Overview with Script File
@@ -387,7 +387,7 @@ Figure: 1.2: R Studio Overview with Script File
 <div id="the-file-pane" class="section level4">
 <h4><span class="header-section-number">1.2.1.2</span> The file pane</h4>
 <p>On the top left hand side of the R Studio window you can view the untitled R Script file you have just opened (<strong>Figure 1.3</strong>). Here you will see views of your files (mostly R Script files and R Markdown files in this book), and views of your data.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-47"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="images/02_install/rstud03.png" alt="The active file pane" width="893" />
 <p class="caption">
 Figure: 1.3: The active file pane
@@ -401,7 +401,7 @@ Figure: 1.3: The active file pane
 <p>When you have finished typing, hit enter on your keyboard and see what the answer is.</p>
 <p>Type <code>2 +</code> and then hit enter. What happens? You will need to hit ‘escape’ (‘esc’) on your keyboard to make the <strong>&gt;</strong> symbol appear again.</p>
 <p>Hitting ‘enter’ asks R to perform the last command. Because we didn’t tell R what it had to add, it kept waiting to find out what would come next.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-48"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="images/02_install/rstud04.png" alt="The console pane" width="893" />
 <p class="caption">
 Figure: 1.4: The console pane
@@ -411,7 +411,7 @@ Figure: 1.4: The console pane
 <div id="the-environment-pane" class="section level4">
 <h4><span class="header-section-number">1.2.1.4</span> The Environment pane</h4>
 <p>The Environment is shown in <strong>Figure 1.5</strong>. At the moment, your environment will be empty. We will talk more about what goes here in <a href="start.html#environment">the environment section of getting started</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-49"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="images/02_install/rstud05.png" alt="The environment pane" width="893" />
 <p class="caption">
 Figure: 1.5: The environment pane
@@ -444,7 +444,7 @@ Figure: 1.5: The environment pane
 <li>This tab will show you more complicated things, like if you use R to build an html page (or a book like this one!) Ignore it for now.</li>
 </ul></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-50"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
 <img src="images/02_install/rstud06.png" alt="File, plot, package and help viewer" width="893" />
 <p class="caption">
 Figure: 1.6: File, plot, package and help viewer
@@ -455,14 +455,14 @@ Figure: 1.6: File, plot, package and help viewer
 <h4><span class="header-section-number">1.2.1.6</span> Customisation</h4>
 <p>Data analysis is fun, and its also personal. You can customise your R Studio to look the way you want it to.</p>
 <p>Go to <code>Tools &gt; Global Options</code> (<strong>Figure 1.7</strong>)</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-51"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
 <img src="images/02_install/rstud07.png" alt="Global options" width="932" />
 <p class="caption">
 Figure: 1.7: Global options
 </p>
 </div>
 <p>And then go to <code>Appearance &gt; Editor Theme</code> to play around and find the colour scheme, font, and R Studio Theme you like best (<strong>Figure 1.8</strong>)</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-52"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
 <img src="images/02_install/rstud08.png" alt="Global options, themes" width="898" />
 <p class="caption">
 Figure: 1.8: Global options, themes

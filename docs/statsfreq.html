@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,7 +117,7 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -283,7 +283,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.3</b> Numerical Response, Categorical Explanatory (ANOVA/GLM)</a></li>
 <li class="chapter" data-level="11.3.4" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.4</b> Numerical Response, Numerical Explanatory (Correlation &amp; Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#my-response-is-an-ordinal-variable-cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable {cs_rord}</a><ul>
+<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</a></li>
 <li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat_r"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test)</a></li>
 <li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Categorical Explanatory</a></li>
@@ -379,8 +379,8 @@ You can run an ANOVA or glm in R
 <span id="cb142-5"><a href="statsfreq.html#cb142-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></span>
 <span id="cb142-6"><a href="statsfreq.html#cb142-6"></a><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;100% of the variation in y is explained by x&quot;</span>) <span class="op">+</span></span>
 <span id="cb142-7"><a href="statsfreq.html#cb142-7"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-213"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-213-1.png" alt="100% of the variation in y is explained by x" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-177"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-177-1.png" alt="100% of the variation in y is explained by x" width="672" />
 <p class="caption">
 Figure: 10.1: 100% of the variation in y is explained by x
 </p>
@@ -395,8 +395,8 @@ Figure: 10.1: 100% of the variation in y is explained by x
 <span id="cb143-5"><a href="statsfreq.html#cb143-5"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="op">+</span></span>
 <span id="cb143-6"><a href="statsfreq.html#cb143-6"></a><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;How much of the variation in y is explained by x?&quot;</span>) <span class="op">+</span></span>
 <span id="cb143-7"><a href="statsfreq.html#cb143-7"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-214"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-214-1.png" alt="A more realistic example" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-178"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-178-1.png" alt="A more realistic example" width="672" />
 <p class="caption">
 Figure: 10.2: A more realistic example
 </p>
@@ -473,8 +473,8 @@ Figure: 10.2: A more realistic example
 <span id="cb151-6"><a href="statsfreq.html#cb151-6"></a><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;How much of the variation in y is explained by x?&quot;</span>) <span class="op">+</span></span>
 <span id="cb151-7"><a href="statsfreq.html#cb151-7"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span><span class="st"> </span><span class="co"># And add a single line below:</span></span>
 <span id="cb151-8"><a href="statsfreq.html#cb151-8"></a><span class="st">  </span><span class="kw">geom_smooth</span> (<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>) </span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-220"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-220-1.png" alt="y.realstic and x.realistic with a fit line" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-184"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-184-1.png" alt="y.realstic and x.realistic with a fit line" width="672" />
 <p class="caption">
 Figure: 10.3: y.realstic and x.realistic with a fit line
 </p>
@@ -519,8 +519,8 @@ If you use your own solution to tidy the data remember that R is case sensitive.
 <span id="cb153-4"><a href="statsfreq.html#cb153-4"></a><span class="st">     </span><span class="kw">labs</span> (<span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Radio Condition&quot;</span>) <span class="op">+</span></span>
 <span id="cb153-5"><a href="statsfreq.html#cb153-5"></a><span class="st">     </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></span>
 <span id="cb153-6"><a href="statsfreq.html#cb153-6"></a><span class="st">     </span><span class="kw">theme_classic</span> ()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-224"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-224-1.png" alt="Magic Dust Yield (kg) by Unicorn Farm" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-188"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-188-1.png" alt="Magic Dust Yield (kg) by Unicorn Farm" width="672" />
 <p class="caption">
 Figure: 10.4: Magic Dust Yield (kg) by Unicorn Farm
 </p>
@@ -541,8 +541,8 @@ Figure: 10.4: Magic Dust Yield (kg) by Unicorn Farm
 <span id="cb154-9"><a href="statsfreq.html#cb154-9"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></span>
 <span id="cb154-10"><a href="statsfreq.html#cb154-10"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb154-11"><a href="statsfreq.html#cb154-11"></a><span class="st">  </span><span class="kw">theme_classic</span> ()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-225"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-225-1.png" alt="Magic dust yield (kg) for Farm 1" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-189"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-189-1.png" alt="Magic dust yield (kg) for Farm 1" width="672" />
 <p class="caption">
 Figure: 10.5: Magic dust yield (kg) for Farm 1
 </p>
@@ -566,8 +566,8 @@ Figure: 10.5: Magic dust yield (kg) for Farm 1
 <span id="cb157-7"><a href="statsfreq.html#cb157-7"></a><span class="st">  </span><span class="kw">theme_classic</span> () <span class="op">+</span></span>
 <span id="cb157-8"><a href="statsfreq.html#cb157-8"></a><span class="st">  </span><span class="co"># This new line basically draws a line on our chart based on the mean we just calculated</span></span>
 <span id="cb157-9"><a href="statsfreq.html#cb157-9"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="fl">111.1</span>) </span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-227"></span>
-<img src="ratrdsvs_files/figure-html/unnamed-chunk-227-1.png" alt="Magic dust yield (kg) for Farm 1, Mean Line Added" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-191"></span>
+<img src="ratrdsvs_files/figure-html/unnamed-chunk-191-1.png" alt="Magic dust yield (kg) for Farm 1, Mean Line Added" width="672" />
 <p class="caption">
 Figure: 10.6: Magic dust yield (kg) for Farm 1, Mean Line Added
 </p>
@@ -683,11 +683,11 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <span id="cb170-20"><a href="statsfreq.html#cb170-20"></a><span class="co"># You can compare how we update this chart with how we update the ones above.</span></span>
 <span id="cb170-21"><a href="statsfreq.html#cb170-21"></a></span>
 <span id="cb170-22"><a href="statsfreq.html#cb170-22"></a>ImaginaryScenario1</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-199-1.png" width="672" /></p>
 <p>We could fit the mean of the dataset on this:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="statsfreq.html#cb171-1"></a>ImaginaryScenario1 <span class="op">+</span></span>
 <span id="cb171-2"><a href="statsfreq.html#cb171-2"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(Sce1<span class="op">$</span>DustYield))</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-200-1.png" width="672" /></p>
 <p>Let’s compare the overall mean with the group means, and see which one is the best guess for any given data point. Remember - if the condition is explaining a lot of the variation around our response, we’ll see less deviation from each group mean than the overall mean.</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="statsfreq.html#cb172-1"></a>Sce1 <span class="op">%&gt;%</span></span>
 <span id="cb172-2"><a href="statsfreq.html#cb172-2"></a><span class="st">  </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span></span>
@@ -704,7 +704,7 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <span id="cb174-4"><a href="statsfreq.html#cb174-4"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">11</span>, <span class="dt">y =</span> <span class="fl">121.0</span>, <span class="dt">xend =</span> <span class="dv">20</span>, <span class="dt">yend =</span> <span class="fl">121.0</span>, <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>)) <span class="op">+</span></span>
 <span id="cb174-5"><a href="statsfreq.html#cb174-5"></a><span class="st">  </span><span class="kw">geom_segment</span> (<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">21</span>, <span class="dt">y =</span> <span class="fl">84.2</span>, <span class="dt">xend =</span> <span class="dv">30</span>, <span class="dt">yend =</span> <span class="fl">84.2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></span>
 <span id="cb174-6"><a href="statsfreq.html#cb174-6"></a><span class="st">  </span><span class="kw">theme</span> (<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-201-1.png" width="672" /></p>
 <p>In this case, the individual group means are a better description of the group than the overall population mean. Any statistics we were to apply would simply put a number to what we see on this chart.</p>
 <p>So let’s look at a second scenario:</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="statsfreq.html#cb175-1"></a>Sce2&lt;-<span class="kw">tibble</span> (<span class="dt">Condition1 =</span> <span class="kw">c</span>(<span class="dv">84</span>,<span class="dv">86</span>,<span class="dv">123</span>,<span class="dv">95</span>,<span class="dv">87</span>,<span class="dv">110</span>,<span class="dv">99</span>,<span class="dv">95</span>,<span class="dv">121</span>,<span class="dv">121</span>),</span>
@@ -734,7 +734,7 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <span id="cb177-9"><a href="statsfreq.html#cb177-9"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">11</span>, <span class="dt">y =</span> <span class="fl">98.3</span>, <span class="dt">xend =</span> <span class="dv">20</span>, <span class="dt">yend =</span> <span class="fl">98.3</span>, <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>)) <span class="op">+</span></span>
 <span id="cb177-10"><a href="statsfreq.html#cb177-10"></a><span class="st">  </span><span class="kw">geom_segment</span> (<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">21</span>, <span class="dt">y =</span> <span class="fl">97.2</span>, <span class="dt">xend =</span> <span class="dv">30</span>, <span class="dt">yend =</span> <span class="fl">97.2</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="op">+</span></span>
 <span id="cb177-11"><a href="statsfreq.html#cb177-11"></a><span class="st">  </span><span class="kw">theme</span> (<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-239-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>In this second scenaro, the population mean is not very different from the means of each of the three conditions. In fact, it’s hard to see some of those means on the chart! We haven’t successfully partitioned off any of the dataset’s varaiance by looking at each of the condition means.</p>
 <p>In this second scenario, the explanatory variable is not explaining very much of the response variable at all.</p>
 </div>
@@ -749,7 +749,7 @@ No matter what your dataset looks like, no matter what numbers are in there, thi
 <span id="cb178-5"><a href="statsfreq.html#cb178-5"></a><span class="st">  </span><span class="kw">labs</span> (<span class="dt">title =</span> <span class="st">&quot;Magic Dust Yield(kg)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Dust Yield (Kg)&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Unicorn ID Number&quot;</span>) <span class="op">+</span></span>
 <span id="cb178-6"><a href="statsfreq.html#cb178-6"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="op">+</span></span>
 <span id="cb178-7"><a href="statsfreq.html#cb178-7"></a><span class="st">  </span><span class="kw">theme_classic</span> ()</span></code></pre></div>
-<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
+<p><img src="ratrdsvs_files/figure-html/unnamed-chunk-204-1.png" width="672" /></p>
 <div id="going-back-to-sums-of-squares" class="section level5">
 <h5><span class="header-section-number">10.1.2.6.1</span> Going Back to Sums of Squares</h5>
 <p>In our two imaginary scenarios above we were (roughly) partitioning variances by drawing lines on our charts - much like we could draw a line of best fit on the perfect data chart earlier.</p>

@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,7 +117,7 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -283,7 +283,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.3</b> Numerical Response, Categorical Explanatory (ANOVA/GLM)</a></li>
 <li class="chapter" data-level="11.3.4" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.4</b> Numerical Response, Numerical Explanatory (Correlation &amp; Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#my-response-is-an-ordinal-variable-cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable {cs_rord}</a><ul>
+<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</a></li>
 <li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat_r"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test)</a></li>
 <li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Categorical Explanatory</a></li>
@@ -369,27 +369,20 @@ Can execute code in an R Markdown file
 <div id="an-example-of-sharing-code" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> An example of sharing code</h3>
 <p>Imagine you have a big dataset like the UK Farm Accounts dataset:</p>
-<pre><code>##   Year Gross.output.at.basic.prices...million Intermediate.consumption...million
-## 1 1995                               14741.13                           7491.238
-## 2 1996                               14953.92                           7899.517
-## 3 1997                               13334.00                           7471.959
-## 4 1998                               12329.07                           7008.115
-## 5 1999                               11925.87                           6876.278
-## 6 2000                               10962.54                           6483.353
-##   Total.Income.from.Farming...million Agriculture.s.share.of.total.regional.employment..
-## 1                           3668.6456                                                 NA
-## 2                           3435.5194                                                 NA
-## 3                           2028.4870                                                 NA
-## 4                           1472.7142                                                 NA
-## 5                           1535.0130                                                 NA
-## 6                            941.3956                                           1.319703
-##   Country
-## 1 England
-## 2 England
-## 3 England
-## 4 England
-## 5 England
-## 6 England</code></pre>
+<pre><code>##   Year Gross.output.at.basic.prices...million Intermediate.consumption...million Total.Income.from.Farming...million
+## 1 1995                               14741.13                           7491.238                           3668.6456
+## 2 1996                               14953.92                           7899.517                           3435.5194
+## 3 1997                               13334.00                           7471.959                           2028.4870
+## 4 1998                               12329.07                           7008.115                           1472.7142
+## 5 1999                               11925.87                           6876.278                           1535.0130
+## 6 2000                               10962.54                           6483.353                            941.3956
+##   Agriculture.s.share.of.total.regional.employment.. Country
+## 1                                                 NA England
+## 2                                                 NA England
+## 3                                                 NA England
+## 4                                                 NA England
+## 5                                                 NA England
+## 6                                           1.319703 England</code></pre>
 <p>And let’s say you want to explore the gross output of farming per year. You might decided it would be easier to change the name of the gross output variable to make coding easier. So you write the following in the console:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="dataprocessing.html#cb76-1"></a>farm &lt;-<span class="st"> </span>farm <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb76-2"><a href="dataprocessing.html#cb76-2"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">gross_output =</span> Gross.output.at.basic.prices...million)</span></code></pre></div>
@@ -420,7 +413,7 @@ Can execute code in an R Markdown file
 <li>Perform any analyses.</li>
 </ol>
 <p>There may be times when there’s a good reason to do things in a different order, but you will rarely go wrong with this order (Figure 6.1)</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-142"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-106"></span>
 <img src="images/06_workflows/example_workflow.png" alt="A general format of R Markdown files" width="414" />
 <p class="caption">
 Figure: 6.1: A general format of R Markdown files
@@ -433,7 +426,7 @@ Figure: 6.1: A general format of R Markdown files
 <h2><span class="header-section-number">6.2</span> Opening R Markdown Docs</h2>
 <p>R Markdown files work just like any other file in R Studio. You can open any R Markdown file by going to <code>File &gt; Open File ...</code> and navigating to the folder your file is stored in.</p>
 <p>Your R Markdown file will ‘look’ for any linked files in the same folder its saved in, so if your data is saved in the same folder your R Markdown file is saved in, you can be quite lazy about your directories, e.g. <code>read.csv("data.csv")</code>. This can be very helpful in repeatable analyses.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-143"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-107"></span>
 <img src="images/06_workflows/openrmd.gif" alt="Opening an R Markdown file in R Studio"  />
 <p class="caption">
 Figure: 6.2: Opening an R Markdown file in R Studio
@@ -443,7 +436,7 @@ Figure: 6.2: Opening an R Markdown file in R Studio
 <div id="codermd" class="section level2">
 <h2><span class="header-section-number">6.3</span> Running Code</h2>
 <p>You can run code in R Markdown files by pressing the green ‘triangle’ button to run that specific piece of code.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-144"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-108"></span>
 <img src="images/06_workflows/runcode.gif" alt="Running a code chunk in an R Markdown file in R Studio"  />
 <p class="caption">
 Figure: 6.3: Running a code chunk in an R Markdown file in R Studio
