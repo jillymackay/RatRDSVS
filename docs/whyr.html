@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Why use R | R @ R(D)SVS</title>
+  <title>Chapter 13 Why use R | R @ R(D)SVS</title>
   <meta name="description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Why use R | R @ R(D)SVS" />
+  <meta property="og:title" content="Chapter 13 Why use R | R @ R(D)SVS" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Why use R | R @ R(D)SVS" />
+  <meta name="twitter:title" content="Chapter 13 Why use R | R @ R(D)SVS" />
   
   <meta name="twitter:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-01-06" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,7 +117,7 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -270,33 +270,54 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.2" data-path="statsfreq.html"><a href="statsfreq.html#a-fake-experiment"><i class="fa fa-check"></i><b>10.1.2</b> A Fake Experiment</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="whatnext.html"><a href="whatnext.html"><i class="fa fa-check"></i><b>11</b> What next</a><ul>
-<li class="chapter" data-level="11.1" data-path="whatnext.html"><a href="whatnext.html#github"><i class="fa fa-check"></i><b>11.1</b> github</a></li>
-<li class="chapter" data-level="11.2" data-path="whatnext.html"><a href="whatnext.html#experiment-and-build"><i class="fa fa-check"></i><b>11.2</b> Experiment and build</a></li>
-<li class="chapter" data-level="11.3" data-path="whatnext.html"><a href="whatnext.html#the-r-community"><i class="fa fa-check"></i><b>11.3</b> The R Community</a></li>
+<li class="chapter" data-level="11" data-path="choosestats.html"><a href="choosestats.html"><i class="fa fa-check"></i><b>11</b> How to choose your stats</a><ul>
+<li class="chapter" data-level="11.1" data-path="choosestats.html"><a href="choosestats.html#cs_start"><i class="fa fa-check"></i><b>11.1</b> Where to start</a></li>
+<li class="chapter" data-level="11.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat"><i class="fa fa-check"></i><b>11.2</b> My response is a categorical variable</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_hist"><i class="fa fa-check"></i><b>11.2.1</b> Categorical Response, Historical/Known Comparisons</a></li>
+<li class="chapter" data-level="11.2.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_ecat"><i class="fa fa-check"></i><b>11.2.2</b> Categorical Response, Categorical Explanatory</a></li>
+<li class="chapter" data-level="11.2.3" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.3</b> Categorical Response, Numerical Explanatory (Logistic Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="whyr.html"><a href="whyr.html"><i class="fa fa-check"></i><b>12</b> Why use R</a><ul>
-<li class="chapter" data-level="12.1" data-path="whyr.html"><a href="whyr.html#why-does-open-source-matter"><i class="fa fa-check"></i><b>12.1</b> Why does open source matter?</a></li>
-<li class="chapter" data-level="12.2" data-path="whyr.html"><a href="whyr.html#so-why-r"><i class="fa fa-check"></i><b>12.2</b> So why R?</a></li>
+<li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> My response is a numerical variable</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_hist"><i class="fa fa-check"></i><b>11.3.1</b> Numerical Response, Historical/Known Comparisons (One Sample t-Test)</a></li>
+<li class="chapter" data-level="11.3.2" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat_r"><i class="fa fa-check"></i><b>11.3.2</b> Numerical Response (Repeated Measures), Categorical Explanatory (Paired t-Test)</a></li>
+<li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.3</b> Numerical Response, Categorical Explanatory (ANOVA/GLM)</a></li>
+<li class="chapter" data-level="11.3.4" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.4</b> Numerical Response, Numerical Explanatory (Correlation &amp; Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>13</b> Answers</a><ul>
-<li class="chapter" data-level="13.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>13.1</b> Creating Data Answers</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>13.1.1</b> Changing mpg data</a></li>
+<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</a></li>
+<li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat_r"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test)</a></li>
+<li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Categorical Explanatory</a></li>
+<li class="chapter" data-level="11.4.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord_rnum"><i class="fa fa-check"></i><b>11.4.4</b> Ordinal Response, Numerical Explanatory (Spearman rank correlation)</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>13.2</b> Loading csv data answers</a></li>
-<li class="chapter" data-level="13.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>13.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="13.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>13.4</b> ggplot answers</a><ul>
-<li class="chapter" data-level="13.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>13.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
-<li class="chapter" data-level="13.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>13.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+<li class="chapter" data-level="11.5" data-path="choosestats.html"><a href="choosestats.html#cs_glms"><i class="fa fa-check"></i><b>11.5</b> I got all of them (generalised linear model)</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>13.5</b> Proof of variance</a></li>
-<li class="chapter" data-level="13.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>13.6</b> Tidy Unicorns</a></li>
+<li class="chapter" data-level="12" data-path="whatnext.html"><a href="whatnext.html"><i class="fa fa-check"></i><b>12</b> What next</a><ul>
+<li class="chapter" data-level="12.1" data-path="whatnext.html"><a href="whatnext.html#github"><i class="fa fa-check"></i><b>12.1</b> github</a></li>
+<li class="chapter" data-level="12.2" data-path="whatnext.html"><a href="whatnext.html#experiment-and-build"><i class="fa fa-check"></i><b>12.2</b> Experiment and build</a></li>
+<li class="chapter" data-level="12.3" data-path="whatnext.html"><a href="whatnext.html#the-r-community"><i class="fa fa-check"></i><b>12.3</b> The R Community</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>14</b> Acknowledgements</a><ul>
-<li class="chapter" data-level="14.1" data-path="acks.html"><a href="acks.html#image-sources"><i class="fa fa-check"></i><b>14.1</b> Image Sources</a></li>
-<li class="chapter" data-level="14.2" data-path="acks.html"><a href="acks.html#specific-acknowledgements"><i class="fa fa-check"></i><b>14.2</b> Specific Acknowledgements</a></li>
-<li class="chapter" data-level="14.3" data-path="acks.html"><a href="acks.html#beta-testers-and-helpers"><i class="fa fa-check"></i><b>14.3</b> Beta Testers and Helpers</a></li>
-<li class="chapter" data-level="14.4" data-path="acks.html"><a href="acks.html#the-biggest-thanks"><i class="fa fa-check"></i><b>14.4</b> The biggest thanks</a></li>
+<li class="chapter" data-level="13" data-path="whyr.html"><a href="whyr.html"><i class="fa fa-check"></i><b>13</b> Why use R</a><ul>
+<li class="chapter" data-level="13.1" data-path="whyr.html"><a href="whyr.html#why-does-open-source-matter"><i class="fa fa-check"></i><b>13.1</b> Why does open source matter?</a></li>
+<li class="chapter" data-level="13.2" data-path="whyr.html"><a href="whyr.html#so-why-r"><i class="fa fa-check"></i><b>13.2</b> So why R?</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>14</b> Answers</a><ul>
+<li class="chapter" data-level="14.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>14.1</b> Creating Data Answers</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>14.1.1</b> Changing mpg data</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>14.2</b> Loading csv data answers</a></li>
+<li class="chapter" data-level="14.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>14.3</b> Loading excel data answers</a></li>
+<li class="chapter" data-level="14.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>14.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>14.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
+<li class="chapter" data-level="14.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>14.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>14.5</b> Proof of variance</a></li>
+<li class="chapter" data-level="14.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>14.6</b> Tidy Unicorns</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>15</b> Acknowledgements</a><ul>
+<li class="chapter" data-level="15.1" data-path="acks.html"><a href="acks.html#image-sources"><i class="fa fa-check"></i><b>15.1</b> Image Sources</a></li>
+<li class="chapter" data-level="15.2" data-path="acks.html"><a href="acks.html#specific-acknowledgements"><i class="fa fa-check"></i><b>15.2</b> Specific Acknowledgements</a></li>
+<li class="chapter" data-level="15.3" data-path="acks.html"><a href="acks.html#beta-testers-and-helpers"><i class="fa fa-check"></i><b>15.3</b> Beta Testers and Helpers</a></li>
+<li class="chapter" data-level="15.4" data-path="acks.html"><a href="acks.html#the-biggest-thanks"><i class="fa fa-check"></i><b>15.4</b> The biggest thanks</a></li>
 </ul></li>
 </ul>
 
@@ -316,12 +337,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="whyr" class="section level1">
-<h1><span class="header-section-number">Chapter 12</span> Why use R</h1>
+<h1><span class="header-section-number">Chapter 13</span> Why use R</h1>
 <p>Why is this chapter at the end of the book?</p>
 <p>Well, partly I wanted to get you guys started with R as quickly as possible. Partly, I think the ‘why’ of R only starts to make sense when you learn about workflows. With this said, it is important to think about Why we should use open source software and open data science.</p>
 <p>There’s no learning outcomes in this chapter. Instead, its more of a thesis, or more accurately, a blog post.</p>
 <div id="why-does-open-source-matter" class="section level2">
-<h2><span class="header-section-number">12.1</span> Why does open source matter?</h2>
+<h2><span class="header-section-number">13.1</span> Why does open source matter?</h2>
 <p>If you’ve come to this book because I’m teaching you R in one of my courses, or as a PhD student of mine, then you have probably heard my thoughts on why science needs to become more transparent. ( <a href="https://media.ed.ac.uk/media/1_ixecew3h">If you haven’t, you can watch me talk about it here</a> ).</p>
 <p>I take the view that science is a philosophy, it is a way of thinking about the world. We use science to help us answer questions about the natural world. The process of collecting data and analysing data is not free from sources of bias. This is why reporting methodologies is such an important tenet of scientific process. Small variations in methodology can account for persistent effects that become reported as ‘truth’.</p>
 <p>Mice, for example, are stressed by <a href="https://www.nature.com/news/male-researchers-stress-out-rodents-1.15106#:~:text=Male%2C%20but%20not%20female%2C%20experimenters,today%20in%20Nature%20Methods1.&amp;text=For%20years%2C%20anecdotal%20reports%20have,handler%20remains%20in%20the%20room.">male handlers</a>, which may have increased observed stress in many trials, as we rarely report the gender of the mouse handlers. Many medical studies focus only on <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1761670/">male participants</a>, resulting in treatments that have lower efficacy for women. Many medical treatments are calibrated with <a href="https://pubmed.ncbi.nlm.nih.gov/2868172/">the wrong kind of statistical test</a>, meaning that a true understanding of what being measured is often missing. And of course we have the replication crisis, <a href="https://www.vox.com/2016/3/14/11219446/psychology-replication-crisis">a discovery that a majority of psychology results cannot be replicated in independent trials</a>.</p>
@@ -332,7 +353,7 @@ Alongside this, there is a push in science to be more open and transparent about
 <p>71 chicks were allocated into six groups, with each group given a different feed supplement. Their weight in grams after six weeks was compared in an ANOVA, and feed was found to significantly affect weight (F<sup>5,65</sup> = 15.37, p &lt; 0.001)</p>
 </blockquote>
 <p>And specifiying exactly:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="whyr.html#cb190-1"></a><span class="kw">summary</span>(<span class="kw">aov</span>(<span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>feed, <span class="dt">data =</span> chickwts))</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="whyr.html#cb254-1"></a><span class="kw">summary</span>(<span class="kw">aov</span>(<span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>feed, <span class="dt">data =</span> chickwts))</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## feed         5 231129   46226   15.37 5.94e-10 ***
 ## Residuals   65 195556    3009                     
@@ -343,7 +364,7 @@ Alongside this, there is a push in science to be more open and transparent about
 <p>It is nervewracking though. Sharing your practice, how you arrived at a conclusion, can feel like you are exposing yourself to be found out for the imposter you really are. I have an awful lot of privilege in my life that allows me to accept this risk. See <a href="https://www.nytimes.com/2017/10/18/magazine/when-the-revolution-came-for-amy-cuddy.html">Amy Cuddy</a>. Science needs to become kinder, and safer for all people, for these ideas to take hold.</p>
 </div>
 <div id="so-why-r" class="section level2">
-<h2><span class="header-section-number">12.2</span> So why R?</h2>
+<h2><span class="header-section-number">13.2</span> So why R?</h2>
 <p>R is an open source software, meaning that absolutely anyone can download it, use it, and improve it. It also has a low barrier to entry in that there are lots of free resources to help you learn. A scientist in Scotland can directly collaborate with a scientist in Malawi, sharing code, sharing resources, and improving the scientific world.</p>
 <p>R, and the way that we teach R and use R, is not free of biases. There are other programs, other methods, but I use R because I think it is a more transparent and accountable way of doing research.</p>
 <p>And ultimately, that’s what I’m striving for.</p>

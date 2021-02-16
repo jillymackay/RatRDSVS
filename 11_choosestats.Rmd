@@ -1,0 +1,549 @@
+# How to choose your stats {#choosestats}
+
+```{block type = "hey"}
+This chapter is potentially controversial. I deliberately haven't discussed statistics in great detail in this book, not least because I feel I re-learn stats every few years. This chapter is not setting out to teach you statistics. There are many statistical assumptions and issues that I breeze past in this chapter. In this chapter I want to give you a quick reference to running statistical analyses in R, and, importantly, interpreting those results. 
+
+
+
+A much, much better book is Andy Field, Jeremy Miles, and Zoe Field's brilliant [Discovering Statistics Using R](https://www.discoveringstatistics.com/books/discovering-statistics-using-r/) book. 
+```
+
+```{block type = "los"}
+
+You can skip this chapter if:
+
+  * You are comfortable deciding which statistical test to use
+
+```
+
+
+
+
+So its happened. You've collected your data, you've installed R, and now you're ready to run some analyses! But what on earth do you do next? How do you choose and interpret the right statistic?
+
+To be brutally honest, only repeated practice and engaging with statistics can help build this skill, and the more you learn, the more uncertain you may feel! But what this chapter **can** do is to give you a bit of a cheat sheet and show you the 'greatest hits' of statistical testing in R. I will also use the [APA 7th Edition Numbers and Statistics guide](https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf) to report the statistical tests, and show you how to extract that information from the output, but you should also look up the style guide of your desired report (e.g. [APA 7th Edition](https://apastyle.apa.org/style-grammar-guidelines)).
+
+```{block type = "hey"}
+
+For this chapter I will use in-built R datasets and fake datasets to demonstrate these tests. I will also use the tidyverse package throughout (which offers a few more datasets), so you will want to have that loaded.
+
+I will  note here all the packages that are used in this chapter, and highlight them at their specific tests. Remember, you can always install a package with `install.packages("package_name")`
+
+   * `library(tidyverse)`
+
+   * `library(vcd)`
+   
+   * `library(broom)`
+   
+   * `library(pgirmess)`
+   
+   * `library(clinfun)`
+
+```
+
+
+## Where to start {#cs_start}
+
+To work your way through this chapter, you need to identify your:
+
+  * Response variable (the **y axis**)
+    
+  * Explanatory variable (the **x axis**)
+    
+and then work your way down this handy list:
+
+
+**I have a . . .**
+
+  * [Categorical response variable](#cs_rcat)
+   
+      + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rcat_hist)
+      
+      + [And I want to compare it with repeated measures of the same response in one sample group](#cs_rcat_ecat_r)
+      
+      + [And I want to compare it across two groups](#cs_rcat_ecat)
+      
+      + [And I want to predict it with a numerical response](#cs_rcat_enum)
+      
+ * [Numerical response variable](#cs_rnum)
+    
+      + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rnum_hist)
+      
+      + [And I want to compare it with repeated measures of the same response in one sample group](#cs_rnum_ecat_r)
+      
+      + [And I want to compare it across two groups](#cs_rnum_ecat)
+      
+      + [And I want to predict it with a numerical response](#cs_rnum_enum)
+      
+  * [Ordinal response variable](#cs_rord)
+    
+      + [And I want to compare it to a historical/known condition or I have only one sample group](#cs_rord_hist)
+      
+      + [And I want to compare it with repeated measures of the same response in one sample group](#cs_rord_ecat_r)
+
+      + [And I want to compare it across two groups](#cs_rord_ecat)
+      
+      + [And I want to predict it with a numerical response](#cs_rord_rnum)
+      
+  * [Uh, I got all of them I think](#cs_glms)
+   
+   
+
+
+
+
+
+
+## My response is a categorical variable {#cs_rcat}
+
+### Categorical Response, Historical/Known Comparisons {#cs_rcat_hist}
+
+#### Proportion of responses different from a known/expected result (1 Sample Proportion Test)
+**Our Data**
+
+Let's say we have 20 German Shepherd dogs, and we know that the prevalence of hip dysplasia, a very painful condition, is usually 18% in this breed. We want to know if these particular dogs (perhaps they are from a new genetic line) are showing less hip dysplasia than we would expect. We have recorded whether or not these dogs are showing signs of dysplasia as a 'yes/no' categorical variable, and 3 dogs are showing signs of hip dysplasia.
+
+We can run a **1 proportion test** like so:
+
+```{r message = FALSE, warning = FALSE}
+
+binom.test(x = 3, n = 20, p = 0.18, alternative = "two.sided")
+
+
+```
+
+Note that we don't even need any real 'data' to run this test - its simply drawn from statistical probabilities. We would write this up as:
+
+> In this study, 15% of the dogs presented with signs of hip dysplacia, which is not significantly different from the historical prevalence of 18% in a binomial test (95% CI [3%-38%], *p* > .9).
+
+
+
+**What if we had more dogs?**
+
+We've continued running this study, mainly because we're worried that only having 20 dogs is not accounting for enough of the natural variation we see in the world. This time we have 50 dogs from this genetic line and we've seen 4 of them develop dysplasia. As we have more than **30** responses, we can use a different version of the test.
+
+```{r message = FALSE, warning  = FALSE}
+
+prop.test(x = 4, n = 50, p = 0.18, alternative = "two.sided")
+
+```
+This time we have a little more information that we can report with:
+
+> In this study, 8% of the dogs presented with hip dysplasia, which is not significantly different from the historical prevalence of 18% in a one sample proportion test (95% CI[3%-20%], *X^2^* = 2.74, *p*  = .098)
+
+### Categorical Response, Categorical Explanatory {#cs_rcat_ecat}
+
+#### Categorical Response (Repeated Measures) Categorical Explanatory, McNemar's Test {#cs_rcat_ecat_r}
+**Our Data**
+
+We have 40 German Shepherd dogs, some of whom already present with dysplasia, a painful condition. We're concerned that after a season of work more dogs will develop dysplasia, and want to see if this is true. For this dataset we will create a contingency table:
+
+```{r message = FALSE, warning = FALSE}
+
+work <- matrix(c(2, 38, 5, 35), 
+              ncol=2, 
+              byrow=TRUE,
+              dimnames = list(c("Dysplasia", "No Dysplasia"),
+                              c("Before Work Season", "After Work Season")))
+
+```
+
+We are going to run a specific test which accounts for the fact we have the same dogs in both conditions (before and after work):
+
+```{r message = FALSE, warning = FALSE}
+
+mcnemar.test(work)
+
+```
+
+> After the work season significantly more dogs developed dysplasia in McNemar's test (*X*^2^[1, n = 40] = 23.81, *p* = <.001)
+
+#### Proportion of responses compared across groups (Fishers/Chi^2^ test) {#cs_rcat_ecat}
+
+##### Fisher's Exact Test (Small Sample Sizes / Summarised Data)
+**Our Data**
+
+German Shepherd Dogs suffer from hip dysplasia, a very painful condition. We know that more inbred dogs are more susceptible, and so we have followed 20 highly inbred dogs and 20 less inbred dogs and observed whether they developed the disease or not. As the prevalence is low (18% historically), we would not expect more than 3.6 dogs to develop dysplasia in either category (if it was left up to chance). For this reason, we should use **Fisher's Exact Test**, which is more robust for smaller sample sizes. 
+
+Of the inbred dogs, we've seen 4 cases of dysplasia. Of the less inbred dogs, we've seen 2 cases of dysplasia. Like before, we can test this without having any actual data in R:
+
+
+```{r message = FALSE, warning = FALSE}
+
+fisher.test(x = c(4,16), y = c(2,18))
+
+```
+
+We do need to calculate one more thing to add to our report,the odds ratio:
+
+```{r message = FALSE, warning = FALSE}
+
+(4+18) / (16 + 2)
+
+```
+
+And this is reported like so:
+
+> A Fisher's Exact Test found no significant difference in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dogs (OR = 1.2, 95% CI[0.02-Inf], *p* > .9)
+
+##### Chi^2^ Test (Larger Sample Sizes)
+
+**Our Data**
+
+This time we have observed more German Shepherd Dogs, a highly inbred line which we think will be more prone to hip dysplasia, and a less inbred line which we think will be less prone to hip dysplasia. For this dataset we will create a contingency table:
+
+```{r message = FALSE, warning = FALSE}
+
+gsd <- matrix(c(16, 84, 12, 86), 
+              ncol=2, 
+              byrow=TRUE,
+              dimnames = list(c("Dysplasia", "No Dysplasia"),
+                              c("Inbred", "Less Inbred")))
+
+```
+
+With a Chi^2^ test we often also want to calculate an effect size, and there's a handy package (`vcd`) which we can use to calculate Cramer's V. We'll calculate it here too. To interpret V, a small effect size is <0.10, a medium effect size < 0.30, and a large effect size is <0.50.
+
+```{r message = FALSE, warning = FALSE}
+
+chisq.test(gsd)
+
+#Odds Ratio
+(16 + 86) / (84 + 12)
+
+library(vcd)
+assocstats(gsd)
+
+```
+
+And report like so:
+
+> A Chi^2^ test found no significant different in the frequency of dysplasia occurring in highly inbred dogs versus less inbred dos (OR 1.06, *X^2^*[1, n = 198] = 0.307, *V* = .05, *p* = .579)
+
+
+### Categorical Response, Numerical Explanatory (Logistic Regression){#cs_rcat_enum}
+Logistic regression is a bit of a 'catch-all' phase, certainly in this chapter. It's also having its own day in the sun and is  now often called a form of machine learning. I have mixed feelings about this that we can't get into right now.
+
+
+If you're reading this chapter from top-to-bottom, this subheading will feel like a huge jump in difficulty. It is. We are beginning to step into the land of generalised linear models which are powerful statistical tools.  If you're very new to statistics and this is where your path has led you, you should really seek out advice from others. This is  getting into the fun, meaty parts of statistical theory. But I did say I'd walk you through it . . . 
+
+**Our Data**
+
+We have 21 German Shepherd Dogs. We took a measure of inflammation from their bodies, and then later recorded whether or not they were showing signs of hip dysplasia. We want to see if inflammation (a numerical score) can be used to predict whether the dogs will end up with hip dysplasia (a categorical variable, 0 = no signs, 1 = hip dysplasia).
+
+We will need to generate this data in R:
+
+```{r message = FALSE, warning = FALSE}
+dysp <- tibble(dysplasia = c(1, 1, 1, 1, 1, 1, 1,
+                              0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0),
+                inflammation =c(0.91, 0.79, 1.40, 0.71, 1.01, 0.77, 0.85,
+                                0.42, 1.02, 0.31, 0.05, 1.17, 0.04, 0.36, 
+                                0.12, 0.02, 0.05, 0.42, 0.92, 0.72,  1.05)) 
+
+```
+
+To run a binary logistic regression (predicting yes vs no from a numerical variable) we can use the `glm` command. We do need to take a few extra steps. For reporting we'll also make use of the `broom` package.
+
+```{r message = FALSE, warning = FALSE}
+
+logit <- glm(dysplasia ~ inflammation, data = dysp, family = "binomial")
+summary(logit)
+logLik(logit)
+exp(cbind(OddsRatio = coef(logit), confint(logit)))
+
+
+
+```
+
+And we could report this like so:
+
+> For each unit increase in inflammation, the odds of developing hip dysplasia increases by a factor of 32.7 in a binary logistic regression (Table 11.1)
+
+```{r message = FALSE, warning = FALSE}
+
+library(broom)
+
+tidy(logit) %>% 
+  mutate(OddsRatio = exp(coef(logit))) %>% 
+  select(term, estimate, std.error, statistic, OddsRatio, p.value ) %>% 
+  kable(caption = "Coefficient table for variables in binary logistic regression predicting hip dysplasia\nfrom inflammation markers in 21 German Shepard Dogs")
+
+```
+
+If you want to dig more deeply into logistic regressions, or model more predictor variables, I think [this link is good](https://stats.idre.ucla.edu/r/dae/logit-regression/). Remember to talk to your nearest friendly statistician. 
+
+
+
+## My response is a numerical variable {#cs_rnum}
+
+### Numerical Response, Historical/Known Comparisons (One Sample t-Test) {#cs_rnum_hist}
+
+**Our Data**
+
+The dataset `trees` gives us the height in feet of 31 black cherry trees. We want to know if these trees differ from a historical average height of 80ft. The t test command in R is simplistic, and so we do need to calculate the mean of height (`mu`) in addition to the t test to report properly. 
+
+```{r message = FALSE, warning = FALSE}
+
+t.test(trees$Height, mu = 80)
+
+trees %>% 
+  summarise(mean= mean(Height),
+            sd = sd(Height))
+
+
+```
+
+We would report this like so:
+
+> The mean height (76ft +/- 6.37) for black cherry trees was smaller than the historical average of 80ft in a one-sample t-test (*t*(30) = -3.50, *p* = .001)
+
+### Numerical Response (Repeated Measures), Categorical Explanatory (Paired t-Test) {#cs_rnum_ecat_r}
+
+**Our Data**
+
+In this example we have 10 housecats who we put on a special weight-loss diet. We weigh them before the diet and after, and we want to see if they have lost any weight. We can do this with a *paired t-test*.
+
+
+```{r message = FALSE, warning = FALSE}
+
+diet <- tibble (before = c(5.04, 4.63, 4.04, 5.10, 5.43, 4.83, 3.45, 3.49, 5.02, 4.81),
+                after = c( 4.78, 2.49, 4.46, 2.03, 5.13, 7.23, 3.50, 1.89, 3.30, 3.91))
+
+diet %>% 
+  summarise(b_mean = mean(before),
+            a_mean = mean(after),
+            b_sd = sd(before),
+            a_sd = sd(after))
+
+t.test(diet$before, diet$after, paired = TRUE, alternative = "two.sided")
+
+```
+
+> After being on the weight-loss diet, cats weighed 3.9kg (+/- 1.62kg SD), compared to a mean weight of 4.6kg (+/- 0.69kg SD) before going on the diet, but this difference of 0.71kg (95% CI [-0.39, 1.81]) was not statistically significant in a paired t-test (*t*(9) = 1.46, *p* = .178)
+
+### Numerical Response, Categorical Explanatory (ANOVA/GLM){#cs_rnum_ecat}
+
+Traditionally, depending on how many explanatory variables you have and whether your design is balanced or unbalanced, you would select a different type of test, leading up to a general linear model as the most flexible form. 
+
+   * One explanatory factor = 1 way ANOVA
+   
+   * Two explanatory factors and balanced design = 2-way ANOVA
+   
+   * Three or more explanatory factor or unbalanced design = general linear model (glm)
+
+I  like using the [Grafen and Hails](https://global.oup.com/uk/orc/biosciences/maths/grafen/) approach to statistics, and considering all ANOVAs to be a glm. I am fundamentally lazy, and don't like to remember three separate things when one model will do it all for me. Real statisicians may cry at this. 
+
+
+**Our data**
+
+Let's use the `chickwts` data to explore this. `chickwts` describes a simple experiment with six different feedtypes and the weights of the chicks fed on them. We are looking for the feedtype which provides the heaviest chick on average. 
+
+**As an ANOVA**
+
+The basic steps of running a one-way ANOVA test is to create the model, inspect the model, check the model assumptions with a residual plot, and run pairwise comparisons to define the difference between the levels. Its also very difficult to interpret this without a plot so we'll add on of those to our interpretation.
+
+
+```{r message = FALSE, warning = FALSE}
+
+chk_a <- aov(weight ~ feed, data = chickwts)
+
+plot(chk_a, 1)
+
+summary(chk_a)
+TukeyHSD(chk_a)
+```
+
+
+
+We first inspect the plot to ensure the residuals are normally distributed. If we saw a pattern here we would know that the model is consistently underfitting or overfitting some observations, and that one of the ANOVA's key assumptions had not been met (in this case there are many future options but you really should be talking to a statistician or friendly peer at this point). 
+
+> There was a significant effect of feedtype on chick weight in a one-way ANOVA (*F*^(5,65)^ = 15.37, *p* <.001, Figure 11.1). Post-hoc comparisons with Tukeys HSD found variety in performance, with sunflower feeds significantly outperformed soybean (82g, *p* = .003) linseed (110g, *p* <.001), and horsebean (168g, *p* <.001). Casein diets outperform horsebean (163g, *p* <.001), linseed (105g, *p* <.001), and soybean (77g, *p* = .008). Meatmeal outperforms horsebean (117g, *p* <.001) and soybean outperformed horsebean (86g, *p* = .004).
+
+```{r message = FALSE, warning = FALSE, fig.align="center", fig.cap = "Chick weight (g) per feed type, data from 'chickwts'"}
+chickwts %>% 
+  ggplot(aes(x = reorder(feed, -weight), y = weight)) +
+  geom_boxplot()+
+  theme_classic() +
+  labs(y = "Weight (g)",
+       x = "Feedtype")
+
+```
+
+
+
+**As a linear model**
+
+The `lm` argument fits linear models and can do ANOVAs and regressions. Its my preferred way of running this kind of analysis, partly because I think the R^2^ number (a measure of how good a 'fit' the model is) is a really useful way to help present the data. We can also use the `broom` package for extra reporting and to visualise effects.
+
+```{r message = FALSE, warning = FALSE}
+
+chk_l <- lm(weight ~ feed, data = chickwts)
+summary(chk_l)
+
+library(broom)
+chk_l %>% 
+  tidy() %>% 
+  ggplot(aes(x = reorder(term, - estimate), y = estimate)) +
+  geom_point(aes(colour = term, shape = term)) +
+  geom_errorbar(aes(x = term, ymin = estimate-std.error, ymax = estimate+std.error, colour = term)) +
+  theme_classic()
+
+```
+
+> Feedtype had a significant effect in a linear model, explaining 51% of the variance observed in chick weight. (*F*^(5,65)^ = 15.36, *p* < .001). Meatmeal had a moderately lower weight gain than casein (*t* = -2.04 *p* = .046), soybean (*t* = -3.58, *p* = < .001), linseed (*t* = -4.68, *p* < .001), and horsebean (*t* = -6.96, *p* <.001) all had much lower weight gains. There was no significant difference between the casein diet and the sunflower diet (*t* = 0.24, *p* = .812).
+
+
+
+
+
+### Numerical Response, Numerical Explanatory (Correlation & Regression) {#cs_rnum_enum}
+    
+**Our data**
+
+We will use the trusty `cars` dataset which describes the speed (mph) and stopping distance (ft) of cars in the 1920s to talk about two types of test, **Pearson's correlation** and **linear regression**.
+
+
+**As Pearson's correlation**
+
+As many, many, [many](https://xkcd.com/552/) folk say, *correlation is not causation*. In statistical terms, that means that correlation does not aim to predict y from x, only to see if there is an underlying structure to the variation.
+
+```{r message = FALSE, warning = FALSE}
+
+cor.test(x = cars$speed, y = cars$dist, alternative = "two.sided", method = "pearson")
+
+```
+
+> Speed has a strong, positive association with the stopping distance of cars in a correlation (*r* = .81, 95%CI[.68, .89], *t^(48)^* = 9.46, *p* <.001).
+
+**As a regression**
+
+In a linear model, we can be more definitive in our reporting.
+
+```{r message = FALSE, warning = FALSE}
+
+carm <- lm(dist ~ speed, data = cars)
+summary(carm)
+
+```
+
+> Stopping distance increased by 3.9ft for every mph faster the car travelled at (*R^2^* = 64%, *F^(1,48)^* = 89.6, *p*<.001)
+
+
+## My response is an ordinal variable {#cs_rord}
+
+### Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test) {#cs_rord_hist}
+**Our data**
+
+In this example we have student ratings of this textbook from 1 (very unsatisfied) to 5 (very satisfied). We're hoping that at the very least, people are satisfied, and have ranked the book a 4. For this we can use the *One Sample Wilcoxan Test*, but we need to calculate an additional step, the median.
+
+```{r message = FALSE, warning = FALSE}
+
+ratings <- tibble(satisfaction = c(1,2,1,1,3,2,1,5,1,2,5,1,2,3,3,1,3))
+
+ratings %>% 
+  summarise(median = median(satisfaction))
+
+
+wilcox.test(ratings$satisfaction, mu = 4)
+
+
+```
+> The textbook achieved a medium score of '2', or 'unsatisfied' from students, which was significantly lower than the desired median score of '4' or 'satisfied' in a one-sample Wilcoxan test (*V* = 7, *p* = <.001).
+
+### Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test) {#cs_rord_ecat_r}
+**Our data**
+
+In this example we have student ratings of this textbook from 1 (very unsatisfied) to 5 (very satisfied). We made some changes to the book after the first set of reviews and we're hoping the same students will now score the book higher. For this we can use the *Wilcoxan Signed Rank Test*, but we need to calculate an additional step, the median.
+
+```{r message = FALSE, warning = FALSE}
+
+ratings <- tibble(satisfaction1 = c(1,2,1,1,3,2,1,5,1,2,5,1,2,3,3,1,3),
+                  satisfaction2 = c(1,4,2,3,3,3,2,5,2,4,5,3,3,3,4,1,3))
+
+ratings %>% 
+  summarise(satis1 = median(satisfaction1),
+            satis2 = median(satisfaction2))
+
+
+wilcox.test(x = ratings$satisfaction1, ratings$satisfaction2, paired = TRUE, alternative = "two.sided")
+
+
+```
+
+> After revisions, the textbook received a median score of '3' (undecided), which was significantly higher than the before revision median score of '2' (unsatisfied) in a Wilcoxan Signed Rank Test (*V* = 0, *p* = .005).
+
+
+
+
+### Ordinal Response, Categorical Explanatory {#cs_rord_ecat}
+
+**Our data**
+
+In this example, we have measured student satisfaction with their R teaching on a 5-point scale from 1 (very unsatisfied) to 5 (very satisfied). We have three conditions, students who searched their own materials (self-taught), students who received this textbook (textbook), and students who received the textbook plus tutorials (textbook plus). We want to know which students were most satisfied. For this we can use a **Kruskal-Wallis test**. We can use two more functions, `kruskalmc` from `library(pgirmess)` and `jonckheere.test` from `library(clinfun)` to help us interpret the data. [Jonkheere-Terpstra](https://statistics.laerd.com/spss-tutorials/jonckheere-terpstra-test-using-spss-statistics.php) tests are technically a different type of test, but are useful in exploring how ordered differences occur, e.g. in this case we expect that each intervention will  improve student satisfaction, and that textbook-plus will be better than textbook, which itself will be better than self-taught. 
+
+
+```{r message = FALSE, warning = FALSE}
+
+library(clinfun)
+library(pgirmess)
+
+textbk <- tibble(self_taught = c(1,2,1,1,3,2,1,5,1,2,5,1,2,3,3,1,3),
+                 textbook= c(1,4,2,3,3,3,2,5,2,4,5,3,3,3,4,1,3),
+                 textbook_plus = c( 3, 2, 3, 3, 3, 3, 2, 4, 4, 5, 3, 4, 4, 5, 4, 5, 3)) %>% 
+  pivot_longer(cols = c(self_taught:textbook_plus),
+               names_to = "condition",
+               values_to = "score")
+
+
+
+kruskal.test(score ~ condition, textbk)
+kruskalmc(score ~ condition, textbk, cont = "two-tailed")
+jonckheere.test(textbk$score, as.numeric(as.factor(textbk$condition))) 
+
+```
+
+> Student satisfaction increased significantly with intervention (*H^(2)^ = 10.5, *p* = .005), with textbook-plus showing a significant difference (*p*<.05) from self-taught, but no difference between self-taught and textbook (*p*>.05). The directionality of effect was significant in a Jonckheere-Terpstra test (*T* = 616, *p* = .002, Figure 11.2)
+
+
+```{r, message = FALSE, warning = FALSE, fig.cap = "Student satisfaction by teaching method", fig.align="center"}
+
+textbk %>% 
+  ggplot(aes(x = condition, y = score)) +
+  geom_boxplot()+
+  theme_classic() +
+  scale_y_continuous(breaks = seq(1,5,1), limits = c(1,5), labels = c("Very unsatisfied", "Unsatisfied", "Not sure",
+                                                                  "Satisfied", "Very satisfied")) +
+  scale_x_discrete(labels = c("Self-Taught", "Textbook", "Textbook plus lecture")) +
+  labs(x = "Teaching Method", y = "Score")
+
+```
+
+### Ordinal Response, Numerical Explanatory (Spearman rank correlation){#cs_rord_rnum}
+
+**Our data**
+
+When you have an ordinal response and either a numerical explanatory or an ordinal explanatory variable, a *Spearman rank correlation* is probably for you. A Spearman rank correlation is exactly the same as a [Pearson](#cs_rnum_enum) correlation, but the data is ranked (or ordered) before the calculation is run. Spearman rank correlations are therefore often used for skewed data. 
+
+Let's say we have 15 students who have ranked their satisfaction with the course (from 1, "Very unsatisfied" to 5, "Very satisfied") and their grades (E, "very poor", to A "excellent"). We think students who are very satisfied will have higher grades. 
+```{r message = FALSE, warning = FALSE}
+
+grades <- tibble(satisfaction = c(1, 5, 2, 1, 1, 5, 4, 5, 4, 5, 5, 3, 4, 3, 1),
+                 grade = c(1, 4, 1,2, 1, 4, 5, 5, 5, 4, 3, 3, 2, 2,1 ))
+
+cor.test(grades$satisfaction, grades$grade,method = "spearman")
+
+```
+
+> Student satisfaction was strongly positively associated with grade (*r~s~* = .78,*p*<.001)
+
+
+## I got all of them (generalised linear model){#cs_glms}
+
+If your data is looking extremely complicated, and you have multiple explanatory variables, you likely want a glm. At this point you really should consult a statistician and start thinking seriously about your model assumptions . . .
+
+
+
+
+
+
