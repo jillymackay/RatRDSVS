@@ -140,7 +140,7 @@ We have 40 German Shepherd dogs, some of whom already present with dysplasia, a 
 
 ```{r message = FALSE, warning = FALSE}
 
-work <- matrix(c(2, 38, 5, 35), 
+work <- matrix(c(2, 5, 38, 35), 
               ncol=2, 
               byrow=TRUE,
               dimnames = list(c("Dysplasia", "No Dysplasia"),
@@ -194,7 +194,7 @@ This time we have observed more German Shepherd Dogs, a highly inbred line which
 
 ```{r message = FALSE, warning = FALSE}
 
-gsd <- matrix(c(16, 84, 12, 86), 
+gsd <- matrix(c(16, 12, 84, 86), 
               ncol=2, 
               byrow=TRUE,
               dimnames = list(c("Dysplasia", "No Dysplasia"),
