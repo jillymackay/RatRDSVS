@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-02-16" />
+<meta name="date" content="2021-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -486,18 +486,18 @@ Next you <strong>load into library</strong>.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="start.html#cb24-1"></a><span class="kw">slice</span>(starwars)</span></code></pre></div>
 <p>Which should give you this:</p>
 <pre><code>## # A tibble: 87 x 14
-##    name         height  mass hair_color   skin_color  eye_color birth_year sex   gender  homeworld species films   vehicles starships
-##    &lt;chr&gt;         &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   &lt;list&gt;  &lt;list&gt;   &lt;list&gt;   
-##  1 Luke Skywal~    172    77 blond        fair        blue            19   male  mascul~ Tatooine  Human   &lt;chr [~ &lt;chr [2~ &lt;chr [2]&gt;
-##  2 C-3PO           167    75 &lt;NA&gt;         gold        yellow         112   none  mascul~ Tatooine  Droid   &lt;chr [~ &lt;chr [0~ &lt;chr [0]&gt;
-##  3 R2-D2            96    32 &lt;NA&gt;         white, blue red             33   none  mascul~ Naboo     Droid   &lt;chr [~ &lt;chr [0~ &lt;chr [0]&gt;
-##  4 Darth Vader     202   136 none         white       yellow          41.9 male  mascul~ Tatooine  Human   &lt;chr [~ &lt;chr [0~ &lt;chr [1]&gt;
-##  5 Leia Organa     150    49 brown        light       brown           19   fema~ femini~ Alderaan  Human   &lt;chr [~ &lt;chr [1~ &lt;chr [0]&gt;
-##  6 Owen Lars       178   120 brown, grey  light       blue            52   male  mascul~ Tatooine  Human   &lt;chr [~ &lt;chr [0~ &lt;chr [0]&gt;
-##  7 Beru Whites~    165    75 brown        light       blue            47   fema~ femini~ Tatooine  Human   &lt;chr [~ &lt;chr [0~ &lt;chr [0]&gt;
-##  8 R5-D4            97    32 &lt;NA&gt;         white, red  red             NA   none  mascul~ Tatooine  Droid   &lt;chr [~ &lt;chr [0~ &lt;chr [0]&gt;
-##  9 Biggs Darkl~    183    84 black        light       brown           24   male  mascul~ Tatooine  Human   &lt;chr [~ &lt;chr [0~ &lt;chr [1]&gt;
-## 10 Obi-Wan Ken~    182    77 auburn, whi~ fair        blue-gray       57   male  mascul~ Stewjon   Human   &lt;chr [~ &lt;chr [1~ &lt;chr [5]&gt;
+##    name             height  mass hair_color    skin_color  eye_color birth_year sex    gender   homeworld species films    vehicles starships
+##    &lt;chr&gt;             &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;   &lt;list&gt;   &lt;list&gt;   &lt;list&gt;   
+##  1 Luke Skywalker      172    77 blond         fair        blue            19   male   masculi~ Tatooine  Human   &lt;chr [5~ &lt;chr [2~ &lt;chr [2]&gt;
+##  2 C-3PO               167    75 &lt;NA&gt;          gold        yellow         112   none   masculi~ Tatooine  Droid   &lt;chr [6~ &lt;chr [0~ &lt;chr [0]&gt;
+##  3 R2-D2                96    32 &lt;NA&gt;          white, blue red             33   none   masculi~ Naboo     Droid   &lt;chr [7~ &lt;chr [0~ &lt;chr [0]&gt;
+##  4 Darth Vader         202   136 none          white       yellow          41.9 male   masculi~ Tatooine  Human   &lt;chr [4~ &lt;chr [0~ &lt;chr [1]&gt;
+##  5 Leia Organa         150    49 brown         light       brown           19   female feminine Alderaan  Human   &lt;chr [5~ &lt;chr [1~ &lt;chr [0]&gt;
+##  6 Owen Lars           178   120 brown, grey   light       blue            52   male   masculi~ Tatooine  Human   &lt;chr [3~ &lt;chr [0~ &lt;chr [0]&gt;
+##  7 Beru Whitesun l~    165    75 brown         light       blue            47   female feminine Tatooine  Human   &lt;chr [3~ &lt;chr [0~ &lt;chr [0]&gt;
+##  8 R5-D4                97    32 &lt;NA&gt;          white, red  red             NA   none   masculi~ Tatooine  Droid   &lt;chr [1~ &lt;chr [0~ &lt;chr [0]&gt;
+##  9 Biggs Darklight~    183    84 black         light       brown           24   male   masculi~ Tatooine  Human   &lt;chr [1~ &lt;chr [0~ &lt;chr [1]&gt;
+## 10 Obi-Wan Kenobi      182    77 auburn, white fair        blue-gray       57   male   masculi~ Stewjon   Human   &lt;chr [6~ &lt;chr [1~ &lt;chr [5]&gt;
 ## # ... with 77 more rows</code></pre>
 <p>Now we have a new dataset (<code>starwars</code>) and a new thing we can do (<code>slice</code> the top of the data). We will talk much more about <code>tidyverse</code> in the <a href="data.html#data">data chapter</a>.</p>
 <div class="hey">

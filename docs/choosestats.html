@@ -24,7 +24,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-02-16" />
+<meta name="date" content="2021-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -478,7 +478,7 @@ I will note here all the packages that are used in this chapter, and highlight t
 <h4><span class="header-section-number">11.2.2.1</span> Categorical Response (Repeated Measures) Categorical Explanatory, McNemar’s Test</h4>
 <p><strong>Our Data</strong></p>
 <p>We have 40 German Shepherd dogs, some of whom already present with dysplasia, a painful condition. We’re concerned that after a season of work more dogs will develop dysplasia, and want to see if this is true. For this dataset we will create a contingency table:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="choosestats.html#cb194-1"></a>work &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">38</span>, <span class="dv">5</span>, <span class="dv">35</span>), </span>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="choosestats.html#cb194-1"></a>work &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">38</span>, <span class="dv">35</span>), </span>
 <span id="cb194-2"><a href="choosestats.html#cb194-2"></a>              <span class="dt">ncol=</span><span class="dv">2</span>, </span>
 <span id="cb194-3"><a href="choosestats.html#cb194-3"></a>              <span class="dt">byrow=</span><span class="ot">TRUE</span>,</span>
 <span id="cb194-4"><a href="choosestats.html#cb194-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),</span>
@@ -525,7 +525,7 @@ I will note here all the packages that are used in this chapter, and highlight t
 <h5><span class="header-section-number">11.2.2.2.2</span> Chi<sup>2</sup> Test (Larger Sample Sizes)</h5>
 <p><strong>Our Data</strong></p>
 <p>This time we have observed more German Shepherd Dogs, a highly inbred line which we think will be more prone to hip dysplasia, and a less inbred line which we think will be less prone to hip dysplasia. For this dataset we will create a contingency table:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="choosestats.html#cb201-1"></a>gsd &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">84</span>, <span class="dv">12</span>, <span class="dv">86</span>), </span>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="choosestats.html#cb201-1"></a>gsd &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">12</span>, <span class="dv">84</span>, <span class="dv">86</span>), </span>
 <span id="cb201-2"><a href="choosestats.html#cb201-2"></a>              <span class="dt">ncol=</span><span class="dv">2</span>, </span>
 <span id="cb201-3"><a href="choosestats.html#cb201-3"></a>              <span class="dt">byrow=</span><span class="ot">TRUE</span>,</span>
 <span id="cb201-4"><a href="choosestats.html#cb201-4"></a>              <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;Dysplasia&quot;</span>, <span class="st">&quot;No Dysplasia&quot;</span>),</span>
