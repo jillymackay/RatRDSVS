@@ -92,7 +92,7 @@ We always want to visualise our data first - but just knowing weight isn't that 
 
 ```{r warning = FALSE, message = FALSE, fig.cap="Weight (kg) of 12 heifers",  fig.align = 'center'}
 
-coos %>% 
+coos |> 
   ggplot(aes(x = heifer_id, y = weight, colour = as.factor(heifer_id))) +
   geom_point() +
   scale_y_continuous(limits = c(0, 250)) +
@@ -109,7 +109,7 @@ There's not much that we can say about this chart. Most heifers seem to weigh ar
 
 ```{r warning = FALSE, message = FALSE, fig.cap="Weight (kg) of 12 heifers, with a human-estimated best fit line",  fig.align = 'center'}
 
-coos %>% 
+coos |> 
   ggplot(aes(x = heifer_id, y = weight, colour = as.factor(heifer_id))) +
   geom_point() +
   scale_y_continuous(limits = c(0, 250)) +
@@ -136,7 +136,7 @@ We get the exact same value as if we asked R to calculate the mean directly (usi
 
 ```{r warning = FALSE, message = FALSE}
 
-coos %>% 
+coos |> 
   summarise(mean(weight))
 
 ```
@@ -185,7 +185,7 @@ There are other imagniary cows we could build to represent our dataset.
 
 ```{r warning = FALSE, message = FALSE, fig.cap="Weight (kg) distribution of 12 heifers",  fig.align = 'center'}
 
-coos %>% 
+coos |> 
   ggplot(aes(y = weight)) +
   geom_boxplot() +
   theme_classic() +
@@ -207,7 +207,7 @@ Now the formula for the median is a little more complicated than I want to get i
 
 ```{r warning  = FALSE, message = FALSE}
 
-coos %>% 
+coos |> 
   arrange(weight)
 
 ```
@@ -216,7 +216,7 @@ And then we pick the middle value. We have 12 cows, so our two middle values are
 
 ```{r, warning = FALSE, message = FALSE}
 
-coos %>% 
+coos |> 
   summarise(median_weight = median(weight))
 
 ```
@@ -233,7 +233,7 @@ mode <- function(v) {
    uniqv[which.max(tabulate(match(v, uniqv)))]
 }
 
-coos %>% 
+coos |> 
   summarise(mode_weight= (mode(weight)))
 
 ```
@@ -268,7 +268,7 @@ We've already [looked at ways to visualise distributions](#vis_hist), but lets r
 
 ```{r, warning = FALSE, message = FALSE, fig.cap="A histogram of heifer weight",  fig.align = 'center'}
 
-coos %>% 
+coos |> 
   ggplot(aes(x = weight)) +
   geom_histogram(binwidth = 10) +
   theme_classic()
@@ -280,7 +280,7 @@ The histogram shows us how many cows are in each weight category (or 'bin'). We 
 
 ```{r, warning = FALSE, message = FALSE, fig.cap="A histogram of heifer weight(kg), mean, median and mode shown",  fig.align = 'center'}
 
-coos %>% 
+coos |> 
   ggplot(aes(x = weight)) +
   geom_histogram(binwidth = 10) +
   theme_classic() +
@@ -303,7 +303,7 @@ If we drew a line representing the mean ($\overline{x}$) on our scatteplot of ea
 
 ```{r warning = FALSE, message = FALSE, fig.cap="Weight (kg) of 12 heifers, with a mean line",  fig.align = 'center'}
 
-coos %>% 
+coos |> 
   ggplot(aes(x = heifer_id, y = weight, colour = as.factor(heifer_id))) +
   geom_point() +
   scale_y_continuous(limits = c(0, 250)) +
@@ -323,7 +323,7 @@ We can calculate the variance of the cows' weight very easily:
 
 ```{r, warning = FALSE, message = FALSE}
 
-coos %>% 
+coos |> 
   summarise(variance = var(weight))
 
 ```
@@ -361,7 +361,7 @@ We can of course calculate this:
 
 ```{r, message = FALSE, warning = FALSE}
 
-coos %>% 
+coos |> 
   summarise(standard_deviation = sd(weight))
 
 ```
@@ -379,7 +379,7 @@ Breaking this equation down ...
 
   * $\sigma$ is the symbol for standard deviation
   
-  * $\sum(x-\overline{x})^2$ means 'take each value of $x$ and subtract the mean ($\overline{x$}). Square this value ($^2$) and add them all together ($\sum$)
+  * $\sum(x-\overline{x})^2$ means 'take each value of $x$ and subtract the mean ($\overline{x}$). Square this value ($^2$) and add them all together ($\sum$)
   
   * Divide this value by the total number in the sample, minus 1 ($n-1$)
   
@@ -447,7 +447,7 @@ And like always, we can calculate this, although there's no inbuilt function to 
 
 ```{r message = FALSE, warning = FALSE}
 
-coos %>% 
+coos |> 
   summarise (standard_error_mean = sd(weight)/sqrt(length(weight)))
 
 ```
@@ -463,7 +463,7 @@ Lets calculate all of these things in one table:
 
 ```{r message = FALSE, warning = FALSE}
 
-coos %>% 
+coos |> 
   summarise(median_weight = median(weight),
             mode_weight = mode(weight),
             mean_weight = mean(weight),
@@ -485,7 +485,7 @@ The type of model you choose is entirely up to you. There's no 'perfect' answer,
 
 ```{r warning = FALSE, message = FALSE, fig.cap="Weight (kg) distribution of 12 heifers, mean = 210.6kg +/- 10.88kg",  fig.align = 'center'}
 
-coos %>% 
+coos |> 
   ggplot(aes(y = weight)) +
   geom_boxplot() +
   theme_classic() +

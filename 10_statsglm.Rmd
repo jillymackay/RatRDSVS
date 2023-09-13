@@ -61,7 +61,7 @@ First, let's visualise the perfect world:
 
 ```{r, message = FALSE, warning = FALSE, fig.cap = "100% of the variation in y is explained by x", fig.align = "center"}
 
-examples %>% 
+examples |> 
   ggplot (aes(x = x.perfect, y = y.perfect))+
   geom_point () +
   scale_y_continuous(limits =c(0,10)) +
@@ -83,7 +83,7 @@ How does it look with (slightly) more realistic data?
 
 ```{r, message = FALSE, warning = FALSE, fig.cap = "A more realistic example", fig.align = "center"}
 
-examples %>% 
+examples |> 
   ggplot (aes(x = x.realistic, y = y.realistic))+
   geom_point () +
   scale_y_continuous(limits =c(0,10)) +
@@ -191,7 +191,7 @@ And if we wanted, we could add this to our plot from earlier with the addition o
 
 ```{r, message = FALSE, warning = FALSE, fig.cap = "y.realstic and x.realistic with a fit line", fig.align = "center"}
 
-examples %>% 
+examples |> 
   ggplot (aes(x = x.realistic, y = y.realistic))+
   geom_point () +
   scale_y_continuous(limits =c(0,10)) +
@@ -249,7 +249,7 @@ Try creating a new dataset caled `RadioTidy` yourself. `RadioTidy` should have t
 
 ```{r echo = FALSE, message = FALSE, warning=FALSE}
 
-RadioTidy <- Radio %>% 
+RadioTidy <- Radio |> 
   pivot_longer(cols = c(NoRadio:RadioDiscussion),
                names_to = "Radio",
                values_to = "DustYield")
@@ -269,7 +269,7 @@ We know we should start by visualising our data, but in this example I'm going t
 
 ```{r message = FALSE, warning = FALSE, fig.cap="Magic Dust Yield (kg) by Unicorn Farm", fig.align = "center"}
 
-RadioTidy %>% 
+RadioTidy |> 
   ggplot (aes (x = Radio, y = DustYield)) + 
      geom_point(aes(shape = Radio, colour = Radio)) +
      labs (y = "Dust Yield (Kg)", x = "Radio Condition") +
@@ -291,8 +291,8 @@ Let’s start by looking at only one farm (note - you wouldn't be likely to do t
 
 ```{r, warning = FALSE, message = FALSE, fig.cap = "Magic dust yield (kg) for Farm 1", fig.align = "center"}
 
-Radio %>%
-  mutate(UnicornNo = c(1,2,3,4,5,6,7,8,9,10)) %>% 
+Radio |>
+  mutate(UnicornNo = c(1,2,3,4,5,6,7,8,9,10)) |> 
   # The mutate function adds a new variable just to plot this one specific chart
   # And then we pipe it directly into ggplot, so we're not changing the Radio data
   # Remember you can check this with `View(Radio)`, you'll see 'UnicornNo' doesn't exist.
@@ -310,9 +310,9 @@ Deviations from the mean will be both positive and negative, and the sum of thes
 
 ```{r, message = FALSE, warning = FALSE}
 
-RadioTidy %>%
-  group_by(Radio) %>%
-  filter(Radio == "NoRadio") %>%
+RadioTidy |>
+  group_by(Radio) |>
+  filter(Radio == "NoRadio") |>
   summarise(mean = mean(DustYield))
 
 ```
@@ -325,8 +325,8 @@ We could plot this mean on our chart with an extra line of code:
 ```{r, message = FALSE, warning = FALSE, fig.cap = "Magic dust yield (kg) for Farm 1, Mean Line Added", fig.align = "center"}
 
 
-Radio %>%
-  mutate(count = c(1,2,3,4,5,6,7,8,9,10)) %>%
+Radio |>
+  mutate(count = c(1,2,3,4,5,6,7,8,9,10)) |>
   ggplot (aes (x = count, y = NoRadio)) + 
   geom_point() +
   labs (y = "Dust Yield (Kg)") +
@@ -345,7 +345,7 @@ We want to know what the deviation from the mean of the group is for each indivi
 
 ```{r, message = FALSE, warning = FALSE}
 
-Radio %>%
+Radio |>
   mutate (NoRadioDeviation = (mean(NoRadio) - NoRadio)) 
 
 ```
@@ -355,8 +355,8 @@ You can check that the sum of NoRadioDeviation does add to zero (or at least ver
 
 ```{r, message = FALSE, warning = FALSE}
 
-Radio %>%
-  mutate (NoRadioDeviation = (mean(NoRadio) - NoRadio)) %>%
+Radio |>
+  mutate (NoRadioDeviation = (mean(NoRadio) - NoRadio)) |>
   summarise ("Sum of Deviations from No Radio Mean" = sum(NoRadioDeviation))
 
 ```
@@ -379,7 +379,7 @@ If we square the deviations and then sum them we have a more useful measure of v
 
 
 ```{r, message = FALSE, warning = FALSE}
-Radio %>%
+Radio |>
   mutate (NoRadioDeviation = (mean(NoRadio) - NoRadio),
           SquaredNoRadioDeviation = (NoRadioDeviation*NoRadioDeviation))
 ```
@@ -398,7 +398,7 @@ R, we know, has a very handy function to calculate variance automatically:
 
 ```{r, message =FALSE, warning = FALSE}
 
-Radio %>%
+Radio |>
   summarise("Variance No Radio" = var(NoRadio))
   
 ```
@@ -407,11 +407,11 @@ Radio %>%
 But if you’re not convinced . . . 
 
 
-````{r, message= FALSE, warning = FALSE}
+```{r, message= FALSE, warning = FALSE}
 
-Radio %>%
+Radio |>
   mutate (NoRadioDeviation = (mean(NoRadio) - NoRadio),
-          SquaredNoRadioDeviation = (NoRadioDeviation*NoRadioDeviation)) %>%
+          SquaredNoRadioDeviation = (NoRadioDeviation*NoRadioDeviation)) |>
   summarise(SumSquaresNoRadio = sum(SquaredNoRadioDeviation))
 ```
 
@@ -441,15 +441,15 @@ It would look like this:
 ```{r, warning =FALSE, message = FALSE}
 Sce1 <- tibble (Condition1 = c(99,100,101,99,100,101,99,101,100,101),
               Condition2 = c(120,121,122,120,121,122,120,123,121,120),
-              Condition3 = c(83,84,85,85,84,83,83,84,85,86)) %>%
-  pivot_longer (cols = c(Condition1:Condition3), names_to = "Condition", values_to = "DustYield") %>%
+              Condition3 = c(83,84,85,85,84,83,83,84,85,86)) |>
+  pivot_longer (cols = c(Condition1:Condition3), names_to = "Condition", values_to = "DustYield") |>
   mutate (Count = c(1:30)) 
   
   
 # In the code above I've gathered the data into a tidy format 
 
 
-ImaginaryScenario1 <- Sce1 %>%
+ImaginaryScenario1 <- Sce1 |>
   ggplot (aes (x = Count, y = DustYield)) + 
   geom_point(aes(shape = Condition, colour = Condition)) +
   labs (y = "Dust Yield (Kg)", x = "Unicorn ID Number") +
@@ -474,8 +474,8 @@ ImaginaryScenario1 +
 Let's compare the overall mean with the group means, and see which one is the best guess for any given data point. Remember - if the condition is explaining a lot of the variation around our response, we'll see less deviation from each group mean than the overall mean. 
 
 ```{r, warning = FALSE, message = FALSE}
-Sce1 %>%
-  group_by(Condition) %>%
+Sce1 |>
+  group_by(Condition) |>
   summarise(mean = mean (DustYield))
   
 ImaginaryScenario1 +
@@ -493,19 +493,19 @@ So let's look at a second scenario:
 ```{r, warning = FALSE, message = FALSE}
 Sce2<-tibble (Condition1 = c(84,86,123,95,87,110,99,95,121,121),
               Condition2 = c(83,115,85,85, 110,105,84,115,101,100),
-              Condition3 = c(84,122,80,80,101,83,83,99, 120,120)) %>%
-  pivot_longer (cols = c(Condition1:Condition3), names_to = "Condition", values_to = "DustYield") %>%
+              Condition3 = c(84,122,80,80,101,83,83,99, 120,120)) |>
+  pivot_longer (cols = c(Condition1:Condition3), names_to = "Condition", values_to = "DustYield") |>
   mutate (Count = c(1:30)) 
   
-Sce2 %>%
-  group_by(Condition) %>%
+Sce2 |>
+  group_by(Condition) |>
   summarise(mean = mean (DustYield))
 ```
 
 Now we chart it, and add our segment lines for each group's mean:
 
 ```{r, message = FALSE, warning = FALSE, fig.align = "center"}
-Sce2 %>%
+Sce2 |>
   ggplot (aes (x = Count, y = DustYield)) + 
   geom_point(aes(shape = Condition, colour = Condition)) +
   labs (y = "Dust Yield (Kg)", x = "Unicorn ID Number") +
@@ -527,8 +527,8 @@ If we plot our unicorn data in the same format:
 
 ```{r, warning = FALSE, message = FALSE}
 
-RadioTidy %>%
-  mutate(count = c(1:30)) %>%
+RadioTidy |>
+  mutate(count = c(1:30)) |>
   ggplot (aes (x = count, y = DustYield)) + 
   geom_point(aes(shape = Radio, colour = Radio)) +
   labs (title = "Magic Dust Yield(kg)", y = "Dust Yield (Kg)", x = "Unicorn ID Number") +
@@ -562,12 +562,12 @@ Let's rearrange our data so we have for each 'row' the condition mean and total 
   * Y is the 'response variable'
 
 ```{r, message = FALSE, warning = FALSE}
-MFY <- RadioTidy %>%
-  mutate ("Y" = DustYield) %>%
-  mutate ("M" = mean(Y)) %>%
+MFY <- RadioTidy |>
+  mutate ("Y" = DustYield) |>
+  mutate ("M" = mean(Y)) |>
   # If we now ask R to group the data, it will calculate the mean per group:
-  group_by(Radio) %>%
-  mutate ("F" = mean(Y)) %>%
+  group_by(Radio) |>
+  mutate ("F" = mean(Y)) |>
   # Remember to ungroup after!
   ungroup() 
 #  I suggest you View(MFY)
@@ -582,7 +582,7 @@ We can also calculate:
   * FY (The data - condition mean)
 
 ```{r, message = FALSE, warning = FALSE}
-MFY <- MFY %>%
+MFY <- MFY |>
  mutate (MY = (Y-M),
          MF = (F-M),
          FY = (Y - F))
@@ -591,7 +591,7 @@ MFY <- MFY %>%
 We've calculated a lot of deviations here - but we said we always wanted to square those deviations, so:
 
 ```{r, message = FALSE, warning = FALSE}
-MFY <- MFY %>%
+MFY <- MFY |>
   mutate (MY2 = (MY*MY),
           MF2 = (MF*MF),
           FY2 = (FY*FY))
@@ -600,7 +600,7 @@ MFY <- MFY %>%
 MY2, MF2 & FY2 are the squares of the deviations, but we need a sum of squares for each one. 
 
 ```{r,message = FALSE, warning = FALSE}
-MFY %>%
+MFY |>
   summarise(SumSquareMY = sum(MY2),
             SumSquareMF = sum(MF2),
             SumSquareFY = sum(FY2))
@@ -641,7 +641,7 @@ And this is pretty much all we can do with the data.
 ```{r, message = FALSE, warning = FALSE}
 # I'm using the package 'knitr' to display this. 
 
-knitr::kable(MFY %>%
+knitr::kable(MFY |>
         summarise(SumSquareMY = sum(MY2),
                   SumSquareMF = sum(MF2),
                   SumSquareFY = sum(FY2),
@@ -661,7 +661,7 @@ If that were the case: the `Condition Mean Square (FMS)  / Error Mean Square (EM
 
 Let's look again at that last table.
 ```{r, message = FALSE, warning = FALSE}
-knitr::kable(MFY %>%
+knitr::kable(MFY |>
         summarise(SumSquareMY = sum(MY2),
                   SumSquareMF = sum(MF2),
                   SumSquareFY = sum(FY2),

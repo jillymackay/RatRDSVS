@@ -10,7 +10,7 @@ You can skip this chapter if:
 ```
 
 ## Why ggplot? 
-There is a fierce debate in the land of R. Some people think basic R shoud be taught first. Others think that you should learn how to do more complicated things first. 
+There is a fierce debate in the land of R. Some people think basic R should be taught first. Others think that you should learn how to do more complicated things first. 
 
 I think you should start to learn ggplot2.
 
@@ -45,13 +45,13 @@ However, sometimes your PC might be a bit slow in rendering some of these charts
 
 
 ```{block, type = "translate"}
-We want to take the `diamonds` dataset and then (` %>% `) send it to `ggplot`.
+We want to take the `diamonds` dataset and then (`  |>  `) send it to `ggplot`.
 In `ggplot` we will use the **aesthetics** argument (`aes`) to tell R what to put on the `x` axis and the `y` axis.
 ```
 
 
 ```{r, message = FALSE, warning = FALSE, eval = FALSE}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price))
 ```
 
@@ -65,16 +65,16 @@ This code ends up giving us a blank chart. This seems strange until you figure o
 
 
 ```{r, message = FALSE, warning = FALSE,  fig.cap="A ggplot object with no geom layers", fig.align='center'}
-diamonds %>% 
+diamonds |>  
   ggplot(aes(x = carat, y = price))
 ```
 
-We need to tell R to add a `geom` layer, and we do that by adding a `+`^[You may be interested to know that the `+` symbol is a precursor to the `%>%` symbol. Both `ggplot2` and `tidyverse` were mainly written by [Hadley Wickham](https://twitter.com/hadleywickham) who has spoken about [why ggplot won't ever use the %>%  operator](https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7)] symbol. In this case, we want to add a `geom_point` layer, so we write the following:
+We need to tell R to add a `geom` layer, and we do that by adding a `+`. You may be interested to know that the `+` symbol is a precursor to the ` |> ` symbol. Both `ggplot2` and `tidyverse` were mainly written by [Hadley Wickham](https://twitter.com/hadleywickham) who has spoken about [why ggplot won't ever use the   pipe](https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7) symbol. In this case, we want to add a `geom_point` layer, so we write the following:
 
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point()
 ```
@@ -91,7 +91,7 @@ All we need is another line of code.
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 5, 0.5))
@@ -112,7 +112,7 @@ Take the last three lines of code and then (`+`)
 We can go further by changing the limits within the`scale_x_` command ...
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 5, 0.5), limits = c(0, 6))
@@ -136,7 +136,7 @@ However, you'll notice that the numbers don't go all the way to the end. Have yo
 We need to change the `seq` command earlier in the argument...
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, x axis changed", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6))
@@ -145,7 +145,7 @@ diamonds %>%
 And we can change the y axis in much the same way:
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, x and y axes changed", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 5, 0.5), limits = c(0, 6)) +
@@ -157,7 +157,7 @@ diamonds %>%
 Themes are a very cool way to quickly change the look of and customise your charts. Just like everything else in ggplot, we just want to add another layer of code. 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, black & white theme", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -187,7 +187,7 @@ Which one do you prefer?
 Personally, I like this option:
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, classic theme", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -208,7 +208,7 @@ And remember that R Studio will autocomplete things you type - what happens if y
 We can adjust labels with the following extra line of code. 
 
 ```{r, message = FALSE, warning = FALSE,  fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -222,7 +222,7 @@ Unsurprisingly, if we want to change the y axis label, we just need to add anoth
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels", fig.align = 'center' }
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -236,7 +236,7 @@ You can even add in titles and subtitles.
 
 
 ```{r, message = FALSE, warning = FALSE,  fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, adjusted labels",fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -266,7 +266,7 @@ We have a number of options here:
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat, regression line added", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -292,7 +292,7 @@ All we need to do, is give it a new aesthetic (`aes`) argument: `colour = cut`.
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added",fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price, colour = cut)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -314,7 +314,7 @@ Using the `theme()` argument (which is subtly different from the `theme_classic(
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added", fig.align ='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price, colour = cut)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -332,7 +332,7 @@ But lets say we also want to change the text from 'cut' to 'Cut of Diamond'. Wel
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_point layer, the price of diamonds by their carat and cut, regression line added", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = carat, y = price, colour = cut)) + 
   geom_point() +
   scale_x_continuous(breaks = seq (0, 6, 0.5), limits = c(0, 6)) + 
@@ -360,7 +360,7 @@ Lets look to see if there's a relationship between how big the diamond is (carat
 
 
 ```{r, message = FALSE, warning = FALSE,  fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity", fig.align = 'center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = clarity, y = carat)) + 
   geom_boxplot()
 ```
@@ -370,7 +370,7 @@ And with just a few lines of code, we can create a very different looking chart:
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = clarity, y = carat, colour = clarity)) + 
   geom_boxplot() +
   labs(title = "Clarity and carat of >50,000 diamonds",
@@ -386,7 +386,7 @@ Another very useful command is 'facet', which splits one chart into many based o
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_boxplot, the carat of diamonds by their clarity", fig.align='center'}
-diamonds %>% 
+diamonds  |> 
   ggplot(aes(x = clarity, y = carat, colour = clarity)) + 
   geom_boxplot() +
   labs(title = "Clarity, cut and carat of >50,000 diamonds",
@@ -404,7 +404,7 @@ To create a bar chart, we simply need to change the `geom_boxplot()` to a `geom_
 
 
 ```{r, message = FALSE, warning = FALSE, fig.cap="A ggplot object with a geom_bar, the carat of diamonds by their clarity", fig.align = 'center' }
-diamonds %>% 
+diamonds |>  
   ggplot(aes(x = clarity, y = carat, fill = clarity)) + 
   geom_bar(stat = "summary") +
   labs(title = "Clarity, cut and carat of >50,000 diamonds",

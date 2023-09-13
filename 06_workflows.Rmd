@@ -29,7 +29,7 @@ One of the great advantages of using code to process data is that every stage ca
 Imagine you have a big dataset like the UK Farm Accounts dataset:
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
-farm <- read.csv("data/uk_farm_accounts.csv")
+farm <- read_csv("data/uk_farm_accounts.csv", locale=locale(encoding="latin1"))
 head(farm)
 ```
 
@@ -37,8 +37,8 @@ head(farm)
 And let's say you want to explore the gross output of farming per year. You might decided it would be easier to change the name of the gross output variable to make coding easier. So you write the following in the console:
 
 ```{r message = FALSE, warning = FALSE}
-farm <- farm %>% 
-  rename(gross_output = Gross.output.at.basic.prices...million)
+farm <- farm |>  
+  rename(gross_output = "Gross output at basic prices £ million")
 
 ```
 
@@ -46,8 +46,8 @@ And then you summarise gross output by year:
 
 ```{r message = FALSE, warning = FALSE}
 
-farm %>% 
-  group_by(Year) %>% 
+farm  |>  
+  group_by(Year) |> 
   summarise(mean_gross_output = mean(gross_output))
 
 ```

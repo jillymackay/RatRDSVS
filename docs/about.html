@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>About this book | R @ R(D)SVS</title>
   <meta name="description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="About this book | R @ R(D)SVS" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This book will help you get started in R. It’s designed for students (and staff) at R(D)SVS, and is free to use and adapt." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Jill R D MacKay" />
 
 
-<meta name="date" content="2021-03-05" />
+<meta name="date" content="2023-09-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="install.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +49,24 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,15 +86,15 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -102,19 +103,24 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
 code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
 
 <link rel="stylesheet" href="css/styles.css" type="text/css" />
@@ -131,8 +137,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>R @ R(D)SVS</a></li>
-<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About this book</a><ul>
-<li class="chapter" data-level="0.1" data-path="about.html"><a href="about.html#howuse"><i class="fa fa-check"></i><b>0.1</b> How to use this book</a><ul>
+<li class="chapter" data-level="" data-path="about.html"><a href="about.html"><i class="fa fa-check"></i>About this book</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="about.html"><a href="about.html#howuse"><i class="fa fa-check"></i><b>0.1</b> How to use this book</a>
+<ul>
 <li class="chapter" data-level="0.1.1" data-path="about.html"><a href="about.html#useinclass"><i class="fa fa-check"></i><b>0.1.1</b> As a student in class</a></li>
 <li class="chapter" data-level="0.1.2" data-path="about.html"><a href="about.html#useindependent"><i class="fa fa-check"></i><b>0.1.2</b> As a student learning independently</a></li>
 <li class="chapter" data-level="0.1.3" data-path="about.html"><a href="about.html#useteach"><i class="fa fa-check"></i><b>0.1.3</b> As a teacher</a></li>
@@ -140,50 +148,64 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.2" data-path="about.html"><a href="about.html#usetips"><i class="fa fa-check"></i><b>0.2</b> Tips for using an online textbook</a></li>
 <li class="chapter" data-level="0.3" data-path="about.html"><a href="about.html#license"><i class="fa fa-check"></i><b>0.3</b> Licensing</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R</a><ul>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#install_r"><i class="fa fa-check"></i><b>1.1</b> Install R</a></li>
-<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#install_rs"><i class="fa fa-check"></i><b>1.2</b> Install R Studio</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="install.html"><a href="install.html#navigate_rs"><i class="fa fa-check"></i><b>1.2.1</b> Quick R Studio Navigation Guide</a></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#install_rs"><i class="fa fa-check"></i><b>1.2</b> Install R Studio</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="install.html"><a href="install.html#note-for-those-using-a-managed-pc"><i class="fa fa-check"></i><b>1.2.1</b> Note for those using a managed PC</a></li>
+<li class="chapter" data-level="1.2.2" data-path="install.html"><a href="install.html#navigate_rs"><i class="fa fa-check"></i><b>1.2.2</b> Quick R Studio Navigation Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#install_rsc"><i class="fa fa-check"></i><b>1.3</b> Using the Cloud</a></li>
 <li class="chapter" data-level="1.4" data-path="install.html"><a href="install.html#install_vids"><i class="fa fa-check"></i><b>1.4</b> Install R and R Studio - Video Instruction</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
-<li class="chapter" data-level="2.1" data-path="start.html"><a href="start.html#thesecret"><i class="fa fa-check"></i><b>2.1</b> The Big Secret</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="start.html"><a href="start.html#ex_tidytuesday"><i class="fa fa-check"></i><b>2.1.1</b> Exercise</a></li>
+<li class="chapter" data-level="2" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="start.html"><a href="start.html#thesecret"><i class="fa fa-check"></i><b>2.1</b> The Big Secret</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="start.html"><a href="start.html#what-about-ai-like-chatgpt"><i class="fa fa-check"></i><b>2.1.1</b> What about AI like ChatGPT?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="start.html"><a href="start.html#ex_tidytuesday"><i class="fa fa-check"></i><b>2.1.2</b> Exercise</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="start.html"><a href="start.html#projects"><i class="fa fa-check"></i><b>2.2</b> Projects</a></li>
-<li class="chapter" data-level="2.3" data-path="start.html"><a href="start.html#environment"><i class="fa fa-check"></i><b>2.3</b> Environment</a><ul>
+<li class="chapter" data-level="2.3" data-path="start.html"><a href="start.html#environment"><i class="fa fa-check"></i><b>2.3</b> Environment</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="start.html"><a href="start.html#ex_env"><i class="fa fa-check"></i><b>2.3.1</b> Exercise - Environment</a></li>
 <li class="chapter" data-level="2.3.2" data-path="start.html"><a href="start.html#ex_func"><i class="fa fa-check"></i><b>2.3.2</b> Exercise - Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="start.html"><a href="start.html#packages"><i class="fa fa-check"></i><b>2.4</b> Packages</a><ul>
+<li class="chapter" data-level="2.4" data-path="start.html"><a href="start.html#packages"><i class="fa fa-check"></i><b>2.4</b> Packages</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="start.html"><a href="start.html#ex_packages"><i class="fa fa-check"></i><b>2.4.1</b> Exercise - Install and Load a Package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="start.html"><a href="start.html#scripts_rmd"><i class="fa fa-check"></i><b>2.5</b> R Markdown vs R Scripts</a><ul>
+<li class="chapter" data-level="2.5" data-path="start.html"><a href="start.html#scripts_rmd"><i class="fa fa-check"></i><b>2.5</b> R Markdown vs R Scripts</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="start.html"><a href="start.html#r-scripts"><i class="fa fa-check"></i><b>2.5.1</b> R Scripts</a></li>
 <li class="chapter" data-level="2.5.2" data-path="start.html"><a href="start.html#r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> R Markdown</a></li>
 <li class="chapter" data-level="2.5.3" data-path="start.html"><a href="start.html#video_rmd"><i class="fa fa-check"></i><b>2.5.3</b> A video on R Markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="start.html"><a href="start.html#video_env"><i class="fa fa-check"></i><b>2.6</b> Video Introductions</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a><ul>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#packages-for-this-chapter"><i class="fa fa-check"></i><b>3.1</b> Packages for this chapter</a></li>
 <li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#data_builtin"><i class="fa fa-check"></i><b>3.2</b> Built In Data</a></li>
 <li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#ex_inbuiltdata"><i class="fa fa-check"></i><b>3.3</b> Exercise</a></li>
 <li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#created_data"><i class="fa fa-check"></i><b>3.4</b> Data you create</a></li>
 <li class="chapter" data-level="3.5" data-path="data.html"><a href="data.html#ex_createdata"><i class="fa fa-check"></i><b>3.5</b> Exercise - Creating data</a></li>
 <li class="chapter" data-level="3.6" data-path="data.html"><a href="data.html#data_load"><i class="fa fa-check"></i><b>3.6</b> Loading data from your hard drive</a></li>
-<li class="chapter" data-level="3.7" data-path="data.html"><a href="data.html#ex_data_load"><i class="fa fa-check"></i><b>3.7</b> Loading data</a><ul>
+<li class="chapter" data-level="3.7" data-path="data.html"><a href="data.html#ex_data_load"><i class="fa fa-check"></i><b>3.7</b> Loading data</a>
+<ul>
 <li class="chapter" data-level="3.7.1" data-path="data.html"><a href="data.html#loading-from-a-csv"><i class="fa fa-check"></i><b>3.7.1</b> Loading from a CSV</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="data.html"><a href="data.html#ex_loadcsv"><i class="fa fa-check"></i><b>3.8</b> Exercise</a><ul>
+<li class="chapter" data-level="3.8" data-path="data.html"><a href="data.html#ex_loadcsv"><i class="fa fa-check"></i><b>3.8</b> Exercise</a>
+<ul>
 <li class="chapter" data-level="3.8.1" data-path="data.html"><a href="data.html#loading-from-an-excel-file"><i class="fa fa-check"></i><b>3.8.1</b> Loading from an Excel file</a></li>
 </ul></li>
 <li class="chapter" data-level="3.9" data-path="data.html"><a href="data.html#ex_loadexcel"><i class="fa fa-check"></i><b>3.9</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>4</b> Charts</a><ul>
-<li class="chapter" data-level="4.1" data-path="charts.html"><a href="charts.html#datavis"><i class="fa fa-check"></i><b>4.1</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="4" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>4</b> Charts</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="charts.html"><a href="charts.html#datavis"><i class="fa fa-check"></i><b>4.1</b> Data Visualisation</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="charts.html"><a href="charts.html#vis_bad"><i class="fa fa-check"></i><b>4.1.1</b> When charts go bad</a></li>
 <li class="chapter" data-level="4.1.2" data-path="charts.html"><a href="charts.html#vis_anatomy"><i class="fa fa-check"></i><b>4.1.2</b> Chart anatomy</a></li>
 <li class="chapter" data-level="4.1.3" data-path="charts.html"><a href="charts.html#vis_bar"><i class="fa fa-check"></i><b>4.1.3</b> Bar charts</a></li>
@@ -193,9 +215,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.7" data-path="charts.html"><a href="charts.html#vis_infographic"><i class="fa fa-check"></i><b>4.1.7</b> Infographics</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a><ul>
+<li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> ggplot2</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#why-ggplot"><i class="fa fa-check"></i><b>5.1</b> Why ggplot?</a></li>
-<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object (a scatterplot)</a><ul>
+<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gg_build"><i class="fa fa-check"></i><b>5.2</b> Building a ggplot object (a scatterplot)</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="ggplot.html"><a href="ggplot.html#gg_axis"><i class="fa fa-check"></i><b>5.2.1</b> Changing an axis in ggplot2</a></li>
 <li class="chapter" data-level="5.2.2" data-path="ggplot.html"><a href="ggplot.html#gg_theme"><i class="fa fa-check"></i><b>5.2.2</b> Changing themes</a></li>
 <li class="chapter" data-level="5.2.3" data-path="ggplot.html"><a href="ggplot.html#gg_labs"><i class="fa fa-check"></i><b>5.2.3</b> Changing labels and titles</a></li>
@@ -210,45 +234,55 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="ggplot.html"><a href="ggplot.html#gg_vids"><i class="fa fa-check"></i><b>5.7</b> Videos</a></li>
 <li class="chapter" data-level="5.8" data-path="ggplot.html"><a href="ggplot.html#gg_resources"><i class="fa fa-check"></i><b>5.8</b> Useful resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a><ul>
-<li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a><ul>
+<li class="chapter" data-level="6" data-path="dataprocessing.html"><a href="dataprocessing.html"><i class="fa fa-check"></i><b>6</b> Data Processing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="dataprocessing.html"><a href="dataprocessing.html#workflows"><i class="fa fa-check"></i><b>6.1</b> Workflows</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="dataprocessing.html"><a href="dataprocessing.html#an-example-of-sharing-code"><i class="fa fa-check"></i><b>6.1.1</b> An example of sharing code</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="dataprocessing.html"><a href="dataprocessing.html#openrmd"><i class="fa fa-check"></i><b>6.2</b> Opening R Markdown Docs</a></li>
 <li class="chapter" data-level="6.3" data-path="dataprocessing.html"><a href="dataprocessing.html#codermd"><i class="fa fa-check"></i><b>6.3</b> Running Code</a></li>
 <li class="chapter" data-level="6.4" data-path="dataprocessing.html"><a href="dataprocessing.html#editrmd"><i class="fa fa-check"></i><b>6.4</b> Editing R Markdown Docs</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>7</b> The Tidyverse</a><ul>
+<li class="chapter" data-level="7" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>7</b> The Tidyverse</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="tidyverse.html"><a href="tidyverse.html#tidy_opinions"><i class="fa fa-check"></i><b>7.1</b> Opinionated Packages</a></li>
 <li class="chapter" data-level="7.2" data-path="tidyverse.html"><a href="tidyverse.html#data-for-this-chapter"><i class="fa fa-check"></i><b>7.2</b> Data for this chapter</a></li>
-<li class="chapter" data-level="7.3" data-path="tidyverse.html"><a href="tidyverse.html#mutate"><i class="fa fa-check"></i><b>7.3</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.3" data-path="tidyverse.html"><a href="tidyverse.html#mutate"><i class="fa fa-check"></i><b>7.3</b> Mutating data</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="tidyverse.html"><a href="tidyverse.html#mutate-to-change-a-variable-type."><i class="fa fa-check"></i><b>7.3.1</b> Mutate to change a variable type.</a></li>
 <li class="chapter" data-level="7.3.2" data-path="tidyverse.html"><a href="tidyverse.html#mutate-to-change-the-contents-of-data"><i class="fa fa-check"></i><b>7.3.2</b> Mutate to change the contents of data</a></li>
 <li class="chapter" data-level="7.3.3" data-path="tidyverse.html"><a href="tidyverse.html#mutate-to-change-multiple-variables"><i class="fa fa-check"></i><b>7.3.3</b> Mutate to change multiple variables</a></li>
 <li class="chapter" data-level="7.3.4" data-path="tidyverse.html"><a href="tidyverse.html#tidy_summ"><i class="fa fa-check"></i><b>7.3.4</b> Summarise as a unique form of mutate</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="tidyverse.html"><a href="tidyverse.html#pivoting_data"><i class="fa fa-check"></i><b>7.4</b> Wide and tall data</a><ul>
+<li class="chapter" data-level="7.4" data-path="tidyverse.html"><a href="tidyverse.html#pivoting_data"><i class="fa fa-check"></i><b>7.4</b> Wide and tall data</a>
+<ul>
 <li class="chapter" data-level="7.4.1" data-path="tidyverse.html"><a href="tidyverse.html#processing-data"><i class="fa fa-check"></i><b>7.4.1</b> Processing data</a></li>
 <li class="chapter" data-level="7.4.2" data-path="tidyverse.html"><a href="tidyverse.html#pivot_longer"><i class="fa fa-check"></i><b>7.4.2</b> pivot_longer</a></li>
+<li class="chapter" data-level="7.4.3" data-path="tidyverse.html"><a href="tidyverse.html#pivot_wider"><i class="fa fa-check"></i><b>7.4.3</b> pivot_wider</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="tidyverse.html"><a href="tidyverse.html#pivot_wider"><i class="fa fa-check"></i><b>7.5</b> pivot_wider</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="trouble.html"><a href="trouble.html"><i class="fa fa-check"></i><b>8</b> Troubleshooting</a><ul>
+<li class="chapter" data-level="8" data-path="trouble.html"><a href="trouble.html"><i class="fa fa-check"></i><b>8</b> Troubleshooting</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="trouble.html"><a href="trouble.html#working-independently"><i class="fa fa-check"></i><b>8.1</b> Working independently</a></li>
 <li class="chapter" data-level="8.2" data-path="trouble.html"><a href="trouble.html#trouble_warnings"><i class="fa fa-check"></i><b>8.2</b> Common warnings</a></li>
-<li class="chapter" data-level="8.3" data-path="trouble.html"><a href="trouble.html#trouble_errors"><i class="fa fa-check"></i><b>8.3</b> Common errors</a><ul>
+<li class="chapter" data-level="8.3" data-path="trouble.html"><a href="trouble.html#trouble_errors"><i class="fa fa-check"></i><b>8.3</b> Common errors</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="trouble.html"><a href="trouble.html#object-not-found."><i class="fa fa-check"></i><b>8.3.1</b> Object not found.</a></li>
 <li class="chapter" data-level="8.3.2" data-path="trouble.html"><a href="trouble.html#function-not-found"><i class="fa fa-check"></i><b>8.3.2</b> Function not found</a></li>
 <li class="chapter" data-level="8.3.3" data-path="trouble.html"><a href="trouble.html#unexpected-symbols"><i class="fa fa-check"></i><b>8.3.3</b> Unexpected symbols</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="trouble.html"><a href="trouble.html#quick-warnings-and-errors"><i class="fa fa-check"></i><b>8.4</b> Quick warnings and errors</a></li>
-<li class="chapter" data-level="8.5" data-path="trouble.html"><a href="trouble.html#searching-for-help"><i class="fa fa-check"></i><b>8.5</b> Searching for help</a><ul>
+<li class="chapter" data-level="8.5" data-path="trouble.html"><a href="trouble.html#searching-for-help"><i class="fa fa-check"></i><b>8.5</b> Searching for help</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="trouble.html"><a href="trouble.html#trouble_help"><i class="fa fa-check"></i><b>8.5.1</b> Tips for asking for help</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="trouble.html"><a href="trouble.html#trouble_reprex"><i class="fa fa-check"></i><b>8.6</b> Reproducible Examples (reprex)</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="statsbasic.html"><a href="statsbasic.html"><i class="fa fa-check"></i><b>9</b> Basic Statistics</a><ul>
-<li class="chapter" data-level="9.1" data-path="statsbasic.html"><a href="statsbasic.html#descstats"><i class="fa fa-check"></i><b>9.1</b> Descriptive stats</a><ul>
+<li class="chapter" data-level="9" data-path="statsbasic.html"><a href="statsbasic.html"><i class="fa fa-check"></i><b>9</b> Basic Statistics</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="statsbasic.html"><a href="statsbasic.html#descstats"><i class="fa fa-check"></i><b>9.1</b> Descriptive stats</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="statsbasic.html"><a href="statsbasic.html#mathematical-notation"><i class="fa fa-check"></i><b>9.1.1</b> Mathematical notation</a></li>
 <li class="chapter" data-level="9.1.2" data-path="statsbasic.html"><a href="statsbasic.html#stats_mean"><i class="fa fa-check"></i><b>9.1.2</b> The mean</a></li>
 <li class="chapter" data-level="9.1.3" data-path="statsbasic.html"><a href="statsbasic.html#the-mean-as-a-model"><i class="fa fa-check"></i><b>9.1.3</b> The mean as a model</a></li>
@@ -256,7 +290,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="statsbasic.html"><a href="statsbasic.html#stats_median"><i class="fa fa-check"></i><b>9.2</b> Median</a></li>
 <li class="chapter" data-level="9.3" data-path="statsbasic.html"><a href="statsbasic.html#stats_mode"><i class="fa fa-check"></i><b>9.3</b> Mode</a></li>
 <li class="chapter" data-level="9.4" data-path="statsbasic.html"><a href="statsbasic.html#stats_which"><i class="fa fa-check"></i><b>9.4</b> Which model?</a></li>
-<li class="chapter" data-level="9.5" data-path="statsbasic.html"><a href="statsbasic.html#stats_variation"><i class="fa fa-check"></i><b>9.5</b> Measures of variation</a><ul>
+<li class="chapter" data-level="9.5" data-path="statsbasic.html"><a href="statsbasic.html#stats_variation"><i class="fa fa-check"></i><b>9.5</b> Measures of variation</a>
+<ul>
 <li class="chapter" data-level="9.5.1" data-path="statsbasic.html"><a href="statsbasic.html#stats_variance"><i class="fa fa-check"></i><b>9.5.1</b> Variance</a></li>
 <li class="chapter" data-level="9.5.2" data-path="statsbasic.html"><a href="statsbasic.html#stats_sd"><i class="fa fa-check"></i><b>9.5.2</b> Standard Deviation</a></li>
 <li class="chapter" data-level="9.5.3" data-path="statsbasic.html"><a href="statsbasic.html#stats_se"><i class="fa fa-check"></i><b>9.5.3</b> Standard Error</a></li>
@@ -264,26 +299,32 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="statsbasic.html"><a href="statsbasic.html#calculating-descriptive-stats"><i class="fa fa-check"></i><b>9.6</b> Calculating descriptive stats</a></li>
 <li class="chapter" data-level="9.7" data-path="statsbasic.html"><a href="statsbasic.html#reporting-on-heifer-weight"><i class="fa fa-check"></i><b>9.7</b> Reporting on heifer weight</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="statsfreq.html"><a href="statsfreq.html"><i class="fa fa-check"></i><b>10</b> Predicting more things</a><ul>
-<li class="chapter" data-level="10.1" data-path="statsfreq.html"><a href="statsfreq.html#ex_anovatheory"><i class="fa fa-check"></i><b>10.1</b> Partitioning Variation</a><ul>
+<li class="chapter" data-level="10" data-path="statsfreq.html"><a href="statsfreq.html"><i class="fa fa-check"></i><b>10</b> Predicting more things</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="statsfreq.html"><a href="statsfreq.html#ex_anovatheory"><i class="fa fa-check"></i><b>10.1</b> Partitioning Variation</a>
+<ul>
 <li class="chapter" data-level="10.1.1" data-path="statsfreq.html"><a href="statsfreq.html#perfect-worlds-vs-reality"><i class="fa fa-check"></i><b>10.1.1</b> Perfect Worlds vs Reality</a></li>
 <li class="chapter" data-level="10.1.2" data-path="statsfreq.html"><a href="statsfreq.html#a-fake-experiment"><i class="fa fa-check"></i><b>10.1.2</b> A Fake Experiment</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="choosestats.html"><a href="choosestats.html"><i class="fa fa-check"></i><b>11</b> How to choose your stats</a><ul>
+<li class="chapter" data-level="11" data-path="choosestats.html"><a href="choosestats.html"><i class="fa fa-check"></i><b>11</b> How to choose your stats</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="choosestats.html"><a href="choosestats.html#cs_start"><i class="fa fa-check"></i><b>11.1</b> Where to start</a></li>
-<li class="chapter" data-level="11.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat"><i class="fa fa-check"></i><b>11.2</b> My response is a categorical variable</a><ul>
+<li class="chapter" data-level="11.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat"><i class="fa fa-check"></i><b>11.2</b> My response is a categorical variable</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_hist"><i class="fa fa-check"></i><b>11.2.1</b> Categorical Response, Historical/Known Comparisons</a></li>
 <li class="chapter" data-level="11.2.2" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_ecat"><i class="fa fa-check"></i><b>11.2.2</b> Categorical Response, Categorical Explanatory</a></li>
 <li class="chapter" data-level="11.2.3" data-path="choosestats.html"><a href="choosestats.html#cs_rcat_enum"><i class="fa fa-check"></i><b>11.2.3</b> Categorical Response, Numerical Explanatory (Logistic Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> My response is a numerical variable</a><ul>
+<li class="chapter" data-level="11.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum"><i class="fa fa-check"></i><b>11.3</b> My response is a numerical variable</a>
+<ul>
 <li class="chapter" data-level="11.3.1" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_hist"><i class="fa fa-check"></i><b>11.3.1</b> Numerical Response, Historical/Known Comparisons (One Sample t-Test)</a></li>
 <li class="chapter" data-level="11.3.2" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat_r"><i class="fa fa-check"></i><b>11.3.2</b> Numerical Response (Repeated Measures), Categorical Explanatory (Paired t-Test)</a></li>
 <li class="chapter" data-level="11.3.3" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_ecat"><i class="fa fa-check"></i><b>11.3.3</b> Numerical Response, Categorical Explanatory (ANOVA/GLM)</a></li>
 <li class="chapter" data-level="11.3.4" data-path="choosestats.html"><a href="choosestats.html#cs_rnum_enum"><i class="fa fa-check"></i><b>11.3.4</b> Numerical Response, Numerical Explanatory (Correlation &amp; Regression)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable</a><ul>
+<li class="chapter" data-level="11.4" data-path="choosestats.html"><a href="choosestats.html#cs_rord"><i class="fa fa-check"></i><b>11.4</b> My response is an ordinal variable</a>
+<ul>
 <li class="chapter" data-level="11.4.1" data-path="choosestats.html"><a href="choosestats.html#cs_rord_hist"><i class="fa fa-check"></i><b>11.4.1</b> Ordinal Response, Historical/Known Comparisons (One Sample Wilcoxan Test)</a></li>
 <li class="chapter" data-level="11.4.2" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat_r"><i class="fa fa-check"></i><b>11.4.2</b> Ordinal Response (Repeated Measures), Categorical Explanatory (One Sample Wilcoxan Signed-Rank Test)</a></li>
 <li class="chapter" data-level="11.4.3" data-path="choosestats.html"><a href="choosestats.html#cs_rord_ecat"><i class="fa fa-check"></i><b>11.4.3</b> Ordinal Response, Categorical Explanatory</a></li>
@@ -291,33 +332,40 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="choosestats.html"><a href="choosestats.html#cs_glms"><i class="fa fa-check"></i><b>11.5</b> I got all of them (generalised linear model)</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="whatnext.html"><a href="whatnext.html"><i class="fa fa-check"></i><b>12</b> What next</a><ul>
+<li class="chapter" data-level="12" data-path="whatnext.html"><a href="whatnext.html"><i class="fa fa-check"></i><b>12</b> What next</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="whatnext.html"><a href="whatnext.html#github"><i class="fa fa-check"></i><b>12.1</b> github</a></li>
 <li class="chapter" data-level="12.2" data-path="whatnext.html"><a href="whatnext.html#experiment-and-build"><i class="fa fa-check"></i><b>12.2</b> Experiment and build</a></li>
 <li class="chapter" data-level="12.3" data-path="whatnext.html"><a href="whatnext.html#the-r-community"><i class="fa fa-check"></i><b>12.3</b> The R Community</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="whyr.html"><a href="whyr.html"><i class="fa fa-check"></i><b>13</b> Why use R</a><ul>
+<li class="chapter" data-level="13" data-path="whyr.html"><a href="whyr.html"><i class="fa fa-check"></i><b>13</b> Why use R</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="whyr.html"><a href="whyr.html#why-does-open-source-matter"><i class="fa fa-check"></i><b>13.1</b> Why does open source matter?</a></li>
 <li class="chapter" data-level="13.2" data-path="whyr.html"><a href="whyr.html#so-why-r"><i class="fa fa-check"></i><b>13.2</b> So why R?</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>14</b> Answers</a><ul>
-<li class="chapter" data-level="14.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>14.1</b> Creating Data Answers</a><ul>
+<li class="chapter" data-level="14" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>14</b> Answers</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="answers.html"><a href="answers.html#ans_createdata"><i class="fa fa-check"></i><b>14.1</b> Creating Data Answers</a>
+<ul>
 <li class="chapter" data-level="14.1.1" data-path="answers.html"><a href="answers.html#changing-mpg-data"><i class="fa fa-check"></i><b>14.1.1</b> Changing mpg data</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="answers.html"><a href="answers.html#ans_loadcsv"><i class="fa fa-check"></i><b>14.2</b> Loading csv data answers</a></li>
 <li class="chapter" data-level="14.3" data-path="answers.html"><a href="answers.html#ans_loadexcel"><i class="fa fa-check"></i><b>14.3</b> Loading excel data answers</a></li>
-<li class="chapter" data-level="14.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>14.4</b> ggplot answers</a><ul>
+<li class="chapter" data-level="14.4" data-path="answers.html"><a href="answers.html#ans_ggbox"><i class="fa fa-check"></i><b>14.4</b> ggplot answers</a>
+<ul>
 <li class="chapter" data-level="14.4.1" data-path="answers.html"><a href="answers.html#boxplot-of-highway-miles-per-gallon-versus-class-mpg-dataset"><i class="fa fa-check"></i><b>14.4.1</b> Boxplot of highway miles per gallon versus class (mpg dataset)</a></li>
 <li class="chapter" data-level="14.4.2" data-path="answers.html"><a href="answers.html#ans_gghist"><i class="fa fa-check"></i><b>14.4.2</b> Histogram of city miles per gallon faceted by transmission type (mpg dataset)</a></li>
 </ul></li>
 <li class="chapter" data-level="14.5" data-path="answers.html"><a href="answers.html#stats_proofvariance"><i class="fa fa-check"></i><b>14.5</b> Proof of variance</a></li>
 <li class="chapter" data-level="14.6" data-path="answers.html"><a href="answers.html#ans_tidyunicorns"><i class="fa fa-check"></i><b>14.6</b> Tidy Unicorns</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>15</b> Acknowledgements</a><ul>
+<li class="chapter" data-level="15" data-path="acks.html"><a href="acks.html"><i class="fa fa-check"></i><b>15</b> Acknowledgements</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="acks.html"><a href="acks.html#image-sources"><i class="fa fa-check"></i><b>15.1</b> Image Sources</a></li>
 <li class="chapter" data-level="15.2" data-path="acks.html"><a href="acks.html#specific-acknowledgements"><i class="fa fa-check"></i><b>15.2</b> Specific Acknowledgements</a></li>
 <li class="chapter" data-level="15.3" data-path="acks.html"><a href="acks.html#beta-testers-and-helpers"><i class="fa fa-check"></i><b>15.3</b> Beta Testers and Helpers</a></li>
-<li class="chapter" data-level="15.4" data-path="acks.html"><a href="acks.html#the-biggest-thanks"><i class="fa fa-check"></i><b>15.4</b> The biggest thanks</a></li>
+<li class="chapter" data-level="15.4" data-path="acks.html"><a href="acks.html#contributors"><i class="fa fa-check"></i><b>15.4</b> Contributors</a></li>
+<li class="chapter" data-level="15.5" data-path="acks.html"><a href="acks.html#the-biggest-thanks"><i class="fa fa-check"></i><b>15.5</b> The biggest thanks</a></li>
 </ul></li>
 </ul>
 
@@ -336,66 +384,71 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="about" class="section level1 unnumbered">
-<h1>About this book</h1>
-<p>This version of the book was last published on 2021-03-05</p>
-<div id="howuse" class="section level2">
-<h2><span class="header-section-number">0.1</span> How to use this book</h2>
+<div id="about" class="section level1 unnumbered hasAnchor">
+<h1>About this book<a href="about.html#about" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This version of the book was last published on 2023-09-13</p>
+<div id="howuse" class="section level2 hasAnchor" number="0.1">
+<h2><span class="header-section-number">0.1</span> How to use this book<a href="about.html#howuse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This book is a manual to help you get started in R.</p>
 <div class="los">
 <p>
-There is text like this which is important. At the start of every chapter it will summarise what you need to know, or let you know if you can skip the chapter.
+There is text like this which is important. At the start of every
+chapter it will summarise what you need to know, or let you know if you
+can skip the chapter.
 </p>
 </div>
 <p>You will also see text like this which is called a <strong>code block</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="about.html#cb1-1"></a><span class="kw">print</span>(<span class="st">&quot;Hello, I am a code block!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="about.html#cb1-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello, I am a code block!&quot;</span>)</span></code></pre></div>
 <p>Throughout the book, code blocks will be used to give you examples of how R works. Sometimes code blocks will also have the <strong>output block</strong> following it.</p>
 <pre><code>## [1] &quot;Hello, I am an output block!&quot;</code></pre>
 <p>You can tell output blocks because they have two <strong>##</strong> symbols to show you that it is output.</p>
 <p>Often we will see <strong>code blocks</strong> and <strong>output blocks</strong> together, like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="about.html#cb3-1"></a><span class="kw">print</span>(<span class="st">&quot;Hello, I am a code block with an output block!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="about.html#cb3-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello, I am a code block with an output block!&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello, I am a code block with an output block!&quot;</code></pre>
 <p>Sometimes you will see text like this - which is <strong>really</strong> important:</p>
 <div class="hey">
 <p>
-When you are running code blocks in R make sure to only copy and paste the code block - not the output block!
+When you are running code blocks in R make sure to only copy and
+paste the code block - not the output block!
 </p>
 </div>
 <p>Pasting an output block into R will not do anything.</p>
 <p>You will also sometimes see bits of code or words in <code>text like this</code>. This is usually the name of something in R, or a short piece of code that I didn’t want to put in a full code chunk.</p>
 <div class="translate">
 <p>
-You will also see text like this, which will explain in plain English what the r code is doing.
+You will also see text like this, which will explain in plain English
+what the r code is doing.
 </p>
 <p>
-E.g. the code <code>2 + 2</code> tells R to perform the following calculation: 2 + 2
+E.g. the code <code>2 + 2</code> tells R to perform the following
+calculation: 2 + 2
 </p>
 </div>
 <p>Sometimes there will also be links to videos. These are optional for those learners who like to watch something being demonstrated.</p>
 <p>Finally - sometimes there will be footnotes!<a href="acks.html#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<div id="useinclass" class="section level3">
-<h3><span class="header-section-number">0.1.1</span> As a student in class</h3>
+<div id="useinclass" class="section level3 hasAnchor" number="0.1.1">
+<h3><span class="header-section-number">0.1.1</span> As a student in class<a href="about.html#useinclass" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If I have set this book as your reading, you will be told what chapters you need to read and when in class. You are very lucky because you have the person who wrote the book being responsible for your teaching - and you can ask me questions at any point, preferably in our discussion boards.</p>
 <p>Although here’s something you might like to know - I really don’t mind if you read ahead. If you start working and find you <strong>love</strong> this subject, keep on going with it.</p>
 <p>And something else - you are also free to google other ways of learning R. In fact we have a whole chapter about <a href="trouble.html#trouble">how to find answers online</a> and where <a href="whatnext.html#whatnext">else you can go</a>.</p>
 </div>
-<div id="useindependent" class="section level3">
-<h3><span class="header-section-number">0.1.2</span> As a student learning independently</h3>
+<div id="useindependent" class="section level3 hasAnchor" number="0.1.2">
+<h3><span class="header-section-number">0.1.2</span> As a student learning independently<a href="about.html#useindependent" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you are using this to teach yourself R you are probably a postgrad student. I would expect you to look at the chapter headings and skip around to the sections that are useful. My big tip for you would be to use the Exercises to test yourself throughout.</p>
 </div>
-<div id="useteach" class="section level3">
-<h3><span class="header-section-number">0.1.3</span> As a teacher</h3>
+<div id="useteach" class="section level3 hasAnchor" number="0.1.3">
+<h3><span class="header-section-number">0.1.3</span> As a teacher<a href="about.html#useteach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Please feel free to mix/match and adapt these teaching materials in any way you see fit! Credit not necessary (but appreciated!)</p>
-<p>If you have any questions you are best talking to me on <a href="https://twitter.com/jilly_mackay">Twitter @jilly_mackay</a></p>
+<p>If you have any questions you are best talking to me on <a href="https://fosstodon.org/@jillymackay">Mastodon jilly_mackay@fosstodon.org</a>, <a href="https://bsky.app/profile/jillymackay.bsky.social">Bluesky jillymackay.bsky.social</a> or best of all - raise an <a href="https://github.com/jillymackay/RatRDSVS/issues">issue with the book on github and get acknowledged for it!</a></p>
 </div>
 </div>
-<div id="usetips" class="section level2">
-<h2><span class="header-section-number">0.2</span> Tips for using an online textbook</h2>
+<div id="usetips" class="section level2 hasAnchor" number="0.2">
+<h2><span class="header-section-number">0.2</span> Tips for using an online textbook<a href="about.html#usetips" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An online textbook like this one can be a lot more flexible than a paper one. You can download it and print it if you want to make notes in the margins - the book is free for you to do what you want with it.</p>
 <p>You can change the colours on screen by hovering your mouse over the ‘A’ icon at the top left hand side of the page.</p>
 </div>
-<div id="license" class="section level2">
-<h2><span class="header-section-number">0.3</span> Licensing</h2>
+<div id="license" class="section level2 hasAnchor" number="0.3">
+<h2><span class="header-section-number">0.3</span> Licensing<a href="about.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>These materials are licensed under a CC0-1.0 License. Find out more <a href="https://github.com/jillymackay/RatRDSVS/blob/master/LICENSE">here</a></p>
 <p>You can also find the materials <a href="https://github.com/jillymackay/RatRDSVS">here at the associated github repository</a>.</p>
 
@@ -417,7 +470,6 @@ E.g. the code <code>2 + 2</code> tells R to perform the following calculation: 2
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -436,6 +488,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -456,6 +509,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "collapse": "subsection"
 });
 });
@@ -467,7 +524,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

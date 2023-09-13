@@ -51,6 +51,8 @@ There are many, many more. You can explore some of them by typing `datasets::` i
 
 ```{block, type = "hey"}
 You might wonder, what's the `::` in the `datasets::` command. The `::` is very useful and tells R to look inside the `datasets` package without having to actually load it into your library which can be very quick and easy.
+
+But be careful! If you are sharing your code with lots of other people, this can sometimes make it a bit harder for other people to run your code. This is called 'environment management' and something you'll learn more about as your R journey continues. 
 ```
 
 
@@ -204,14 +206,14 @@ option1 <- tibble(x = dat$x, y = as.factor(dat$y))
 
 ```{r message=FALSE, warning=FALSE}
 
-option2 <- dat %>% 
+option2 <- dat |> 
   mutate(y = as.factor(y))
 
 ```
 
 
 ```{block, type = "translate"}
-In Option 1, using what's called 'base R', we are essentially saying something like:
+In Option 1, we are essentially saying something like:
 
 * Make a new thing called `option1`
 
@@ -228,7 +230,7 @@ Whereas in Option 2, we are saying:
 
 * That thing should start the same as `dat`
 
-* We use the **pipe** command from `tidyverse` (` %>% `) to say 'and then'
+* We use the **pipe** command  (` |> `) to say 'and then'
 
 * So take `dat` **and then** change something in `dat` (the `mutate` function)
 
@@ -237,7 +239,9 @@ Whereas in Option 2, we are saying:
 ```
 
 
-With Option 2, we don't need to specify `dat$y` because we are using the pipe function (` %>% `) to tell R we are still working with the `dat` dataframe.
+With Option 2, we don't need to specify `dat$y` because we are using the pipe function (` |> `) to tell R we are still working with the `dat` dataframe.
+
+The ` |> ` pipe is a relatively recent implementation, but `tidyverse` has utilised the `%>%` pipe from the `magrittr` package for years. Lots of documentation will use the magrittr pipe `%>%` online, and even in this book. Either is fine and should both work in any cases. ([There are a few special cases where they function differently which Hadley Wickham talks about here](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/))
 
 Personally, I found the pipe function in `tidyverse` to be revolutionary when I learned it, and its by far my favourite way to write code. I find the code in Option 2 a lot easier to read than the code in Option 1, and we'll be using `tidyverse` in the rest of this book. However, here's another important thing:
 

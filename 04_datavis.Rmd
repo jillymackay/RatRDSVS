@@ -66,7 +66,7 @@ Pie charts are the worst visualisation in the world.
 pie_df <- data.frame(group = c("Cats", "Dogs", "Fish", "Birds", "Reptiles", "Rabbits"),
                      values = c(25,28, 20, 15 ,2,10))
 
-pie_df %>% 
+pie_df  |>  
   ggplot(aes(x = "", y= values, fill = group)) +
   geom_bar(width = 1, stat = "identity") +
   coord_polar("y", start = 0)
@@ -82,7 +82,7 @@ Instead a bar chart shows use the exact ranking of this data and we can see how 
 ```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "A much better chart describing proportion of people with type of pet (fictional data)", fig.align='center'}
 
 
-pie_df %>% 
+pie_df  |>  
   ggplot(aes(x = reorder(group,-values), y= values, fill = group)) +
   geom_bar(width = 1, stat = "identity", position = position_dodge2()) +
   labs(y = "N of People With Pet",
@@ -116,7 +116,7 @@ Bar charts are good for describing a continuous (numerical) variable by a catego
 ```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by gender"}
 
 
-starwars %>% 
+starwars  |>  
   ggplot(aes(x = gender, y = height)) +
   geom_bar(stat = "summary") +
   labs(x = "Gender presentation",
@@ -129,7 +129,7 @@ They can also be flipped around, particularly if the axis text is hard to read i
 ```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by species", fig.align='center'}
 
 
-starwars %>% 
+starwars  |>  
   ggplot(aes(x = reorder(species, -height), y = height)) +
   geom_bar(stat = "summary") +
   labs(x = "Species",
@@ -146,7 +146,7 @@ A histogram shows the relative frequency of a continuous variable. For example w
 ```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Histogram of height (cm) of Star Wars characters", fig.align='center'}
 
 
-starwars %>% 
+starwars  |>  
   ggplot(aes(x = height)) +
   geom_histogram(binwidth = 10) +
   labs(x = "Height (cm)",
@@ -160,7 +160,7 @@ Scatterplots are good for showing the relationship between two continuous variab
 ```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by weight (kg)", fig.align='center'}
 
 
-starwars %>% 
+starwars  |>  
   ggplot(aes(x = height, y = mass)) +
   geom_point() +
   labs(y = "Weight (kg)",
@@ -175,7 +175,7 @@ But we can use other aspects, such as shape or colour, to add in a categorical v
 ```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by weight (kg) and species", fig.align= 'center'}
 
 
-starwars %>% 
+starwars  |>  
   ggplot(aes(x = height, y = mass, colour = species)) +
   geom_point() +
   labs(y = "Weight (kg)",
@@ -203,10 +203,10 @@ A boxplot shows you:
   
   * Any **outliers** (the dots) which are observations which lie outside of 95% of the data^[The hinges are actually calculated based on the `boxplot.stats` [function](https://www.rdocumentation.org/packages/grDevices/versions/3.6.2/topics/boxplot.stats) which is a little more complicated than 95% of the data - but if you ever need to worry about this you have gone beyond what this book can teach you.]
 
-```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "5Average height (cm) of Star Wars characters by gender", fig.align='center'}
+```{r, echo = FALSE, warning = FALSE, message= FALSE, fig.cap = "Average height (cm) of Star Wars characters by gender", fig.align='center'}
 
 
-starwars %>% 
+starwars  |>  
   ggplot(aes(x = gender, y = height)) +
   geom_boxplot() +
   labs(x = "Gender presentation",
