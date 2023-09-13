@@ -38,6 +38,16 @@ It took me about ten years of working in R to get over my fear of copying and pa
 Most people will not remember code off the top of their head. This is why we use the help function (try typing `?summary` to see what it says) to look at the documentation, and resources like Stack Exchange and Google to help us (more in [troubleshooting](#trouble)).
 
 
+### What about AI like ChatGPT?
+Large Language Models like [ChatGPT](https://chat.openai.com/auth/login) and [Google Bard](https://bard.google.com) can also be applied to coding problems. For example, you could ask ChatGPT how to rearrange a dataset. This can be really helpful, but as with all things AI related, you need to be very cautious and test the answer to make sure it's right. Often it doesn't choose the smartest way.
+
+The use of Large Language Models in coding is a subject of debate. Stackoverflow (a big community resource) [currently does not allow any ChatGPT answers/questions on its site](https://stackoverflow.com/help/gpt-policy). 
+
+At present, [Edinburgh has a policy for the use of ChatGPT and similar tools here](https://www.ed.ac.uk/bayes/ai-guidance-for-staff-and-students/ai-guidance-for-staff). It boils down to: don't claim it as your own work and be cautious of its reliability, accuracy, and the legality of your question. 
+
+Whenever we talk about the use of Large Language Models I think its really important to remember that they boil down to [fuzzy jpgs of the web some time ago](https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web). That's a really good article by the way. 
+
+
 ### Exercise {#ex_tidytuesday}
 You might be very skeptical here about how much I want you to be copying code. If you're not convinced, I suggest you go watch my RStats Crush the amazing [David Robinson](https://twitter.com/drob) do one of his Tidy Tuesday screencasts. David Robinson has forgotten more R than I'll ever learn, and see - he still [copies and pastes code](https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ).
 
@@ -258,7 +268,7 @@ Now we have a new dataset (`starwars`) and a new thing we can do (`slice` the to
 
 ```{block, type = "hey"}
 
-You will often get warnings in R when you type these code blocks. To keep the book tidy, I have suppressed (hidden) the warnings in this book. Don't worry about them - they're usually just trying to keep packages compatibile with older versions of R  
+You will often get warnings in R when you type these code blocks. To keep the book tidy, I have suppressed (hidden) the warnings in this book. Don't worry about them - they're usually just trying to keep packages compatible with older versions of R  
 
 
 ```

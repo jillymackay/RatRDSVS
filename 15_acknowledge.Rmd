@@ -23,6 +23,11 @@ Ian Handel fixed the CSS, and also got me to delete Minitab from my laptop in 20
 
    * Steph Smith @ Edinburgh Uni
    
+  
+## Contributors
+
+  * [Steve Thorn](https://github.com/sthorn)
+   
    
 ## The biggest thanks
 

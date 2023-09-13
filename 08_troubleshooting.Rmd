@@ -35,7 +35,7 @@ Sometimes (perhaps even 'often'), R will give you a warning when you run a line 
 warn <- tibble(x = c(1,2,3,NA,1,2,3),
                y = c(2,3,1,2,3,1,1))
 
-warn %>% 
+warn |> 
   ggplot(aes(x = x, y = y)) +
   geom_point()
 

@@ -82,7 +82,7 @@ If you are using this to teach yourself R you are probably a postgrad student. I
 ### As a teacher {#useteach}
 Please feel free to mix/match and adapt these teaching materials in any way you see fit! Credit not necessary (but appreciated!)
 
-If you have any questions you are best talking to me on [Twitter \@jilly_mackay](https://twitter.com/jilly_mackay)
+If you have any questions you are best talking to me on [Mastodon jilly_mackay\@fosstodon.org](https://fosstodon.org/@jillymackay), [Bluesky jillymackay.bsky.social](https://bsky.app/profile/jillymackay.bsky.social) or best of all - raise an [issue with the book on github and get acknowledged for it!](https://github.com/jillymackay/RatRDSVS/issues)
 
 
 ## Tips for using an online textbook {#usetips}

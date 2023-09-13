@@ -92,7 +92,7 @@ So the first thing we want to do is make year a categorical variable, since ther
 
 ```{r, warning = FALSE, message = FALSE}
 
-students_tidy <- students %>% 
+students_tidy <- students  |>  
   mutate(year = as.character(year),
          year = parse_factor(year, levels = c("1", "2")))
 
@@ -121,7 +121,7 @@ What if we don't want to change data type, but instead change the text of the da
 
 ```{r, warning = FALSE, message = FALSE}
 
-students_tidy <- students_tidy %>% 
+students_tidy <- students_tidy |> 
   mutate(level = case_when(level == "UG" ~ "Undergraduate",
                            level == "PG" ~ "Postgraduate"))
 
@@ -160,7 +160,7 @@ To do this, we need to use two particularly cool things about `tidyverse`, the a
 
 ```{r, message = FALSE, warning = FALSE}
 
-students_tidy <- students_tidy %>% 
+students_tidy <- students_tidy |> 
   mutate_at(.vars = vars(c(disagree, neutral, agree)),
             .funs = ~(.  / 100))
 
@@ -202,8 +202,8 @@ Mutate is really powerful thing, so unsurprisingly the idea behind it is used in
 
 ```{r, message=FALSE, warning = FALSE}
 
-students_summed <- students_tidy %>% 
-  group_by(question) %>% 
+students_summed <- students_tidy |> 
+  group_by(question) |> 
   summarise(mean_disagree = mean(disagree),
             mean_neutral= mean(neutral),
             mean_agree = mean(agree))
@@ -215,8 +215,8 @@ And in fact, if we just want to look at this data quickly, we don't even need to
 
 
 ```{r, message = FALSE, warning = FALSE}
-students_tidy %>% 
-  group_by(question) %>% 
+students_tidy |> 
+  group_by(question) |> 
   summarise(mean_disagree = mean(disagree),
             mean_neutral= mean(neutral),
             mean_agree = mean(agree))
@@ -263,7 +263,7 @@ The `pivot_longer` command is a quick way to smush this data into a tall (or lon
 ```{r, warning = FALSE, message = FALSE}
 
 
-students_tall <- students_tidy %>% 
+students_tall <- students_tidy |> 
   pivot_longer(cols = c(disagree, neutral, agree),
                names_to = "response",
                values_to = "prop")
@@ -305,14 +305,14 @@ I once spent a whole afternoon trying to recreate an error message I was getting
 ```
 
 
-## pivot_wider
+### pivot_wider
 What if, after all that, you realise that you never wanted your data gathered at all? `pivot_wider` is here to rescue you. 
 
 Just as before, `pivot_wider` wants to know the `names` and the `value`, but this time, it will split those two columns into multiple columns. This time we want all that data to be spread out like marmalade on toast, so we don't exclude any columns (in fact, try excluding the columns and see what spread says. )
 
 ```{r, warning = FALSE, message = FALSE}
 
-students_wide <- students_tall %>% 
+students_wide <- students_tall |> 
   pivot_wider(names_from = response,
               values_from = prop)
 ```

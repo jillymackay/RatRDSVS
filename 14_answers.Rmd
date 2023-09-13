@@ -9,7 +9,7 @@ Changing one variable is pretty easy to do in `tidyverse`:
 
 ```{r  message = FALSE, warning = FALSE}
 
-mpg2 <- mpg %>% 
+mpg2 <- mpg |> 
   mutate(manufacturer = as.factor(manufacturer))
 
 ```
@@ -20,7 +20,7 @@ We can still use `mutate` like this:
 
 ```{r message = FALSE, warning = FALSE}
 
-mpg2 <- mpg %>% 
+mpg2 <- mpg |> 
   mutate(manufacturer = as.factor(manufacturer),
          model = as.factor(model),
          trans = as.factor(trans),
@@ -35,7 +35,7 @@ Or we can use a slightly different command to apply the `as.factor` function acr
 
 ```{r message = FALSE, warning = FALSE}
 
-mpg2 <- mpg %>% 
+mpg2 <- mpg |> 
   mutate_at(.vars = vars(c(manufacturer, model, trans, drv, fl, class)),
             .funs = as.factor)
 
@@ -101,7 +101,7 @@ Here is one possible solution:
 ```{r, message = FALSE, warning = FALSE}
 
 
-mpg %>% 
+mpg |> 
   ggplot(aes(x = class, y = hwy)) +
   geom_boxplot()
 
@@ -114,7 +114,7 @@ A prettier solution might be:
 ```{r, message = FALSE, warning = FALSE}
 
 
-mpg %>% 
+mpg |> 
   ggplot(aes(x = reorder(class, -hwy), y = hwy)) +
   geom_boxplot() +
   labs (x = "Car class",
@@ -132,7 +132,7 @@ A possible solution:
 ```{r, message = FALSE, warning = FALSE}
 
 
-mpg %>% 
+mpg |> 
   ggplot(aes(x = cty)) +
   geom_histogram() +
   facet_wrap(facets = ~ trans)
@@ -148,7 +148,7 @@ If we take our `coos` dataset again and create a new variable taking each value 
 
 ```{r message = FALSE, warning = FALSE}
 
-distances <- coos %>% 
+distances <- coos |> 
   mutate(distances = mean(weight)-weight)
 
 distances
@@ -172,7 +172,7 @@ We can tidy our Unicorn dataset with the `pivot_longer` command:
 
 ```{r eval = FALSE, message = FALSE, warning=FALSE}
 
-RadioTidy <- Radio %>% 
+RadioTidy <- Radio |> 
   pivot_longer(cols = c(NoRadio:RadioDiscussion),
                names_to = "Radio",
                values_to = "DustYield")

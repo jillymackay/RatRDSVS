@@ -264,9 +264,9 @@ And we could report this like so:
 
 library(broom)
 
-tidy(logit) %>% 
-  mutate(OddsRatio = exp(coef(logit))) %>% 
-  select(term, estimate, std.error, statistic, OddsRatio, p.value ) %>% 
+tidy(logit) |> 
+  mutate(OddsRatio = exp(coef(logit))) |> 
+  select(term, estimate, std.error, statistic, OddsRatio, p.value ) |> 
   kable(caption = "Coefficient table for variables in binary logistic regression predicting hip dysplasia\nfrom inflammation markers in 21 German Shepard Dogs")
 
 ```
@@ -287,7 +287,7 @@ The dataset `trees` gives us the height in feet of 31 black cherry trees. We wan
 
 t.test(trees$Height, mu = 80)
 
-trees %>% 
+trees |> 
   summarise(mean= mean(Height),
             sd = sd(Height))
 
@@ -310,7 +310,7 @@ In this example we have 10 housecats who we put on a special weight-loss diet. W
 diet <- tibble (before = c(5.04, 4.63, 4.04, 5.10, 5.43, 4.83, 3.45, 3.49, 5.02, 4.81),
                 after = c( 4.78, 2.49, 4.46, 2.03, 5.13, 7.23, 3.50, 1.89, 3.30, 3.91))
 
-diet %>% 
+diet |> 
   summarise(b_mean = mean(before),
             a_mean = mean(after),
             b_sd = sd(before),
@@ -361,7 +361,7 @@ We first inspect the plot to ensure the residuals are normally distributed. If w
 > There was a significant effect of feedtype on chick weight in a one-way ANOVA (*F*^(5,65)^ = 15.37, *p* <.001, Figure 11.1). Post-hoc comparisons with Tukeys HSD found variety in performance, with sunflower feeds significantly outperformed soybean (82g, *p* = .003) linseed (110g, *p* <.001), and horsebean (168g, *p* <.001). Casein diets outperform horsebean (163g, *p* <.001), linseed (105g, *p* <.001), and soybean (77g, *p* = .008). Meatmeal outperforms horsebean (117g, *p* <.001) and soybean outperformed horsebean (86g, *p* = .004).
 
 ```{r message = FALSE, warning = FALSE, fig.align="center", fig.cap = "Chick weight (g) per feed type, data from 'chickwts'"}
-chickwts %>% 
+chickwts |> 
   ggplot(aes(x = reorder(feed, -weight), y = weight)) +
   geom_boxplot()+
   theme_classic() +
@@ -382,8 +382,8 @@ chk_l <- lm(weight ~ feed, data = chickwts)
 summary(chk_l)
 
 library(broom)
-chk_l %>% 
-  tidy() %>% 
+chk_l |> 
+  tidy() |> 
   ggplot(aes(x = reorder(term, - estimate), y = estimate)) +
   geom_point(aes(colour = term, shape = term)) +
   geom_errorbar(aes(x = term, ymin = estimate-std.error, ymax = estimate+std.error, colour = term)) +
@@ -441,7 +441,7 @@ In this example we have student ratings of this textbook from 1 (very unsatisfie
 
 ratings <- tibble(satisfaction = c(1,2,1,1,3,2,1,5,1,2,5,1,2,3,3,1,3))
 
-ratings %>% 
+ratings |> 
   summarise(median = median(satisfaction))
 
 
@@ -461,7 +461,7 @@ In this example we have student ratings of this textbook from 1 (very unsatisfie
 ratings <- tibble(satisfaction1 = c(1,2,1,1,3,2,1,5,1,2,5,1,2,3,3,1,3),
                   satisfaction2 = c(1,4,2,3,3,3,2,5,2,4,5,3,3,3,4,1,3))
 
-ratings %>% 
+ratings |> 
   summarise(satis1 = median(satisfaction1),
             satis2 = median(satisfaction2))
 
@@ -490,7 +490,7 @@ library(pgirmess)
 
 textbk <- tibble(self_taught = c(1,2,1,1,3,2,1,5,1,2,5,1,2,3,3,1,3),
                  textbook= c(1,4,2,3,3,3,2,5,2,4,5,3,3,3,4,1,3),
-                 textbook_plus = c( 3, 2, 3, 3, 3, 3, 2, 4, 4, 5, 3, 4, 4, 5, 4, 5, 3)) %>% 
+                 textbook_plus = c( 3, 2, 3, 3, 3, 3, 2, 4, 4, 5, 3, 4, 4, 5, 4, 5, 3)) |> 
   pivot_longer(cols = c(self_taught:textbook_plus),
                names_to = "condition",
                values_to = "score")
@@ -508,7 +508,7 @@ jonckheere.test(textbk$score, as.numeric(as.factor(textbk$condition)))
 
 ```{r, message = FALSE, warning = FALSE, fig.cap = "Student satisfaction by teaching method", fig.align="center"}
 
-textbk %>% 
+textbk |> 
   ggplot(aes(x = condition, y = score)) +
   geom_boxplot()+
   theme_classic() +
